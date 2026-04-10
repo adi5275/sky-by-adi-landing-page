@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>פרוטוקול האיפוס – SKY BY ADI AHARONI</title>
+  <meta name="description" content="72 שעות בחו״ל שיאפסו את הדינמיקה בינכן ויחזירו לך את הבת שלך — לפני שחלון ההזדמנויות נסגר לצמיתות." />
+  <meta property="og:title" content="פרוטוקול האיפוס – 72 שעות שמשנות הכל" />
+  <meta property="og:description" content="לאמהות שיש להן בת מתבגרת ויודעות שחלון ההזדמנויות הולך ונסגר." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ══════════════════════════════════════
+       TOKENS
+    ══════════════════════════════════════ */
+    :root {
+      --green-dark:  #182E0A;
+      --green:       #2A4B14;
+      --green-mid:   #3A641E;
+      --green-light: #4F7A28;
+      --gold:        #C9A84C;
+      --gold-light:  #E2C36A;
+      --gold-pale:   #F5EACB;
+      --cream:       #FAF7F0;
+      --cream-2:     #F2EDE0;
+      --white:       #FFFFFF;
+      --ink:         #181818;
+      --ink-mid:     #3A3A3A;
+      --ink-light:   #6B6B6B;
+      --radius:      10px;
+      --shadow:      0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg:   0 12px 48px rgba(0,0,0,0.14);
+    }
+
+    /* ══════════════════════════════════════
+       RESET
+    ══════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Heebo', Arial, sans-serif;
+      direction: rtl;
+      text-align: right;
+      color: var(--ink);
+      background: var(--white);
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ══════════════════════════════════════
+       LAYOUT UTILS
+    ══════════════════════════════════════ */
+    .container  { max-width: 760px;  margin: 0 auto; padding: 0 22px; }
+    .container-w { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
+    section { padding: 72px 0; }
+
+    .label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    /* ══════════════════════════════════════
+       BUTTONS
+    ══════════════════════════════════════ */
+    .btn {
+      display: inline-block;
+      font-family: 'Heebo', Arial, sans-serif;
+      font-weight: 800;
+      cursor: pointer;
+      border: none;
+      transition: all 0.22s ease;
+      text-align: center;
+      line-height: 1.4;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--green-dark);
+      padding: 18px 44px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      box-shadow: 0 4px 22px rgba(201,168,76,0.38);
+    }
+    .btn-gold:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 34px rgba(201,168,76,0.55);
+    }
+    .btn-full { width: 100%; display: block; }
+    .btn-ghost {
+      background: transparent;
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 14px 32px;
+      font-size: 1rem;
+      border-radius: 50px;
+    }
+    .btn-ghost:hover {
+      background: var(--gold);
+      color: var(--green-dark);
+    }
+
+    /* ══════════════════════════════════════
+       FADE-UP ANIMATION
+    ══════════════════════════════════════ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════
+       NAV
+    ══════════════════════════════════════ */
+    .site-nav {
+      position: fixed;
+      top: 0; right: 0; left: 0;
+      z-index: 200;
+      background: rgba(24, 46, 10, 0.97);
+      backdrop-filter: blur(10px);
+      padding: 13px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+    }
+    .nav-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo-wrap { line-height: 1.2; }
+    .logo-en {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--gold-light);
+    }
+    .logo-he {
+      font-size: 0.65rem;
+      color: rgba(201,168,76,0.5);
+      letter-spacing: 0.06em;
+    }
+    .nav-cta {
+      padding: 10px 22px;
+      font-size: 0.88rem;
+      border-radius: 50px;
+    }
+
+    /* ══════════════════════════════════════
+       HERO
+    ══════════════════════════════════════ */
+    .hero {
+      padding-top: 128px;
+      padding-bottom: 88px;
+      background: linear-gradient(155deg, var(--green-dark) 0%, var(--green) 60%, var(--green-mid) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 50%, rgba(201,168,76,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-qualifier {
+      display: inline-block;
+      border: 1px solid rgba(201,168,76,0.4);
+      background: rgba(201,168,76,0.1);
+      color: var(--gold-light);
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 7px 20px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+    .hero h1 {
+      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 24px;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .hero-arrow {
+      display: block;
+      color: rgba(255,255,255,0.35);
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin: 8px 0;
+    }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      margin-bottom: 36px;
+      line-height: 1.85;
+    }
+    .hero-sub strong { color: var(--gold-light); }
+    .hero-without {
+      margin-bottom: 44px;
+    }
+    .hero-without li {
+      list-style: none;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.95rem;
+      padding-right: 1.6rem;
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .hero-without li::before {
+      content: '✕';
+      color: rgba(201,168,76,0.7);
+      position: absolute;
+      right: 0;
+      font-weight: 700;
+    }
+    .hero-cta-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 14px;
+    }
+
+    /* ══════════════════════════════════════
+       TRUST STRIP
+    ══════════════════════════════════════ */
+    .trust-strip {
+      background: var(--cream);
+      padding: 26px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.18);
+    }
+    .trust-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      flex-wrap: wrap;
+    }
+    .trust-item { text-align: center; }
+    .trust-num {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--green);
+      line-height: 1;
+    }
+    .trust-lbl {
+      font-size: 0.78rem;
+      color: var(--ink-light);
+      margin-top: 3px;
+    }
+    .trust-sep {
+      width: 1px;
+      height: 36px;
+      background: rgba(201,168,76,0.25);
+    }
+
+    /* ══════════════════════════════════════
+       PAIN MIRROR
+    ══════════════════════════════════════ */
+    .pain { background: var(--white); }
+    .pain h2 {
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      color: var(--green-dark);
+      margin-bottom: 28px;
+    }
+    .pain p {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      margin-bottom: 18px;
+      line-height: 1.9;
+    }
+    .pain-callout {
+      background: linear-gradient(135deg, #FFF9EE, var(--gold-pale));
+      border-right: 4px solid var(--gold);
+      padding: 22px 26px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 32px 0;
+      font-size: 1.08rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      line-height: 1.85;
+    }
+    .pain-deep {
+      background: var(--green-dark);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      margin-top: 32px;
+      font-size: 1.08rem;
+      line-height: 1.95;
+    }
+    .pain-deep em {
+      color: var(--gold-light);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* ══════════════════════════════════════
+       MECHANISM
+    ══════════════════════════════════════ */
+    .mechanism { background: var(--cream); }
+    .mechanism h2 {
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+    .mechanism .intro {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      margin-bottom: 44px;
+      line-height: 1.85;
+    }
+    .mechanism-name {
+      display: inline-block;
+      font-size: 1.05rem;
+      font-weight: 900;
+      background: var(--green-dark);
+      color: var(--gold-light);
+      padding: 8px 20px;
+      border-radius: var(--radius);
+      margin-bottom: 40px;
+      letter-spacing: 0.03em;
+    }
+    .layers { display: flex; flex-direction: column; gap: 26px; }
+    .layer {
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      background: var(--white);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-radius: var(--radius);
+      padding: 24px 26px;
+    }
+    .layer-num {
+      flex-shrink: 0;
+      width: 50px;
+      height: 50px;
+      background: var(--green);
+      color: var(--gold-light);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      font-weight: 900;
+    }
+    .layer-body h3 {
+      font-size: 1.1rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .layer-body p {
+      font-size: 0.98rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+    }
+    .layer-tag {
+      display: inline-block;
+      background: var(--gold-pale);
+      color: var(--green-dark);
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ══════════════════════════════════════
+       VALUE STACK
+    ══════════════════════════════════════ */
+    .value {
+      background: linear-gradient(155deg, var(--green-dark) 0%, var(--green) 100%);
+      color: var(--white);
+    }
+    .value h2 {
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .value .sub {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.98rem;
+      margin-bottom: 44px;
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
+    }
+    .value-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(201,168,76,0.22);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+    .value-card .v-icon { font-size: 1.9rem; margin-bottom: 12px; }
+    .value-card h3 {
+      font-size: 1rem;
+      color: var(--gold-light);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .value-card p {
+      font-size: 0.93rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+    }
+
+    /* ══════════════════════════════════════
+       BONUSES
+    ══════════════════════════════════════ */
+    .bonuses { background: var(--cream-2); }
+    .bonuses h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    .bonuses .sub {
+      color: var(--ink-light);
+      font-size: 0.98rem;
+      margin-bottom: 44px;
+    }
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .bonus-card {
+      background: var(--white);
+      border: 1px solid #E0D9CC;
+      border-radius: var(--radius);
+      padding: 30px 28px;
+      position: relative;
+      box-shadow: var(--shadow);
+    }
+    .bonus-badge {
+      position: absolute;
+      top: -14px;
+      right: 22px;
+      background: var(--gold);
+      color: var(--green-dark);
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 4px 14px;
+      border-radius: 50px;
+      letter-spacing: 0.04em;
+    }
+    .bonus-card .b-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .bonus-card h3 {
+      font-size: 1.08rem;
+      color: var(--green-dark);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .bonus-card p {
+      font-size: 0.95rem;
+      color: var(--ink-mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+    .bonus-pricing {
+      font-size: 0.85rem;
+      color: var(--ink-light);
+    }
+    .bonus-pricing s { color: #bbb; }
+    .bonus-pricing strong { color: var(--green); }
+
+    /* ══════════════════════════════════════
+       AUTHORITY
+    ══════════════════════════════════════ */
+    .authority { background: var(--white); }
+    .authority-wrap {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .authority-photo {
+      background: var(--green-mid);
+      border-radius: var(--radius);
+      min-height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.82rem;
+      text-align: center;
+      padding: 20px;
+    }
+    .authority-content h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--green-dark);
+      margin-bottom: 18px;
+    }
+    .authority-content p {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+    .creds {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .cred {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--cream);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--green-dark);
+    }
+    .testimonial-block {
+      background: var(--cream);
+      border-right: 4px solid var(--gold);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 22px 26px;
+      margin-top: 28px;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--ink-mid);
+      line-height: 1.85;
+    }
+    .testimonial-block cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-top: 10px;
+    }
+
+    /* ══════════════════════════════════════
+       RISK REVERSAL
+    ══════════════════════════════════════ */
+    .risk { background: var(--green-dark); color: var(--white); }
+    .risk h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .risk p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .risk p strong { color: var(--gold-light); }
+    .guarantee-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.35);
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      margin-top: 24px;
+    }
+    .guarantee-badge .g-icon { font-size: 2rem; flex-shrink: 0; }
+    .guarantee-badge .g-text {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1.5;
+    }
+    .guarantee-badge .g-text span {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      margin-top: 2px;
+    }
+
+    /* ══════════════════════════════════════
+       SCARCITY / URGENCY
+    ══════════════════════════════════════ */
+    .urgency { background: var(--cream); }
+    .urgency h2 {
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--green-dark);
+      margin-bottom: 16px;
+    }
+    .urgency p {
+      font-size: 1.05rem;
+      color: var(--ink-mid);
+      margin-bottom: 16px;
+      line-height: 1.85;
+    }
+    .urgency p strong { color: var(--green-dark); }
+    .spots-box {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: var(--white);
+      border: 2px solid var(--gold);
+      border-radius: var(--radius);
+      padding: 22px 28px;
+      margin: 32px 0;
+    }
+    .spots-num {
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--green-dark);
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .spots-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--green-dark);
+      line-height: 1.5;
+    }
+    .spots-text span {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 400;
+      color: var(--ink-light);
+      margin-top: 4px;
+    }
+    .who-list {
+      margin: 28px 0;
+    }
+    .who-list li {
+      list-style: none;
+      padding-right: 2rem;
+      position: relative;
+      font-size: 1rem;
+      color: var(--ink-mid);
+      margin-bottom: 12px;
+      line-height: 1.7;
+    }
+    .who-list li.for::before {
+      content: '✔';
+      color: var(--green);
+      font-weight: 700;
+      position: absolute;
+      right: 0;
+    }
+    .who-list li.not::before {
+      content: '✗';
+      color: #c0392b;
+      font-weight: 700;
+      position: absolute;
+      right: 0;
+    }
+
+    /* ══════════════════════════════════════
+       CTA FINAL
+    ══════════════════════════════════════ */
+    .cta-final {
+      background: linear-gradient(155deg, var(--green-dark) 0%, var(--green) 100%);
+      color: var(--white);
+      text-align: center;
+      padding: 88px 0;
+    }
+    .cta-final h2 {
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .cta-final p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 580px;
+      margin: 0 auto 36px auto;
+      line-height: 1.85;
+    }
+    .cta-final .btn-gold {
+      font-size: 1.15rem;
+      padding: 20px 48px;
+      max-width: 540px;
+    }
+    .cta-note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.38);
+      margin-top: 16px;
+    }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    footer {
+      background: var(--green-dark);
+      border-top: 1px solid rgba(201,168,76,0.12);
+      padding: 28px 0;
+      text-align: center;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ══════════════════════════════════════
+       STICKY BAR
+    ══════════════════════════════════════ */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0; right: 0; left: 0;
+      z-index: 150;
+      background: rgba(24,46,10,0.97);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(201,168,76,0.22);
+      padding: 11px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      transform: translateY(100%);
+      transition: transform 0.38s ease;
+    }
+    .sticky-bar.show { transform: translateY(0); }
+    .sticky-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.82);
+      flex: 1;
+      min-width: 0;
+    }
+    .sticky-text em {
+      color: var(--gold-light);
+      font-style: normal;
+    }
+    .sticky-bar .btn-gold {
+      padding: 11px 26px;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       MOBILE
+    ══════════════════════════════════════ */
+    @media (max-width: 700px) {
+      section { padding: 56px 0; }
+      .hero { padding-top: 110px; padding-bottom: 68px; }
+      .hero h1 { font-size: 1.65rem; }
+      .authority-wrap { grid-template-columns: 1fr; }
+      .authority-photo { min-height: 200px; }
+      .trust-inner { gap: 20px; }
+      .spots-box { flex-direction: column; text-align: center; }
+      .sticky-text { display: none; }
+      .sticky-bar .btn-gold { width: 100%; }
+      .value-grid, .bonus-grid { grid-template-columns: 1fr; }
+      .cta-final .btn-gold { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     NAV
+════════════════════════════════════════ -->
+<nav class="site-nav">
+  <div class="container-w nav-inner">
+    <div class="logo-wrap">
+      <div class="logo-en">SKY BY ADI AHARONI</div>
+      <div class="logo-he">ריטריט אם ובת פרמיום</div>
+    </div>
+    <a href="#cta" class="btn btn-gold nav-cta">לשיחת ייעוץ חינם &rarr;</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════
+     SECTION 1 — HERO
+     כותרת: תוצאה + טרנספורמציה + ספציפיות + זמן + מאמץ
+════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+
+    <div class="hero-qualifier fade-up">
+      לאמהות עם בת מתבגרת בלבד · 5 מקומות זמינים במחזור הקרוב
+    </div>
+
+    <h1 class="fade-up">
+      איך לעבור ממצב שבו הבת שלך
+      <em>מסתגרת בחדר עם הטיקטוק</em>
+      והתקשורת ביניכן מסתכמת בוויכוחים...
+      <span class="hero-arrow">↓</span>
+      למצב שבו היא נפתחת אלייך, צוחקת איתך,
+      ורואה בך שותפה —
+      <em>תוך 72 שעות בלבד בחו"ל</em>
+    </h1>
+
+    <p class="hero-sub fade-up">
+      דרך <strong>"פרוטוקול האיפוס"</strong> — בלי שתצטרכי לתכנן, להפיק או לצאת מאזור הנוחות שלך.
+    </p>
+
+    <ul class="hero-without fade-up">
+      <li>בלי חופשה משפחתית רגילה שמסתיימת בדיוק אותו הדבר, רק במיקום אחר</li>
+      <li>בלי לנסות "לדבר אתה" ולקבל גלגול עיניים</li>
+      <li>בלי להרגיש שאת מנהלת ולא שותפה</li>
+    </ul>
+
+    <a href="#cta" class="btn btn-gold fade-up">
+      כן עדי, אני רוצה לשריין שיחת איפיון &rarr;
+    </a>
+    <p class="hero-cta-note fade-up">שיחת סינון חינם · 20 דקות · ללא התחייבות</p>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     TRUST STRIP
+════════════════════════════════════════ -->
+<div class="trust-strip">
+  <div class="container-w trust-inner">
+    <div class="trust-item">
+      <div class="trust-num">~100</div>
+      <div class="trust-lbl">משפחות בליווי</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">87%</div>
+      <div class="trust-lbl">שביעות רצון</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">72h</div>
+      <div class="trust-lbl">לאיפוס הדינמיקה</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">20+</div>
+      <div class="trust-lbl">שנות ניסיון עדי</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     SECTION 2 — PAIN MIRROR
+     שיקוף הכאב: "איך היא יודעת מה עובר לי?"
+════════════════════════════════════════ -->
+<section class="pain">
+  <div class="container">
+
+    <span class="label fade-up">המציאות שלך עכשיו</span>
+    <h2 class="fade-up">בואי נדבר רגע בכנות</h2>
+
+    <p class="fade-up">
+      את אישה חזקה, מנהלת קריירה ובית, ורגילה שהדברים עובדים לפי הקצב שלך.
+      אבל כשזה מגיע לבת שלך — <strong>משהו שם תקוע.</strong>
+    </p>
+
+    <p class="fade-up">
+      את רואה אותה נשאבת למסכים, לטרנדים של סקין-קייר בטיקטוק ולחומרים מסוכנים לעור
+      ("Sephora Kids"), ואת מרגישה שהשוטף פשוט שוטף אותך.
+    </p>
+
+    <div class="pain-callout fade-up">
+      בבית, הדינמיקה ביניכן תקועה בלופ: <br />
+      את על תקן ה<strong>"מנהלת"</strong> (תסדרי, תקומי, שימי לב) — <br />
+      והיא על תקן ה<strong>"מנוהלת"</strong> שמגלגלת עיניים ומסתגרת בחדר.<br /><br />
+      גם כשאתן יוצאות לחופשה משפחתית באילת או בצפון — זה בדיוק אותו הדבר, רק במיקום אחר.
+    </div>
+
+    <p class="fade-up">ואת יודעת מה הכי כואב?</p>
+
+    <div class="pain-deep fade-up">
+      זה לא הוויכוחים. זה <em>הפחד השקט בלילה</em> שבו את מבינה:<br /><br />
+      <strong style="color:#fff; font-size:1.15rem;">"היא פה, בחדר ממול, ואני מרגישה שכבר איבדתי אותה"</strong><br /><br />
+      חלון ההזדמנויות הולך ונסגר. ועוד רגע היא תעדיף לטוס רק עם החברות.
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 3 — UNIQUE MECHANISM
+     "פרוטוקול 72 השעות" — 3 שכבות
+════════════════════════════════════════ -->
+<section class="mechanism">
+  <div class="container">
+
+    <span class="label fade-up">למה חופשות רגילות לא עוזרות</span>
+    <h2 class="fade-up">הסיבה שחופשות רגילות לא מקרבות ביניכן</h2>
+
+    <p class="intro fade-up">
+      הסיבה פשוטה: אתן עדיין באותם תפקידים. אותה דינמיקה, מיקום חדש.
+      כדי באמת לשבור את החומות, אתן חייבות את:
+    </p>
+
+    <div class="mechanism-name fade-up">✦ פרוטוקול 72 השעות — שיטת האיפוס ✦</div>
+
+    <p class="intro fade-up">
+      מנגנון ייחודי הבנוי מ-3 שכבות שמעלים לחלוטין את יחסי הכוחות
+      ומחזיר אתכן להיות שוות:
+    </p>
+
+    <div class="layers">
+
+      <div class="layer fade-up">
+        <div class="layer-num">1</div>
+        <div class="layer-body">
+          <span class="layer-tag">הבועה הסטרילית</span>
+          <h3>ניתוק מוחלט</h3>
+          <p>
+            טיסה לחו"ל (יוון / קפריסין / דובאי) שמנתקת אתכן מכל טריגר מהבית.
+            אין אחים. אין אבא. אין משימות. רק שתיכן — בסביבה שמישהו אחר תכנן בשבילכן.
+          </p>
+        </div>
+      </div>
+
+      <div class="layer fade-up">
+        <div class="layer-num">2</div>
+        <div class="layer-body">
+          <span class="layer-tag">היפוך תפקידים</span>
+          <h3>פעילויות "אפס ניסיון" — שתיכן מתחילות מאפס</h3>
+          <p>
+            חוויות wellness שבהן <em>שתיכן</em> מתחילות מנקודת אפס —
+            סדנת בישול מקומי, יצירת בושם אישי, או טיפול שבו הבת היא זו שמורחת לך את המסכה.
+            הכוח מתהפך, והיא הופכת לשותפה — לא לילדה שסוחבים אחריה.
+          </p>
+        </div>
+      </div>
+
+      <div class="layer fade-up">
+        <div class="layer-num">3</div>
+        <div class="layer-body">
+          <span class="layer-tag">מעטפת אפס החלטות</span>
+          <h3>כשאני מורידה ממך את כובע ה"מפיקה"</h3>
+          <p>
+            מטיסות ועד הזמנת שולחן במסעדה — הלוגיסטיקה עלי.
+            את פשוט נהנית להיות <strong>אישה שאיתה</strong>.
+            והבת שלך? רואה אותך אחרת.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 4 — VALUE STACK
+     "The Glow-Up Bond" — מה מקבלים בתכל'ס
+════════════════════════════════════════ -->
+<section class="value">
+  <div class="container">
+
+    <span class="label fade-up" style="color: var(--gold-light);">מה כלול בחבילה</span>
+    <h2 class="fade-up">אז מה מקבלים בתכל'ס ב-The Glow-Up Bond?</h2>
+    <p class="sub fade-up">
+      חבילת פרימיום Tailor-Made, פרטית לחלוטין (רק את והיא), מתוכננת שעה אחר שעה:
+    </p>
+
+    <div class="value-grid">
+
+      <div class="value-card fade-up">
+        <div class="v-icon">✈️</div>
+        <h3>הלוגיסטיקה המושלמת</h3>
+        <p>
+          טיסות, העברות פרטיות, ו-3 ימים במלונות 4–5 כוכבים ורזורטים יוקרתיים
+          (כמו Amara או Grecotel). כל פרט מתוכנן — אין הפתעות.
+        </p>
+      </div>
+
+      <div class="value-card fade-up">
+        <div class="v-icon">✨</div>
+        <h3>3 חוויות Wellness ויופי משותפות ובטוחות</h3>
+        <p>
+          במקום שהיא תהרוס את העור בטרנדים מסוכנים — טיפולי פנים לנערות נטולי רטינול,
+          וסדנאות Clean Beauty שמחנכות לדימוי גוף חיובי ונותנות לה את ה-Glow שהיא מחפשת.
+        </p>
+      </div>
+
+      <div class="value-card fade-up">
+        <div class="v-icon">🍽️</div>
+        <h3>אפס כאב ראש עבורך</h3>
+        <p>
+          2 ארוחות בוקר במלון, 2 מסעדות פרימיום שהוזמנו מראש,
+          וחוויה מקומית אחת מגבשת (שוק מקומי / שופינג מודרך / סיור).
+          את לא מחליטה כלום.
+        </p>
+      </div>
+
+      <div class="value-card fade-up">
+        <div class="v-icon">🛡️</div>
+        <h3>ליווי, ביטוח וניהול סיכונים</h3>
+        <p>
+          חוזה חוויה מקיף, מדיניות ברורה, מעטפת משפטית ובטיחותית מלאה —
+          כך שיש לך 100% ראש שקט לטוס לבד עם הילדה.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 5 — BONUSES
+     2 בונוסים שמחסלים התנגדויות שקטות
+════════════════════════════════════════ -->
+<section class="bonuses">
+  <div class="container">
+
+    <span class="label fade-up">בונוסים בלעדיים</span>
+    <h2 class="fade-up">שני בונוסים שמבטיחים שזה לא יהיה "מלון ושתיקה"</h2>
+    <p class="sub fade-up">
+      הפחד הכי גדול שלך: <em>"ומה אם נהיה שם לבד בחדר ויהיה לנו משעמם, או שהיא תהיה בטלפון?"</em>
+      שני הבונוסים האלה פותרים בדיוק את זה — בחינם למצטרפות:
+    </p>
+
+    <div class="bonus-grid">
+
+      <div class="bonus-card fade-up">
+        <div class="bonus-badge">בונוס 1 — שווי 450 ₪</div>
+        <div class="b-icon">🃏</div>
+        <h3>ערכת "No-Filter Connection"</h3>
+        <p>
+          קלפי משחק ממותגים ואינטימיים שיחכו לכן בחדר המלון ויבטיחו שלא תהיה שתיקה מביכה.
+          במקום "חפירה", תקבלו <strong>צחוק משותף וגילויים מדהימים אחת על השנייה.</strong>
+        </p>
+        <div class="bonus-pricing">שווי: <s>450 ₪</s> &nbsp;|&nbsp; <strong>בשבילך חינם</strong></div>
+      </div>
+
+      <div class="bonus-card fade-up">
+        <div class="bonus-badge">בונוס 2 — שווי 400 ₪</div>
+        <div class="b-icon">🎁</div>
+        <h3>ערכת "Glow לדרך"</h3>
+        <p>
+          תיק מוצרי יוקרה, סרטי ראש (Headbands) ודוגמיות שמחכה לכן על המיטה —
+          מושלם לסטורי של הבת, <strong>נותן תחושת VIP מיידית ומעיף לה את הביטחון.</strong>
+        </p>
+        <div class="bonus-pricing">שווי: <s>400 ₪</s> &nbsp;|&nbsp; <strong>בשבילך חינם</strong></div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 6 — AUTHORITY
+     עדי אהרוני — מי אני ולמה לסמוך עלי
+════════════════════════════════════════ -->
+<section class="authority">
+  <div class="container">
+
+    <div class="authority-wrap">
+
+      <div class="authority-photo fade-up" role="img" aria-label="תמונת עדי אהרוני">
+        📸 תמונה של עדי<br />
+        <span style="font-size:0.75rem; margin-top:8px; display:block;">[הוסיפי תמונה מקצועית]</span>
+      </div>
+
+      <div class="authority-content">
+        <span class="label fade-up">מי אני</span>
+        <h2 class="fade-up">נעים להכיר, עדי אהרוני</h2>
+
+        <p class="fade-up">
+          כעורכת דין לשעבר עם <strong>20 שנות ניסיון</strong> ומומחית תיירות פרימיום כיום —
+          הדייקנות, החוזים והאותיות הקטנות זורמים לי בדם.
+        </p>
+
+        <p class="fade-up">
+          כאמא ל-<strong>3 בנות מתבגרות</strong> בעצמי, אני יודעת בדיוק מה עובר עלייך.
+          הליווי שלי מבוסס על קרוב ל-100 משפחות עם 87% שביעות רצון —
+          ועל "<strong>חוזה חוויה בטוחה</strong>" שמבטיח ללא חומרים כימיים מסוכנים בספא,
+          מותאם לגיל הבת, עם 100% ודאות.
+        </p>
+
+        <div class="creds fade-up">
+          <span class="cred">⚖️ עו"ד לשעבר</span>
+          <span class="cred">✈️ מומחית תיירות פרימיום</span>
+          <span class="cred">👧 אמא ל-3 מתבגרות</span>
+          <span class="cred">🏅 ~100 משפחות</span>
+        </div>
+
+        <div class="testimonial-block fade-up">
+          "השקעה הכי טובה שעשיתי בנו. במקום לריב על הטלפון, היא פשוט צחקה איתי שלושה ימים רצוף."
+          <cite>— אחת האמהות שלנו</cite>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 7 — RISK REVERSAL
+     "תעודת אחריות על החיוך"
+════════════════════════════════════════ -->
+<section class="risk">
+  <div class="container">
+
+    <span class="label fade-up" style="color: var(--gold-light);">הסרת סיכון</span>
+    <h2 class="fade-up">"תעודת אחריות על החיוך"</h2>
+
+    <p class="fade-up">
+      אני יודעת שיש לך חשש שהיא <strong>"תעשה פרצופים"</strong>.
+      לכן התוכנית שלנו בנויה בצורה מודולרית:
+    </p>
+
+    <p class="fade-up">
+      אם בסוף היום הראשון תרגישו שזה לא בדיוק מה שחלמתן,
+      או שהאנרגיות לא מתאימות — <strong>נשב איתכן אישית ונתפור מחדש את הלו"ז למחרת בבוקר</strong>,
+      בהתאמה מוחלטת למצב הרוח שלה ושלך.
+    </p>
+
+    <div class="guarantee-badge fade-up">
+      <div class="g-icon">🛡️</div>
+      <div class="g-text">
+        אחריות מלאה על החוויה
+        <span>אנחנו מתחייבות שתצאי מהחופשה הזו עם חיוך — שתיכן.</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 8 — URGENCY & SCARCITY + SELECTION
+     "החופשה הזו לא מתאימה לכל אחת"
+════════════════════════════════════════ -->
+<section class="urgency">
+  <div class="container">
+
+    <span class="label fade-up">למי זה מתאים</span>
+    <h2 class="fade-up">החופשה הזו לא מתאימה לכל אחת</h2>
+
+    <ul class="who-list fade-up">
+      <li class="not">אם את מחפשת שמישהו יארגן לך "מלון וטיסה זולים בבוקינג" — אני לא הכתובת</li>
+      <li class="for">אם את מבינה שאת הנכס הכי יקר של הילדה שלך — את במקום הנכן</li>
+      <li class="for">אם את מרגישה שחלון ההזדמנויות הולך ונסגר — זה הזמן לפעול</li>
+      <li class="for">אם את רוצה לחזור מהחופשה עם קשר שישתנה לתמיד — בואי נדבר</li>
+    </ul>
+
+    <div class="spots-box fade-up">
+      <div class="spots-num">5</div>
+      <div class="spots-text">
+        מקומות בלבד במחזור הקרוב
+        <span>כדי לשמור על רמת הבוטיק והיחס האישי שאני מתחייבת לתת לכל משפחה</span>
+      </div>
+    </div>
+
+    <p class="fade-up">
+      <strong>החלון נסגר.</strong> הבת שלך גדלה. בעוד שנה היא כבר תעדיף לטוס עם החברות או עם החבר.
+      זה הזמן האחרון שלכן.
+    </p>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     SECTION 9 — CTA FINAL
+     שיחת סינון והתאמה 20 דקות — חינם
+════════════════════════════════════════ -->
+<section class="cta-final" id="cta">
+  <div class="container">
+
+    <span class="label fade-up" style="color: var(--gold-light); display:block; text-align:center;">הצעד הבא שלך</span>
+
+    <h2 class="fade-up">מוכנה להחזיר את הילדה שלך אלייך?</h2>
+
+    <p class="fade-up">
+      הטיפול בכן מתחיל בשיחת סינון והתאמה של 20 דקות (ללא עלות).
+      בשיחה הזו נבדוק ביחד אם "שיטת האיפוס" מדויקת עבורכן,
+      ונגדיר מסגרת תקציב מדויקת.
+    </p>
+
+    <a href="#" class="btn btn-gold btn-full fade-up">
+      כן עדי, אני רוצה לשריין שיחת איפיון ולתפוס את המקום שלי &rarr;
+    </a>
+
+    <p class="cta-note fade-up">
+      שיחה חינמית · 20 דקות · ללא התחייבות · 5 מקומות בלבד
+    </p>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <p>SKY BY ADI AHARONI &copy; 2026 · כל הזכויות שמורות</p>
+    <p style="margin-top:6px;">חוויות אם ובת פרמיום | עדי אהרוני</p>
+  </div>
+</footer>
+
+<!-- ════════════════════════════════════════
+     STICKY BAR
+════════════════════════════════════════ -->
+<div class="sticky-bar" id="sticky-bar">
+  <span class="sticky-text">
+    <em>פרוטוקול האיפוס</em> — 5 מקומות בלבד במחזור הקרוב
+  </span>
+  <a href="#cta" class="btn btn-gold">לשיחת ייעוץ חינם &rarr;</a>
+</div>
+
+<!-- ════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════ -->
+<script>
+  // Scroll animations
+  const fadeEls = document.querySelectorAll('.fade-up');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -36px 0px' });
+  fadeEls.forEach(el => observer.observe(el));
+
+  // Sticky bar
+  const stickyBar = document.getElementById('sticky-bar');
+  const heroEl = document.querySelector('.hero');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const heroBottom = heroEl.getBoundingClientRect().bottom + window.scrollY;
+        stickyBar.classList.toggle('show', window.scrollY > heroBottom);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+</script>
+
+</body>
+</html>
