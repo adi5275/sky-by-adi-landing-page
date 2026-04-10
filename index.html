@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>שיטת ה-DNA הדיגיטלי — קמפיינים מנצחים בפייסבוק</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─── */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Assistant', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #000;
+      background-color: #fff;
+      text-align: right;
+      direction: rtl;
+      overflow-x: hidden;
+    }
+
+    /* ─── Typography ─── */
+    h1 {
+      font-size: 48px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.75rem;
+    }
+
+    h3 {
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 1.3;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 1.2rem;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ─── Accent Elements ─── */
+    mark {
+      background: #ffe066;
+      padding: 0 4px;
+      color: #000;
+    }
+
+    s {
+      color: #cc0000;
+      text-decoration: line-through;
+    }
+
+    .red-underline {
+      text-decoration: underline;
+      text-decoration-color: #cc0000;
+      text-underline-offset: 4px;
+    }
+
+    .red {
+      color: #cc0000;
+    }
+
+    strong {
+      font-weight: 700;
+    }
+
+    /* ─── Layout ─── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 64px 0;
+    }
+
+    section + section {
+      border-top: 1px solid #e8e8e8;
+    }
+
+    /* ─── Dividers ─── */
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: #cc0000;
+      margin: 0 0 2rem 0;
+    }
+
+    .divider-center {
+      margin: 0 auto 2rem auto;
+    }
+
+    /* ─── Buttons ─── */
+    .btn {
+      display: inline-block;
+      font-family: 'Assistant', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      padding: 16px 36px;
+      background: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+      min-height: 56px;
+      line-height: 1.4;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .btn:hover {
+      background: #cc0000;
+      transform: translateY(-1px);
+    }
+
+    .btn-full {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-wrapper {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    /* ─── Image Placeholder ─── */
+    .img-placeholder {
+      border: 2px dashed #bbb;
+      background: #f9f9f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      padding: 20px;
+      margin: 2rem auto;
+      max-width: 560px;
+      min-height: 320px;
+      direction: rtl;
+    }
+
+    /* ─── Pre-headline teaser ─── */
+    .teaser {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    /* ─── Section: Hero ─── */
+    #hero {
+      padding-top: 80px;
+      padding-bottom: 64px;
+    }
+
+    #hero h1 {
+      margin-top: 1rem;
+    }
+
+    #hero .without-list {
+      margin-top: 1.5rem;
+    }
+
+    #hero .without-list p {
+      font-size: 17px;
+      color: #333;
+      padding-right: 1.2rem;
+      position: relative;
+      margin-bottom: 0.5rem;
+    }
+
+    #hero .without-list p::before {
+      content: "✗";
+      color: #cc0000;
+      position: absolute;
+      right: 0;
+      font-weight: 700;
+    }
+
+    /* ─── Section: Lead Question ─── */
+    #lead-question {
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    #lead-question h2 {
+      color: #fff;
+      font-size: 34px;
+    }
+
+    #lead-question p {
+      color: #e0e0e0;
+      max-width: 620px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    #lead-question .divider {
+      background: #cc0000;
+      margin: 0 auto 2rem auto;
+    }
+
+    /* ─── Section: Story ─── */
+    #story {
+      background: #fff;
+    }
+
+    #story .story-block {
+      border-right: 4px solid #cc0000;
+      padding-right: 20px;
+      margin-bottom: 2rem;
+    }
+
+    /* ─── Section: Product ─── */
+    #product {
+      background: #fafafa;
+    }
+
+    .product-name {
+      font-size: 40px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin: 0.5rem 0 1.5rem 0;
+    }
+
+    .course-part {
+      margin-bottom: 2.5rem;
+      padding: 1.5rem;
+      background: #fff;
+      border: 1px solid #eee;
+      border-right: 4px solid #000;
+    }
+
+    .course-part h3 {
+      margin-bottom: 0.8rem;
+    }
+
+    .course-part ul {
+      padding-right: 1.2rem;
+      list-style: none;
+    }
+
+    .course-part ul li {
+      font-size: 17px;
+      margin-bottom: 0.5rem;
+      position: relative;
+      padding-right: 1.4rem;
+    }
+
+    .course-part ul li::before {
+      content: "◆";
+      color: #cc0000;
+      font-size: 10px;
+      position: absolute;
+      right: 0;
+      top: 6px;
+    }
+
+    /* ─── Section: Bonuses ─── */
+    #bonuses {
+      background: #fff;
+    }
+
+    .bonus-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.2rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #eee;
+    }
+
+    .bonus-item:last-child {
+      border-bottom: none;
+    }
+
+    .bonus-num {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: #000;
+      color: #fff;
+      font-weight: 800;
+      font-size: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bonus-content h3 {
+      font-size: 22px;
+      margin-bottom: 0.3rem;
+    }
+
+    .bonus-price {
+      font-size: 15px;
+      color: #555;
+      margin-top: 0.3rem;
+    }
+
+    .bonus-price s {
+      font-size: 15px;
+    }
+
+    .bonus-free {
+      font-weight: 700;
+      color: #000;
+    }
+
+    /* ─── Section: Price ─── */
+    #price {
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    #price h2 {
+      color: #fff;
+    }
+
+    #price p {
+      color: #ddd;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .price-box {
+      display: inline-block;
+      border: 2px solid #cc0000;
+      padding: 2rem 3rem;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .price-original {
+      font-size: 22px;
+      color: #888;
+      text-decoration: line-through;
+      margin-bottom: 0.5rem;
+    }
+
+    .price-final {
+      font-size: 64px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .price-final span {
+      font-size: 28px;
+      font-weight: 600;
+      vertical-align: super;
+    }
+
+    .price-label {
+      font-size: 16px;
+      color: #aaa;
+      margin-top: 0.5rem;
+    }
+
+    #price .btn {
+      background: #cc0000;
+      margin-top: 1.5rem;
+    }
+
+    #price .btn:hover {
+      background: #ff0000;
+    }
+
+    /* ─── Section: Objections ─── */
+    #objections {
+      background: #fafafa;
+    }
+
+    .objection-item {
+      margin-bottom: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .objection-item:last-child {
+      border-bottom: none;
+    }
+
+    .objection-q {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .objection-q .q-mark {
+      flex-shrink: 0;
+      color: #cc0000;
+      font-size: 24px;
+      line-height: 1.3;
+    }
+
+    .objection-a {
+      font-size: 17px;
+      line-height: 1.7;
+      color: #222;
+      padding-right: 2rem;
+    }
+
+    /* ─── Section: Final CTA ─── */
+    #final-cta {
+      background: #fff;
+      text-align: center;
+    }
+
+    #final-cta h2 {
+      margin-bottom: 1rem;
+    }
+
+    #final-cta p {
+      max-width: 580px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ─── Section: Close ─── */
+    #close {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 48px 0;
+    }
+
+    #close p {
+      color: #ccc;
+      max-width: 560px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    #close .guarantee {
+      font-size: 14px;
+      color: #888;
+      margin-top: 1.5rem;
+    }
+
+    #close .btn {
+      background: #cc0000;
+    }
+
+    #close .btn:hover {
+      background: #ff0000;
+    }
+
+    /* ─── Scroll Animation ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── Sticky CTA bar ─── */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: #000;
+      color: #fff;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      z-index: 100;
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+
+    .sticky-bar.show {
+      transform: translateY(0);
+    }
+
+    .sticky-bar-text {
+      font-size: 15px;
+      font-weight: 600;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .sticky-bar .btn {
+      font-size: 15px;
+      padding: 10px 20px;
+      min-height: 44px;
+      flex-shrink: 0;
+      background: #cc0000;
+    }
+
+    .sticky-bar .btn:hover {
+      background: #ff0000;
+    }
+
+    /* ─── Mobile Responsive ─── */
+    @media (max-width: 767px) {
+      body {
+        font-size: 16px;
+      }
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 26px;
+      }
+
+      h3 {
+        font-size: 22px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      section {
+        padding: 48px 0;
+      }
+
+      #hero {
+        padding-top: 56px;
+      }
+
+      .product-name {
+        font-size: 28px;
+      }
+
+      .price-final {
+        font-size: 48px;
+      }
+
+      .price-box {
+        padding: 1.5rem 1.5rem;
+      }
+
+      #lead-question h2 {
+        font-size: 24px;
+      }
+
+      .btn {
+        font-size: 17px;
+        padding: 14px 24px;
+      }
+
+      .course-part {
+        padding: 1rem;
+      }
+
+      .bonus-num {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+      }
+
+      .sticky-bar-text {
+        display: none;
+      }
+
+      .sticky-bar .btn {
+        width: 100%;
+      }
+
+      .sticky-bar {
+        padding: 10px 16px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .btn-cta-large {
+        font-size: 22px;
+        padding: 20px 48px;
+      }
+    }
+
+    /* ─── Utility ─── */
+    .text-center { text-align: center; }
+    .mt-1 { margin-top: 1rem; }
+    .mt-2 { margin-top: 2rem; }
+    .mb-0 { margin-bottom: 0; }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 1 — HERO (פתיחה חזקה)
+  ═══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="container">
+
+      <p class="teaser red-underline fade-up">
+        הסיבה שהקמפיינים שלך מדממים — ומה אתה יכול לעשות כדי להחזיר אותם לחיים
+      </p>
+
+      <h1 class="fade-up">
+        איך פיצחתי את ה-DNA הדיגיטלי של קמפיינים מנצחים:<br />
+        הגדלתי את הרווחיות שלי ב-<mark>315%</mark> תוך 21 יום
+      </h1>
+
+      <h2 class="fade-up">
+        ואיך <strong>גם אתה</strong> יכול לעשות את זה תוך פחות מ-7 ימים
+      </h2>
+
+      <div class="without-list fade-up">
+        <p>בלי לשרוף כסף על חברות שיווק יקרות שלא מבינות את העסק שלך</p>
+        <p>בלי ניסיון קודם בניתוח נתונים מתקדם</p>
+        <p>בלי לבזבז שעות אין-סופיות מול מסכי דאשבורד שלא אומרים לך כלום</p>
+      </div>
+
+      <div class="img-placeholder fade-up" role="img" aria-label="תמונת הקורס — DNA הדיגיטלי">
+        📊 תמונת מצגת / תמונת מוצר<br />
+        <span style="font-size:13px; font-weight:400; margin-top:8px; display:block;">[הכנס כאן תמונה של הקורס או גרף תוצאות]</span>
+      </div>
+
+      <div class="btn-wrapper fade-up">
+        <a href="#price" class="btn btn-cta-large">
+          כן! אני רוצה לפצח את הקוד של קמפיינים מנצחים &darr;
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 2 — LEAD QUESTION
+  ═══════════════════════════════════════════════ -->
+  <section id="lead-question">
+    <div class="container">
+
+      <div class="divider divider-center"></div>
+
+      <h2 class="fade-up">
+        מה אם היית יכול לראות את מה שפייסבוק <em>לא</em> מראה לך?
+      </h2>
+
+      <p class="fade-up">
+        תחשוב על זה רגע. כאילו שקיבלת משקפיים מיוחדות שמאפשרות לך לראות בדיוק למה קמפיין אחד מרוויח ואחר מפסיד — לא ניחושים, לא "תחושת בטן", אלא <strong>נתונים אמיתיים שמדברים בשפה שלך</strong>.
+      </p>
+
+      <p class="fade-up">
+        פייסבוק נותנת לך אלפי מדדים. אבל רובם הם <strong>רעש</strong>. המדדים שבאמת מנבאים רווחיות — המדדים שהמתחרים שלך אפילו לא יודעים שקיימים — <mark>הם המדדים שתלמד לבנות בקורס הזה</mark>.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 3 — STORY (הסיפור שלי)
+  ═══════════════════════════════════════════════ -->
+  <section id="story">
+    <div class="container">
+
+      <div class="divider fade-up"></div>
+      <h2 class="fade-up">הסיפור שלי — ואיך הכל התחיל</h2>
+
+      <div class="story-block fade-up">
+        <p>
+          לפני שנתיים הייתי בדיוק במקום שאתה עכשיו. כל חודש שפכתי בין 25,000 ל-30,000 ₪ על קמפיינים בפייסבוק. המנהל קמפיינים שלי שלח לי דו"חות מרשימים עם גרפים יפים. ה-ROAS נראה מצוין. ה-CTR היה "מעל הממוצע בתעשייה".
+        </p>
+        <p>
+          אבל הבנק אמר לי סיפור אחר לגמרי.
+        </p>
+      </div>
+
+      <p class="fade-up">
+        בסוף כל חודש, אחרי שאני מחשב את כל ההוצאות — תשלום לסוכנות, תקציב הפרסום, עלות המוצר — <strong>לא נשאר לי כמעט כלום</strong>. ה-ROAS הנהדר ההוא? התברר שהוא מחושב לפני עלות המוצר, לפני עמלות הסוכנות, לפני כל הפרטים הקטנים שאוכלים את הרווח.
+      </p>
+
+      <p class="fade-up">
+        ניסיתי לשאול את הסוכנות שאלות. קיבלתי תשובות שהבנתי אחת לאחת — אבל ביחד הן לא אמרו לי בדיוק מה צריך לשנות. כמו שרופא שמסביר לך כל פרט על המחלה אבל בסוף לא אומר לך מה לקחת.
+      </p>
+
+      <p class="fade-up">
+        יום אחד, <strong>בשעה 2 לפנות בוקר</strong> (כי זה הזמן שבו יזמים מחפשים פתרונות), נתקלתי <mark>בסרטון יוטיוב של 47 דקות על מדדים מותאמים אישית בפייסבוק</mark>. לא ידעתי שדבר כזה קיים. לא ידעתי שאפשר לבנות מדדים שמחשבים בדיוק את הרווחיות שלך, בזמן אמת, ישירות בתוך מנהל המודעות.
+      </p>
+
+      <p class="fade-up">
+        שבוע לאחר מכן הטמעתי את השיטה. תוצאות? <strong>תוך 21 יום הרווחיות עלתה ב-315%</strong>. לא כי שיניתי את הקופי. לא כי מצאתי קהל "סודי". פשוט כי סוף סוף <em>ידעתי</em> לאיזה נתון להסתכל, ואיזה נתון להתעלם ממנו.
+      </p>
+
+      <p class="fade-up">
+        ועכשיו אני רוצה ללמד אותך בדיוק את זה.
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 4 — PRODUCT REVEAL (חשיפת המוצר)
+  ═══════════════════════════════════════════════ -->
+  <section id="product">
+    <div class="container">
+
+      <p class="teaser fade-up" style="color:#555;">גאה ומתרגש להציג בפניך את:</p>
+
+      <div class="product-name fade-up">
+        שיטת ה-DNA הדיגיטלי
+        <span style="display:block; font-size:20px; font-weight:400; color:#555; margin-top:4px;">הקורס המלא לניתוח ואופטימיזציה של קמפיינים רווחיים בפייסבוק</span>
+      </div>
+
+      <div class="divider fade-up"></div>
+
+      <!-- Part 1 -->
+      <div class="course-part fade-up">
+        <h3>חלק 1 — פצח את הקוד הגנטי של קמפיינים מנצחים</h3>
+        <ul>
+          <li>למה 90% מהמדדים שפייסבוק מציגה לך הם "רעש" שמסיח את דעתך מהנתונים החשובים</li>
+          <li>3 המדדים שאף סוכנות לא תגלה לך — אלה שמנבאים רווחיות 7 ימים לפני שהיא קורה</li>
+          <li>איך לבנות "DNA בריאות קמפיין" שאומר לך תוך 60 שניות אם הקמפיין ירוויח או יפסיד</li>
+        </ul>
+      </div>
+
+      <!-- Part 2 -->
+      <div class="course-part fade-up">
+        <h3>חלק 2 — בנה מטריקות מותאמות אישית לעסק שלך</h3>
+        <ul>
+          <li>הנוסחה המדויקת לחישוב "MER אמיתי" — ה-ROI שמחשב <em>את כל</em> עלויות השיווק, לא רק הפרסום</li>
+          <li>כיצד לבנות מדד NCPA (עלות לרכישה נטו) שמסגיר בדיוק כמה כל לקוח עלה לך</li>
+          <li>ה-Template המוכן שאתה מגדיר פעם אחת — ועובד בכל הקמפיינים שלך לנצח</li>
+        </ul>
+      </div>
+
+      <!-- Part 3 -->
+      <div class="course-part fade-up">
+        <h3>חלק 3 — הפוך את האלגוריתם לבן ברית שלך</h3>
+        <ul>
+          <li>למה "לגעת כמה שפחות" בקמפיינים זה הטעות הכי יקרה שרוב המפרסמים עושים</li>
+          <li>שיטת "האות החיוני" — איך לדעת בדיוק מתי להתערב ומתי לתת לאלגוריתם לעבוד</li>
+          <li>כיצד לתקשר עם פייסבוק בשפה שהוא מבין כדי שהוא יפנה את הפרסום לאנשים שיקנו</li>
+        </ul>
+      </div>
+
+      <!-- Part 4 -->
+      <div class="course-part fade-up">
+        <h3>חלק 4 — יישם את השיטה וראה תוצאות מיידיות</h3>
+        <ul>
+          <li>תוכנית ה-7 ימים ליישום מלא של שיטת ה-DNA בכל הקמפיינים שלך</li>
+          <li>רשימת תיוג יומית (Daily Checklist) שחוסכת שעתיים עבודה ביום</li>
+          <li>איך לבנות "מרכז בקרה" שמאפשר לך לנהל 10 קמפיינים בזמן שכיום אתה מנהל 2</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 5 — BONUSES (בונוסים)
+  ═══════════════════════════════════════════════ -->
+  <section id="bonuses">
+    <div class="container">
+
+      <h2 class="fade-up" style="margin-bottom:0.3rem;">אבל זה לא הכל!</h2>
+      <p class="fade-up" style="color:#555; margin-bottom:2rem;">כשאתה מצטרף היום, אתה מקבל גם את הבונוסים הבאים — בחינם לגמרי:</p>
+
+      <div class="divider fade-up"></div>
+
+      <!-- Bonus 1 -->
+      <div class="bonus-item fade-up">
+        <div class="bonus-num">1</div>
+        <div class="bonus-content">
+          <h3>מחשבון ROI מתקדם — קובץ Google Sheets</h3>
+          <p>
+            מחשבון חכם שמחשב אוטומטית את הרווחיות האמיתית שלך — כולל עלות מוצר, משלוח, עמלות סוכנות ועוד. <strong>מגדיר פעם אחת, עובד לנצח.</strong>
+          </p>
+          <p class="bonus-price">
+            שווי: <s>$97</s> &nbsp;|&nbsp; <span class="bonus-free">בשבילך — בחינם לגמרי</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Bonus 2 -->
+      <div class="bonus-item fade-up">
+        <div class="bonus-num">2</div>
+        <div class="bonus-content">
+          <h3>סדנת Zoom חיה — 2 שעות Q&amp;A</h3>
+          <p>
+            פגישת זום קבוצתית בה תוכל לשאול <em>כל</em> שאלה, לשתף מסך ולקבל פידבק על הקמפיינים שלך בזמן אמת. <mark>הזדמנות שאי אפשר לשים עליה מחיר.</mark>
+          </p>
+          <p class="bonus-price">
+            שווי: <s>$197</s> &nbsp;|&nbsp; <span class="bonus-free">בשבילך — בחינם לגמרי</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Bonus 3 -->
+      <div class="bonus-item fade-up">
+        <div class="bonus-num">3</div>
+        <div class="bonus-content">
+          <h3>ספר דיגיטלי — "100 רעיונות לקופי שמוכר כמו משוגע"</h3>
+          <p>
+            100 הוקים, כותרות ופתיחות מוכחות שתוכל להשתמש בהן מחר בבוקר בפרסומות שלך. <strong>כל רעיון עם דוגמא מוכנה להתאמה.</strong>
+          </p>
+          <p class="bonus-price">
+            שווי: <s>$47</s> &nbsp;|&nbsp; <span class="bonus-free">בשבילך — בחינם לגמרי</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 6 — PRICE & CTA (מחיר)
+  ═══════════════════════════════════════════════ -->
+  <section id="price">
+    <div class="container text-center">
+
+      <h2 class="fade-up">אז כמה זה עולה?</h2>
+
+      <p class="fade-up">
+        הקורס, שלושת הבונוסים וסדנת הזום החיה שוות ביחד <s>יותר מ-₪2,500</s>.
+        המחיר המקורי שבו תכננתי למכור רק את הקורס — <s>997 ₪</s>.
+      </p>
+
+      <p class="fade-up">
+        אבל אני רוצה שהשיטה הזו תגיע לכמה שיותר בעלי עסקים שמפרסמים בפייסבוק ומגיעים לסוף החודש עם תוצאות שלא מסבירות את עצמן. <strong>לכן, לתקופה מוגבלת בלבד:</strong>
+      </p>
+
+      <div class="price-box fade-up">
+        <div class="price-original">במקום 997 ₪</div>
+        <div class="price-final"><span>₪</span>197</div>
+        <div class="price-label">תשלום חד פעמי | גישה לנצח</div>
+      </div>
+
+      <div class="fade-up">
+        <a href="#" class="btn btn-cta-large">
+          כן! אני רוצה את שיטת ה-DNA הדיגיטלי עכשיו!
+        </a>
+        <p style="font-size:14px; color:#888; margin-top:1rem;">
+          גישה מיידית אחרי הרכישה · תשלום מאובטח · ללא סיכון
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 7 — OBJECTIONS (התנגדויות)
+  ═══════════════════════════════════════════════ -->
+  <section id="objections">
+    <div class="container">
+
+      <div class="divider fade-up"></div>
+      <h2 class="fade-up">שאלות שאנשים שואלים לפני שהם מצטרפים</h2>
+      <p class="fade-up" style="color:#555; margin-bottom:2.5rem;">(ותשובות כנות לגמרי)</p>
+
+      <!-- Objection 1 -->
+      <div class="objection-item fade-up">
+        <div class="objection-q">
+          <span class="q-mark">?</span>
+          <span>אני לא טכנולוגי — האם אני אצליח ליישם את זה?</span>
+        </div>
+        <p class="objection-a">
+          בהחלט כן. הקורס בנוי עם הדגמות מסך מלאות שעוקבות אחרי כל לחיצה ולחיצה. אם אתה יודע להפעיל מנהל מודעות של פייסבוק — יש לך את כל מה שצריך. הרוב המוחלט של התלמידים שלי אינם "אנשי נתונים" וכולם הצליחו ליישם את השיטה תוך 7 ימים.
+        </p>
+      </div>
+
+      <!-- Objection 2 -->
+      <div class="objection-item fade-up">
+        <div class="objection-q">
+          <span class="q-mark">?</span>
+          <span>כבר קניתי קורסים בפייסבוק בעבר ולא הפקתי מהם ערך — מה שונה כאן?</span>
+        </div>
+        <p class="objection-a">
+          ההבדל הוא שהקורסים שקנית לימדו אותך <em>מה</em> לעשות. הקורס הזה מלמד אותך <em>למה</em> ומה לבדוק כדי לדעת אם מה שאתה עושה עובד. זו לא עוד שיטת "האד הזה ייתן תוצאות". זה כלי ניתוח שעובד עם <strong>כל</strong> שיטת פרסום, כל מוצר, כל קהל.
+        </p>
+      </div>
+
+      <!-- Objection 3 -->
+      <div class="objection-item fade-up">
+        <div class="objection-q">
+          <span class="q-mark">?</span>
+          <span>יש לי סוכנות שמנהלת לי את הפרסום — האם זה עדיין רלוונטי בשבילי?</span>
+        </div>
+        <p class="objection-a">
+          זה <mark>אפילו יותר רלוונטי</mark> בשבילך. כשתדע מה לבדוק ואיך לפרש נתונים, תוכל לשאול את הסוכנות שלך שאלות שהיא לא תצפה לשמוע. ולדעת מתי הנתונים שהיא מציגה לך הם אמיתיים — ומתי הם "נתוני שיווק".
+        </p>
+      </div>
+
+      <!-- Objection 4 -->
+      <div class="objection-item fade-up">
+        <div class="objection-q">
+          <span class="q-mark">?</span>
+          <span>כמה זמן ייקח לי ליישם את זה?</span>
+        </div>
+        <p class="objection-a">
+          הגדרה ראשונית של מערכת המדדים לוקחת כ-90 דקות. אחרי זה, הבדיקה היומית לוקחת 15-20 דקות. רוב התלמידים שלי מדווחים שהם <strong>חוסכים שעות</strong> בשבוע לאחר שמשנים את הדרך בה הם מנתרחים את הנתונים.
+        </p>
+      </div>
+
+      <!-- Objection 5 -->
+      <div class="objection-item fade-up">
+        <div class="objection-q">
+          <span class="q-mark">?</span>
+          <span>מה קורה אם פייסבוק תשנה את הממשק שלה ושיטה תפסיק לעבוד?</span>
+        </div>
+        <p class="objection-a">
+          השיטה מבוססת על עקרונות ניתוח נתונים שלא משתנים גם כשהממשק משתנה. המדדים המותאמים אישית קיימים בפייסבוק זה שנים ולא הולכים לשום מקום. בנוסף, תלמידי הקורס מקבלים עדכונים כשיש שינויים משמעותיים — <strong>ללא עלות נוספת</strong>.
+        </p>
+      </div>
+
+      <!-- Objection 6 -->
+      <div class="objection-item fade-up">
+        <div class="objection-q">
+          <span class="q-mark">?</span>
+          <span>מה אם זה לא יתאים לי? האם יש אחריות?</span>
+        </div>
+        <p class="objection-a">
+          כן. יש אחריות מלאה של 30 יום. אם תסיים את הקורס, ליישם את השיטה, ולא תראה שיפור מדיד ברווחיות — תחזרה כספית מלאה, ללא שאלות מיותרות. אני בטוח בשיטה הזו כי ראיתי אותה עובדת שוב ושוב.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 8 — FINAL CTA (קריאה לפעולה סופית)
+  ═══════════════════════════════════════════════ -->
+  <section id="final-cta">
+    <div class="container">
+
+      <div class="divider divider-center fade-up"></div>
+
+      <h2 class="fade-up">
+        זה הרגע להחליט
+      </h2>
+
+      <p class="fade-up">
+        יש שתי אפשרויות מכאן:
+      </p>
+
+      <p class="fade-up">
+        <strong>אפשרות א':</strong> להמשיך כמו שאתה — לנהל קמפיינים על סמך מדדים שלא אומרים לך את כל האמת, לשלם על פרסום שאתה לא בטוח אם הוא רווחי, ולקוות שהחודש הבא יהיה טוב יותר.
+      </p>
+
+      <p class="fade-up">
+        <strong>אפשרות ב':</strong> להשקיע 197 ₪ פעם אחת, ללמוד לקרוא את ה-DNA של הקמפיינים שלך, ולהתחיל לקבל החלטות על בסיס נתונים אמיתיים — החל מהשבוע הבא.
+      </p>
+
+      <p class="fade-up">
+        רק אחת מהאפשרויות האלה מובילה לשינוי. <mark>אתה יודע מהי.</mark>
+      </p>
+
+      <div class="price-box fade-up" style="background:#fafafa; border-color:#000; margin-bottom:1.5rem;">
+        <div class="price-original" style="color:#999;">במקום 997 ₪</div>
+        <div class="price-final" style="color:#000;"><span style="color:#000;">₪</span>197</div>
+        <div class="price-label" style="color:#555;">תשלום חד פעמי | גישה לנצח | אחריות 30 יום</div>
+      </div>
+
+      <div class="btn-wrapper fade-up">
+        <a href="#" class="btn btn-cta-large btn-full">
+          כן! אני רוצה את שיטת ה-DNA הדיגיטלי עכשיו!
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       SECTION 9 — STRONG CLOSE (סגירה חזקה)
+  ═══════════════════════════════════════════════ -->
+  <section id="close">
+    <div class="container">
+
+      <p class="fade-up">
+        הקמפיינים שלך מחזיקים DNA. כל קמפיין מנצח מכיל בתוכו קוד גנטי שאפשר לפענח, לשכפל, ולהכניס לכל קמפיין חדש.
+      </p>
+
+      <p class="fade-up">
+        הגיע הזמן שתלמד לקרוא אותו.
+      </p>
+
+      <a href="#" class="btn btn-cta-large fade-up">
+        אני מצטרף עכשיו — 197 ₪ בלבד &rarr;
+      </a>
+
+      <p class="guarantee fade-up">
+        🔒 אחריות מלאה 30 יום · תשלום מאובטח SSL · גישה מיידית
+      </p>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════
+       STICKY CTA BAR
+  ═══════════════════════════════════════════════ -->
+  <div class="sticky-bar" id="sticky-bar" role="complementary" aria-label="מבצע מיוחד">
+    <span class="sticky-bar-text">שיטת ה-DNA הדיגיטלי — רק 197 ₪ | אחריות מלאה 30 יום</span>
+    <a href="#price" class="btn">להצטרפות &darr;</a>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       JAVASCRIPT
+  ═══════════════════════════════════════════════ -->
+  <script>
+    // ─── Scroll Animation (IntersectionObserver) ───
+    const fadeEls = document.querySelectorAll('.fade-up');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // ─── Sticky Bar ───
+    const stickyBar = document.getElementById('sticky-bar');
+    let lastScrollY = 0;
+    let ticking = false;
+
+    const heroSection = document.getElementById('hero');
+
+    window.addEventListener('scroll', () => {
+      lastScrollY = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const heroBottom = heroSection.getBoundingClientRect().bottom + window.scrollY;
+          if (lastScrollY > heroBottom) {
+            stickyBar.classList.add('show');
+          } else {
+            stickyBar.classList.remove('show');
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  </script>
+
+</body>
+</html>
