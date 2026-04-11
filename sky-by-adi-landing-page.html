@@ -196,15 +196,18 @@
       margin-bottom: 28px;
     }
     .hero h1 {
-      font-size: clamp(1.85rem, 4.2vw, 2.85rem);
+      font-size: clamp(1.95rem, 4.8vw, 3.2rem);
       font-weight: 900;
       color: var(--white);
-      line-height: 1.25;
-      margin-bottom: 24px;
+      line-height: 1.3;
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
     }
     .hero h1 em {
       font-style: normal;
       color: var(--gold-light);
+      display: block;
+      font-size: 1.08em;
     }
     .hero-arrow {
       display: block;
@@ -297,13 +300,18 @@
     .pain-callout {
       background: linear-gradient(135deg, #FFF9EE, var(--gold-pale));
       border-right: 4px solid var(--gold);
-      padding: 22px 26px;
+      padding: 24px 28px;
       border-radius: 0 var(--radius) var(--radius) 0;
       margin: 32px 0;
-      font-size: 1.08rem;
-      font-weight: 600;
+      font-size: 1.05rem;
+      font-weight: 500;
       color: var(--green-dark);
-      line-height: 1.85;
+      line-height: 2;
+    }
+    .pain-callout em {
+      font-style: normal;
+      color: var(--rose);
+      font-weight: 700;
     }
     .pain-deep {
       background: linear-gradient(145deg, #0D1E06, var(--green-dark));
@@ -928,27 +936,24 @@
   <div class="container">
 
     <div class="hero-qualifier fade-up">
-      לאמהות עם בת מתבגרת בלבד · 5 מקומות זמינים במחזור הקרוב
+      לאמהות עם בת בגיל 10–18 בלבד · 5 מקומות במחזור הקרוב
     </div>
 
     <h1 class="fade-up">
-      איך לעבור ממצב שבו הבת שלך
-      <em>מסתגרת בחדר עם הטיקטוק</em>
-      והתקשורת ביניכן מסתכמת בוויכוחים...
-      <span class="hero-arrow">↓</span>
-      למצב שבו היא נפתחת אלייך, צוחקת איתך,
-      ורואה בך שותפה —
-      <em>תוך 72 שעות בלבד בחו"ל</em>
+      הבת שלך (10–18) הפכה לזרה בבית שלך —<br>
+      <em>72 שעות בחו"ל יכולות להחזיר לך אותה</em><br>
+      לפני שחלון ההזדמנויות נסגר לצמיתות.
     </h1>
 
     <p class="hero-sub fade-up">
-      דרך <strong>"פרוטוקול האיפוס"</strong> — בלי שתצטרכי לתכנן, להפיק או לצאת מאזור הנוחות שלך.
+      דרך <strong>"פרוטוקול האיפוס"</strong> — ריטריט פרטי מתוכנן לחלוטין,
+      שמחזיר אתכן מוויכוחים ושתיקות לצחוק אמיתי ושיחות שלא היו לכן שנים.
     </p>
 
     <ul class="hero-without fade-up">
-      <li>בלי חופשה משפחתית רגילה שמסתיימת בדיוק אותו הדבר, רק במיקום אחר</li>
-      <li>בלי לנסות "לדבר אתה" ולקבל גלגול עיניים</li>
-      <li>בלי להרגיש שאת מנהלת ולא שותפה</li>
+      <li>בלי עוד חופשה שמסתיימת בדיוק אותו הדבר, רק במיקום אחר</li>
+      <li>בלי "לדבר אתה" ולקבל גלגול עיניים ושתיקה</li>
+      <li>בלי לתכנן, להפיק, להחליט — הכל מסודר בשבילך</li>
     </ul>
 
     <a href="#cta" class="btn btn-gold fade-up">
@@ -966,22 +971,22 @@
   <div class="container-w trust-inner">
     <div class="trust-item">
       <div class="trust-num">~100</div>
-      <div class="trust-lbl">משפחות בליווי</div>
-    </div>
-    <div class="trust-sep"></div>
-    <div class="trust-item">
-      <div class="trust-num">87%</div>
-      <div class="trust-lbl">שביעות רצון</div>
+      <div class="trust-lbl">זוגות אמא-בת בליווי</div>
     </div>
     <div class="trust-sep"></div>
     <div class="trust-item">
       <div class="trust-num">72h</div>
-      <div class="trust-lbl">לאיפוס הדינמיקה</div>
+      <div class="trust-lbl">לאיפוס מלא של הדינמיקה</div>
     </div>
     <div class="trust-sep"></div>
     <div class="trust-item">
-      <div class="trust-num">20+</div>
-      <div class="trust-lbl">שנות ניסיון עדי</div>
+      <div class="trust-num">10–18</div>
+      <div class="trust-lbl">גיל הבנות שעובד</div>
+    </div>
+    <div class="trust-sep"></div>
+    <div class="trust-item">
+      <div class="trust-num">100%</div>
+      <div class="trust-lbl">מאורגן — לא תחליטי כלום</div>
     </div>
   </div>
 </div>
@@ -993,12 +998,12 @@
 <section class="pain">
   <div class="container">
 
-    <span class="label fade-up">המציאות שלך עכשיו</span>
-    <h2 class="fade-up">בואי נדבר רגע בכנות</h2>
+    <span class="label fade-up">האם זה נשמע מוכר?</span>
+    <h2 class="fade-up">הבת שלך בחדר ממול — ואת מרגישה שכבר איבדת אותה</h2>
 
     <p class="fade-up">
-      את אישה חזקה, מנהלת קריירה ובית, ורגילה שהדברים עובדים לפי הקצב שלך.
-      אבל כשזה מגיע לבת שלך — <strong>משהו שם תקוע.</strong>
+      את לא מחפשת חופשה. את מחפשת את הילדה שאהבת לדבר איתה.
+      זו שהייתה מספרת לך הכל, צוחקת איתך — לפני שהטלפון, הטיקטוק ולחץ החברות גנבו אותה.
     </p>
 
     <p class="fade-up">
@@ -1007,13 +1012,14 @@
     </p>
 
     <div class="pain-callout fade-up">
-      בבית, הדינמיקה ביניכן תקועה בלופ: <br />
-      את על תקן ה<strong>"מנהלת"</strong> (תסדרי, תקומי, שימי לב) — <br />
-      והיא על תקן ה<strong>"מנוהלת"</strong> שמגלגלת עיניים ומסתגרת בחדר.<br /><br />
-      גם כשאתן יוצאות לחופשה משפחתית באילת או בצפון — זה בדיוק אותו הדבר, רק במיקום אחר.
+      <strong>הלופ הזה מוכר?</strong><br /><br />
+      את: <em>"תקומי, תסדרי, כבי את הטלפון"</em><br />
+      היא: גלגול עיניים. דלת נסגרת. שתיקה.<br /><br />
+      ויצאתן לחופשה באילת? זה בדיוק אותו הדבר — רק עם ים ברקע.
+      <strong>המיקום לא משנה את הדינמיקה.</strong>
     </div>
 
-    <p class="fade-up">ואת יודעת מה הכי כואב?</p>
+    <p class="fade-up">ואת יודעת מה הכי כואב מזה?</p>
 
     <div class="pain-deep fade-up">
       זה לא הוויכוחים. זה <em>הפחד השקט בלילה</em> שבו את מבינה:<br /><br />
@@ -1134,11 +1140,11 @@
       </div>
 
       <div class="value-card fade-up">
-        <div class="v-icon">🛡️</div>
-        <h3>ליווי, ביטוח וניהול סיכונים</h3>
+        <div class="v-icon">💬</div>
+        <h3>שיחות שלא ידעתן שאפשר לקיים</h3>
         <p>
-          חוזה חוויה מקיף, מדיניות ברורה, מעטפת משפטית ובטיחותית מלאה —
-          כך שיש לך 100% ראש שקט לטוס לבד עם הילדה.
+          פעילויות מחושבות שמיועדות לפתוח שיחות אמיתיות — בלי "איך היה בבית הספר?"
+          ובלי שאלות שסוגרות. לילות שתספרו עליהן שנים.
         </p>
       </div>
 
@@ -1319,10 +1325,11 @@
     <h2 class="fade-up">החופשה הזו לא מתאימה לכל אחת</h2>
 
     <ul class="who-list fade-up">
-      <li class="not">אם את מחפשת שמישהו יארגן לך "מלון וטיסה זולים בבוקינג" — אני לא הכתובת</li>
-      <li class="for">אם את מבינה שאת הנכס הכי יקר של הילדה שלך — את במקום הנכן</li>
-      <li class="for">אם את מרגישה שחלון ההזדמנויות הולך ונסגר — זה הזמן לפעול</li>
-      <li class="for">אם את רוצה לחזור מהחופשה עם קשר שישתנה לתמיד — בואי נדבר</li>
+      <li class="for">אמא שיש לה בת בגיל 10–18 ומרגישה שהקשר ביניהן הלך ואיבד את האינטימיות</li>
+      <li class="for">אמא שעשתה כבר כל מה שאמרו לה — ועדיין הדינמיקה לא השתנתה</li>
+      <li class="for">אמא שמבינה שחלון הזמן הזה מוגבל ורוצה לעשות משהו עכשיו, לא "יום אחד"</li>
+      <li class="not">אמא שמחפשת "מלון וטיסה זולים" — בוקינג.קום הוא בשבילך, לא אני</li>
+      <li class="not">אמא שצריכה שבתה "תרצה" לבוא — בנות שמגיעות על תקן "ספא עם אמא" יוצאות אחרות</li>
     </ul>
 
     <div class="spots-box fade-up">
@@ -1350,20 +1357,20 @@
 
     <span class="label fade-up" style="color: var(--gold-light); display:block; text-align:center;">הצעד הבא שלך</span>
 
-    <h2 class="fade-up">מוכנה להחזיר את הילדה שלך אלייך?</h2>
+    <h2 class="fade-up">עוד שנה היא תעדיף לטוס עם החברות.</h2>
 
     <p class="fade-up">
-      הטיפול בכן מתחיל בשיחת סינון והתאמה של 20 דקות (ללא עלות).
-      בשיחה הזו נבדוק ביחד אם "שיטת האיפוס" מדויקת עבורכן,
-      ונגדיר מסגרת תקציב מדויקת.
+      הזמן הזה שבו היא עדיין רוצה את אמא שלה — מוגבל.<br>
+      שיחת האיפיון היא 20 דקות בחינם. בה נבדוק ביחד אם זה מתאים לכן —
+      ואם כן, תתפסי את אחד מ-5 המקומות לפני שיגמרו.
     </p>
 
     <a href="#" class="btn btn-gold btn-full fade-up">
-      כן עדי, אני רוצה לשריין שיחת איפיון ולתפוס את המקום שלי &rarr;
+      לשיחת איפיון חינם — 20 דקות &rarr;
     </a>
 
     <p class="cta-note fade-up">
-      שיחה חינמית · 20 דקות · ללא התחייבות · 5 מקומות בלבד
+      ✓ ללא התחייבות &nbsp;·&nbsp; ✓ שיחה בזום או טלפון &nbsp;·&nbsp; ✓ 5 מקומות בלבד במחזור הקרוב
     </p>
 
   </div>
