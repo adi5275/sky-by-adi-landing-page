@@ -85,7 +85,7 @@
       border-radius: 50%;
       border: 2px solid var(--gold);
       object-fit: cover;
-      object-position: 8% 12%;   /* פנים עדי — צד שמאל עליון של התמונה המשולבת */
+      object-position: center 12%;  /* פנים עדי — ראש ממוצב בחלק העליון */
       display: block;
       margin: 0 auto 12px;
       box-shadow: 0 0 0 4px rgba(194,160,96,0.22);
@@ -573,35 +573,33 @@
   <!-- SVG Logo: Lotus + Plane -->
   <div class="logo-svg">
     <!--
-      לוגו SKY BY ADI — שחזור נאמן למקור:
-      לוטוס עם 5 עלים מאורגנים בפן, כולל עלה מרכזי זקוף
-      מטוס קטן בפינה ימין-עליון יוצא מהלוטוס
+      לוגו SKY BY ADI — עיצוב נאמן למקור:
+      "Sky" בפלייפייר דיספליי איטליק + מסלול טיסה מעוגל + מטוס בפינה ימין-עליון
     -->
-    <svg width="88" height="70" viewBox="0 0 88 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- ── 5 עלי לוטוס ── -->
-      <!-- עלה מרכזי (זקוף) -->
-      <path d="M44 57 C41 46 41 31 44 19 C47 31 47 46 44 57Z"
-            stroke="#C2A060" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-      <!-- עלה שמאל-פנימי -->
-      <path d="M44 57 C35 51 29 39 31 27 C33 17 41 19 44 33Z"
-            stroke="#C2A060" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
-      <!-- עלה ימין-פנימי -->
-      <path d="M44 57 C53 51 59 39 57 27 C55 17 47 19 44 33Z"
-            stroke="#C2A060" stroke-width="1.4" fill="none" stroke-linejoin="round"/>
-      <!-- עלה שמאל-חיצוני -->
-      <path d="M44 58 C29 54 16 43 17 29 C18 17 30 14 38 26 C40 30 42 42 44 55Z"
-            stroke="#C2A060" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-      <!-- עלה ימין-חיצוני -->
-      <path d="M44 58 C59 54 72 43 71 29 C70 17 58 14 50 26 C48 30 46 42 44 55Z"
-            stroke="#C2A060" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-      <!-- גבעול קצר -->
-      <line x1="44" y1="58" x2="44" y2="64" stroke="#C2A060" stroke-width="1.3" stroke-linecap="round"/>
-      <!-- קווי מים -->
-      <path d="M28 67 Q44 64 60 67" stroke="#C2A060" stroke-width="1.0" stroke-linecap="round" opacity="0.45"/>
-      <!-- ── מטוס ── נאמן לסגנון הלוגו המקורי -->
-      <!-- גוף + כנפיים -->
-      <path d="M55 18 L68 11 L65 18 L70 16 L68 21 L62 20 L59 25 L56 23 Z"
-            fill="#C2A060" stroke="#C2A060" stroke-width="0.3" stroke-linejoin="round"/>
+    <svg width="152" height="74" viewBox="0 0 152 74" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- "Sky" — Playfair Display italic, gold -->
+      <text x="2" y="60"
+            font-family="'Playfair Display', Georgia, serif"
+            font-style="italic"
+            font-size="56"
+            fill="#C2A060">Sky</text>
+
+      <!-- מסלול טיסה מעוגל מה-y כלפי מעלה-ימין -->
+      <path d="M 90 22 Q 113 7 135 3"
+            stroke="#C2A060" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+
+      <!-- מטוס בקצה המסלול — מסובב ~−40° (מועד צפון-מזרח) -->
+      <g transform="translate(135,3) rotate(-40)">
+        <!-- גוף המטוס — האף מצביע לימין (+x) -->
+        <path d="M 11 0 C 7 -2 -3 -2.5 -10 -1.5 L -10 1.5 C -3 2.5 7 2 11 0 Z"
+              fill="#C2A060"/>
+        <!-- כנף שמאל (port) -->
+        <path d="M 1 -1.5 L -5 -11 L -0.5 -2 Z" fill="#C2A060"/>
+        <!-- כנף ימין (starboard) -->
+        <path d="M 1 1.5 L -5 11 L -0.5 2 Z" fill="#C2A060"/>
+        <!-- סנפיר זנב אנכי -->
+        <path d="M -7 -1.5 L -13 -6.5 L -8.5 -1.5 Z" fill="#C2A060"/>
+      </g>
     </svg>
   </div>
   <img src="adi-photo.png" alt="עדי אהרוני" class="adi-portrait">
