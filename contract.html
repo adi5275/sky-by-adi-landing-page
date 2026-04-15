@@ -430,6 +430,95 @@
       margin-top: 10px;
     }
 
+    /* ── SIGNATURE CANVAS PAD ── */
+    .sig-canvas-wrapper {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .sig-canvas-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .canvas-frame {
+      position: relative;
+      background: #fffef8;
+      border: 2px dashed var(--gold);
+      border-radius: 6px;
+      height: 120px;
+      overflow: hidden;
+    }
+    .canvas-frame.signed {
+      border-style: solid;
+    }
+    #sig-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      touch-action: none;
+      cursor: crosshair;
+    }
+    .canvas-hint {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(194,160,96,0.4);
+      transition: opacity 0.3s;
+      gap: 8px;
+    }
+    .sig-clear-btn {
+      align-self: flex-end;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 12px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.74rem;
+      color: #aaa;
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .sig-clear-btn:hover { color: #c0392b; border-color: #c0392b; }
+
+    /* ── PRINT BUTTON ── */
+    .print-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 14px;
+      transition: background 0.2s;
+    }
+    .print-btn:hover { background: var(--green-light); }
+
+    /* ── PRINT / PDF ── */
+    @media print {
+      .sig-section-header .note,
+      .sig-badge, .checkboxes-section, .submit-area,
+      .sig-clear-btn, .sig-field-note, #success-screen,
+      .footer-note { display: none !important; }
+      body { background: white !important; }
+      .header { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #sig-canvas { border: 1px solid #ccc; }
+      .adi-portrait { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+
     /* ── SUCCESS SCREEN ── */
     #success-screen {
       display: none;
@@ -805,10 +894,16 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
         <label for="sig-date">תאריך חתימה *</label>
         <input type="text" id="sig-date" name="date" placeholder="יום/חודש/שנה — למשל: 15/04/2026" required>
       </div>
-      <div class="form-field sig-field-big">
-        <label for="signature">חתימה דיגיטלית — הקלד/י שמך המלא *</label>
-        <input type="text" id="signature" name="digital_signature" placeholder="הקלד/י את שמך המלא כחתימה" required>
-        <div class="sig-field-note">הקלדת שמך המלא בשדה זה מהווה חתימה בכתב לפי סעיף 18 להסכם, ומשמשת כאישור דיגיטלי תקף.</div>
+      <!-- פד חתימה — חתמ/י עם האצבע או העכבר -->
+      <div class="sig-canvas-wrapper">
+        <div class="sig-canvas-label">חתימה — רשמ/י עם האצבע (מובייל) או העכבר *</div>
+        <div class="canvas-frame" id="canvas-frame">
+          <canvas id="sig-canvas"></canvas>
+          <div class="canvas-hint" id="canvas-hint">✍&nbsp; חתמ/י כאן</div>
+        </div>
+        <button type="button" class="sig-clear-btn" onclick="clearSig()">✕ נקה חתימה</button>
+        <input type="hidden" id="sig-data" name="digital_signature" value="">
+        <div class="sig-field-note">החתימה הגרפית תישמר יחד עם חותמת זמן ותופיע בעותק ה-PDF.</div>
       </div>
     </div>
 
@@ -890,14 +985,97 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
     <div class="check">✅</div>
     <h2>ההסכם נחתם בהצלחה!</h2>
     <p id="success-client-name" style="font-weight:600; font-size:1rem;"></p>
-    <p>חתימתך הדיגיטלית התקבלה ותישמר כהוכחה.</p>
-    <p>תקבל/י עותק בדוא"ל. נותן השירות יצור קשר בהקדם.</p>
+    <p>חתימתך הגרפית התקבלה ונשמרה עם חותמת זמן.</p>
+    <p>📧 <strong>עותק אישור</strong> נשלח לכתובת הדוא"ל שהזנת.</p>
+    <p style="font-size:0.82rem; color:#777; margin-top:4px;">עדי אהרוני קיבלה עותק נפרד — היא תיצור קשר בהקדם.</p>
+    <button class="print-btn" onclick="printContract()">💾 שמור / הדפס עותק חתום</button>
     <div class="ts" id="success-ts"></div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════ JAVASCRIPT -->
 <script>
+  // ── Signature Canvas ──
+  (function() {
+    const canvas = document.getElementById('sig-canvas');
+    const hint   = document.getElementById('canvas-hint');
+    const frame  = document.getElementById('canvas-frame');
+    const ctx    = canvas.getContext('2d');
+    let drawing = false, hasSigned = false;
+
+    function resize() {
+      const r = canvas.parentElement.getBoundingClientRect();
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width  = r.width  * dpr;
+      canvas.height = 120 * dpr;
+      ctx.scale(dpr, dpr);
+      ctx.strokeStyle = '#2D5016';
+      ctx.lineWidth   = 2.2;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
+    }
+
+    function pos(e) {
+      const r = canvas.getBoundingClientRect();
+      const src = e.touches ? e.touches[0] : e;
+      return { x: src.clientX - r.left, y: src.clientY - r.top };
+    }
+
+    function start(e) {
+      e.preventDefault();
+      drawing = true;
+      const p = pos(e);
+      ctx.beginPath();
+      ctx.moveTo(p.x, p.y);
+      if (!hasSigned) {
+        hasSigned = true;
+        hint.style.opacity = '0';
+        frame.classList.add('signed');
+      }
+    }
+    function move(e) {
+      if (!drawing) return;
+      e.preventDefault();
+      const p = pos(e);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+    }
+    function stop() {
+      if (!drawing) return;
+      drawing = false;
+      document.getElementById('sig-data').value = canvas.toDataURL('image/png');
+    }
+
+    canvas.addEventListener('mousedown',  start);
+    canvas.addEventListener('mousemove',  move);
+    canvas.addEventListener('mouseup',    stop);
+    canvas.addEventListener('mouseleave', stop);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove',  move,  { passive: false });
+    canvas.addEventListener('touchend',   stop);
+
+    window.clearSig = function() {
+      const dpr = window.devicePixelRatio || 1;
+      ctx.clearRect(0, 0, canvas.width / dpr, 120);
+      hasSigned = false;
+      hint.style.opacity = '1';
+      frame.classList.remove('signed');
+      document.getElementById('sig-data').value = '';
+    };
+    window.hasSig = () => hasSigned;
+
+    window.addEventListener('resize', resize);
+    resize();
+  })();
+
+  // ── Print signed contract ──
+  window.printContract = function() {
+    const sc = document.getElementById('success-screen');
+    sc.style.display = 'none';
+    window.print();
+    sc.style.display = 'flex';
+  };
+
   // ── Watermark generation ──
   (function() {
     const wm = document.getElementById('wm');
@@ -955,12 +1133,11 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
       return;
     }
 
-    // Check signature matches name
+    // בדיקת חתימה גרפית
     const fullName = document.getElementById('full-name').value.trim();
-    const signature = document.getElementById('signature').value.trim();
-    if (!signature) {
-      msg.textContent = '⚠️ יש להקליד שם מלא בשדה החתימה הדיגיטלית.';
-      document.getElementById('signature').focus();
+    if (!window.hasSig || !window.hasSig()) {
+      msg.textContent = '⚠️ יש לחתום בפד החתימה לפני שליחה.';
+      document.getElementById('sig-canvas').scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
