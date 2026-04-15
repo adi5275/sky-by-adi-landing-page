@@ -79,6 +79,17 @@
       text-align: center;
       padding: 28px 20px 20px;
     }
+    .adi-portrait {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      border: 2px solid var(--gold);
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin: 0 auto 10px;
+      box-shadow: 0 0 0 4px rgba(194,160,96,0.2);
+    }
     .header .logo-svg {
       margin-bottom: 10px;
     }
@@ -472,30 +483,32 @@
 <div class="header">
   <!-- SVG Logo: Lotus + Plane -->
   <div class="logo-svg">
-    <!-- לוגו SKY BY ADI — לוטוס line-art + מטוס -->
-    <svg width="80" height="68" viewBox="0 0 80 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- עלי לוטוס חיצוניים -->
-      <path d="M40 63 C24 57 11 44 14 29 C17 16 30 19 40 36 C50 19 63 16 66 29 C69 44 56 57 40 63Z"
-            stroke="#C2A060" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
-      <!-- עלי לוטוס אמצעיים -->
-      <path d="M40 56 C29 49 24 37 27 24 C29 14 37 17 40 31 C43 17 51 14 53 24 C56 37 51 49 40 56Z"
-            stroke="#C2A060" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-      <!-- עלה מרכזי -->
-      <path d="M40 50 C37 40 37 27 40 17 C43 27 43 40 40 50Z"
-            stroke="#C2A060" stroke-width="1.4" fill="none"/>
-      <!-- קווי מים בבסיס -->
-      <path d="M22 66 Q40 63 58 66" stroke="#C2A060" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/>
-      <!-- מטוס — יוצא מהלוטוס לכיוון ימין-עליון -->
-      <g transform="translate(50, 2) rotate(-28)">
-        <path d="M0,5 L13,0 L11,5 L15,4 L13,8 L8,8 L6,12 L3,10 Z"
-              fill="#C2A060" stroke="#C2A060" stroke-width="0.4" stroke-linejoin="round"/>
-      </g>
+    <!-- לוגו SKY BY ADI — לוטוס line-art + מטוס (נאמן למקור) -->
+    <svg width="90" height="72" viewBox="0 0 90 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- ── לוטוס: 5 עלים מסודרים מסביב לציר ── -->
+      <!-- עלה 1: מרכזי (עולה ישר) -->
+      <path d="M45 58 C42 47 42 33 45 20 C48 33 48 47 45 58Z"
+            stroke="#C2A060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <!-- עלה 2: שמאל-מרכז -->
+      <path d="M45 58 C36 50 29 38 31 26 C33 16 42 20 45 34 C48 20 57 16 59 26 C61 38 54 50 45 58Z"
+            stroke="#C2A060" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+      <!-- עלה 3: חיצוני (הכי רחב) -->
+      <path d="M45 60 C30 54 17 41 20 27 C23 14 36 16 45 34 C54 16 67 14 70 27 C73 41 60 54 45 60Z"
+            stroke="#C2A060" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <!-- בסיס ענף -->
+      <path d="M45 60 L45 66" stroke="#C2A060" stroke-width="1.4" stroke-linecap="round"/>
+      <!-- קווי מים -->
+      <path d="M30 68 Q45 65 60 68" stroke="#C2A060" stroke-width="1.1" stroke-linecap="round" opacity="0.5"/>
+      <!-- ── מטוס: מופיע מהחלק הימני-עליון של הלוטוס ── -->
+      <!-- גוף המטוס (גחון ימינה-למעלה) -->
+      <path d="M58,22 L74,10 L70,19 L76,16 L73,22 L66,21 L63,27 L59,25 Z"
+            fill="#C2A060" stroke="#C2A060" stroke-width="0.3" stroke-linejoin="round" opacity="0.95"/>
     </svg>
   </div>
+  <img src="adi-photo.jpg" alt="עדי אהרוני" class="adi-portrait">
   <div class="brand">SKY BY ADI AHARONI</div>
   <div class="tagline">DREAM IT &nbsp;·&nbsp; VISIT IT</div>
   <div class="doc-title">הסכם שירותי תיווך, תיאום וייעוץ</div>
-  <div class="version-badge">גרסה מעודכנת | אפריל 2026</div>
 </div>
 
 <!-- ══════════════════════════════════════════════ PARTY BOX -->
@@ -770,7 +783,7 @@
       </div>
       <div class="form-field">
         <label for="sig-date">תאריך חתימה *</label>
-        <input type="date" id="sig-date" name="date" required>
+        <input type="text" id="sig-date" name="date" placeholder="יום/חודש/שנה — למשל: 15/04/2026" required>
       </div>
       <div class="form-field sig-field-big">
         <label for="signature">חתימה דיגיטלית — הקלד/י שמך המלא *</label>
@@ -890,13 +903,18 @@
 
   window.addEventListener('DOMContentLoaded', function() {
     const clientName = getParam('client');
-    const date = getParam('date') || new Date().toISOString().split('T')[0];
+    // תאריך בפורמט עברי: יום/חודש/שנה
+    const now = new Date();
+    const dd = String(now.getDate()).padStart(2, '0');
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const yyyy = now.getFullYear();
+    const hebrewDate = getParam('date') || `${dd}/${mm}/${yyyy}`;
 
     if (clientName) {
       document.getElementById('full-name').value = clientName;
       document.getElementById('client-name-display').textContent = clientName;
     }
-    document.getElementById('sig-date').value = date;
+    document.getElementById('sig-date').value = hebrewDate;
     document.getElementById('ts-field').value = new Date().toISOString();
   });
 
