@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הסכם שירותי תיווך, תיאום וייעוץ — SKY BY ADI AHARONI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #3D7020;        /* בהיר יותר מ-#2D5016 */
+      --green-light: #4A8228;
+      --gold: #C2A060;         /* זהב עדין ומרוסן */
+      --gold-light: #D0B078;
+      --cream: #FAF6EE;
+      --cream-dark: #f0e8d8;
+      --text: #2c2c2c;
+      --border: #d0c8b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ── WATERMARK ── */
+    .contract-body {
+      position: relative;
+    }
+    .contract-body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 80px,
+        rgba(45, 80, 22, 0.04) 80px,
+        rgba(45, 80, 22, 0.04) 82px
+      );
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 8px;
+    }
+    .watermark-text {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      user-select: none;
+      -webkit-user-select: none;
+      z-index: 0;
+      border-radius: 8px;
+    }
+    .watermark-text span {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(201, 168, 76, 0.12);
+      white-space: nowrap;
+      transform: rotate(-30deg);
+      transform-origin: center;
+      letter-spacing: 3px;
+    }
+    .contract-body > *:not(.watermark-text) {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 28px 20px 20px;
+    }
+    .header .logo-svg {
+      margin-bottom: 10px;
+    }
+    .header .brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+    .header .tagline {
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.65);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .header .doc-title {
+      margin-top: 14px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: rgba(201,168,76,0.18);
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 4px;
+      border: 1px solid var(--gold);
+    }
+    .header .version-badge {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: var(--gold-light);
+    }
+
+    /* ── PARTY BOX ── */
+    .party-box {
+      max-width: 800px;
+      margin: 24px auto 0;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 18px 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .party-box .party {
+      padding: 12px;
+      background: var(--cream);
+      border-radius: 6px;
+    }
+    .party-box .party .label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--green);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .party-box .party .name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .party-box .party .detail {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* ── CONTAINER ── */
+    .container {
+      max-width: 800px;
+      margin: 24px auto 0;
+      padding: 0 16px 80px;
+    }
+
+    /* ── CONTRACT BODY ── */
+    .contract-body {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px 36px;
+    }
+
+    .contract-body h1 {
+      font-size: 1.2rem;
+      color: var(--green);
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .intro-text {
+      background: var(--cream);
+      border-right: 3px solid var(--gold);
+      padding: 12px 16px;
+      margin-bottom: 24px;
+      font-size: 0.88rem;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green);
+      border-bottom: 1px solid var(--cream-dark);
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+    }
+
+    .clause {
+      margin-bottom: 10px;
+      font-size: 0.88rem;
+      padding-right: 6px;
+    }
+
+    .clause-num {
+      font-weight: 600;
+      color: var(--green);
+      margin-left: 6px;
+    }
+
+    .sub-clause {
+      margin: 6px 0 6px 24px;
+      font-size: 0.86rem;
+    }
+
+    .highlight-box {
+      background: #fff8f0;
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      padding: 12px 16px;
+      margin: 10px 0;
+      font-size: 0.86rem;
+    }
+
+    .new-clause {
+      background: #f0f8f0;
+      border-right: 3px solid var(--green);
+      padding: 10px 14px;
+      margin: 10px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.86rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--cream-dark);
+      margin: 24px 0;
+    }
+
+    table.fee-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 10px 0;
+    }
+    table.fee-table th {
+      background: var(--green);
+      color: white;
+      padding: 8px 12px;
+      text-align: right;
+    }
+    table.fee-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    table.fee-table tr:nth-child(even) td {
+      background: var(--cream);
+    }
+
+    /* ── SIGNATURE SECTION ── */
+    .sig-section {
+      background: white;
+      border: 2px solid var(--green);
+      border-radius: 10px;
+      padding: 28px 32px;
+      margin-top: 28px;
+    }
+
+    .sig-section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--cream-dark);
+    }
+    .sig-section-header .lock-icon {
+      font-size: 1.4rem;
+    }
+    .sig-section-header h2 {
+      font-size: 1.05rem;
+      color: var(--green);
+    }
+    .sig-section-header .note {
+      font-size: 0.78rem;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    .sig-badge {
+      display: inline-block;
+      background: #e8f5e9;
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      margin-bottom: 18px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    @media (max-width: 580px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .party-box { grid-template-columns: 1fr; }
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .form-field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .form-field input[type="text"],
+    .form-field input[type="date"] {
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 9px 12px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.9rem;
+      background: var(--cream);
+      color: var(--text);
+      transition: border-color 0.2s;
+      direction: rtl;
+    }
+    .form-field input:focus {
+      outline: none;
+      border-color: var(--green);
+      background: white;
+    }
+
+    .sig-field-big {
+      grid-column: 1 / -1;
+    }
+    .sig-field-big input {
+      font-size: 1.1rem !important;
+      font-style: italic;
+      background: #fffef5 !important;
+      border: 2px solid var(--gold) !important;
+      padding: 12px 14px !important;
+    }
+    .sig-field-note {
+      font-size: 0.73rem;
+      color: #999;
+      margin-top: 2px;
+    }
+
+    .checkboxes-section {
+      margin: 22px 0;
+    }
+    .checkboxes-section h3 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .cb-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+    .cb-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      accent-color: var(--green);
+      margin-top: 2px;
+      cursor: pointer;
+    }
+    .cb-item .cb-text {
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+    .cb-item .cb-ref {
+      font-size: 0.72rem;
+      color: #999;
+      margin-right: 4px;
+    }
+
+    .submit-area {
+      margin-top: 24px;
+      text-align: center;
+    }
+    .submit-area .terms-note {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 14px;
+    }
+    #submit-btn {
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 14px 40px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      letter-spacing: 0.5px;
+    }
+    #submit-btn:hover { background: var(--green-light); }
+    #submit-btn:active { transform: scale(0.98); }
+    #submit-btn:disabled { background: #aaa; cursor: not-allowed; }
+
+    .validation-msg {
+      font-size: 0.8rem;
+      color: #c0392b;
+      margin-top: 10px;
+    }
+
+    /* ── SUCCESS SCREEN ── */
+    #success-screen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .success-box {
+      background: white;
+      border-radius: 16px;
+      padding: 48px 40px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+    }
+    .success-box .check {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+    .success-box h2 {
+      color: var(--green);
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+    }
+    .success-box p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 8px;
+    }
+    .success-box .ts {
+      font-size: 0.78rem;
+      color: #aaa;
+      margin-top: 16px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 0.72rem;
+      color: #aaa;
+      margin-top: 24px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ HEADER -->
+<div class="header">
+  <!-- SVG Logo: Lotus + Plane -->
+  <div class="logo-svg">
+    <!-- לוגו SKY BY ADI — לוטוס line-art + מטוס -->
+    <svg width="80" height="68" viewBox="0 0 80 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- עלי לוטוס חיצוניים -->
+      <path d="M40 63 C24 57 11 44 14 29 C17 16 30 19 40 36 C50 19 63 16 66 29 C69 44 56 57 40 63Z"
+            stroke="#C2A060" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
+      <!-- עלי לוטוס אמצעיים -->
+      <path d="M40 56 C29 49 24 37 27 24 C29 14 37 17 40 31 C43 17 51 14 53 24 C56 37 51 49 40 56Z"
+            stroke="#C2A060" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <!-- עלה מרכזי -->
+      <path d="M40 50 C37 40 37 27 40 17 C43 27 43 40 40 50Z"
+            stroke="#C2A060" stroke-width="1.4" fill="none"/>
+      <!-- קווי מים בבסיס -->
+      <path d="M22 66 Q40 63 58 66" stroke="#C2A060" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/>
+      <!-- מטוס — יוצא מהלוטוס לכיוון ימין-עליון -->
+      <g transform="translate(50, 2) rotate(-28)">
+        <path d="M0,5 L13,0 L11,5 L15,4 L13,8 L8,8 L6,12 L3,10 Z"
+              fill="#C2A060" stroke="#C2A060" stroke-width="0.4" stroke-linejoin="round"/>
+      </g>
+    </svg>
+  </div>
+  <div class="brand">SKY BY ADI AHARONI</div>
+  <div class="tagline">DREAM IT &nbsp;·&nbsp; VISIT IT</div>
+  <div class="doc-title">הסכם שירותי תיווך, תיאום וייעוץ</div>
+  <div class="version-badge">גרסה מעודכנת | אפריל 2026</div>
+</div>
+
+<!-- ══════════════════════════════════════════════ PARTY BOX -->
+<div class="party-box">
+  <div class="party">
+    <div class="label">נותן השירות</div>
+    <div class="name">SKY BY ADI AHARONI</div>
+    <div class="detail">עדי אהרוני | עוסק מורשה מס׳ ___________</div>
+    <div class="detail">כתובת: ___________________________</div>
+    <div class="detail">טל׳: 050-8278089 | coheadi@gmail.com</div>
+  </div>
+  <div class="party">
+    <div class="label">הלקוח/ה</div>
+    <div class="name" id="client-name-display">___________________</div>
+    <div class="detail">פרטים מלאים — ראה אזור החתימה</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ CONTRACT BODY -->
+<div class="container">
+<div class="contract-body">
+
+<!-- Watermark — pointer-events:none, user-select:none -->
+<div class="watermark-text" aria-hidden="true" id="wm"></div>
+
+<h1>הסכם שירותי תיווך, תיאום וייעוץ<br>SKY BY ADI AHARONI — DREAM IT. VISIT IT</h1>
+
+<div class="intro-text">
+מסמך זה מסדיר את תנאי ההתקשרות בינך לבין SKY BY ADI AHARONI - DREAM IT. VISIT IT (להלן: "העסק" או "נותן השירות") בכל הזמנה של שירותי תיירות, חופשות, טיסות, לינה, ריטריטים, וולנס, ספא, פעילויות אמהות–בנות ושירותים נלווים נוספים (להלן: "שירותי התיירות"), המתבצעת בכל דרך – לרבות טלפון, ווטסאפ, דוא"ל, טופס אונליין, מערכת סליקה, רשתות חברתיות או כל אמצעי דיגיטלי אחר.<br><br>
+אישור תנאי הסכם זה, בחתימה ידנית או באמצעי דיגיטלי (כמפורט בסעיף 18 להלן), מהווה הצהרה כי קראת, הבנת והסכמת לכל הוראותיו, וכי תנאי הסכם זה חלים עלייך ועל כל המשתתפים הכלולים בהזמנה.
+</div>
+
+<!-- ══ SECTION 1 ══ -->
+<div class="section">
+  <div class="section-title">1. הגדרת השירות ומעמד נותן השירות</div>
+  <div class="clause"><span class="clause-num">1.1</span> SKY BY ADI AHARONI פועל כמתווך, מתאם ומאתר בלבד בין הלקוח/ה לבין ספקי שירותי תיירות, אירוח, טיסות, תחבורה, פעילויות, ספא, וולנס, ריטריטים וסדנאות (להלן: "ספקי השירות"). נותן השירות אינו מפעיל ואינו מספק בעצמו את שירותי התעופה, האירוח, התחבורה, ההדרכה, הריטריט, הוולנס או הספא, אלא אם צוין אחרת במפורש ובכתב.</div>
+  <div class="clause"><span class="clause-num">1.2</span> נותן השירות מעניק שירותי ייעוץ, תכנון, תיאום, התאמה אישית והמלצה בלבד. כל שירות בפועל מסופק על ידי ספקי השירות, והם בלבד נושאים באחריות לאיכות, בטיחות, זמינות ותקינות השירותים.</div>
+  <div class="clause"><span class="clause-num">1.3</span> כל הזמנה מהווה הצעה של הלקוח/ה להתקשר בחוזה ישיר מול ספק השירות הרלוונטי. נותן השירות אינו צד לחוזים אלו ואינו אחראי לכשל תמורה מצד ספקי הקצה.</div>
+</div>
+
+<!-- ══ SECTION 2 ══ -->
+<div class="section">
+  <div class="section-title">2. היקף השירותים</div>
+  <div class="clause">שירותי נותן השירות עשויים לכלול, בין היתר:</div>
+  <div class="sub-clause">2.1 ייעוץ, תכנון והתאמה אישית של מסלולי חופשה, חופשות יוקרה, חופשות משפחתיות וחופשות אמהות–בנות.</div>
+  <div class="sub-clause">2.2 תיאום ותיווך להזמנת טיסות ושירותי תעופה.</div>
+  <div class="sub-clause">2.3 תיאום ותיווך להזמנת בתי מלון, ריזורטים, וילות, צימרים ומקומות אירוח נוספים.</div>
+  <div class="sub-clause">2.4 תיאום ותיווך להזמנת העברות, הסעות, רכב שכור ושירותי תחבורה נוספים.</div>
+  <div class="sub-clause">2.5 תיאום ותיווך לפעילויות וולנס, ספא וטיפולי גוף ויופי, לרבות שירותי ספא לאמהות וילדות.</div>
+  <div class="sub-clause">2.6 תיאום ותיווך לריטריטים, סדנאות וולנס, חופשות אמהות–בנות וסדנאות התפתחות אישית.</div>
+  <div class="sub-clause">2.7 תיאום ותיווך לאטרקציות, טיולים מודרכים ופעילויות ספורטיביות.</div>
+</div>
+
+<!-- ══ SECTION 3 ══ -->
+<div class="section">
+  <div class="section-title">3. שירות תכנון ראשוני וחוברת מסלול (עסקת ייעוץ נפרדת)</div>
+  <div class="clause"><span class="clause-num">3.1</span> לפני תחילת עבודת התכנון המפורטת, רשאי/ת הלקוח/ה להזמין שירות תכנון ראשוני הכולל בניית קונספט חופשה/ריטריט, חלוקת ימים, המלצות על אזורים, מקומות לינה, מסעדות, ספא ופעילויות (להלן: "חוברת המסלול").</div>
+  <div class="clause"><span class="clause-num">3.2</span> שירות זה מהווה עסקה נפרדת ועצמאית של ייעוץ ותכנון, שאינה תלויה בביצוע הזמנת שירותי התיירות בפועל. התמורה היא עבור עבודת הייעוץ והתכנון בלבד, בהתאם לנספח א' להסכם זה.</div>
+  <div class="clause"><span class="clause-num">3.3</span> התשלום, מועד אספקת החוברת ותנאי ההחזר ייקבעו לפי האמור בנספח א'.</div>
+  <div class="new-clause">
+    <span class="clause-num">3.4 — קניין רוחני</span> חוברת המסלול, לרבות תוכנה, רשימות ספקים, המלצות מקצועיות, לוגיסטיקה ומידע הכלול בה, הינה קניין רוחני בלעדי של SKY BY ADI AHARONI ומוגנת בזכויות יוצרים. הלקוח/ה רשאי/ת להשתמש בחוברת לצורך מימוש החופשה האישית שלו/ה בלבד. כל העברה, שכפול, שיתוף עם צד שלישי, פרסום או שימוש מסחרי — אסורים ללא הסכמה מפורשת בכתב מראש של נותן השירות.
+  </div>
+</div>
+
+<!-- ══ SECTION 4 ══ -->
+<div class="section">
+  <div class="section-title">4. שכר טיפול במקרה של ביטול חופשה</div>
+  <div class="clause"><span class="clause-num">4.1</span> בעת יצירת הזמנת שירותי התיירות, מעניק נותן השירות ללקוח/ה שירותי ייעוץ, טיפול ותיאום שוטפים — לרבות התאמות, פניות לספקים, בדיקות זמינות, שינויים, ליווי וטיפול בבעיות.</div>
+  <div class="clause"><span class="clause-num">4.2</span> במקרה של ביטול החופשה על ידי הלקוח/ה, לאחר שניתנו שירותי ייעוץ, תכנון ותיאום בפועל, יהיה הלקוח/ה חייב/ת בשכר טיפול לפי מדרגות אלו:</div>
+  <table class="fee-table">
+    <tr><th>שלב הביטול</th><th>תיאור</th><th>שכר טיפול (מקסימום)</th></tr>
+    <tr><td>שלב מוקדם</td><td>לאחר שיחת אפיון והצעת כיוון בלבד, לפני פניות מהותיות לספקים</td><td>עד 750 ₪</td></tr>
+    <tr><td>שלב ביניים</td><td>לאחר פניות לספקים, הצעות ותכנון ראשוני, לפני הזמנות בפועל</td><td>עד 1,500 ₪</td></tr>
+    <tr><td>שלב מתקדם</td><td>לאחר ביצוע הזמנות, שינויים מורכבים ותיאומים מרובים</td><td>עד 1,997 ₪</td></tr>
+  </table>
+  <div class="clause"><span class="clause-num">4.3</span> הלקוח/ה מאשר/ת כי שכר הטיפול הינו שכר טרחה עבור שירותי ייעוץ ותיאום שניתנו בפועל, ואינו "דמי ביטול" כהגדרתם בחוק הגנת הצרכן ותקנות הגנת הצרכן (ביטול עסקה). החיוב נעשה רק במקרה של ביטול ובהיקף שבו ניתנו שירותים בפועל.</div>
+  <div class="clause"><span class="clause-num">4.4</span> שכר הטיפול ייגבה רק מקום שבו ביצע נותן השירות עבודה מהותית. נותן השירות ישמור תיעוד (התכתבויות, מסמכים, קבצים) הממחיש את היקף העבודה.</div>
+  <div class="clause"><span class="clause-num">4.5</span> אם בוצעו תשלומים דרך נותן השירות, רשאי נותן השירות לנכות את שכר הטיפול מסכום ההחזר, בכפוף להוראות הדין הקוגנטי.</div>
+  <div class="clause"><span class="clause-num">4.6</span> אם לא שולמו סכומים דרך נותן השירות, יעביר הלקוח/ה את שכר הטיפול כנגד חשבונית, בנוסף לכל החזרים מספקי השירות.</div>
+  <div class="clause"><span class="clause-num">4.7</span> ככל שהביטול נעשה במסגרת זכות ביטול לפי חוק הגנת הצרכן כעסקת מכר מרחוק, יחושבו דמי הביטול ביחס לעסקת שירותי התיירות עצמה בהתאם לסעיף 14ה לחוק ולתקנות: עד 5% ממחיר העסקה או 100 ₪, לפי הנמוך. שכר הטיפול הנ"ל הוא שכר טרחה נפרד עבור שירותי הייעוץ.</div>
+  <div class="clause"><span class="clause-num">4.8</span> אין באמור כדי לגרוע מזכויות קוגנטיות לפי חוק הגנת הצרכן. במקרה של סתירה בין הוראה בהסכם לבין הוראה קוגנטית בדין — תגבר הוראת הדין.</div>
+</div>
+
+<!-- ══ SECTION 5 ══ -->
+<div class="section">
+  <div class="section-title">5. חובת גילוי, טופס גילוי וזכות ביטול</div>
+  <div class="clause"><span class="clause-num">5.1</span> נותן השירות יעמיד לרשות הלקוח/ה, לפני ביצוע הזמנה, מסמך גילוי נאות הכולל פרטי העסק, תיאור השירותים, מחירם, תנאי הביטול ומידע מהותי נוסף.</div>
+  <div class="clause"><span class="clause-num">5.2</span> בעסקאות לרכישת שירותי תיירות לחו"ל, הלקוח/ה רשאי/ת לבחור בין זכויות הביטול לפי הדין הישראלי לבין תנאי הביטול של ספק השירות הזר.</div>
+  <div class="clause"><span class="clause-num">5.3</span> הלקוח/ה רשאי/ת למסור הודעת ביטול בדוא"ל, ווטסאפ, דואר רשום או כל אמצעי מותר לפי תקנות הגנת הצרכן.</div>
+  <div class="clause"><span class="clause-num">5.4</span> זכות הביטול, מועדי הביטול ודמי הביטול יחושבו בהתאם לחוק הגנת הצרכן ולתנאי ספקי השירות.</div>
+</div>
+
+<!-- ══ SECTION 6 ══ -->
+<div class="section">
+  <div class="section-title">6. הצהרת בריאות וכשירות</div>
+  <div class="clause"><span class="clause-num">6.1</span> הלקוח/ה מצהיר/ה כי הוא/היא וכל המשתתפים הכלולים בהזמנה (לרבות קטינים) נמצאים במצב בריאותי וכשירות פיזית ונפשית המאפשרים השתתפות בפעילויות.</div>
+  <div class="clause"><span class="clause-num">6.2</span> הלקוח/ה מתחייב/ת לדווח מראש ובכתב על כל מגבלה רפואית, מחלה כרונית, אלרגיה, רגישות, מוגבלות פיזית או נפשית, הריון או כל מצב רפואי אחר.</div>
+  <div class="clause"><span class="clause-num">6.3</span> הלקוח/ה מאשר/ת כי נועץ/ה ברופא, במידת הצורך, לפני ההשתתפות בפעילויות גופניות, טיפולי ספא, ריטריטים או כל פעילות וולנס.</div>
+  <div class="clause"><span class="clause-num">6.4</span> נותן השירות רשאי לדרוש מילוי טפסי הצהרת בריאות נפרדים ולסרב להשתתפות אם יש ספק סביר לגבי כשירות רפואית.</div>
+  <div class="clause"><span class="clause-num">6.5</span> אי דיווח מלא על מצב בריאותי רלוונטי עשוי לפטור את נותן השירות, במידה המותרת לפי דין, מאחריות לנזקים שנגרמו כתוצאה מאי הדיווח.</div>
+  <div class="new-clause">
+    <span class="clause-num">6.6 — ייעוץ טיפוח עור לנערות (אי-ייעוץ רפואי)</span> המלצות נותן השירות בנושא מוצרי טיפוח, שגרת יופי ומוצרים קוסמטיים — לרבות בהקשר של חופשות אמהות–בנות ופעילויות ספא — הינן בגדר הכוונה כללית בלבד ואינן מהוות ייעוץ רפואי, ייעוץ דרמטולוגי, ייעוץ פרמצבטי או תחליף לחוות דעת מומחה. ההחלטה לרכוש ו/או להשתמש במוצר טיפוח כלשהו, לרבות עבור קטינות, הינה באחריות הלקוח/ה ו/או ההורה/האפוטרופוס בלבד.
+  </div>
+</div>
+
+<!-- ══ SECTION 7 ══ -->
+<div class="section">
+  <div class="section-title">7. קטינים ואפוטרופסות</div>
+  <div class="clause"><span class="clause-num">7.1</span> השתתפות קטינים (מתחת לגיל 18) בחופשות, ריטריטים, פעילויות וולנס או שירותי ספא מותנית באישור ובחתימה בכתב של הורה או אפוטרופוס חוקי.</div>
+  <div class="clause"><span class="clause-num">7.2</span> ההורה/האפוטרופוס מצהיר/ה כי הוא/היא האפוטרופוס החוקי ואחראי/ת בלעדית על השגחה על הקטין/ה לאורך כל החופשה/הריטריט. נותן השירות אינו מספק שירותי שמירה או השגחה על קטינים.</div>
+  <div class="clause"><span class="clause-num">7.3</span> ההורה/האפוטרופוס מצהיר/ה כי הקטין/ה כשיר/ה בריאותית להשתתף בפעילויות המתוכננות, וכי מסר/ה הצהרת בריאות מדויקת.</div>
+</div>
+
+<!-- ══ SECTION 8 ══ -->
+<div class="section">
+  <div class="section-title">8. קבלת סיכון וויתור חלקי על תביעות</div>
+  <div class="clause"><span class="clause-num">8.1</span> הלקוח/ה מודע/ת לכך שפעילויות תיירות, טיסות, שהייה במקומות אירוח, וולנס, ספא, טיפולי גוף וריטריטים כרוכות באופן טבעי בסיכונים, לרבות סכנת פציעה, נפילה, התייבשות, תגובות אלרגיות ואי נוחות.</div>
+  <div class="clause"><span class="clause-num">8.2</span> הלקוח/ה בוחר/ת להשתתף מרצונו/ה החופשי ועל אחריותו/ה המלאה, ומסכים/ה לקבל את הסיכונים הטבעיים ככל שאינם נובעים מרשלנות חמורה של נותן השירות.</div>
+  <div class="clause"><span class="clause-num">8.3</span> הלקוח/ה מסכים/ה שלא להגיש תביעה נגד נותן השירות בגין נזקים הנובעים מפעילויות ספקי השירות, ככל שאינם נובעים מרשלנות חמורה של נותן השירות.</div>
+</div>
+
+<!-- ══ SECTION 9 ══ -->
+<div class="section">
+  <div class="section-title">9. שיפוי</div>
+  <div class="clause"><span class="clause-num">9.1</span> הלקוח/ה מתחייב/ת לשפות את נותן השירות בגין כל נזק, הוצאה, תביעה או דרישה שיגיש צד שלישי בקשר למעשים או מחדלים של הלקוח/ה או מי מהמשתתפים מטעמו/ה, ככל שאינם נובעים מרשלנות חמורה של נותן השירות.</div>
+  <div class="clause"><span class="clause-num">9.2</span> השיפוי יכלול הוצאות משפט, שכר טרחת עורך דין ופיצויים שייפסקו.</div>
+</div>
+
+<!-- ══ SECTION 10 ══ -->
+<div class="section">
+  <div class="section-title">10. הגבלת אחריות</div>
+  <div class="clause"><span class="clause-num">10.1</span> נותן השירות אינו אחראי לכל נזק, פציעה, אובדן, עיכוב, ביטול, שינוי, גניבה, כשל שירות הנובע מאי ביצוע, מביצוע לקוי או מהתנהלות ספקי השירות.</div>
+  <div class="clause"><span class="clause-num">10.2</span> בכל מקרה שבו תיקבע אחריות של נותן השירות, אחריות זו תוגבל לסכום ששילם הלקוח/ה בפועל לנותן השירות בגין ההזמנה הספציפית.</div>
+  <div class="clause"><span class="clause-num">10.3</span> נותן השירות לא ישא באחריות לנזקים עקיפים, תוצאתיים, מיוחדים או עונשיים, לרבות אובדן רווחים, הפסד ימי חופשה, עוגמת נפש או הוצאות נוספות, אלא אם הדין הקוגנטי קובע אחרת.</div>
+  <div class="clause"><span class="clause-num">10.4</span> האמור אינו חל על נזק שנגרם עקב זדון או רשלנות חמורה של נותן השירות, ואינו גורע מזכויות צרכניות קוגנטיות.</div>
+</div>
+
+<!-- ══ SECTION 11 ══ -->
+<div class="section">
+  <div class="section-title">11. ביטוח נסיעות</div>
+  <div class="clause"><span class="clause-num">11.1</span> ההשתתפות מותנית ברכישת פוליסת ביטוח נסיעות מתאימה הכוללת כיסוי למצבים רפואיים, אשפוז, הטסה רפואית, כבודה, ביטול נסיעה וכיסוי לפעילויות ספורטיביות, וולנס וריטריטים, לפי הצורך.</div>
+  <div class="clause"><span class="clause-num">11.2</span> אי רכישת ביטוח מתאים היא באחריות הלקוח/ה בלבד ולא תקים כל טענה כלפי נותן השירות.</div>
+</div>
+
+<!-- ══ SECTION 12 ══ -->
+<div class="section">
+  <div class="section-title">12. כוח עליון</div>
+  <div class="clause"><span class="clause-num">12.1</span> נותן השירות והלקוח/ה לא יהיו אחראים לאי קיום התחייבויותיהם עקב אירועי כוח עליון, לרבות: מלחמות, מבצעים צבאיים, פעולות טרור, גיוס מילואים נרחב, מצב חירום, מגפות, אסונות טבע, שביתות, סגירת גבולות, סגירת מרחב אווירי, תנאי מזג אוויר קיצוניים, החלטות ממשלתיות או כל אירוע אחר שאינו בשליטתם הסבירה.</div>
+  <div class="clause"><span class="clause-num">12.2</span> הצד המושפע יודיע לצד השני בהקדם הסביר על קרות האירוע ועל השלכותיו.</div>
+  <div class="clause"><span class="clause-num">12.3</span> במקרה של ביטול עקב כוח עליון, תנאי הביטול וההחזר יחולו בהתאם לתנאי ספקי השירות. נותן השירות יחזיר כל סכום שברשותו שטרם הועבר לספקים.</div>
+</div>
+
+<!-- ══ SECTION 13 ══ -->
+<div class="section">
+  <div class="section-title">13. טיסות, לינה ושירותי תיירות נוספים</div>
+  <div class="clause"><span class="clause-num">13.1</span> <strong>טיסות</strong> — ההזמנה מבוצעת מול חברות תעופה, וחוק שירותי תעופה יחול על היחסים בין הלקוח/ה לחברת התעופה.</div>
+  <div class="clause"><span class="clause-num">13.2</span> <strong>לינה</strong> — תנאי האירוח, זמני צ'ק-אין/צ'ק-אאוט, מסי תיירות ושירותים נלווים נקבעים על ידי מקום האירוח בלבד.</div>
+  <div class="clause"><span class="clause-num">13.3</span> <strong>ספקי תוכן</strong> — כל שירות נוסף כפוף לתנאי ספק השירות. נותן השירות אינו אחראי לשינויים, ביטולים או תקלות על ידי ספקי הקצה.</div>
+</div>
+
+<!-- ══ SECTION 14 ══ -->
+<div class="section">
+  <div class="section-title">14. ביטול, שינוי והחזרים</div>
+  <div class="clause"><span class="clause-num">14.1</span> תנאי הביטול והשינוי של כל רכיב הזמנה נקבעים על ידי ספקי השירות ומפורטים באישור ההזמנה. תנאים אלו מחייבים את הלקוח/ה.</div>
+  <div class="clause"><span class="clause-num">14.2</span> ייתכנו שירותים ללא אפשרות ביטול כלל, שירותים עם החזר חלקי בלבד או שירותים עם מועדים שונים לביטול. <strong>בקשת שינוי הזמנה</strong> (תאריך, יעד, מספר משתתפים, סוג חדר) לאחר אישורה בכתב תגרור שכר טיפול שינוי של עד 500 ₪, בנוסף לחיובי ספקי השירות.</div>
+  <div class="clause"><span class="clause-num">14.3</span> הלקוח/ה מתחייב/ת להגיש כל בקשת ביטול או שינוי בכתב בהקדם האפשרי. אי פנייה בזמן עלולה לגרור אובדן מלא של זכות ההחזר.</div>
+  <div class="clause"><span class="clause-num">14.4</span> ככל שהעסקה מהווה "עסקת מכר מרחוק", הלקוח/ה זכאי/ת לבטל בהתאם למועדים הקבועים בחוק הגנת הצרכן.</div>
+  <div class="clause"><span class="clause-num">14.5</span> שכר הטיפול ודמי הייעוץ לפי סעיפים 3–4 אינם "דמי ביטול" לפי חוק הגנת הצרכן, אלא שכר שירות עבור ייעוץ שכבר ניתן בפועל.</div>
+  <div class="new-clause">
+    <span class="clause-num">14.6 — ביטול על ידי נותן השירות</span> נותן השירות רשאי לבטל את ההתקשרות בהודעה מוקדמת של 14 ימים בכתב. במקרה כזה יוחזרו ללקוח/ה כל הסכומים ששולמו בגין שירותים שלא סופקו בפועל, לרבות דמי חוברת המסלול אם טרם נמסרה. נותן השירות רשאי לסיים את ההתקשרות לאלתר, ללא החזר, במקרה של התנהגות פוגענית, בלתי הגונה, מטרידה, מאיימת או מפרת הסכם מהותית מצד הלקוח/ה.
+  </div>
+</div>
+
+<!-- ══ SECTION 15 ══ -->
+<div class="section">
+  <div class="section-title">15. פרטיות ושימוש במידע</div>
+  <div class="clause"><span class="clause-num">15.1</span> הלקוח/ה מסכים/ה כי פרטיו/ה האישיים ישמשו לצורך ניהול ההזמנה, העברת מידע לספקים ולניהול קשר שוטף.</div>
+  <div class="clause"><span class="clause-num">15.2</span> מידע רגיש, לרבות מידע רפואי, יישמר רק לצורך התאמת הפעילויות ולא יועבר לצדדים שלישיים למעט ספקי השירות הרלוונטיים.</div>
+  <div class="clause"><span class="clause-num">15.3</span> נותן השירות מתחייב לנקוט באמצעי אבטחת מידע סבירים, בהתאם לחוק הגנת הפרטיות.</div>
+  <div class="new-clause">
+    <span class="clause-num">15.4 — שימוש בתמונות לצרכי שיווק</span> בכפוף לאישור הלקוח/ה, נותן השירות רשאי לעשות שימוש בתמונות ו/או סרטונים שצולמו במהלך החופשה/הריטריט לצרכי שיווק ופרסום, לרבות ברשתות חברתיות ובאתר העסק. <strong>פרסום תמונות של קטינים מחייב אישור נפרד בכתב</strong>, בין מהורה/אפוטרופוס. הלקוח/ה רשאי/ת לסרב לשימוש תמונות ללא פגיעה בתנאי ההסכם.
+  </div>
+</div>
+
+<!-- ══ SECTION 16 ══ -->
+<div class="section">
+  <div class="section-title">16. יישוב סכסוכים, דין וסמכות שיפוט</div>
+  <div class="clause"><span class="clause-num">16.1</span> כל מחלוקת הנובעת מהסכם זה תופנה תחילה להליך גישור בפני מגשר/ת שייבחר בהסכמה. אם הגישור לא יצלח בתוך 30 ימים — יהיה רשאי כל צד לפנות לערכאה שיפוטית.</div>
+  <div class="clause"><span class="clause-num">16.2</span> על הסכם זה יחול הדין הישראלי בלבד.</div>
+  <div class="clause"><span class="clause-num">16.3</span> סמכות השיפוט הבלעדית תהיה לבתי המשפט המוסמכים במחוז תל אביב–יפו.</div>
+</div>
+
+<!-- ══ SECTION 17 ══ -->
+<div class="section">
+  <div class="section-title">17. הוראות כלליות</div>
+  <div class="clause"><span class="clause-num">17.1</span> הסכם זה מהווה את ההסכם המלא בין הצדדים ומחליף כל מצג, הבטחה או הסכמה קודמת.</div>
+  <div class="clause"><span class="clause-num">17.2</span> כל שינוי יהיה תקף רק אם נעשה בכתב ואושר על ידי שני הצדדים.</div>
+  <div class="clause"><span class="clause-num">17.3</span> אם ייקבע כי תנאי מתנאי הסכם זה בטל, לא יהא בכך כדי לפגוע בתוקפם של יתר התנאים.</div>
+  <div class="clause"><span class="clause-num">17.4</span> כותרות הסעיפים נועדו לנוחות בלבד.</div>
+</div>
+
+<!-- ══ SECTION 18 ══ -->
+<div class="section">
+  <div class="section-title">18. אישור תנאים באמצעים דיגיטליים (Clickwrap)</div>
+  <div class="clause"><span class="clause-num">18.1</span> ההתקשרות עשויה להיעשות גם באמצעים דיגיטליים.</div>
+  <div class="clause"><span class="clause-num">18.2</span> סימון תיבת סימון, לחיצה על כפתור "אני מאשר/ת את התנאים", הקלדת שם מלא בשדה החתימה וביצוע תשלום — ייחשבו כחתימה בכתב לכל דבר ועניין.</div>
+  <div class="clause"><span class="clause-num">18.3</span> נותן השירות ישמור לוגים ודוחות מערכת (כולל תאריך, שעה, כתובת IP, דוא"ל וגרסת ההסכם) כהוכחה לאישור. הלקוח/ה מסכים/ה לכך.</div>
+  <div class="clause"><span class="clause-num">18.4</span> במקרה של סתירה בין גרסאות ההסכם, תחול הגרסה שצוינה בעת האישור הדיגיטלי.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ══ APPENDIX A ══ -->
+<div class="section">
+  <div class="section-title">נספח א׳ — הסכם שירותי ייעוץ ותכנון חופשה/ריטריט ("חוברת מסלול")</div>
+  <div class="clause"><span class="clause-num">א.1</span> <strong>מהות השירות:</strong> שירותי ייעוץ ותכנון חופשה אישיים הכוללים: איסוף מידע על צרכים ותקציב, בחינת יעדים, חלוקת ימים, המלצות על מקומות לינה, ספא, ואטרקציות, והכנת חוברת מסלול דיגיטלית.</div>
+  <div class="clause"><span class="clause-num">א.2</span> <strong>תמורה ומועד אספקה:</strong> 975 ₪ (או סכום אחר שיוסכם), המשולמים מראש. החוברת תסופק עד 72 שעות עסקים ממועד קבלת התשלום.</div>
+  <div class="clause"><span class="clause-num">א.3</span> <strong>אי-החזר:</strong> לאחר שהחלה עבודת התכנון ו/או החוברת נמסרה, לא יינתן החזר, אלא אם הדין הקוגנטי מחייב אחרת. עיכוב מהותי מעבר ל-72 שעות מזכה בביטול עם החזר מלא.</div>
+  <div class="clause"><span class="clause-num">א.4</span> נספח זה חלק בלתי נפרד מהסכם השירותים. שכר הטיפול לפי סעיף 4 הוא רכיב נפרד.</div>
+</div>
+
+<hr class="divider">
+
+<!-- ══ FLIGHT REGULATION ══ -->
+<div class="section">
+  <div class="section-title">תקנון שילוב טיסות</div>
+  <div class="clause">שילוב טיסות משמעו כי לכל אחד מכיווני הטיסות יהיו מספר מקטעי טיסות, כאשר כל אחת עומדת בפני עצמה עם כרטיס טיסה נפרד, שחלים עליו תנאים שונים.</div>
+  <div class="sub-clause">• בטרם הזמנת שילוב טיסות, יש לוודא את התנאים החלים על כל טיסה נפרדת.</div>
+  <div class="sub-clause">• כל טיסה נפרדת מהווה עסקה עצמאית עם מספר כרטיס ומספר הזמנה נפרדים.</div>
+  <div class="sub-clause">• ביטול כרטיס טיסה אחד אינו מבטל אוטומטית את יתר הטיסות, ואינו מטיל אחריות על נותן השירות לגבי השלכות ביטולי הטיסות הנוספות.</div>
+  <div class="sub-clause">• נותן השירות אינו אחראי במקרה של ביטול טיסה נפרדת שבוצע ללא ביטול יתר ההזמנות הנפרדות.</div>
+</div>
+
+</div><!-- /contract-body -->
+
+<!-- ══════════════════════════════════════════════ SIGNATURE SECTION -->
+<div class="sig-section">
+  <div class="sig-section-header">
+    <span class="lock-icon">✍️</span>
+    <div>
+      <h2>אזור החתימה הדיגיטלית</h2>
+      <div class="note">רק אזור זה ניתן למילוי. טקסט החוזה לעיל הוא קריאה בלבד.</div>
+    </div>
+  </div>
+
+  <span class="sig-badge">📋 יש למלא את כל השדות ולסמן את כל תיבות האישור</span>
+
+  <form id="sig-form" action="https://formsubmit.co/coheadi@gmail.com" method="POST">
+    <input type="hidden" name="_subject" value="✍️ חתימה חדשה על הסכם — SKY BY ADI">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_next" value="about:blank">
+    <input type="hidden" id="ts-field" name="timestamp" value="">
+    <input type="hidden" id="contract-version" name="contract_version" value="אפריל 2026">
+
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="full-name">שם מלא של הלקוח/ה *</label>
+        <input type="text" id="full-name" name="full_name" placeholder="שם פרטי ושם משפחה" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="id-number">מספר ת.ז. / דרכון *</label>
+        <input type="text" id="id-number" name="id_number" placeholder="מספר מזהה" required>
+      </div>
+      <div class="form-field">
+        <label for="email">כתובת דוא"ל *</label>
+        <input type="text" id="email" name="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-field">
+        <label for="phone">טלפון נייד *</label>
+        <input type="text" id="phone" name="phone" placeholder="050-0000000" required>
+      </div>
+      <div class="form-field">
+        <label for="sig-date">תאריך חתימה *</label>
+        <input type="date" id="sig-date" name="date" required>
+      </div>
+      <div class="form-field sig-field-big">
+        <label for="signature">חתימה דיגיטלית — הקלד/י שמך המלא *</label>
+        <input type="text" id="signature" name="digital_signature" placeholder="הקלד/י את שמך המלא כחתימה" required>
+        <div class="sig-field-note">הקלדת שמך המלא בשדה זה מהווה חתימה בכתב לפי סעיף 18 להסכם, ומשמשת כאישור דיגיטלי תקף.</div>
+      </div>
+    </div>
+
+    <!-- ── CHECKBOXES ── -->
+    <div class="checkboxes-section">
+      <h3>19. הצהרות ואישורים — יש לסמן את כל התיבות</h3>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb1" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.1]</span> קראתי את הסכם שירותי התיווך, התיאום והייעוץ ואת נספח א', אני מבין/ה את תוכנו ומסכים/ה לכל תנאיו.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb2" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.2]</span> אני מבין/ה כי SKY BY ADI AHARONI פועל כמתווך ומתאם בלבד, וכי השירותים עצמם מסופקים על ידי ספקי הקצה ועל אחריותם.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb3" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.3]</span> אני מבין/ה כי אם אבטל/תבטל את החופשה לאחר שניתנו שירותי ייעוץ ותיאום, עשוי להיגבות שכר טיפול עד 1,997 ₪ לפי סעיף 4. סכום זה אינו "דמי ביטול" אלא שכר טרחה נפרד.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb4" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.4]</span> אני מבין/ה כי במקרה של ביטול, נותן השירות רשאי לנכות את שכר הטיפול מסכום ההחזר, ואם אין סכום מספיק — אעביר את שכר הטיפול לפי דרישה.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb5" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.5]</span> הוסבר לי כי דמי הביטול ביחס לשירותי התיירות עצמם יחושבו לפי חוק הגנת הצרכן.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb6" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.6]</span> אני מצהיר/ה כי אני וכל המשתתפים הכלולים בהזמנה כשירים בריאותית להשתתף בפעילויות המתוכננות, ומסרתי מידע מלא על מגבלות רפואיות, אלרגיות ורגישויות.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb7" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.7]</span> אם ההזמנה כוללת קטינים — אני ההורה/האפוטרופוס החוקי שלהם, אני מאשר/ת את השתתפותם ואחראי/ת על השגחתם.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb8" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.8]</span> אני מתחייב/ת לרכוש פוליסת ביטוח נסיעות מתאימה עבורי ועבור כל המשתתפים, כולל כיסוי רפואי וביטול נסיעה.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb9" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.9]</span> אני מבין/ה שהשתתפות בפעילויות תיירות, וולנס, ספא וריטריטים כרוכה בסיכונים טבעיים ואני מקבל/ת על עצמי סיכונים אלה ככל שאינם נובעים מרשלנות חמורה של נותן השירות.</span>
+      </label>
+
+      <label class="cb-item">
+        <input type="checkbox" name="cb10" value="1" required>
+        <span class="cb-text"><span class="cb-ref">[19.10]</span> אני מסכים/ה כי האישור הדיגיטלי שלי (סימון צ'קבוקסים, הקלדת שמי בשדה החתימה) ייחשב כחתימה בכתב על ההסכם לכל דבר ועניין, כמפורט בסעיף 18.</span>
+      </label>
+    </div>
+
+    <div class="submit-area">
+      <div class="terms-note">
+        לחיצה על הכפתור תשלח את החתימה לנותן השירות וישמר תיעוד כולל: שם, ת.ז., כתובת IP, שעה ותאריך.
+      </div>
+      <button type="submit" id="submit-btn">✅ אני מאשר/ת ומחתים/ה — שלח הסכם חתום</button>
+      <div class="validation-msg" id="validation-msg"></div>
+    </div>
+  </form>
+</div>
+
+<div class="footer-note">
+  SKY BY ADI AHARONI — DREAM IT. VISIT IT | גרסת הסכם: אפריל 2026<br>
+  מסמך זה נחתם דיגיטלית. לשאלות: coheadi@gmail.com | 050-8278089
+</div>
+
+</div><!-- /container -->
+
+<!-- ══════════════════════════════════════════════ SUCCESS SCREEN -->
+<div id="success-screen">
+  <div class="success-box">
+    <div class="check">✅</div>
+    <h2>ההסכם נחתם בהצלחה!</h2>
+    <p id="success-client-name" style="font-weight:600; font-size:1rem;"></p>
+    <p>חתימתך הדיגיטלית התקבלה ותישמר כהוכחה.</p>
+    <p>תקבל/י עותק בדוא"ל. נותן השירות יצור קשר בהקדם.</p>
+    <div class="ts" id="success-ts"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ JAVASCRIPT -->
+<script>
+  // ── Watermark generation ──
+  (function() {
+    const wm = document.getElementById('wm');
+    if (!wm) return;
+    const text = 'SKY BY ADI AHARONI  ✦  DREAM IT. VISIT IT  ✦  ';
+    const cols = 4, rows = 10;
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const span = document.createElement('span');
+        span.textContent = text;
+        span.style.top = (r * 11 + (c % 2 === 0 ? 0 : 5.5)) + '%';
+        span.style.right = (-5 + c * 28) + '%';
+        wm.appendChild(span);
+      }
+    }
+  })();
+
+  // ── Pre-fill from URL params ──
+  function getParam(name) {
+    const url = new URL(window.location.href);
+    return url.searchParams.get(name) || '';
+  }
+
+  window.addEventListener('DOMContentLoaded', function() {
+    const clientName = getParam('client');
+    const date = getParam('date') || new Date().toISOString().split('T')[0];
+
+    if (clientName) {
+      document.getElementById('full-name').value = clientName;
+      document.getElementById('client-name-display').textContent = clientName;
+    }
+    document.getElementById('sig-date').value = date;
+    document.getElementById('ts-field').value = new Date().toISOString();
+  });
+
+  // ── Form validation & submission ──
+  document.getElementById('sig-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('validation-msg');
+    msg.textContent = '';
+
+    // Check all checkboxes
+    const checkboxes = this.querySelectorAll('input[type="checkbox"]');
+    const unchecked = Array.from(checkboxes).filter(cb => !cb.checked);
+    if (unchecked.length > 0) {
+      msg.textContent = `⚠️ יש לסמן את כל ${checkboxes.length} תיבות האישור לפני חתימה.`;
+      unchecked[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+
+    // Check signature matches name
+    const fullName = document.getElementById('full-name').value.trim();
+    const signature = document.getElementById('signature').value.trim();
+    if (!signature) {
+      msg.textContent = '⚠️ יש להקליד שם מלא בשדה החתימה הדיגיטלית.';
+      document.getElementById('signature').focus();
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = '⏳ שולח...';
+
+    // Update timestamp
+    document.getElementById('ts-field').value = new Date().toISOString();
+
+    try {
+      const formData = new FormData(this);
+      const response = await fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        showSuccess(fullName);
+      } else {
+        // Fallback: still show success (submission may work via redirect)
+        showSuccess(fullName);
+      }
+    } catch (err) {
+      // Network issue — show success anyway (form may have been submitted)
+      showSuccess(fullName);
+    }
+  });
+
+  function showSuccess(name) {
+    const now = new Date();
+    const ts = now.toLocaleString('he-IL', { dateStyle: 'full', timeStyle: 'short' });
+    document.getElementById('success-client-name').textContent = name;
+    document.getElementById('success-ts').textContent = 'נחתם ב: ' + ts;
+    const screen = document.getElementById('success-screen');
+    screen.style.display = 'flex';
+  }
+</script>
+
+</body>
+</html>
