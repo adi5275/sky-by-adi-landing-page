@@ -85,19 +85,23 @@
       border-radius: 50%;
       border: 2px solid var(--gold);
       object-fit: cover;
-      object-position: center 12%;  /* פנים עדי — ראש ממוצב בחלק העליון */
+      object-position: center top;  /* תמונה אותנטית — פנים בחלק העליון */
       display: block;
       margin: 0 auto 12px;
       box-shadow: 0 0 0 4px rgba(194,160,96,0.22);
     }
-    .header .logo-svg {
-      margin-bottom: 10px;
+    .logo-card {
+      background: rgba(255,255,255,0.94);
+      border-radius: 10px;
+      padding: 7px 16px 5px;
+      display: inline-block;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.22);
     }
-    .header .brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--gold);
-      letter-spacing: 2px;
+    .logo-card .logo-img {
+      height: 72px;
+      width: auto;
+      display: block;
     }
     .header .tagline {
       font-family: 'Heebo', sans-serif;
@@ -571,39 +575,10 @@
 <!-- ══════════════════════════════════════════════ HEADER -->
 <div class="header">
   <!-- SVG Logo: Lotus + Plane -->
-  <div class="logo-svg">
-    <!--
-      לוגו SKY BY ADI — עיצוב נאמן למקור:
-      "Sky" בפלייפייר דיספליי איטליק + מסלול טיסה מעוגל + מטוס בפינה ימין-עליון
-    -->
-    <svg width="152" height="74" viewBox="0 0 152 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- "Sky" — Playfair Display italic, gold -->
-      <text x="2" y="60"
-            font-family="'Playfair Display', Georgia, serif"
-            font-style="italic"
-            font-size="56"
-            fill="#C2A060">Sky</text>
-
-      <!-- מסלול טיסה מעוגל מה-y כלפי מעלה-ימין -->
-      <path d="M 90 22 Q 113 7 135 3"
-            stroke="#C2A060" stroke-width="1.6" fill="none" stroke-linecap="round"/>
-
-      <!-- מטוס בקצה המסלול — מסובב ~−40° (מועד צפון-מזרח) -->
-      <g transform="translate(135,3) rotate(-40)">
-        <!-- גוף המטוס — האף מצביע לימין (+x) -->
-        <path d="M 11 0 C 7 -2 -3 -2.5 -10 -1.5 L -10 1.5 C -3 2.5 7 2 11 0 Z"
-              fill="#C2A060"/>
-        <!-- כנף שמאל (port) -->
-        <path d="M 1 -1.5 L -5 -11 L -0.5 -2 Z" fill="#C2A060"/>
-        <!-- כנף ימין (starboard) -->
-        <path d="M 1 1.5 L -5 11 L -0.5 2 Z" fill="#C2A060"/>
-        <!-- סנפיר זנב אנכי -->
-        <path d="M -7 -1.5 L -13 -6.5 L -8.5 -1.5 Z" fill="#C2A060"/>
-      </g>
-    </svg>
+  <div class="logo-card">
+    <img src="sky-adi-logo.png" class="logo-img" alt="Sky by ADI AHARONI">
   </div>
   <img src="adi-photo.png" alt="עדי אהרוני" class="adi-portrait">
-  <div class="brand">SKY BY ADI AHARONI</div>
   <div class="tagline">DREAM IT &nbsp;·&nbsp; VISIT IT</div>
   <div class="doc-title">הסכם שירותי תיווך, תיאום וייעוץ</div>
 </div>
@@ -888,24 +863,9 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
         <label for="phone">טלפון נייד *</label>
         <input type="text" id="phone" name="phone" placeholder="050-0000000" required>
       </div>
-      <div class="form-field">
-        <label for="sig-date">תאריך חתימה *</label>
-        <input type="text" id="sig-date" name="date" placeholder="יום/חודש/שנה — למשל: 15/04/2026" required>
-      </div>
-      <!-- פד חתימה — חתמ/י עם האצבע או העכבר -->
-      <div class="sig-canvas-wrapper">
-        <div class="sig-canvas-label">חתימה — רשמ/י עם האצבע (מובייל) או העכבר *</div>
-        <div class="canvas-frame" id="canvas-frame">
-          <canvas id="sig-canvas"></canvas>
-          <div class="canvas-hint" id="canvas-hint">✍&nbsp; חתמ/י כאן</div>
-        </div>
-        <button type="button" class="sig-clear-btn" onclick="clearSig()">✕ נקה חתימה</button>
-        <input type="hidden" id="sig-data" name="digital_signature" value="">
-        <div class="sig-field-note">החתימה הגרפית תישמר יחד עם חותמת זמן ותופיע בעותק ה-PDF.</div>
-      </div>
     </div>
 
-    <!-- ── CHECKBOXES ── -->
+    <!-- ── CHECKBOXES — סעיף 19: קריאה ואישור לפני חתימה ── -->
     <div class="checkboxes-section">
       <h3>19. הצהרות ואישורים — יש לסמן את כל התיבות</h3>
 
@@ -958,6 +918,25 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
         <input type="checkbox" name="cb10" value="1" required>
         <span class="cb-text"><span class="cb-ref">[19.10]</span> אני מסכים/ה כי האישור הדיגיטלי שלי (סימון צ'קבוקסים, הקלדת שמי בשדה החתימה) ייחשב כחתימה בכתב על ההסכם לכל דבר ועניין, כמפורט בסעיף 18.</span>
       </label>
+    </div>
+
+    <!-- ── תאריך וחתימה — אחרי אישור כל התיבות ── -->
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="sig-date">תאריך חתימה *</label>
+        <input type="text" id="sig-date" name="date" placeholder="יום/חודש/שנה — למשל: 15/04/2026" required>
+      </div>
+      <!-- פד חתימה — חתמ/י עם האצבע או העכבר -->
+      <div class="sig-canvas-wrapper">
+        <div class="sig-canvas-label">חתימה — רשמ/י עם האצבע (מובייל) או העכבר *</div>
+        <div class="canvas-frame" id="canvas-frame">
+          <canvas id="sig-canvas"></canvas>
+          <div class="canvas-hint" id="canvas-hint">✍&nbsp; חתמ/י כאן</div>
+        </div>
+        <button type="button" class="sig-clear-btn" onclick="clearSig()">✕ נקה חתימה</button>
+        <input type="hidden" id="sig-data" name="digital_signature" value="">
+        <div class="sig-field-note">החתימה הגרפית תישמר יחד עם חותמת זמן ותופיע בעותק ה-PDF.</div>
+      </div>
     </div>
 
     <div class="submit-area">
