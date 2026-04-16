@@ -84,15 +84,29 @@
       background-image: radial-gradient(ellipse at 20% 80%, rgba(255,255,255,0.08) 0%, transparent 60%),
                         radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
     }
-    .header .logo-svg {
-      margin-bottom: 10px;
+    .logo-card {
+      background: rgba(255,255,255,0.94);
+      border-radius: 10px;
+      padding: 7px 16px 5px;
+      display: inline-block;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.22);
     }
-    .header .brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: #5A4008;   /* ברונזה כהה על פיסטוק */
-      letter-spacing: 2px;
-      text-shadow: 0 1px 2px rgba(255,255,255,0.3);
+    .logo-card .logo-img {
+      height: 72px;
+      width: auto;
+      display: block;
+    }
+    .adi-portrait {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 2px solid rgba(139,101,20,0.8);
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      margin: 0 auto 12px;
+      box-shadow: 0 0 0 4px rgba(139,101,20,0.18);
     }
     .header .tagline {
       font-family: 'Heebo', sans-serif;
@@ -343,6 +357,58 @@
       background: white;
     }
 
+    .sig-canvas-wrapper {
+      grid-column: 1 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+    .sig-canvas-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .canvas-frame {
+      position: relative;
+      background: #fffef8;
+      border: 2px dashed rgba(139,101,20,0.5);
+      border-radius: 6px;
+      height: 120px;
+      overflow: hidden;
+    }
+    .canvas-frame.signed { border-style: solid; }
+    #sig-canvas {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      touch-action: none;
+      cursor: crosshair;
+    }
+    .canvas-hint {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: rgba(139,101,20,0.35);
+      transition: opacity 0.3s;
+    }
+    .sig-clear-btn {
+      align-self: flex-end;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 3px 12px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.74rem;
+      color: #aaa;
+      cursor: pointer;
+    }
+    .sig-clear-btn:hover { color: #c0392b; border-color: #c0392b; }
     .sig-field-big {
       grid-column: 1 / -1;
     }
@@ -427,6 +493,19 @@
     }
 
     /* ── SUCCESS SCREEN ── */
+    .print-btn {
+      display: inline-block;
+      margin-top: 14px;
+      background: var(--green);
+      color: white;
+      border: none;
+      padding: 10px 24px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      font-family: 'Heebo', sans-serif;
+      border-radius: 6px;
+      cursor: pointer;
+    }
     #success-screen {
       display: none;
       position: fixed;
@@ -477,32 +556,12 @@
 
 <!-- ══════════════════════════════════════════════ HEADER -->
 <div class="header">
-  <!-- SVG Logo: Lotus + Plane -->
-  <div class="logo-svg">
-    <!-- לוגו SKY BY ADI — לוטוס line-art + מטוס -->
-    <svg width="80" height="68" viewBox="0 0 80 68" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- עלי לוטוס חיצוניים -->
-      <path d="M40 63 C24 57 11 44 14 29 C17 16 30 19 40 36 C50 19 63 16 66 29 C69 44 56 57 40 63Z"
-            stroke="#8B6514" stroke-width="1.7" fill="none" stroke-linejoin="round"/>
-      <!-- עלי לוטוס אמצעיים -->
-      <path d="M40 56 C29 49 24 37 27 24 C29 14 37 17 40 31 C43 17 51 14 53 24 C56 37 51 49 40 56Z"
-            stroke="#8B6514" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
-      <!-- עלה מרכזי -->
-      <path d="M40 50 C37 40 37 27 40 17 C43 27 43 40 40 50Z"
-            stroke="#8B6514" stroke-width="1.4" fill="none"/>
-      <!-- קווי מים בבסיס -->
-      <path d="M22 66 Q40 63 58 66" stroke="#8B6514" stroke-width="1.1" stroke-linecap="round" opacity="0.45"/>
-      <!-- מטוס — יוצא מהלוטוס לכיוון ימין-עליון -->
-      <g transform="translate(50, 2) rotate(-28)">
-        <path d="M0,5 L13,0 L11,5 L15,4 L13,8 L8,8 L6,12 L3,10 Z"
-              fill="#8B6514" stroke="#8B6514" stroke-width="0.4" stroke-linejoin="round"/>
-      </g>
-    </svg>
+  <div class="logo-card">
+    <img src="sky-adi-logo.png" class="logo-img" alt="Sky by ADI AHARONI">
   </div>
-  <div class="brand">SKY BY ADI AHARONI</div>
+  <img src="adi-headshot.png" alt="עדי אהרוני" class="adi-portrait">
   <div class="tagline">DREAM IT &nbsp;·&nbsp; VISIT IT</div>
   <div class="doc-title">הסכם שירותי תיווך, תיאום וייעוץ</div>
-  <div class="version-badge">גרסה מעודכנת | אפריל 2026</div>
 </div>
 
 <!-- ══════════════════════════════════════════════ PARTY BOX -->
@@ -510,8 +569,8 @@
   <div class="party">
     <div class="label">נותן השירות</div>
     <div class="name">SKY BY ADI AHARONI</div>
-    <div class="detail">עדי אהרוני | עוסק מורשה מס׳ ___________</div>
-    <div class="detail">כתובת: ___________________________</div>
+    <div class="detail">עדי אהרוני | עוסק מורשה מס׳ 031459084</div>
+    <div class="detail">כתובת: המרגנית 6, חולון</div>
     <div class="detail">טל׳: 050-8278089 | coheadi@gmail.com</div>
   </div>
   <div class="party">
@@ -739,7 +798,7 @@
 </div><!-- /contract-body -->
 
 <!-- ══════════════════════════════════════════════ SIGNATURE SECTION -->
-<div class="sig-section">
+<div class="sig-section" id="sig-section">
   <div class="sig-section-header">
     <span class="lock-icon">✍️</span>
     <div>
@@ -775,24 +834,15 @@
         <label for="phone">טלפון נייד *</label>
         <input type="text" id="phone" name="phone" placeholder="050-0000000" required>
       </div>
-      <div class="form-field">
-        <label for="sig-date">תאריך חתימה *</label>
-        <input type="date" id="sig-date" name="date" required>
-      </div>
-      <div class="form-field sig-field-big">
-        <label for="signature">חתימה דיגיטלית — הקלד/י שמך המלא *</label>
-        <input type="text" id="signature" name="digital_signature" placeholder="הקלד/י את שמך המלא כחתימה" required>
-        <div class="sig-field-note">הקלדת שמך המלא בשדה זה מהווה חתימה בכתב לפי סעיף 18 להסכם, ומשמשת כאישור דיגיטלי תקף.</div>
-      </div>
     </div>
 
-    <!-- ── CHECKBOXES ── -->
+    <!-- ── CHECKBOXES — סעיף 19: קריאה ואישור לפני חתימה ── -->
     <div class="checkboxes-section">
       <h3>19. הצהרות ואישורים — יש לסמן את כל התיבות</h3>
 
       <label class="cb-item">
         <input type="checkbox" name="cb1" value="1" required>
-        <span class="cb-text"><span class="cb-ref">[19.1]</span> קראתי את הסכם שירותי התיווך, התיאום והייעוץ ואת נספח א', אני מבין/ה את תוכנו ומסכים/ה לכל תנאיו.</span>
+        <span class="cb-text"><span class="cb-ref">[19.1]</span> קראתי את הסכם שירותי התיווך, התיאום והייעוץ במלואו, הבנתי את תוכנו ומסכים/ה לכל תנאיו. אם הזמנתי שילוב טיסות — קראתי וחתמתי גם על נספח א' בנפרד.</span>
       </label>
 
       <label class="cb-item">
@@ -841,6 +891,24 @@
       </label>
     </div>
 
+    <!-- ── תאריך וחתימה — אחרי אישור כל התיבות ── -->
+    <div class="form-grid">
+      <div class="form-field">
+        <label for="sig-date">תאריך חתימה *</label>
+        <input type="text" id="sig-date" name="date" placeholder="יום/חודש/שנה — למשל: 15/04/2026" required>
+      </div>
+      <div class="sig-canvas-wrapper">
+        <div class="sig-canvas-label">חתימה — רשמ/י עם האצבע (מובייל) או העכבר *</div>
+        <div class="canvas-frame" id="canvas-frame">
+          <canvas id="sig-canvas"></canvas>
+          <div class="canvas-hint" id="canvas-hint">✍&nbsp; חתמ/י כאן</div>
+        </div>
+        <button type="button" class="sig-clear-btn" onclick="clearSig()">✕ נקה חתימה</button>
+        <input type="hidden" id="sig-data" name="digital_signature" value="">
+        <div class="sig-field-note">החתימה הגרפית תישמר יחד עם חותמת זמן ותופיע בעותק ה-PDF.</div>
+      </div>
+    </div>
+
     <div class="submit-area">
       <div class="terms-note">
         לחיצה על הכפתור תשלח את החתימה לנותן השירות וישמר תיעוד כולל: שם, ת.ז., כתובת IP, שעה ותאריך.
@@ -864,109 +932,154 @@
     <div class="check">✅</div>
     <h2>ההסכם נחתם בהצלחה!</h2>
     <p id="success-client-name" style="font-weight:600; font-size:1rem;"></p>
-    <p>חתימתך הדיגיטלית התקבלה ותישמר כהוכחה.</p>
-    <p>תקבל/י עותק בדוא"ל. נותן השירות יצור קשר בהקדם.</p>
+    <p>חתימתך הגרפית התקבלה ונשמרה עם חותמת זמן.</p>
+    <p>📧 <strong>עותק אישור</strong> נשלח לכתובת הדוא"ל שהזנת.</p>
+    <p style="font-size:0.82rem; color:#777; margin-top:4px;">עדי אהרוני קיבלה עותק נפרד — היא תיצור קשר בהקדם.</p>
+    <button class="print-btn" onclick="printContract()">💾 שמור / הדפס עותק חתום</button>
     <div class="ts" id="success-ts"></div>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════ JAVASCRIPT -->
 <script>
-  // ── Watermark generation ──
+  // ── Watermark ──
   (function() {
     const wm = document.getElementById('wm');
     if (!wm) return;
     const text = 'SKY BY ADI AHARONI  ✦  DREAM IT. VISIT IT  ✦  ';
-    const cols = 4, rows = 10;
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const span = document.createElement('span');
-        span.textContent = text;
-        span.style.top = (r * 11 + (c % 2 === 0 ? 0 : 5.5)) + '%';
-        span.style.right = (-5 + c * 28) + '%';
-        wm.appendChild(span);
-      }
+    for (let r = 0; r < 10; r++) for (let c = 0; c < 4; c++) {
+      const s = document.createElement('span');
+      s.textContent = text;
+      s.style.top  = (r * 11 + (c % 2 === 0 ? 0 : 5.5)) + '%';
+      s.style.right = (-5 + c * 28) + '%';
+      wm.appendChild(s);
     }
   })();
 
-  // ── Pre-fill from URL params ──
-  function getParam(name) {
-    const url = new URL(window.location.href);
-    return url.searchParams.get(name) || '';
-  }
+  // ── Signature Canvas ──
+  (function() {
+    const canvas = document.getElementById('sig-canvas');
+    const hint   = document.getElementById('canvas-hint');
+    const frame  = document.getElementById('canvas-frame');
+    let drawing = false;
+    window.hasSig = false;
 
-  window.addEventListener('DOMContentLoaded', function() {
-    const clientName = getParam('client');
-    const date = getParam('date') || new Date().toISOString().split('T')[0];
-
-    if (clientName) {
-      document.getElementById('full-name').value = clientName;
-      document.getElementById('client-name-display').textContent = clientName;
+    function resize() {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = frame.getBoundingClientRect();
+      canvas.width  = rect.width  * dpr;
+      canvas.height = rect.height * dpr;
+      const ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      ctx.strokeStyle = '#2c2c2c';
+      ctx.lineWidth   = 2;
+      ctx.lineCap     = 'round';
+      ctx.lineJoin    = 'round';
     }
-    document.getElementById('sig-date').value = date;
-    document.getElementById('ts-field').value = new Date().toISOString();
+    resize();
+    window.addEventListener('resize', resize);
+
+    function pos(e) {
+      const r = canvas.getBoundingClientRect();
+      const s = e.touches ? e.touches[0] : e;
+      return { x: s.clientX - r.left, y: s.clientY - r.top };
+    }
+    function start(e) {
+      e.preventDefault(); drawing = true;
+      const p = pos(e);
+      canvas.getContext('2d').beginPath();
+      canvas.getContext('2d').moveTo(p.x, p.y);
+      hint.style.opacity = '0';
+    }
+    function move(e) {
+      if (!drawing) return; e.preventDefault();
+      const p = pos(e);
+      canvas.getContext('2d').lineTo(p.x, p.y);
+      canvas.getContext('2d').stroke();
+      window.hasSig = true;
+      frame.classList.add('signed');
+    }
+    function end() { drawing = false; }
+
+    canvas.addEventListener('mousedown',  start);
+    canvas.addEventListener('mousemove',  move);
+    canvas.addEventListener('mouseup',    end);
+    canvas.addEventListener('mouseleave', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove',  move,  { passive: false });
+    canvas.addEventListener('touchend',   end);
+  })();
+
+  window.clearSig = function() {
+    const canvas = document.getElementById('sig-canvas');
+    const frame  = document.getElementById('canvas-frame');
+    const hint   = document.getElementById('canvas-hint');
+    canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+    window.hasSig = false;
+    frame.classList.remove('signed');
+    hint.style.opacity = '1';
+    document.getElementById('sig-data').value = '';
+  };
+
+  // ── Date pre-fill ──
+  window.addEventListener('DOMContentLoaded', function() {
+    const ts = document.getElementById('ts-field');
+    if (ts) ts.value = new Date().toLocaleString('he-IL');
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2,'0');
+    const mm = String(today.getMonth()+1).padStart(2,'0');
+    document.getElementById('sig-date').value = `${dd}/${mm}/${today.getFullYear()}`;
+    const nameParam = new URL(window.location.href).searchParams.get('client') || '';
+    if (nameParam) {
+      document.getElementById('full-name').value = nameParam;
+      const disp = document.getElementById('client-name-display');
+      if (disp) disp.textContent = nameParam;
+    }
   });
 
-  // ── Form validation & submission ──
-  document.getElementById('sig-form').addEventListener('submit', async function(e) {
+  // ── Form submit ──
+  document.getElementById('sig-form').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    const btn = document.getElementById('submit-btn');
     const msg = document.getElementById('validation-msg');
     msg.textContent = '';
 
-    // Check all checkboxes
     const checkboxes = this.querySelectorAll('input[type="checkbox"]');
-    const unchecked = Array.from(checkboxes).filter(cb => !cb.checked);
+    const unchecked  = Array.from(checkboxes).filter(cb => !cb.checked);
     if (unchecked.length > 0) {
       msg.textContent = `⚠️ יש לסמן את כל ${checkboxes.length} תיבות האישור לפני חתימה.`;
       unchecked[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
-
-    // Check signature matches name
-    const fullName = document.getElementById('full-name').value.trim();
-    const signature = document.getElementById('signature').value.trim();
-    if (!signature) {
-      msg.textContent = '⚠️ יש להקליד שם מלא בשדה החתימה הדיגיטלית.';
-      document.getElementById('signature').focus();
+    if (!window.hasSig) {
+      msg.textContent = '⚠️ יש לחתום בפד החתימה לפני שליחה.';
+      document.getElementById('canvas-frame').scrollIntoView({ behavior: 'smooth', block: 'center' });
       return;
     }
 
+    document.getElementById('sig-data').value = document.getElementById('sig-canvas').toDataURL('image/png');
+    document.getElementById('ts-field').value  = new Date().toLocaleString('he-IL');
+
+    const btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.textContent = '⏳ שולח...';
 
-    // Update timestamp
-    document.getElementById('ts-field').value = new Date().toISOString();
-
-    try {
-      const formData = new FormData(this);
-      const response = await fetch(this.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      if (response.ok) {
-        showSuccess(fullName);
-      } else {
-        // Fallback: still show success (submission may work via redirect)
-        showSuccess(fullName);
-      }
-    } catch (err) {
-      // Network issue — show success anyway (form may have been submitted)
-      showSuccess(fullName);
-    }
+    const fullName = document.getElementById('full-name').value.trim();
+    const fd = new FormData(this);
+    fetch(this.action, { method: 'POST', body: fd })
+      .then(() => showSuccess(fullName))
+      .catch(() => showSuccess(fullName));
   });
 
   function showSuccess(name) {
+    document.getElementById('sig-section').style.display = 'none';
     const now = new Date();
-    const ts = now.toLocaleString('he-IL', { dateStyle: 'full', timeStyle: 'short' });
+    const ts  = now.toLocaleString('he-IL', { dateStyle: 'full', timeStyle: 'short' });
     document.getElementById('success-client-name').textContent = name;
     document.getElementById('success-ts').textContent = 'נחתם ב: ' + ts;
-    const screen = document.getElementById('success-screen');
-    screen.style.display = 'flex';
+    document.getElementById('success-screen').style.display = 'flex';
   }
+
+  function printContract() { window.print(); }
 </script>
 
 </body>
