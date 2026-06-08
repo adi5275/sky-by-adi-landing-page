@@ -109,29 +109,19 @@
     .logo-card {
       position: relative;
       background: #ffffff;
-      border-radius: 14px;
-      padding: 16px 26px 13px;
+      border-radius: 16px;
+      padding: 10px;
       display: inline-block;
       margin-bottom: 14px;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.28);
+      box-shadow: 0 6px 22px rgba(0,0,0,0.30);
+      border: 1px solid rgba(194,160,96,0.55);
     }
-    .logo-emblem { width: 116px; height: auto; display: block; margin: 0 auto 4px; }
-    .logo-word {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.18rem;
-      font-weight: 600;
-      letter-spacing: 3px;
-      color: var(--green);
-      line-height: 1.1;
-    }
-    .logo-word b { color: var(--gold-deep); font-weight: 700; }
-    .logo-sub {
-      font-family: 'Heebo', sans-serif;
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 4px;
-      color: var(--sky);
-      margin-top: 4px;
+    .logo-img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      display: block;
     }
     .adi-portrait {
       width: 78px; height: 78px;
@@ -470,36 +460,9 @@
 <!-- ══════════════════════════════════════════════ HEADER -->
 <div class="header">
   <div class="logo-card">
-    <!-- ── אמבלם לוטוס מרובד + מטוס עם קו-מסלול (SVG וקטורי — חד בכל גודל, מושלם להדפסה/PDF) ── -->
-    <svg class="logo-emblem" viewBox="0 0 240 170" role="img" aria-label="Sky by Adi Aharoni — לוטוס ומטוס">
-      <g fill="none" stroke="#C2A060" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round">
-        <!-- עלי בסיס (רחבים) -->
-        <path d="M120,128 C 84,122 46,106 30,80 C 64,82 104,106 120,128 Z"/>
-        <path d="M120,128 C 156,122 194,106 210,80 C 176,82 136,106 120,128 Z"/>
-        <!-- עלים חיצוניים -->
-        <path d="M120,124 C 94,110 66,80 62,48 C 92,60 116,98 120,124 Z"/>
-        <path d="M120,124 C 146,110 174,80 178,48 C 148,60 124,98 120,124 Z"/>
-        <!-- עלים פנימיים -->
-        <path d="M120,122 C 102,100 86,60 94,32 C 112,54 122,98 120,122 Z"/>
-        <path d="M120,122 C 138,100 154,60 146,32 C 128,54 118,98 120,122 Z"/>
-        <!-- עלה מרכזי + ורידן -->
-        <path d="M120,122 C 109,92 109,50 120,20 C 131,50 131,92 120,122 Z"/>
-        <path d="M120,114 L120,40" stroke-width="1.6"/>
-        <!-- עלה גביע קדמי -->
-        <path d="M120,128 C 111,118 111,106 120,98 C 129,106 129,118 120,128 Z"/>
-      </g>
-      <!-- קו-מסלול + מטוס ממריא -->
-      <g fill="none" stroke="#C2A060" stroke-width="2.2" stroke-linecap="round">
-        <path d="M150,56 Q 178,52 192,40"/>
-      </g>
-      <g fill="#C2A060">
-        <path d="M196,46 l24,-13 a3.5,3.5 0 0 1 4.5,4.6 l-12,23 -5,-2.5 5,-13.5 -8.5,6 -1.2,7 -4.5,-2.2 1.2,-6.6 -6,2.2 z"/>
-      </g>
-    </svg>
-    <div class="logo-word">SKY <b>BY ADI</b> AHARONI</div>
-    <div class="logo-sub">DREAM IT · VISIT IT</div>
+    <img src="sky-logo.jpg" class="logo-img" alt="SKY BY ADI AHARONI — DREAM IT. VISIT IT">
   </div>
-  <img src="adi-headshot.png" alt="עדי אהרוני" class="adi-portrait">
+  <img src="adi-new.jpg" alt="עדי אהרוני" class="adi-portrait">
   <div class="doc-title">הסכם שירותי תיווך, תיאום וייעוץ</div>
 </div>
 
