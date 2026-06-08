@@ -452,7 +452,74 @@
     .success-box p { font-size: 0.9rem; color: #555; margin-bottom: 8px; }
     .success-box .ts { font-size: 0.78rem; color: #aaa; margin-top: 16px; }
 
-    .footer-note { text-align: center; font-size: 0.72rem; color: var(--muted); margin-top: 24px; padding-bottom: 20px; }
+    .footer-note { text-align: center; font-size: 0.72rem; color: var(--muted); margin-top: 24px; padding-bottom: 20px; line-height: 1.7; }
+    .footer-note .biz { color: var(--green); font-weight: 600; letter-spacing: 1px; }
+
+    /* ── APPENDIX B — אישור הזמנה ── */
+    .order-box {
+      background: linear-gradient(180deg, #ffffff, var(--sky-soft));
+      border: 1px solid var(--sky-line);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-top: 10px;
+    }
+    .order-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; }
+    .order-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 22px; }
+    .order-row { display: flex; flex-direction: column; gap: 4px; }
+    .order-row.full { grid-column: 1 / -1; }
+    .order-row .k { font-size: 0.76rem; font-weight: 700; color: var(--green); }
+    .order-row .v {
+      min-height: 22px;
+      border-bottom: 1.5px dotted var(--gold);
+      font-size: 0.85rem;
+      color: var(--text);
+      padding: 1px 2px 3px;
+    }
+    @media (max-width: 580px){ .order-grid { grid-template-columns: 1fr; } }
+
+    /* ── PROVIDER COUNTER-SIGNATURE ── */
+    .parties-sign {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      margin: 8px 0 4px;
+    }
+    @media (max-width: 580px){ .parties-sign { grid-template-columns: 1fr; } }
+    .sign-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+    }
+    .sign-card .role { font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; color: var(--gold-deep); margin-bottom: 6px; }
+    .sign-card .who { font-weight: 600; color: var(--green); }
+    .sign-card .meta { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+    .provider-sig {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.55rem;
+      color: var(--green);
+      border-bottom: 1px solid var(--cream-dark);
+      padding: 4px 0 6px;
+      margin-top: 6px;
+    }
+    .provider-sig .stamp {
+      display: inline-block;
+      font-family: 'Heebo', sans-serif;
+      font-style: normal;
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      color: var(--gold-deep);
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      width: 46px; height: 46px;
+      line-height: 1.05;
+      text-align: center;
+      padding-top: 8px;
+      vertical-align: middle;
+      margin-left: 8px;
+      transform: rotate(-8deg);
+    }
   </style>
 </head>
 <body>
@@ -713,6 +780,31 @@
   <div class="sub-clause">• נותן השירות אינו אחראי במקרה של ביטול טיסה נפרדת שבוצע ללא ביטול יתר ההזמנות הנפרדות.</div>
 </div>
 
+<hr class="divider">
+
+<!-- ══ APPENDIX B — אישור הזמנה ══ -->
+<div class="section">
+  <div class="section-title">נספח ב׳ — אישור הזמנה ופרטי העסקה</div>
+  <div class="order-box">
+    <div class="order-note">פרטי ההזמנה הספציפית יושלמו על ידי נותן השירות עם הלקוח/ה בעת אישור ההזמנה, ומהווים חלק בלתי נפרד מהסכם זה (סעיף 17.5). המחיר הנקוב כאן הוא המחיר המחייב.</div>
+    <div class="order-grid">
+      <div class="order-row"><span class="k">יעד / מדינה</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">מועדי הנסיעה (יציאה–חזרה)</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">מס׳ משתתפים (מבוגרים / קטינים + גילים)</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">רמת אירוח / שם המלון</span><span class="v"></span></div>
+      <div class="order-row full"><span class="k">תיאור החבילה / המסלול</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">מחיר כולל מוסכם</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">מטבע</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">מקדמה ששולמה / אמצעי תשלום</span><span class="v"></span></div>
+      <div class="order-row"><span class="k">יתרה לתשלום + מועד</span><span class="v"></span></div>
+      <div class="order-row full"><span class="k">שירותים כלולים</span><span class="v"></span></div>
+      <div class="order-row full"><span class="k">שירותים שאינם כלולים</span><span class="v"></span></div>
+      <div class="order-row full"><span class="k">תמצית תנאי הביטול של הספקים</span><span class="v"></span></div>
+      <div class="order-row full"><span class="k">הערות</span><span class="v"></span></div>
+    </div>
+  </div>
+</div>
+
 </div><!-- /contract-body -->
 
 <!-- ══════════════════════════════════════════════ SIGNATURE SECTION -->
@@ -848,6 +940,21 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
       </div>
     </div>
 
+    <!-- ── חתימות הצדדים — נותן השירות (חתום) + הלקוח/ה ── -->
+    <div class="parties-sign">
+      <div class="sign-card">
+        <div class="role">נותן השירות · חתום</div>
+        <div class="who">עדי אהרוני — SKY BY ADI AHARONI</div>
+        <div class="meta">עוסק מורשה 031459084 · המרגנית 6, חולון</div>
+        <div class="provider-sig">Adi Aharoni<span class="stamp">SKY<br>BY ADI</span></div>
+      </div>
+      <div class="sign-card">
+        <div class="role">הלקוח/ה</div>
+        <div class="who" id="client-sign-name">— יושלם עם החתימה —</div>
+        <div class="meta">חתימה גרפית וחותמת זמן מצורפות לעיל</div>
+      </div>
+    </div>
+
     <div class="submit-area">
       <div class="terms-note">
         לחיצה על הכפתור תשלח את החתימה לנותן השירות וישמר תיעוד כולל: שם, ת.ז., כתובת IP, שעה ותאריך.
@@ -859,8 +966,9 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
 </div>
 
 <div class="footer-note">
-  SKY BY ADI AHARONI — DREAM IT. VISIT IT | גרסת הסכם: יוני 2026<br>
-  מסמך זה נחתם דיגיטלית. לשאלות: coheadi@gmail.com | 050-8278089
+  <span class="biz">SKY BY ADI AHARONI — DREAM IT. VISIT IT</span><br>
+  עדי אהרוני · עוסק מורשה 031459084 · המרגנית 6, חולון · 050-8278089 · coheadi@gmail.com<br>
+  מסמך זה נחתם דיגיטלית בהתאם לסעיף 18 · גרסת הסכם: יוני 2026 · © SKY BY ADI AHARONI כל הזכויות שמורות
 </div>
 
 </div><!-- /container -->
@@ -993,10 +1101,17 @@ SKY BY ADI AHARONI — DREAM IT. VISIT IT">
     const yyyy = now.getFullYear();
     const hebrewDate = getParam('date') || `${dd}/${mm}/${yyyy}`;
 
+    const signName = document.getElementById('client-sign-name');
+    function syncName(v){
+      const val = (v||'').trim();
+      document.getElementById('client-name-display').textContent = val || '___________________';
+      if (signName) signName.textContent = val || '— יושלם עם החתימה —';
+    }
     if (clientName) {
       document.getElementById('full-name').value = clientName;
-      document.getElementById('client-name-display').textContent = clientName;
+      syncName(clientName);
     }
+    document.getElementById('full-name').addEventListener('input', function(){ syncName(this.value); });
     document.getElementById('sig-date').value = hebrewDate;
     document.getElementById('ts-field').value = new Date().toISOString();
   });
