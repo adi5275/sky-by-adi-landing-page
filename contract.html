@@ -510,7 +510,7 @@
       color: var(--green);
     }
     .sig-img { height: 56px; width: auto; }
-    .stamp-svg { width: 92px; height: 92px; transform: rotate(-9deg); opacity: 0.92; flex: 0 0 auto; }
+    .stamp-svg { width: 96px; height: 96px; transform: rotate(-9deg); flex: 0 0 auto; filter: drop-shadow(0 2px 5px rgba(45,80,22,0.25)); }
   </style>
 </head>
 <body>
@@ -929,23 +929,25 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
         <div class="who">SKY BY ADI AHARONI</div>
         <div class="meta">עוסק מורשה 031459084 | המרגנית 6, חולון</div>
         <div class="provider-sign-row">
+          <img class="sig-img" src="adi-signature.png" alt="חתימת עדי אהרוני">
           <span class="hand-sig">עדי אהרוני</span>
-          <!-- חותמת עגולה: טבעת זהב + לוטוס + טקסט מעוגל -->
+          <!-- חותמת עגולה בצבעי הלוגו: רקע ירוק + לוטוס וטקסט זהב -->
           <svg class="stamp-svg" viewBox="0 0 220 220" role="img" aria-label="חותמת SKY BY ADI AHARONI">
             <defs>
               <path id="arcTop" d="M 28,110 A 82,82 0 0 1 192,110"/>
               <path id="arcBot" d="M 36,110 A 74,74 0 0 0 184,110"/>
             </defs>
-            <g fill="none" stroke="#A8842F" stroke-width="2.4">
+            <circle cx="110" cy="110" r="104" fill="#2d6a23"/>
+            <g fill="none" stroke="#D8BE86" stroke-width="2.4">
               <circle cx="110" cy="110" r="104"/>
               <circle cx="110" cy="110" r="90"/>
             </g>
-            <g fill="#A8842F" font-family="Heebo, sans-serif" font-weight="700" font-size="15" letter-spacing="2">
+            <g fill="#D8BE86" font-family="Heebo, sans-serif" font-weight="700" font-size="15" letter-spacing="2">
               <text text-anchor="middle"><textPath href="#arcTop" startOffset="50%">SKY BY ADI AHARONI</textPath></text>
               <text text-anchor="middle"><textPath href="#arcBot" startOffset="50%">DREAM IT . VISIT IT</textPath></text>
             </g>
             <!-- לוטוס מרובד + מטוס במרכז -->
-            <g transform="translate(38,70) scale(0.6)" fill="none" stroke="#A8842F" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
+            <g transform="translate(38,70) scale(0.6)" fill="none" stroke="#D8BE86" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
               <path d="M120,128 C 84,122 46,106 30,80 C 64,82 104,106 120,128 Z"/>
               <path d="M120,128 C 156,122 194,106 210,80 C 176,82 136,106 120,128 Z"/>
               <path d="M120,124 C 94,110 66,80 62,48 C 92,60 116,98 120,124 Z"/>
