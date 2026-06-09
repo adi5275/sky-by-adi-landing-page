@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מחולל הצעות מחיר | SKY BY ADI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green:       #2D5016;
+      --green-mid:   #3D7020;
+      --green-light: #4A8228;
+      --gold:        #C2A060;
+      --gold-deep:   #A8842F;
+      --gold-light:  #D8BE86;
+      --sky:         #6E9FB8;
+      --sky-soft:    #EAF2F6;
+      --blush:       #C97E8E;
+      --blush-soft:  #FBEEF0;
+      --cream:       #FAF6EE;
+      --cream-dark:  #F0E8D8;
+      --text:        #2A2A28;
+      --muted:       #6b6b66;
+      --border:      #DCD3C2;
+      --radius:      12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      background: linear-gradient(160deg, var(--sky-soft) 0%, var(--cream) 40%, var(--blush-soft) 100%);
+      min-height: 100vh;
+      color: var(--text);
+      padding-bottom: 60px;
+    }
+
+    /* HEADER */
+    .header {
+      background: var(--green);
+      color: var(--cream);
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 24px rgba(45,80,22,0.4);
+    }
+    .header-logo {
+      height: 52px;
+      object-fit: contain;
+      filter: brightness(1.15);
+    }
+    .header-titles { flex: 1; }
+    .header-titles h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--gold-light);
+      letter-spacing: 1px;
+    }
+    .header-titles p { font-size: 0.8rem; color: rgba(250,246,238,0.7); margin-top: 2px; }
+
+    /* CONTAINER */
+    .container {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    /* SECTION CARD */
+    .section-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: 0 2px 16px rgba(45,80,22,0.08);
+      border: 1px solid var(--border);
+    }
+    .section-card:focus-within {
+      border-color: var(--gold);
+      box-shadow: 0 4px 24px rgba(194,160,96,0.18);
+    }
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--gold-light);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-icon { font-size: 1.1rem; }
+
+    /* GRID */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    @media (max-width: 620px) {
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    /* FIELD */
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--green);
+    }
+    .field .hint { font-size: 0.72rem; color: var(--muted); margin-top: -4px; }
+    .field input,
+    .field select,
+    .field textarea {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(194,160,96,0.15);
+      background: white;
+    }
+    .field textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
+
+    /* PRICE TIERS */
+    .price-tier {
+      background: var(--cream);
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      padding: 16px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+      transition: border-color 0.2s;
+    }
+    .price-tier:focus-within { border-color: var(--gold); }
+    .price-tier.recommended {
+      border-color: var(--green);
+      background: linear-gradient(135deg, rgba(45,80,22,0.04) 0%, var(--cream) 100%);
+    }
+    .tier-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--green);
+      color: var(--gold-light);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+    .tier-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--green);
+      text-align: center;
+      letter-spacing: 1px;
+    }
+    .tier-price-input {
+      text-align: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      background: white;
+      width: 100%;
+      font-family: 'Heebo', sans-serif;
+    }
+    .tier-desc { font-size: 0.72rem; color: var(--muted); text-align: center; }
+
+    /* CHECKBOXES */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 500px) {
+      .checkbox-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+      user-select: none;
+    }
+    .checkbox-item:hover { border-color: var(--gold); background: white; }
+    .checkbox-item input[type="checkbox"] { accent-color: var(--green); width: 16px; height: 16px; }
+    .checkbox-item span { font-size: 0.82rem; font-weight: 500; }
+    .checkbox-item input:checked + span { color: var(--green); font-weight: 600; }
+
+    /* OCCASION */
+    .occasion-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    @media (max-width: 500px) { .occasion-grid { grid-template-columns: 1fr 1fr; } }
+    .occasion-btn {
+      padding: 10px 8px;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      background: var(--cream);
+      cursor: pointer;
+      text-align: center;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.15s;
+    }
+    .occasion-btn:hover { border-color: var(--sky); color: var(--green); }
+    .occasion-btn.selected {
+      border-color: var(--green);
+      background: var(--green);
+      color: var(--gold-light);
+    }
+    .occasion-emoji { display: block; font-size: 1.4rem; margin-bottom: 4px; }
+
+    /* GENERATE BUTTON */
+    .generate-section {
+      background: var(--green);
+      border-radius: var(--radius);
+      padding: 32px;
+      text-align: center;
+      color: var(--cream);
+    }
+    .generate-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .generate-section p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 24px; }
+    .generate-btn {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 40px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 1px;
+      transition: all 0.2s;
+      box-shadow: 0 6px 20px rgba(168,132,47,0.4);
+    }
+    .generate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(168,132,47,0.5);
+    }
+    .generate-btn:active { transform: translateY(0); }
+
+    /* OUTPUT */
+    .output-box {
+      display: none;
+      background: #1A2A10;
+      border-radius: var(--radius);
+      padding: 24px;
+      color: var(--gold-light);
+      font-family: monospace;
+      font-size: 0.78rem;
+      line-height: 1.7;
+      white-space: pre-wrap;
+      word-break: break-word;
+      position: relative;
+    }
+    .output-box.visible { display: block; }
+    .copy-btn {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .output-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--sky);
+      margin-bottom: 12px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <img src="sky-logo.jpg" class="header-logo" alt="SKY BY ADI">
+  <div class="header-titles">
+    <h1>מחולל הצעות מחיר</h1>
+    <p>מלאי את הפרטים — ובריף מוכן לעדי</p>
+  </div>
+</div>
+
+<div class="container">
+
+  <!-- SECTION 1: CLIENT -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">👤</span> פרטי הלקוחה</div>
+    <div class="grid-2">
+      <div class="field">
+        <label for="mom-name">שם האמא</label>
+        <input type="text" id="mom-name" placeholder="לדוגמה: נדין">
+      </div>
+      <div class="field">
+        <label for="daughter-name">שם הבת</label>
+        <input type="text" id="daughter-name" placeholder="לדוגמה: מאיה">
+      </div>
+      <div class="field">
+        <label for="daughter-age">גיל הבת</label>
+        <input type="number" id="daughter-age" placeholder="13" min="10" max="18">
+        <span class="hint">קריטי — קובע אילו טיפולי ספא מותרים</span>
+      </div>
+      <div class="field">
+        <label for="client-city">עיר מגורים</label>
+        <input type="text" id="client-city" placeholder="תל אביב">
+      </div>
+      <div class="field">
+        <label for="client-phone">טלפון (לפרטי CTA בהצעה)</label>
+        <input type="tel" id="client-phone" placeholder="050-0000000">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: OCCASION -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">✨</span> האירוע — למה דווקא עכשיו?</div>
+    <div class="occasion-grid">
+      <button class="occasion-btn" data-val="בת מצווה" onclick="selectOccasion(this)">
+        <span class="occasion-emoji">🕍</span>בת מצווה
+      </button>
+      <button class="occasion-btn" data-val="Sweet 16" onclick="selectOccasion(this)">
+        <span class="occasion-emoji">🎂</span>Sweet 16
+      </button>
+      <button class="occasion-btn" data-val="לפני תיכון" onclick="selectOccasion(this)">
+        <span class="occasion-emoji">📚</span>לפני תיכון
+      </button>
+      <button class="occasion-btn" data-val="לפני צבא" onclick="selectOccasion(this)">
+        <span class="occasion-emoji">🎖️</span>לפני צבא
+      </button>
+      <button class="occasion-btn" data-val="סיום כיתה ו" onclick="selectOccasion(this)">
+        <span class="occasion-emoji">🎓</span>סיום כיתה ו׳
+      </button>
+      <button class="occasion-btn" data-val="כי כן" onclick="selectOccasion(this)">
+        <span class="occasion-emoji">💝</span>כי כן
+      </button>
+    </div>
+    <input type="hidden" id="occasion-val">
+    <div class="field" style="margin-top: 16px;">
+      <label for="intake-notes">מה נאמר בשיחת הקבלה — במילים שלה</label>
+      <textarea id="intake-notes" placeholder='לדוגמה: "היא אמרה שהבת שלה כבר קונה Drunk Elephant ואין לה מושג מה מותר. רבות הרבה. רוצה שזה יהיה הפתעה לפני שהבת נכנסת לתיכון"'></textarea>
+      <span class="hint">זה מה שיהפוך את ה"מכתב האישי" בהצעה ל-10/10</span>
+    </div>
+  </div>
+
+  <!-- SECTION 3: TRIP -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">✈️</span> פרטי הנסיעה</div>
+    <div class="grid-2">
+      <div class="field">
+        <label for="destination">יעד</label>
+        <select id="destination">
+          <option value="">-- בחרי יעד --</option>
+          <option value="יוון - כרתים">יוון — כרתים</option>
+          <option value="יוון - אתונה">יוון — אתונה</option>
+          <option value="קפריסין">קפריסין</option>
+          <option value="דובאי">דובאי</option>
+          <option value="קוריאה">קוריאה</option>
+          <option value="אחר">אחר</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="hotel-name">שם המלון (כפי שרשום באתר הרשמי)</label>
+        <input type="text" id="hotel-name" placeholder="לדוגמה: Grecotel Marine Palace">
+        <span class="hint">אחפש עליו תמונות + תיאור מהאתר הרשמי</span>
+      </div>
+      <div class="field">
+        <label for="checkin">תאריך כניסה</label>
+        <input type="date" id="checkin">
+      </div>
+      <div class="field">
+        <label for="checkout">תאריך יציאה</label>
+        <input type="date" id="checkout">
+      </div>
+      <div class="field">
+        <label for="room-type">סוג החדר (אם ידוע)</label>
+        <input type="text" id="room-type" placeholder='לדוגמה: Junior Suite עם נוף לים'>
+      </div>
+      <div class="field">
+        <label for="flight-details">פרטי טיסות (אם ידוע)</label>
+        <input type="text" id="flight-details" placeholder="EL AL TLV→HER 03/09 07:20">
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 4: INCLUSIONS -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">✅</span> מה כלול בחבילה?</div>
+    <div class="checkbox-grid">
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-flights" value="טיסות הלוך-חזור"> <span>✈️ טיסות</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-hotel" value="לינה במלון" checked> <span>🏨 לינה</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-breakfast" value="ארוחות בוקר" checked> <span>🍳 בוקר</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-transfers" value="העברות שדה תעופה"> <span>🚐 העברות</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-spa" value='טיפולי ספא מותאמי גיל'> <span>💆 ספא</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-glow" value='ערכת "Glow לדרך"'> <span>✨ ערכת Glow</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-cards" value='קלפי "No-Filter Connection"'> <span>🃏 קלפי שיחה</span>
+      </label>
+      <label class="checkbox-item">
+        <input type="checkbox" id="inc-insurance" value="ביטוח נסיעות"> <span>🛡️ ביטוח</span>
+      </label>
+    </div>
+    <div class="field" style="margin-top: 16px;">
+      <label for="extra-inclusions">הוספות חופשיות (מה עוד כלול)</label>
+      <input type="text" id="extra-inclusions" placeholder="לדוגמה: ארוחת ערב ראשונה, Welcome drink, Early check-in">
+    </div>
+  </div>
+
+  <!-- SECTION 5: PRICING -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">💰</span> ה-Investment — 3 רמות</div>
+    <p style="font-size:0.8rem; color:var(--muted); margin-bottom:20px;">מחקר: לקוחות כמעט תמיד בוחרים את האמצע — "המומלצת". המחיר הגבוה גורם לאמצע להרגיש סביר.</p>
+    <div class="grid-3">
+      <div class="price-tier">
+        <div class="tier-label">בסיסי</div>
+        <input type="text" class="tier-price-input" id="price-basic" placeholder="₪0,000">
+        <div class="tier-desc">מה כלול בבסיסי?</div>
+        <input type="text" id="basic-desc" placeholder="מלון + בוקר" style="font-size:0.78rem; border:1px solid var(--border); border-radius:6px; padding:6px; background:white; font-family:Heebo;">
+      </div>
+      <div class="price-tier recommended">
+        <div class="tier-badge">⭐ מומלצת</div>
+        <div class="tier-label">מומלצת</div>
+        <input type="text" class="tier-price-input" id="price-recommended" placeholder="₪0,000">
+        <div class="tier-desc">הכי פופולרית</div>
+        <input type="text" id="rec-desc" placeholder="מלון + בוקר + ספא + Glow" style="font-size:0.78rem; border:1px solid var(--border); border-radius:6px; padding:6px; background:white; font-family:Heebo;">
+      </div>
+      <div class="price-tier">
+        <div class="tier-label">פרמיום</div>
+        <input type="text" class="tier-price-input" id="price-premium" placeholder="₪0,000">
+        <div class="tier-desc">כל הבונוסים</div>
+        <input type="text" id="prem-desc" placeholder="הכל + שדרוג חדר + קלפים + קואצ'ינג" style="font-size:0.78rem; border:1px solid var(--border); border-radius:6px; padding:6px; background:white; font-family:Heebo;">
+      </div>
+    </div>
+    <div class="field" style="margin-top: 18px;">
+      <label for="anchor-price">מחיר עוגן (המחיר לפני עדי — לדוגמה: Four Seasons $600/לילה)</label>
+      <input type="text" id="anchor-price" placeholder='לדוגמה: "חדר בגרקוטל ישירות באתר עולה ₪3,200 ללילה לאדם"'>
+      <span class="hint">יוצג ב"לפני" עם קו חוצה — כדי לעגן את המחיר שלך</span>
+    </div>
+  </div>
+
+  <!-- SECTION 6: VALIDITY + SCARCITY -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">⏰</span> תוקף וסקרסיטי</div>
+    <div class="grid-2">
+      <div class="field">
+        <label for="valid-until">ההצעה תקפה עד</label>
+        <input type="date" id="valid-until">
+        <span class="hint">מעודד החלטה מהירה</span>
+      </div>
+      <div class="field">
+        <label for="spots-left">מקומות פנויים במחזור הנוכחי</label>
+        <input type="number" id="spots-left" value="3" min="1" max="5">
+        <span class="hint">עדי עובדת עם 5 לקוחות בלבד בכל מחזור</span>
+      </div>
+    </div>
+    <div class="field" style="margin-top: 14px;">
+      <label for="booking-deadline">כותרת הדד-ליין (אופציונלי)</label>
+      <input type="text" id="booking-deadline" placeholder='לדוגמה: "המקום שמרתי בשמכן ב-Nana Princess תקף עד יום ד׳"'>
+    </div>
+  </div>
+
+  <!-- SECTION 7: SPECIAL NOTES -->
+  <div class="section-card">
+    <div class="section-title"><span class="section-icon">💎</span> הלמסה האישית</div>
+    <div class="field">
+      <label>מה מיוחד בבת הזו / האמא הזו שיכנס להצעה?</label>
+      <textarea id="personal-touch" placeholder='לדוגמה: "הבת אוהבת K-beauty. האמא עייפה ורוצה לנוח. הן רבות על הטלפון. יש להן כלבה בשם בלו שמחכה בבית."'></textarea>
+    </div>
+    <div class="field" style="margin-top: 14px;">
+      <label>ציטוט מהאמא (אם יש — מהשיחה)</label>
+      <input type="text" id="mom-quote" placeholder='"אני לא זוכרת מתי ישבנו ביחד בלי מריבה"'>
+    </div>
+  </div>
+
+  <!-- GENERATE -->
+  <div class="generate-section">
+    <h2>מוכנה? בואי נבנה הצעה שאי-אפשר לסרב לה</h2>
+    <p>הלחיצה תייצר בריף מובנה — תעתיקי אותו לצ׳אט עם עדי (AI) והיא תייצר את ההצעה</p>
+    <button class="generate-btn" onclick="generateBrief()">⚡ צרי את הבריף</button>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="output-box" id="output-box">
+    <button class="copy-btn" onclick="copyBrief()">📋 העתק</button>
+    <span class="output-label">── BRIEF לייצור הצעת מחיר ──</span>
+    <div id="output-text"></div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+  let selectedOccasion = '';
+
+  function selectOccasion(btn) {
+    document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedOccasion = btn.dataset.val;
+    document.getElementById('occasion-val').value = selectedOccasion;
+  }
+
+  function val(id) {
+    const el = document.getElementById(id);
+    return el ? (el.value || '').trim() : '';
+  }
+
+  function getInclusions() {
+    const checks = ['inc-flights','inc-hotel','inc-breakfast','inc-transfers','inc-spa','inc-glow','inc-cards','inc-insurance'];
+    const labels = checks
+      .filter(id => document.getElementById(id)?.checked)
+      .map(id => document.getElementById(id)?.value || '')
+      .filter(Boolean);
+    const extra = val('extra-inclusions');
+    if (extra) labels.push(extra);
+    return labels.join(', ');
+  }
+
+  function generateBrief() {
+    const momName     = val('mom-name')       || '[שם האמא]';
+    const daughterName = val('daughter-name') || '[שם הבת]';
+    const daughterAge = val('daughter-age')   || '[גיל]';
+    const city        = val('client-city')    || '[עיר]';
+    const phone       = val('client-phone')   || '[טלפון]';
+    const occasion    = selectedOccasion       || val('occasion-val') || '[אירוע]';
+    const intakeNotes = val('intake-notes')   || '[לא מולא]';
+    const destination = val('destination')    || '[יעד]';
+    const hotelName   = val('hotel-name')     || '[מלון]';
+    const checkin     = val('checkin')        || '[תאריך כניסה]';
+    const checkout    = val('checkout')       || '[תאריך יציאה]';
+    const roomType    = val('room-type')      || 'לא צוין';
+    const flights     = val('flight-details') || 'לא צוין';
+    const inclusions  = getInclusions()       || '[לא נבחרו]';
+    const priceBasic  = val('price-basic')    || '---';
+    const priceRec    = val('price-recommended') || '---';
+    const pricePrem   = val('price-premium')  || '---';
+    const basicDesc   = val('basic-desc')     || '';
+    const recDesc     = val('rec-desc')       || '';
+    const premDesc    = val('prem-desc')      || '';
+    const anchor      = val('anchor-price')   || 'לא צוין';
+    const validUntil  = val('valid-until')    || 'לא צוין';
+    const spots       = val('spots-left')     || '3';
+    const deadline    = val('booking-deadline') || '';
+    const personal    = val('personal-touch') || 'לא צוין';
+    const momQuote    = val('mom-quote')      || '';
+
+    const brief = `צרי לי הצעת מחיר מלאה ל-SKY BY ADI לפי הפרטים הבאים:
+
+═══ לקוחה ═══
+• אמא: ${momName} | בת: ${daughterName} (גיל ${daughterAge}) | עיר: ${city}
+• טלפון: ${phone}
+• אירוע: ${occasion}
+
+═══ מה נאמר בשיחה ═══
+${intakeNotes}${momQuote ? `\nציטוט מהאמא: "${momQuote}"` : ''}
+
+═══ נסיעה ═══
+• יעד: ${destination}
+• מלון: ${hotelName} — אנא כנסי לאתר הרשמי שלו ואספי 4-5 תמונות טובות
+• תאריכים: ${checkin} עד ${checkout}
+• חדר: ${roomType}
+• טיסות: ${flights}
+
+═══ מה כלול ═══
+${inclusions}
+
+═══ ה-Investment ═══
+• בסיסי: ${priceBasic} — ${basicDesc}
+• ⭐ מומלצת: ${priceRec} — ${recDesc}
+• פרמיום: ${pricePrem} — ${premDesc}
+• עוגן מחיר: ${anchor}
+
+═══ סקרסיטי ═══
+• ההצעה תקפה עד: ${validUntil}
+• מקומות פנויים: ${spots} מתוך 5
+${deadline ? `• דד-ליין ספציפי: "${deadline}"` : ''}
+
+═══ הלמסה האישית ═══
+${personal}
+
+═══ הנחיות ═══
+• צבעים: ירוק יער #2D5016 + זהב #C2A060 + קרם #FAF6EE
+• לוגו: sky-logo.jpg
+• שפה: עברית RTL
+• לא לציין Booking או מקורות צד ג'
+• מבנה: שער → מכתב אישי → מלון (תמונות) → לו"ז 72 שעות → מה כלול → מחירים → עדויות → CTA + ווטסאפ`;
+
+    document.getElementById('output-text').textContent = brief;
+    const box = document.getElementById('output-box');
+    box.classList.add('visible');
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function copyBrief() {
+    const text = document.getElementById('output-text').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.querySelector('.copy-btn');
+      btn.textContent = '✅ הועתק!';
+      setTimeout(() => btn.textContent = '📋 העתק', 2000);
+    });
+  }
+</script>
+
+</body>
+</html>
