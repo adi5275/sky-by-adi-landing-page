@@ -349,7 +349,41 @@
 
     .submit-area { margin-top: 24px; text-align: center; }
     .submit-area .terms-note { font-size: 0.78rem; color: var(--muted); margin-bottom: 14px; }
+    /* ── עטיפת כפתור עם מסגרת זהב זוהרת מחליקה (border beam) ── */
+    .btn-glow {
+      position: relative;
+      display: inline-block;
+      padding: 2.5px;                 /* רוחב "קו המסגרת" שבו רץ הזוהר */
+      border-radius: 13px;
+      overflow: hidden;
+      isolation: isolate;
+      transition: filter 0.3s, transform 0.1s;
+    }
+    .btn-glow::before {                /* קרן זהב מסתובבת שמחליקה סביב המסגרת */
+      content: '';
+      position: absolute;
+      inset: -150%;
+      z-index: 0;
+      background: conic-gradient(from 0deg,
+        rgba(194,160,96,0.30) 0deg 200deg,
+        rgba(216,190,134,0.70) 250deg,
+        #F2E4BC 288deg,
+        #ffffff 303deg,
+        #F2E4BC 318deg,
+        rgba(216,190,134,0.70) 350deg,
+        rgba(194,160,96,0.30) 360deg);
+      animation: beamSpin 4s linear infinite;
+    }
+    .btn-glow:hover { filter: drop-shadow(0 0 11px rgba(216,190,134,0.65)); transform: translateY(-1px); }
+    .btn-glow:hover::before { animation-duration: 1.8s; }
+    @keyframes beamSpin { to { transform: rotate(360deg); } }
+    @media (prefers-reduced-motion: reduce) { .btn-glow::before { animation: none; } }
+
     #submit-btn {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
       background: linear-gradient(135deg, var(--green) 0%, var(--green-light) 100%);
       color: white;
       border: none;
@@ -357,13 +391,13 @@
       font-family: 'Heebo', sans-serif;
       font-size: 1.02rem;
       font-weight: 700;
-      border-radius: 10px;
+      border-radius: 10.5px;
       cursor: pointer;
-      transition: transform 0.1s, box-shadow 0.2s;
+      transition: transform 0.1s, box-shadow 0.2s, filter 0.2s;
       letter-spacing: 0.5px;
       box-shadow: 0 6px 18px rgba(45,80,22,0.28);
     }
-    #submit-btn:hover { box-shadow: 0 8px 24px rgba(45,80,22,0.36); }
+    #submit-btn:hover { box-shadow: 0 10px 28px rgba(45,80,22,0.40); filter: brightness(1.05); }
     #submit-btn:active { transform: scale(0.98); }
     #submit-btn:disabled { background: #aaa; box-shadow: none; cursor: not-allowed; }
     .validation-msg { font-size: 0.8rem; color: #c0392b; margin-top: 10px; }
@@ -962,7 +996,7 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
       <div class="terms-note">
         לחיצה על הכפתור תשלח את החתימה לנותן השירות וישמר תיעוד כולל: שם, ת.ז., כתובת IP, שעה ותאריך.
       </div>
-      <button type="submit" id="submit-btn">✅ אני מאשר/ת, חותם/ת ושולח/ת את ההסכם</button>
+      <div class="btn-glow"><button type="submit" id="submit-btn">✅ אני מאשר/ת את ההסכם</button></div>
       <div class="validation-msg" id="validation-msg"></div>
     </div>
   </form>
