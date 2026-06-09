@@ -353,30 +353,31 @@
     .btn-glow {
       position: relative;
       display: inline-block;
-      padding: 3.5px;                 /* רוחב "קו המסגרת" המואר */
-      border-radius: 14px;
+      padding: 4.5px;                 /* רוחב "קו המסגרת" המואר */
+      border-radius: 15px;
       overflow: hidden;
       isolation: isolate;
-      filter: drop-shadow(0 0 7px rgba(216,190,134,0.50));   /* דפנות מוארות קבוע */
+      filter: drop-shadow(0 0 10px rgba(216,190,134,0.65));   /* הילת זהב קבועה */
       transition: filter 0.3s, transform 0.12s;
     }
-    .btn-glow::before {                /* שתי נקודות אור זהב שזזות סביב המסגרת */
+    .btn-glow::before {                /* אור זהב בוהק שמסתובב כל הזמן סביב המסגרת */
       content: '';
       position: absolute;
-      inset: -150%;
+      inset: -160%;
       z-index: 0;
       background: conic-gradient(from 0deg,
-        rgba(194,160,96,0.45) 0deg,
-        #F2E4BC 38deg, #ffffff 55deg, #F2E4BC 72deg,
-        rgba(194,160,96,0.45) 120deg,
-        rgba(194,160,96,0.45) 200deg,
-        #F2E4BC 238deg, #ffffff 255deg, #F2E4BC 272deg,
-        rgba(194,160,96,0.45) 320deg,
-        rgba(194,160,96,0.45) 360deg);
-      animation: beamSpin 3.2s linear infinite;
+        rgba(150,116,40,0.30) 0deg,
+        #E9CF93 26deg, #FFFDF4 46deg, #FFF3C4 56deg, #FFFDF4 66deg, #E9CF93 86deg,
+        rgba(150,116,40,0.30) 130deg,
+        rgba(150,116,40,0.30) 200deg,
+        #E9CF93 226deg, #FFFDF4 246deg, #FFF3C4 256deg, #FFFDF4 266deg, #E9CF93 286deg,
+        rgba(150,116,40,0.30) 330deg,
+        rgba(150,116,40,0.30) 360deg);
+      filter: blur(2px);              /* גורם לאור "לזהור" ולא להיראות כקו חד */
+      animation: beamSpin 2.6s linear infinite;
     }
-    .btn-glow:hover { filter: drop-shadow(0 0 14px rgba(216,190,134,0.80)); transform: translateY(-1px); }
-    .btn-glow:hover::before { animation-duration: 1.5s; }
+    .btn-glow:hover { filter: drop-shadow(0 0 16px rgba(216,190,134,0.9)); transform: translateY(-1px); }
+    .btn-glow:hover::before { animation-duration: 1.4s; }
     @keyframes beamSpin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { .btn-glow::before { animation: none; } }
 
@@ -964,7 +965,6 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
         <div class="who">SKY BY ADI AHARONI</div>
         <div class="meta">עוסק מורשה 031459084 | המרגנית 6, חולון</div>
         <div class="provider-sign-row">
-          <img class="sig-img" src="adi-signature.png" alt="חתימת עדי אהרוני">
           <span class="hand-sig">עדי אהרוני</span>
           <!-- חותמת עגולה בצבעי הלוגו: רקע ירוק + לוטוס וטקסט זהב -->
           <svg class="stamp-svg" viewBox="0 0 220 220" role="img" aria-label="חותמת SKY BY ADI AHARONI">
