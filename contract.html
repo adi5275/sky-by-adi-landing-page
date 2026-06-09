@@ -510,7 +510,7 @@
       color: var(--green);
     }
     .sig-img { height: 56px; width: auto; }
-    .stamp-svg { width: 96px; height: 96px; transform: rotate(-9deg); flex: 0 0 auto; filter: drop-shadow(0 2px 5px rgba(45,80,22,0.25)); }
+    .stamp-svg { width: 140px; height: 140px; transform: rotate(-9deg); flex: 0 0 auto; filter: drop-shadow(0 2px 5px rgba(45,80,22,0.25)); }
   </style>
 </head>
 <body>
@@ -934,35 +934,20 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
           <!-- חותמת עגולה בצבעי הלוגו: רקע ירוק + לוטוס וטקסט זהב -->
           <svg class="stamp-svg" viewBox="0 0 220 220" role="img" aria-label="חותמת SKY BY ADI AHARONI">
             <defs>
-              <path id="arcTop" d="M 42,110 A 68,68 0 0 1 178,110"/>
-              <path id="arcBot" d="M 40,110 A 70,70 0 0 0 180,110"/>
+              <path id="arcTop" d="M 38,110 A 72,72 0 0 1 182,110"/>
+              <path id="arcBot" d="M 42,110 A 68,68 0 0 0 178,110"/>
             </defs>
             <circle cx="110" cy="110" r="104" fill="#2d6a23"/>
-            <g fill="none" stroke="#D8BE86" stroke-width="2.4">
+            <g fill="none" stroke="#D8BE86" stroke-width="2.2">
               <circle cx="110" cy="110" r="104"/>
-              <circle cx="110" cy="110" r="90"/>
+              <circle cx="110" cy="110" r="86"/>
             </g>
-            <g fill="#D8BE86" font-family="Heebo, sans-serif" font-weight="700" font-size="12.5" letter-spacing="1.2">
+            <g fill="#EBD9A8" font-family="Heebo, sans-serif" font-weight="700" font-size="17" letter-spacing="0.5">
               <text text-anchor="middle"><textPath href="#arcTop" startOffset="50%">SKY BY ADI AHARONI</textPath></text>
               <text text-anchor="middle"><textPath href="#arcBot" startOffset="50%">DREAM IT . VISIT IT</textPath></text>
             </g>
-            <!-- לוטוס מרובד + מטוס במרכז -->
-            <g transform="translate(38,70) scale(0.6)" fill="none" stroke="#D8BE86" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M120,128 C 84,122 46,106 30,80 C 64,82 104,106 120,128 Z"/>
-              <path d="M120,128 C 156,122 194,106 210,80 C 176,82 136,106 120,128 Z"/>
-              <path d="M120,124 C 94,110 66,80 62,48 C 92,60 116,98 120,124 Z"/>
-              <path d="M120,124 C 146,110 174,80 178,48 C 148,60 124,98 120,124 Z"/>
-              <path d="M120,122 C 102,100 86,60 94,32 C 112,54 122,98 120,122 Z"/>
-              <path d="M120,122 C 138,100 154,60 146,32 C 128,54 118,98 120,122 Z"/>
-              <path d="M120,122 C 109,92 109,50 120,20 C 131,50 131,92 120,122 Z"/>
-              <path d="M120,128 C 111,118 111,106 120,98 C 129,106 129,118 120,128 Z"/>
-              <!-- קו-מסלול -->
-              <path d="M150,56 Q 178,52 192,40" stroke-width="2.6"/>
-            </g>
-            <!-- מטוס ממריא (תואם ללוגו) -->
-            <g transform="translate(38,70) scale(0.6)" fill="#D8BE86">
-              <path d="M196,46 l24,-13 a3.5,3.5 0 0 1 4.5,4.6 l-12,23 -5,-2.5 5,-13.5 -8.5,6 -1.2,7 -4.5,-2.2 1.2,-6.6 -6,2.2 z"/>
-            </g>
+            <!-- אמבלם הלוטוס+מטוס האמיתי מהלוגו (1:1) -->
+            <image href="sky-emblem.png" x="52" y="82" width="116" height="67" preserveAspectRatio="xMidYMid meet"/>
           </svg>
         </div>
       </div>
