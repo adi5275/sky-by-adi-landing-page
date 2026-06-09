@@ -353,29 +353,30 @@
     .btn-glow {
       position: relative;
       display: inline-block;
-      padding: 2.5px;                 /* רוחב "קו המסגרת" שבו רץ הזוהר */
-      border-radius: 13px;
+      padding: 3.5px;                 /* רוחב "קו המסגרת" המואר */
+      border-radius: 14px;
       overflow: hidden;
       isolation: isolate;
-      transition: filter 0.3s, transform 0.1s;
+      filter: drop-shadow(0 0 7px rgba(216,190,134,0.50));   /* דפנות מוארות קבוע */
+      transition: filter 0.3s, transform 0.12s;
     }
-    .btn-glow::before {                /* קרן זהב מסתובבת שמחליקה סביב המסגרת */
+    .btn-glow::before {                /* שתי נקודות אור זהב שזזות סביב המסגרת */
       content: '';
       position: absolute;
       inset: -150%;
       z-index: 0;
       background: conic-gradient(from 0deg,
-        rgba(194,160,96,0.30) 0deg 200deg,
-        rgba(216,190,134,0.70) 250deg,
-        #F2E4BC 288deg,
-        #ffffff 303deg,
-        #F2E4BC 318deg,
-        rgba(216,190,134,0.70) 350deg,
-        rgba(194,160,96,0.30) 360deg);
-      animation: beamSpin 4s linear infinite;
+        rgba(194,160,96,0.45) 0deg,
+        #F2E4BC 38deg, #ffffff 55deg, #F2E4BC 72deg,
+        rgba(194,160,96,0.45) 120deg,
+        rgba(194,160,96,0.45) 200deg,
+        #F2E4BC 238deg, #ffffff 255deg, #F2E4BC 272deg,
+        rgba(194,160,96,0.45) 320deg,
+        rgba(194,160,96,0.45) 360deg);
+      animation: beamSpin 3.2s linear infinite;
     }
-    .btn-glow:hover { filter: drop-shadow(0 0 11px rgba(216,190,134,0.65)); transform: translateY(-1px); }
-    .btn-glow:hover::before { animation-duration: 1.8s; }
+    .btn-glow:hover { filter: drop-shadow(0 0 14px rgba(216,190,134,0.80)); transform: translateY(-1px); }
+    .btn-glow:hover::before { animation-duration: 1.5s; }
     @keyframes beamSpin { to { transform: rotate(360deg); } }
     @media (prefers-reduced-motion: reduce) { .btn-glow::before { animation: none; } }
 
@@ -996,7 +997,7 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
       <div class="terms-note">
         לחיצה על הכפתור תשלח את החתימה לנותן השירות וישמר תיעוד כולל: שם, ת.ז., כתובת IP, שעה ותאריך.
       </div>
-      <div class="btn-glow"><button type="submit" id="submit-btn">✅ אני מאשר/ת את ההסכם</button></div>
+      <div class="btn-glow"><button type="submit" id="submit-btn">✅ אני מאשר/ת את תנאי ההסכם</button></div>
       <div class="validation-msg" id="validation-msg"></div>
     </div>
   </form>
