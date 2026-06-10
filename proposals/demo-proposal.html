@@ -107,7 +107,7 @@
     }
 
     /* ════════════════════════════════════
-       SECTION 1 — COVER
+       SECTION 1 - COVER
     ════════════════════════════════════ */
     .cover {
       position: relative;
@@ -222,7 +222,7 @@
     .cover-scroll svg { width: 18px; height: 18px; fill: currentColor; }
 
     /* ════════════════════════════════════
-       SECTION 2 — PERSONAL NOTE
+       SECTION 2 - PERSONAL NOTE
     ════════════════════════════════════ */
     .personal-note {
       background: var(--cream);
@@ -290,7 +290,7 @@
     .note-sig-role { font-size: 0.75rem; color: var(--muted); }
 
     /* ════════════════════════════════════
-       SECTION 3 — HOTEL
+       SECTION 3 - HOTEL
     ════════════════════════════════════ */
     .hotel-section {
       background: var(--green-dark);
@@ -379,7 +379,7 @@
     }
 
     /* ════════════════════════════════════
-       SECTION 4 — ITINERARY
+       SECTION 4 - ITINERARY
     ════════════════════════════════════ */
     .itinerary {
       padding: clamp(56px, 8vw, 96px) 24px;
@@ -461,7 +461,7 @@
     }
 
     /* ════════════════════════════════════
-       SECTION 5 — INCLUSIONS
+       SECTION 5 - INCLUSIONS
     ════════════════════════════════════ */
     .inclusions {
       background: linear-gradient(145deg, var(--sky-soft) 0%, var(--blush-soft) 100%);
@@ -511,7 +511,7 @@
     .not-included strong { color: var(--text); }
 
     /* ════════════════════════════════════
-       SECTION 6 — INVESTMENT
+       SECTION 6 - INVESTMENT
     ════════════════════════════════════ */
     .investment {
       background: var(--green);
@@ -614,7 +614,7 @@
     .tier.featured .tier-btn:hover { background: var(--gold-light); }
 
     /* ════════════════════════════════════
-       SECTION 7 — TESTIMONIALS
+       SECTION 7 - TESTIMONIALS
     ════════════════════════════════════ */
     .testimonials {
       padding: clamp(56px, 8vw, 96px) 24px;
@@ -625,10 +625,11 @@
 
     .test-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
-    @media (max-width: 580px) { .test-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 780px) { .test-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .test-grid { grid-template-columns: 1fr; } }
 
     .test-card {
       background: white; border-radius: 18px; padding: 32px;
@@ -655,17 +656,16 @@
     }
     .test-author { display: flex; align-items: center; gap: 12px; }
     .test-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--green); color: var(--gold-light);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.88rem; flex-shrink: 0;
+      width: 52px; height: 52px; border-radius: 50%;
+      object-fit: cover; flex-shrink: 0;
+      border: 2px solid var(--gold-light);
     }
     .test-name  { display: block; font-size: 0.85rem; font-weight: 700; color: var(--green); }
     .test-meta  { font-size: 0.73rem; color: var(--muted); }
     .test-stars { color: var(--gold); font-size: 0.82rem; margin-top: 2px; }
 
     /* ════════════════════════════════════
-       SECTION 8 — CTA
+       SECTION 8 - CTA
     ════════════════════════════════════ */
     .cta-section {
       background:
@@ -812,13 +812,13 @@
     <p class="note-label">מכתב אישי מעדי</p>
     <p class="note-text">
       אחרי השיחה שלנו, הבנתי שאת לא מחפשת עוד חופשה.<br>
-      את מחפשת את <strong>הרגע שמאיה תסתכל עלייך אחרת</strong> —
+      את מחפשת את <strong>הרגע שמאיה תסתכל עלייך אחרת</strong> -
       לא כאמא שמנהלת, אלא כאישה שיודעת לחיות.<br><br>
-      היא בת 13. עוד שנה היא בתיכון — ועוד כמה שנים אחרי,
+      היא בת 13. עוד שנה היא בתיכון - ועוד כמה שנים אחרי,
       היא בכלל עוברת. ה-72 שעות האלה הן לא חופשה.
       הן <strong>החלון שנשאר</strong>.<br><br>
       בחרתי את Grecotel Marine Palace בגלל דבר אחד:
-      יש להם Junior Spa Menu מגיל 12 — עם טיפולים שאני
+      יש להם Junior Spa Menu מגיל 12 - עם טיפולים שאני
       יכולה לומר לך במאה אחוז: <strong>מותר לה</strong>.
     </p>
     <div class="note-sig">
@@ -851,16 +851,16 @@
     <p class="hotel-stars" data-reveal>★★★★★</p>
     <p class="hotel-desc" data-reveal data-delay="1">
       Grecotel Marine Palace יושב ישירות על חוף הים האגאי בכרתים.
-      לא מלון שמביט אל הים — מלון שנבנה <em>בתוכו</em>.
+      לא מלון שמביט אל הים - מלון שנבנה <em>בתוכו</em>.
       הבריכה האינסופית מתמזגת עם האופק, החדרים נפתחים למרפסות פרטיות,
       וה-Thalasso Spa הוא אחד מ-3 הספאות הטובים ביוון לנערות מגיל 12.<br><br>
-      מאיה תקבל טיפול פנים מותאם לגיל שלה — עם מוצרים שהם
+      מאיה תקבל טיפול פנים מותאם לגיל שלה - עם מוצרים שהם
       <strong>בדיוק מה שמותר לה</strong>.
       את תקבלי שעה של שקט מוחלט בכורסת הרפיה שמולה.
     </p>
     <div class="hotel-why" data-reveal data-delay="2">
       <p class="hotel-why-label">למה בחרתי את זה דווקא בשבילכן</p>
-      <p>"מאיה אוהבת K-beauty. הריזורט הזה מאפשר לה ללמוד מה מותר לגיל שלה — לא מטיקטוק, אלא מטיפוסת עור מוסמכת. כשתחזור הביתה, היא תהיה הבת שיודעת יותר מכולן."</p>
+      <p>"מאיה אוהבת K-beauty. הריזורט הזה מאפשר לה ללמוד מה מותר לגיל שלה - לא מטיקטוק, אלא מטיפוסת עור מוסמכת. כשתחזור הביתה, היא תהיה הבת שיודעת יותר מכולן."</p>
     </div>
   </div>
 </section>
@@ -869,7 +869,7 @@
 <section class="itinerary">
   <div class="itinerary-inner">
     <div class="itinerary-head">
-      <p class="eyebrow eyebrow--green" data-reveal>72 שעות — יום-יום</p>
+      <p class="eyebrow eyebrow--green" data-reveal>72 שעות - יום-יום</p>
       <h2 class="section-heading section-heading--dark" data-reveal data-delay="1">המסע שלכן</h2>
     </div>
 
@@ -877,13 +877,13 @@
     <div class="day-block">
       <div class="day-circle" data-reveal>1<span>יום</span></div>
       <div>
-        <h3 class="day-title" data-reveal data-delay="1">הנחיתה — שתיכן נושמות</h3>
+        <h3 class="day-title" data-reveal data-delay="1">הנחיתה - שתיכן נושמות</h3>
         <p class="day-story" data-reveal data-delay="2">
           כשתנחתי בהרקליון, לא תצטרכו לחפש שלט. הנהג יחכה בשמכן.
-          <strong>בדרך למלון</strong> — חלון פתוח, ריח מלח ים, מאיה מצלמת סטורי.
-          ב-check-in, ערכת ה-<strong>Glow לדרך</strong> כבר מחכה על המיטה —
+          <strong>בדרך למלון</strong> - חלון פתוח, ריח מלח ים, מאיה מצלמת סטורי.
+          ב-check-in, ערכת ה-<strong>Glow לדרך</strong> כבר מחכה על המיטה -
           headbands, מוצרי mini-luxury, ופתק ביד כתיבה מעדי.<br><br>
-          ערב ראשון: ארוחה על שפת הים. לא צריך להחליט על שום דבר — הכל שמור.
+          ערב ראשון: ארוחה על שפת הים. לא צריך להחליט על שום דבר - הכל שמור.
         </p>
         <div class="day-tags" data-reveal data-delay="3">
           <span class="tag">✈️ טיסה + העברה</span>
@@ -901,15 +901,15 @@
     <div class="day-block">
       <div class="day-circle" data-reveal>2<span>יום</span></div>
       <div>
-        <h3 class="day-title" data-reveal data-delay="1">ה-Spa Day — הלב של 72 השעות</h3>
+        <h3 class="day-title" data-reveal data-delay="1">ה-Spa Day - הלב של 72 השעות</h3>
         <p class="day-story" data-reveal data-delay="2">
           יום 2 שייך לשתיכן לגמרי. לא טלפונים, לא לוח זמנים.
           <strong>בוקר:</strong> ארוחה על המרפסת עם נוף לים.<br><br>
-          <strong>צהריים — Thalasso Spa:</strong>
-          מאיה מקבלת "Junior Glow Facial" — ניקוי עדין עם Hyaluronic Acid ומינרל-SPF.
+          <strong>צהריים - Thalasso Spa:</strong>
+          מאיה מקבלת "Junior Glow Facial" - ניקוי עדין עם Hyaluronic Acid ומינרל-SPF.
           בדיוק מה שמותר לגיל שלה, בדיוק מה שצריכה.
           את מקבלת 60 דקות של ה-Full Thalasso Journey.
-          <strong>שתיכן יוצאות עם עור — ועם חיוך.</strong><br><br>
+          <strong>שתיכן יוצאות עם עור - ועם חיוך.</strong><br><br>
           <strong>ערב:</strong> שקיעה בבריכה האינסופית. שתיכן, הים, ושעת שקט.
         </p>
         <div class="day-tags" data-reveal data-delay="3">
@@ -928,13 +928,13 @@
     <div class="day-block">
       <div class="day-circle" data-reveal>3<span>יום</span></div>
       <div>
-        <h3 class="day-title" data-reveal data-delay="1">הבוקר האחרון — הרגע שיישאר</h3>
+        <h3 class="day-title" data-reveal data-delay="1">הבוקר האחרון - הרגע שיישאר</h3>
         <p class="day-story" data-reveal data-delay="2">
           יום 3 לא מרגיש כמו "עוד יום". הוא מרגיש כמו לפני-פרידה
           שמישהי כבר יודעת: <em>שרצית שייקח יותר זמן.</em><br><br>
-          <strong>בוקר אחרון:</strong> שחייה אחרונה, קפה, ארוחת בוקר. ואז — הנהג לשדה התעופה.<br><br>
+          <strong>בוקר אחרון:</strong> שחייה אחרונה, קפה, ארוחת בוקר. ואז - הנהג לשדה התעופה.<br><br>
           מה שתיקחי הביתה: מאיה עם שגרת טיפוח שהיא הכינה <em>איתך</em>, לא בגלל TikTok.
-          <strong>ואת — עם זיכרון שהוא שלכן לבד.</strong>
+          <strong>ואת - עם זיכרון שהוא שלכן לבד.</strong>
         </p>
         <div class="day-tags" data-reveal data-delay="3">
           <span class="tag">🌊 שחייה אחרונה</span>
@@ -983,7 +983,7 @@
       </div>
       <div class="inc-item" data-reveal data-delay="7">
         <div class="inc-check">🃏</div>
-        <div><span class="inc-name">קלפי "No-Filter Connection"</span><span class="inc-desc">שיחות שלא מתחילות בוויכוח — מחכות בחדר</span></div>
+        <div><span class="inc-name">קלפי "No-Filter Connection"</span><span class="inc-desc">שיחות שלא מתחילות בוויכוח - מחכות בחדר</span></div>
       </div>
       <div class="inc-item" data-reveal data-delay="8">
         <div class="inc-check">🛡️</div>
@@ -1002,10 +1002,6 @@
     <div class="investment-head">
       <p class="eyebrow eyebrow--gold" data-reveal>ה-Investment שלכן</p>
       <h2 class="section-heading section-heading--light" data-reveal data-delay="1">שלוש אפשרויות. אחת מומלצת.</h2>
-      <p class="anchor-text" data-reveal data-delay="2">
-        לשם השוואה: חדר ב-Grecotel ישירות באתר הרשמי —
-        <s>€420 ללילה לאדם</s> — ללא טיפולים, ללא העברות, ללא כלום.
-      </p>
     </div>
     <div class="tiers">
       <div class="tier" data-reveal data-delay="1">
@@ -1018,7 +1014,7 @@
           <li>העברות פרטיות</li>
           <li>ביטוח נסיעות</li>
         </ul>
-        <a href="#cta" class="tier-btn">בחרי אפשרות זו</a>
+        <a onclick="chooseTier('בסיסי','₪7,800')" class="tier-btn">בחרי אפשרות זו</a>
       </div>
       <div class="tier featured" data-reveal data-delay="2">
         <span class="tier-badge">⭐ הכי פופולרית</span>
@@ -1032,7 +1028,7 @@
           <li>קלפי No-Filter Connection</li>
           <li>ארוחת ערב יום 1</li>
         </ul>
-        <a href="#cta" class="tier-btn">זו האפשרות שלי</a>
+        <a onclick="chooseTier('מומלצת','₪10,500')" class="tier-btn">זו האפשרות שלי</a>
       </div>
       <div class="tier" data-reveal data-delay="3">
         <p class="tier-name">פרמיום</p>
@@ -1045,7 +1041,7 @@
           <li>K-beauty Workshop לשתיים</li>
           <li>Early + Late check-out</li>
         </ul>
-        <a href="#cta" class="tier-btn">בחרי אפשרות זו</a>
+        <a onclick="chooseTier('פרמיום','₪13,200')" class="tier-btn">בחרי אפשרות זו</a>
       </div>
     </div>
   </div>
@@ -1059,24 +1055,42 @@
       <h2 class="section-heading section-heading--dark" data-reveal data-delay="1">57 משפחות. 87% שביעות רצון.</h2>
     </div>
     <div class="test-grid">
+      <!-- החלפי בתמונות ושמות של לקוחות אמיתיים שלך -->
       <div class="test-card" data-reveal data-delay="1">
-        <p class="test-text">"הרגע שהכי זכור לי — הבת שלי הסתכלה עלי ואמרה 'אמא, זה היה הכי טוב'. לא הייתי 'אמא שלה'. הייתי חברה שלה. שש שנים לאחר מכן, עדיין מדברות על זה בכל ערב שישי."</p>
+        <p class="test-text">"הרגע שהכי זכור לי - הבת שלי הסתכלה עלי ואמרה 'אמא, זה היה הכי טוב'. לא הייתי 'אמא שלה'. הייתי חברה שלה. שש שנים אחרי, עדיין מדברות על זה בכל ערב שישי."</p>
         <div class="test-author">
-          <div class="test-avatar">ס</div>
+          <img class="test-avatar"
+            src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&w=80&h=80&fit=crop&crop=face"
+            alt="שרית ל.">
           <div>
-            <span class="test-name">סנדרין, 41</span>
-            <span class="test-meta">תל אביב · בת 14 בזמן הנסיעה</span>
+            <span class="test-name">שרית ל., 41</span>
+            <span class="test-meta">רמת גן · בת 14 בזמן הנסיעה</span>
             <div class="test-stars">★★★★★</div>
           </div>
         </div>
       </div>
       <div class="test-card" data-reveal data-delay="2">
-        <p class="test-text">"הגעתי עם בת שלא דיברה איתי. חזרתי עם בת שמחכה לסוף השבוע כדי לספר לי. עדי ידעה בדיוק מה אנחנו צריכות — בלי שאמרתי לה הכל."</p>
+        <p class="test-text">"הגעתי עם בת שלא דיברה איתי. חזרתי עם בת שמחכה לסוף השבוע כדי לספר לי. עדי ידעה בדיוק מה אנחנו צריכות - בלי שאמרתי לה הכל."</p>
         <div class="test-author">
-          <div class="test-avatar">ר</div>
+          <img class="test-avatar"
+            src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&w=80&h=80&fit=crop&crop=face"
+            alt="רותם ק.">
           <div>
-            <span class="test-name">רותם, 38</span>
-            <span class="test-meta">חיפה · בת 13 — לפני בת מצווה</span>
+            <span class="test-name">רותם ק., 38</span>
+            <span class="test-meta">חיפה · בת 13, לפני בת מצווה</span>
+            <div class="test-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+      <div class="test-card" data-reveal data-delay="3">
+        <p class="test-text">"חשבתי שיהיה קשה. שנות המתח בינינו. עדי הכינה לנו קלפי שיחה - ופתאום גיליתי שיש לי בת מדהימה שאני לא מכירה. שלחתי את ההצעה גם לאחותי."</p>
+        <div class="test-author">
+          <img class="test-avatar"
+            src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&w=80&h=80&fit=crop&crop=face"
+            alt="מיכל נ.">
+          <div>
+            <span class="test-name">מיכל נ., 44</span>
+            <span class="test-meta">תל אביב · בת 11, לפני כיתה ז'</span>
             <div class="test-stars">★★★★★</div>
           </div>
         </div>
@@ -1094,8 +1108,8 @@
       <em>הוא לא יחכה.</em>
     </h2>
     <p class="cta-sub" data-reveal data-delay="2">
-      20 דקות. שיחת הכרה — ללא עלות, ללא התחייבות.
-      אם מסתדר — נמשיך. אם לא — יצאת עם תמונה ברורה של מה מאיה צריכה.
+      20 דקות. שיחת הכרה - ללא עלות, ללא התחייבות.
+      אם מסתדר - נמשיך. אם לא - יצאת עם תמונה ברורה של מה מאיה צריכה.
     </p>
     <div class="scarcity-chip" data-reveal data-delay="3">
       ⏳ <strong>נותרו 2 מקומות</strong> במחזור ספטמבר 2026 ·
@@ -1108,7 +1122,7 @@
       </a>
       <span class="cta-contact">050-827-8089 · coheadi@gmail.com</span>
     </div>
-    <p class="validity-note">ההצעה תקפה עד 30 ביוני 2026 · SKY BY ADI AHARONI · עוסק מורשה 031459084</p>
+    <p class="validity-note">ההצעה תקפה עד 30 ביוני 2026 · SKY BY ADI AHARONI</p>
   </div>
 </section>
 
@@ -1116,7 +1130,7 @@
 <footer class="footer">
   <img src="../sky-logo.jpg" alt="SKY BY ADI AHARONI">
   <p>
-    SKY BY ADI AHARONI — DREAM IT. VISIT IT<br>
+    SKY BY ADI AHARONI · DREAM IT. VISIT IT<br>
     עדי אהרוני · המרגנית 6, חולון ·
     <a href="tel:0508278089">050-827-8089</a> ·
     <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a>
@@ -1159,6 +1173,19 @@
   document.querySelectorAll('[data-reveal]').forEach(el => {
     revealObserver.observe(el);
   });
+
+  /* ── Tier selection - sends to WhatsApp with pre-filled message ── */
+  function chooseTier(tier, price) {
+    const nameEl = document.querySelector('.cover-names');
+    const clientName = nameEl ? nameEl.textContent.replace(/·.*/, '').trim() : 'לקוחה';
+    const msg = encodeURIComponent(
+      'שלום עדי!\n' +
+      'ראיתי את ההצעה ל' + clientName + '.\n' +
+      'אני מעוניינת באפשרות: ' + tier + ' (' + price + ').\n' +
+      'מתי נוכל לדבר?'
+    );
+    window.open('https://wa.me/972508278089?text=' + msg, '_blank');
+  }
 
   /* ── Tier click feedback ──
      Emil: active state scale(0.97) on press
