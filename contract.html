@@ -131,7 +131,7 @@
         rgba(150,116,40,0.35) 360deg);
       filter: blur(2px);
       will-change: transform;
-      animation: beamSpin 2.2s linear infinite;
+      animation: beamSpin 4.5s linear infinite;
     }
     .logo-img {
       position: relative;
@@ -395,10 +395,10 @@
       filter: blur(2px);              /* גורם לאור "לזהור" ולא להיראות כקו חד */
       will-change: transform;
       transform-origin: 50% 50%;
-      animation: beamSpin 2.2s linear infinite;   /* תמיד מסתובב - בלי קשר להגדרות המכשיר */
+      animation: beamSpin 4.5s linear infinite;   /* תמיד מסתובב - בלי קשר להגדרות המכשיר */
     }
     .btn-glow:hover { filter: drop-shadow(0 0 16px rgba(216,190,134,0.95)); transform: translateY(-1px); }
-    .btn-glow:hover::before { animation-duration: 1.3s; }
+    .btn-glow:hover::before { animation-duration: 3s; }
     @keyframes beamSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     #submit-btn {
@@ -985,7 +985,6 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
       <div class="sign-card">
         <div class="role">נותן השירות | חתום</div>
         <div class="who">SKY BY ADI AHARONI</div>
-        <div class="meta">המרגנית 6, חולון</div>
         <div class="provider-sign-row">
           <span class="hand-sig">עדי אהרוני</span>
           <!-- חותמת עגולה בצבעי הלוגו: רקע ירוק + לוטוס וטקסט זהב -->
@@ -1004,7 +1003,7 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
               <text text-anchor="middle"><textPath href="#arcBot" startOffset="50%">DREAM IT . VISIT IT</textPath></text>
             </g>
             <!-- אמבלם הלוטוס+מטוס האמיתי מהלוגו (1:1) -->
-            <image href="sky-emblem.png" x="52" y="82" width="116" height="67" preserveAspectRatio="xMidYMid meet"/>
+            <image href="sky-emblem-c.png" x="44" y="44" width="132" height="132" preserveAspectRatio="xMidYMid meet"/>
           </svg>
         </div>
       </div>
