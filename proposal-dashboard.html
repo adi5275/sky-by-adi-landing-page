@@ -1048,16 +1048,26 @@ ${personal}
 
     /* הצג סיכום */
     const fields = document.getElementById('parse-fields');
+    fields.innerHTML = '';
     const labels = {
       momName: 'שם האמא', daughterName: 'שם הבת', daughterAge: 'גיל הבת',
       destination: 'יעד', hotel: 'מלון', checkin: 'כניסה', checkout: 'יציאה',
       priceBasic: 'בסיסי', priceRec: 'מומלצת', pricePrem: 'פרמיום'
     };
-    fields.innerHTML = Object.entries(detected).map(([k,v]) =>
-      `<div class="parsed-field"><span class="parsed-key">${labels[k]||k}</span><span class="parsed-val">${v}</span></div>`
-    ).join('');
-    if (!Object.keys(detected).length) {
-      fields.innerHTML = '<div class="parsed-field"><span class="parsed-val" style="color:var(--blush)">לא זוהו פרטים אוטומטית - הטקסט הועתק לשיחה. עברי לטופס ומלאי ידנית.</span></div>';
+    if (Object.keys(detected).length) {
+      for (const [k, v] of Object.entries(detected)) {
+        const wrap = document.createElement('div'); wrap.className = 'parsed-field';
+        const keyEl = document.createElement('span'); keyEl.className = 'parsed-key'; keyEl.textContent = labels[k] || k;
+        const valEl = document.createElement('span'); valEl.className = 'parsed-val';  valEl.textContent = v;
+        wrap.append(keyEl, valEl);
+        fields.append(wrap);
+      }
+    } else {
+      const wrap = document.createElement('div'); wrap.className = 'parsed-field';
+      const msg = document.createElement('span'); msg.className = 'parsed-val';
+      msg.style.color = 'var(--blush)';
+      msg.textContent = 'לא זוהו פרטים אוטומטית - הטקסט הועתק לשיחה. עברי לטופס ומלאי ידנית.';
+      wrap.append(msg); fields.append(wrap);
     }
     document.getElementById('parse-output').classList.add('visible');
 
