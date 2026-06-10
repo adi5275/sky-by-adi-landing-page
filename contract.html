@@ -366,20 +366,21 @@
       inset: -160%;
       z-index: 0;
       background: conic-gradient(from 0deg,
-        rgba(150,116,40,0.30) 0deg,
-        #E9CF93 26deg, #FFFDF4 46deg, #FFF3C4 56deg, #FFFDF4 66deg, #E9CF93 86deg,
-        rgba(150,116,40,0.30) 130deg,
-        rgba(150,116,40,0.30) 200deg,
-        #E9CF93 226deg, #FFFDF4 246deg, #FFF3C4 256deg, #FFFDF4 266deg, #E9CF93 286deg,
-        rgba(150,116,40,0.30) 330deg,
-        rgba(150,116,40,0.30) 360deg);
+        rgba(150,116,40,0.35) 0deg,
+        #EAD08F 22deg, #FFFFFF 46deg, #FFF3BC 56deg, #FFFFFF 66deg, #EAD08F 90deg,
+        rgba(150,116,40,0.35) 135deg,
+        rgba(150,116,40,0.35) 200deg,
+        #EAD08F 222deg, #FFFFFF 246deg, #FFF3BC 256deg, #FFFFFF 266deg, #EAD08F 290deg,
+        rgba(150,116,40,0.35) 335deg,
+        rgba(150,116,40,0.35) 360deg);
       filter: blur(2px);              /* גורם לאור "לזהור" ולא להיראות כקו חד */
-      animation: beamSpin 2.6s linear infinite;
+      will-change: transform;
+      transform-origin: 50% 50%;
+      animation: beamSpin 2.2s linear infinite;   /* תמיד מסתובב - בלי קשר להגדרות המכשיר */
     }
-    .btn-glow:hover { filter: drop-shadow(0 0 16px rgba(216,190,134,0.9)); transform: translateY(-1px); }
-    .btn-glow:hover::before { animation-duration: 1.4s; }
-    @keyframes beamSpin { to { transform: rotate(360deg); } }
-    @media (prefers-reduced-motion: reduce) { .btn-glow::before { animation: none; } }
+    .btn-glow:hover { filter: drop-shadow(0 0 16px rgba(216,190,134,0.95)); transform: translateY(-1px); }
+    .btn-glow:hover::before { animation-duration: 1.3s; }
+    @keyframes beamSpin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
     #submit-btn {
       position: relative;
