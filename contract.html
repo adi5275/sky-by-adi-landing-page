@@ -278,10 +278,18 @@
       background: var(--green);
       color: white;
       padding: 9px 12px;
-      text-align: right;
+      text-align: center;
     }
     table.fee-table td { padding: 9px 12px; border-bottom: 1px solid var(--cream-dark); }
     table.fee-table tr:nth-child(even) td { background: var(--cream); }
+    /* עמודת הסכום - תמיד בשורה אחת (₪ לא נשבר לשורה נפרדת) */
+    table.fee-table th:last-child, table.fee-table td:last-child { white-space: nowrap; }
+    /* עמודת "תיאור" ממורכזת לאוורור */
+    table.fee-table th:nth-child(2), table.fee-table td:nth-child(2) { text-align: center; }
+    @media (max-width: 580px) {
+      table.fee-table { font-size: 0.74rem; }
+      table.fee-table th, table.fee-table td { padding: 7px 6px; }
+    }
 
     /* ── SIGNATURE SECTION - "אזור הסיום": פלטת נויה המלאה (ירוק|כחול|ורוד) ── */
     .sig-section {
