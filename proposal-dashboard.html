@@ -60,6 +60,113 @@
     }
     .header-titles p { font-size: 0.8rem; color: rgba(250,246,238,0.7); margin-top: 2px; }
 
+    /* TABS */
+    .tabs {
+      display: flex;
+      gap: 0;
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 3px;
+    }
+    .tab-btn {
+      padding: 8px 18px;
+      border: none;
+      background: transparent;
+      color: rgba(250,246,238,0.65);
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: var(--gold);
+      color: white;
+    }
+
+    /* PASTE MODE */
+    .paste-card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: 0 2px 16px rgba(45,80,22,0.08);
+      border: 1px solid var(--border);
+    }
+    .paste-card .section-title { margin-bottom: 16px; }
+    .paste-hint {
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: var(--sky-soft);
+      border-radius: 8px;
+      padding: 12px 16px;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+    .paste-area {
+      width: 100%;
+      min-height: 280px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--cream);
+      resize: vertical;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .paste-area:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(194,160,96,0.15);
+      background: white;
+    }
+    .parse-btn {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 100%);
+      color: var(--gold-light);
+      border: none;
+      border-radius: 50px;
+      padding: 14px 36px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(45,80,22,0.3);
+    }
+    .parse-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(45,80,22,0.4); }
+    .parse-output {
+      display: none;
+      margin-top: 20px;
+      padding: 16px;
+      background: var(--sky-soft);
+      border-radius: 10px;
+      border: 1px solid var(--sky);
+    }
+    .parse-output.visible { display: block; }
+    .parse-output h4 {
+      font-size: 0.8rem;
+      color: var(--green);
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+    .parsed-field {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      padding: 5px 0;
+      border-bottom: 1px dashed var(--border);
+      font-size: 0.84rem;
+    }
+    .parsed-field:last-child { border-bottom: none; }
+    .parsed-key { font-weight: 600; color: var(--green); min-width: 100px; flex-shrink: 0; }
+    .parsed-val { color: var(--text); }
+
     /* CONTAINER */
     .container {
       max-width: 860px;
@@ -255,6 +362,7 @@
       margin-bottom: 8px;
     }
     .generate-section p { font-size: 0.85rem; opacity: 0.75; margin-bottom: 24px; }
+    .btn-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
     .generate-btn {
       background: linear-gradient(135deg, var(--gold) 0%, var(--gold-deep) 100%);
       color: white;
@@ -274,8 +382,71 @@
       box-shadow: 0 10px 30px rgba(168,132,47,0.5);
     }
     .generate-btn:active { transform: translateY(0); }
+    .secondary-btn {
+      background: transparent;
+      color: var(--gold-light);
+      border: 2px solid var(--gold-light);
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      opacity: 0.8;
+    }
+    .secondary-btn:hover { opacity: 1; background: rgba(214,190,134,0.12); }
 
-    /* OUTPUT */
+    /* LINK OUTPUT */
+    .link-box {
+      display: none;
+      background: #1A2A10;
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      position: relative;
+    }
+    .link-box.visible { display: block; }
+    .link-box-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      color: var(--sky);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .link-row {
+      display: flex;
+      gap: 10px;
+      align-items: stretch;
+    }
+    .link-url {
+      flex: 1;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(194,160,96,0.3);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--gold-light);
+      font-family: monospace;
+      font-size: 0.72rem;
+      word-break: break-all;
+      line-height: 1.5;
+    }
+    .copy-link-btn {
+      background: var(--gold);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-family: 'Heebo', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s;
+    }
+    .copy-link-btn:hover { background: var(--gold-deep); }
+
+    /* OUTPUT (brief fallback) */
     .output-box {
       display: none;
       background: #1A2A10;
@@ -321,7 +492,11 @@
   <img src="sky-logo.jpg" class="header-logo" alt="SKY BY ADI">
   <div class="header-titles">
     <h1>מחולל הצעות מחיר</h1>
-    <p>מלאי את הפרטים — ובריף מוכן לעדי</p>
+    <p>מלאי את הפרטים — הצעה נפתחת מיד</p>
+  </div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('form', this)">📋 טופס</button>
+    <button class="tab-btn" onclick="switchTab('paste', this)">📝 הדבקת טקסט</button>
   </div>
 </div>
 
@@ -527,14 +702,48 @@
     </div>
   </div>
 
+  <!-- PASTE MODE (hidden by default) -->
+  <div id="paste-section" style="display:none;">
+    <div class="paste-card">
+      <div class="section-title"><span class="section-icon">📝</span> הדבקת שיחה - מ-WhatsApp / מסרים / מייל</div>
+      <div class="paste-hint">
+        <strong>איך זה עובד:</strong> הדביקי את הטקסט מהשיחה עם הלקוחה (WhatsApp, מייל, הערות).
+        המערכת תזהה את הפרטים (שמות, יעד, תאריכים, תקציב) ותמלא את הטופס אוטומטית.
+        תוכלי לתקן כל שדה שצריך ואז ללחוץ "פתחי הצעה".
+      </div>
+      <textarea class="paste-area" id="paste-text" placeholder='הדביקי כאן את טקסט השיחה עם הלקוחה...
+
+לדוגמה:
+"שלום, שמי נדין, יש לי בת מאיה בת 13. אנחנו רוצות לנסוע ליוון בסוף אוגוסט לכמה ימים. המלון שנשמע לנו הוא Grecotel. תקציב כ-12,000 שקל לשתינו. הבת שלי מאוד אוהבת קרמים ותרצה ספא"'></textarea>
+      <button class="parse-btn" onclick="parseAndFill()">🔍 זהי פרטים ומלאי טופס</button>
+      <div class="parse-output" id="parse-output">
+        <h4>פרטים שזוהו - בדקי ותקני:</h4>
+        <div id="parse-fields"></div>
+      </div>
+    </div>
+  </div>
+
   <!-- GENERATE -->
   <div class="generate-section">
     <h2>מוכנה? בואי נבנה הצעה שאי-אפשר לסרב לה</h2>
-    <p>הלחיצה תייצר בריף מובנה — תעתיקי אותו לצ׳אט עם עדי (AI) והיא תייצר את ההצעה</p>
-    <button class="generate-btn" onclick="generateBrief()">⚡ צרי את הבריף</button>
+    <p>"פתחי הצעה" — פותחת הצעה מלאה בלשונית חדשה &nbsp;·&nbsp; "העתק קישור" — לשלוח ללקוחה</p>
+    <div class="btn-row">
+      <button class="generate-btn" onclick="openProposal()">⚡ פתחי הצעה עכשיו</button>
+      <button class="secondary-btn" onclick="copyProposalLink()">🔗 העתק קישור</button>
+      <button class="secondary-btn" onclick="generateBrief()" style="font-size:0.78rem; padding:14px 20px;">📋 בריף טקסט</button>
+    </div>
   </div>
 
-  <!-- OUTPUT -->
+  <!-- LINK BOX -->
+  <div class="link-box" id="link-box">
+    <span class="link-box-label">── קישור להצעה ──</span>
+    <div class="link-row">
+      <div class="link-url" id="link-url-display"></div>
+      <button class="copy-link-btn" onclick="doCopyLink()">📋 העתק</button>
+    </div>
+  </div>
+
+  <!-- OUTPUT (brief fallback) -->
   <div class="output-box" id="output-box">
     <button class="copy-btn" onclick="copyBrief()">📋 העתק</button>
     <span class="output-label">── BRIEF לייצור הצעת מחיר ──</span>
@@ -545,6 +754,7 @@
 
 <script>
   let selectedOccasion = '';
+  let _lastBuiltUrl = '';
 
   function selectOccasion(btn) {
     document.querySelectorAll('.occasion-btn').forEach(b => b.classList.remove('selected'));
@@ -567,6 +777,105 @@
     const extra = val('extra-inclusions');
     if (extra) labels.push(extra);
     return labels.join(', ');
+  }
+
+  function getInclusionsForUrl() {
+    const checks = ['inc-flights','inc-hotel','inc-breakfast','inc-transfers','inc-spa','inc-glow','inc-cards','inc-insurance'];
+    const labels = checks
+      .filter(id => document.getElementById(id)?.checked)
+      .map(id => document.getElementById(id)?.value || '')
+      .filter(Boolean);
+    const extra = val('extra-inclusions');
+    if (extra) labels.push(extra);
+    return labels.join('|');
+  }
+
+  function formatDateForUrl(dateStr) {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length !== 3) return '';
+    return parts[2] + '.' + parts[1] + '.' + parts[0];
+  }
+
+  function buildProposalUrl() {
+    const e = encodeURIComponent;
+    const momName      = val('mom-name')         || 'לקוחה יקרה';
+    const daughterName = val('daughter-name')     || 'בתך';
+    const daughterAge  = val('daughter-age')      || '13';
+    const destination  = val('destination')       || '';
+    const hotelName    = val('hotel-name')        || '';
+    const checkin      = val('checkin')           || '';
+    const checkout     = val('checkout')          || '';
+    const flights      = val('flight-details')    || '';
+    const inclusions   = getInclusionsForUrl();
+    const priceBasic   = val('price-basic')       || '';
+    const priceRec     = val('price-recommended') || '';
+    const pricePrem    = val('price-premium')     || '';
+    const basicDesc    = val('basic-desc')        || '';
+    const recDesc      = val('rec-desc')          || '';
+    const premDesc     = val('prem-desc')         || '';
+    const spots        = val('spots-left')        || '3';
+    const validUntil   = formatDateForUrl(val('valid-until'));
+    const intakeNotes  = val('intake-notes')      || '';
+    const momQuote     = val('mom-quote')         || '';
+    const personalNote = val('personal-touch')    || '';
+
+    const note = [intakeNotes, momQuote ? '"' + momQuote + '"' : '', personalNote].filter(Boolean).join(' | ');
+
+    const dateRange = checkin && checkout
+      ? formatDateForUrl(checkin) + ' - ' + formatDateForUrl(checkout)
+      : '';
+
+    const params = new URLSearchParams();
+    params.set('c',    momName);
+    params.set('d',    daughterName);
+    params.set('da',   daughterAge);
+    params.set('dest', destination);
+    params.set('h',    hotelName);
+    if (dateRange)  params.set('dt', dateRange);
+    if (flights)    params.set('fl', flights);
+    if (inclusions) params.set('inc', inclusions);
+    if (priceBasic) params.set('p1', priceBasic);
+    if (priceRec)   params.set('p2', priceRec);
+    if (pricePrem)  params.set('p3', pricePrem);
+    if (basicDesc)  params.set('b1', basicDesc);
+    if (recDesc)    params.set('b2', recDesc);
+    if (premDesc)   params.set('b3', premDesc);
+    params.set('sp',  spots);
+    if (validUntil) params.set('exp', validUntil);
+    if (note)       params.set('note', note);
+
+    const base = location.href.replace(/\/[^/]*$/, '') + '/proposals/template.html';
+    return base + '?' + params.toString();
+  }
+
+  function openProposal() {
+    const url = buildProposalUrl();
+    _lastBuiltUrl = url;
+    window.open(url, '_blank');
+  }
+
+  function copyProposalLink() {
+    const url = buildProposalUrl();
+    _lastBuiltUrl = url;
+    const box = document.getElementById('link-box');
+    document.getElementById('link-url-display').textContent = url;
+    box.classList.add('visible');
+    box.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.copy-link-btn');
+      btn.textContent = '✅ הועתק!';
+      setTimeout(() => btn.textContent = '📋 העתק', 2500);
+    });
+  }
+
+  function doCopyLink() {
+    const url = document.getElementById('link-url-display').textContent;
+    navigator.clipboard.writeText(url).then(() => {
+      const btn = document.querySelector('.copy-link-btn');
+      btn.textContent = '✅ הועתק!';
+      setTimeout(() => btn.textContent = '📋 העתק', 2500);
+    });
   }
 
   function generateBrief() {
@@ -651,6 +960,111 @@ ${personal}
       btn.textContent = '✅ הועתק!';
       setTimeout(() => btn.textContent = '📋 העתק', 2000);
     });
+  }
+
+  /* ── TAB SWITCH ── */
+  function switchTab(mode, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const formSections = document.querySelectorAll('.section-card');
+    const pasteSection = document.getElementById('paste-section');
+    const genSection   = document.querySelector('.generate-section');
+
+    if (mode === 'paste') {
+      formSections.forEach(s => s.style.display = 'none');
+      pasteSection.style.display = 'block';
+    } else {
+      formSections.forEach(s => s.style.display = '');
+      pasteSection.style.display = 'none';
+    }
+  }
+
+  /* ── PARSE TEXT ── */
+  function parseAndFill() {
+    const text = (document.getElementById('paste-text').value || '').trim();
+    if (!text) return;
+
+    const detected = {};
+
+    /* שמות */
+    const nameMatch = text.match(/שמ[יי]\s+([א-ת\s]{2,15})/i);
+    if (nameMatch) detected.momName = nameMatch[1].trim().split(' ')[0];
+
+    const daughterMatch = text.match(/(?:בת|ילד[הת])\s+(?:שמה\s+)?([^\s,\.]{2,12})/i);
+    if (daughterMatch) detected.daughterName = daughterMatch[1];
+
+    const ageMatch = text.match(/(?:בת|גיל)\s*(\d{1,2})/i);
+    if (ageMatch) detected.daughterAge = ageMatch[1];
+
+    /* יעד */
+    if (/כרתים/i.test(text))       detected.destination = 'יוון - כרתים';
+    else if (/אתונה/i.test(text))  detected.destination = 'יוון - אתונה';
+    else if (/יוון/i.test(text))   detected.destination = 'יוון - כרתים';
+    else if (/קפריסין/i.test(text)) detected.destination = 'קפריסין';
+    else if (/דובאי/i.test(text))  detected.destination = 'דובאי';
+    else if (/קוריאה/i.test(text)) detected.destination = 'קוריאה';
+
+    /* מלון */
+    const hotelMatch = text.match(/(?:מלון|hotel|resort)\s+([A-Za-zא-ת\s]{3,30})/i);
+    if (hotelMatch) detected.hotel = hotelMatch[1].trim();
+
+    /* תקציב */
+    const budgetMatch = text.match(/(?:תקציב|₪|שקל|NIS)\s*[כ-]?\s*([\d,]+)/i);
+    if (budgetMatch) {
+      const b = parseInt(budgetMatch[1].replace(/,/g,''));
+      if (b > 0) {
+        detected.priceBasic = '₪' + Math.round(b * 0.75).toLocaleString();
+        detected.priceRec   = '₪' + Math.round(b).toLocaleString();
+        detected.pricePrem  = '₪' + Math.round(b * 1.35).toLocaleString();
+      }
+    }
+
+    /* תאריכים */
+    const months = { 'ינואר':1,'פברואר':2,'מרץ':3,'אפריל':4,'מאי':5,'יוני':6,'יולי':7,'אוגוסט':8,'ספטמבר':9,'אוקטובר':10,'נובמבר':11,'דצמבר':12 };
+    for (const [heb, num] of Object.entries(months)) {
+      if (new RegExp(heb,'i').test(text)) {
+        const yr = new Date().getFullYear();
+        const mn = String(num).padStart(2,'0');
+        if (!detected.checkin) detected.checkin = yr + '-' + mn + '-10';
+        if (!detected.checkout) detected.checkout = yr + '-' + mn + '-13';
+        break;
+      }
+    }
+
+    /* מלא את השדות */
+    if (detected.momName)     { document.getElementById('mom-name').value = detected.momName; }
+    if (detected.daughterName){ document.getElementById('daughter-name').value = detected.daughterName; }
+    if (detected.daughterAge) { document.getElementById('daughter-age').value = detected.daughterAge; }
+    if (detected.destination) { document.getElementById('destination').value = detected.destination; }
+    if (detected.hotel)       { document.getElementById('hotel-name').value = detected.hotel; }
+    if (detected.checkin)     { document.getElementById('checkin').value = detected.checkin; }
+    if (detected.checkout)    { document.getElementById('checkout').value = detected.checkout; }
+    if (detected.priceBasic)  { document.getElementById('price-basic').value = detected.priceBasic; }
+    if (detected.priceRec)    { document.getElementById('price-recommended').value = detected.priceRec; }
+    if (detected.pricePrem)   { document.getElementById('price-premium').value = detected.pricePrem; }
+
+    document.getElementById('intake-notes').value = text;
+
+    /* הצג סיכום */
+    const fields = document.getElementById('parse-fields');
+    const labels = {
+      momName: 'שם האמא', daughterName: 'שם הבת', daughterAge: 'גיל הבת',
+      destination: 'יעד', hotel: 'מלון', checkin: 'כניסה', checkout: 'יציאה',
+      priceBasic: 'בסיסי', priceRec: 'מומלצת', pricePrem: 'פרמיום'
+    };
+    fields.innerHTML = Object.entries(detected).map(([k,v]) =>
+      `<div class="parsed-field"><span class="parsed-key">${labels[k]||k}</span><span class="parsed-val">${v}</span></div>`
+    ).join('');
+    if (!Object.keys(detected).length) {
+      fields.innerHTML = '<div class="parsed-field"><span class="parsed-val" style="color:var(--blush)">לא זוהו פרטים אוטומטית - הטקסט הועתק לשיחה. עברי לטופס ומלאי ידנית.</span></div>';
+    }
+    document.getElementById('parse-output').classList.add('visible');
+
+    /* עבור לטופס כדי לבדוק ולערוך */
+    setTimeout(() => {
+      switchTab('form', document.querySelectorAll('.tab-btn')[0]);
+    }, 2000);
   }
 </script>
 
