@@ -481,6 +481,7 @@
     }
     .btn-share:hover { background: rgba(255,255,255,.14); }
     .cta-contact { font-size: .82rem; color: rgba(255,255,255,.5); }
+    .cta-contact a { color: inherit; text-decoration: none; }
     .next-steps {
       margin-top: 40px; padding: 24px;
       background: rgba(255,255,255,.06); border-radius: 14px;
@@ -540,7 +541,15 @@
     .fab-wa svg { width: 28px; height: 28px; fill: white; }
 
     /* HIDDEN until JS fills */
-    .js-fill { visibility: hidden; }
+    .js-fill   { visibility: hidden; }
+    .js-hidden { display: none; }
+
+    /* INCLUSIONS header */
+    .inclusions-head { text-align: center; margin-bottom: 40px; }
+
+    /* Next-steps highlight */
+    .step-text strong { color: var(--gold-light); }
+    .note-quote-attr { font-size: .8rem; opacity: .7; }
 
     /* ── STATS STRIP ── */
     .stats-strip {
@@ -632,9 +641,44 @@
       display: none;
     }
     @media (max-width: 767px) {
+      /* sticky bar */
       .sticky-mobile-cta { display: block; }
       .sticky-mobile-cta.visible { transform: translateY(0); }
       body { padding-bottom: 74px; }
+
+      /* FAB sits above sticky bar; hides once sticky is visible to avoid clutter */
+      .fab-wa { bottom: max(90px, env(safe-area-inset-bottom) + 80px); }
+      .sticky-mobile-cta.visible ~ .fab-wa,
+      body.sticky-visible .fab-wa { display: none; }
+
+      /* FULL-WIDTH CTAs */
+      .btn-wa       { width: 100%; justify-content: center; }
+      .btn-wa-inline { width: 100%; justify-content: center; }
+      .btn-share    { width: 100%; justify-content: center; }
+      .overlay-wa-btn { width: 100%; max-width: 340px; justify-content: center; }
+
+      /* TOUCH TARGETS */
+      .tier-btn { min-height: 44px; display: flex; align-items: center; justify-content: center; }
+      .faq-q    { min-height: 44px; }
+
+      /* BODY TEXT ≥16px */
+      .day-story  { font-size: 1rem; }
+      .hotel-desc { font-size: 1rem; }
+      .faq-a      { font-size: .95rem; }
+      .test-text  { font-size: .93rem; }
+
+      /* SCARCITY CHIP */
+      .scarcity-chip { display: block; text-align: center; }
+
+      /* COUNTDOWN */
+      .countdown-box { width: 100%; max-width: 310px; padding: 14px; gap: 10px; }
+
+      /* HERO IMAGE — smaller file on mobile */
+      .cover-bg {
+        background:
+          linear-gradient(to bottom, rgba(26,50,9,.5) 0%, rgba(26,50,9,.2) 45%, rgba(26,50,9,.78) 100%),
+          url('https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=800&q=80') center/cover no-repeat;
+      }
     }
     .sticky-wa-btn {
       display: flex; align-items: center; justify-content: center; gap: 10px;
@@ -774,7 +818,7 @@
 </section>
 
 <!-- FLIGHTS STRIP (conditional - shown if flights param exists) -->
-<div class="flights-strip js-fill" id="p-flights-strip" style="display:none;">
+<div class="flights-strip js-fill js-hidden" id="p-flights-strip">
   <p>✈️ <strong>טיסות:</strong> <span id="p-flights-text"></span></p>
 </div>
 
@@ -795,7 +839,7 @@
 
     <p class="hotel-stars" data-reveal>★★★★★</p>
     <p class="hotel-desc js-fill" id="p-hotel-desc" data-reveal data-delay="1">---</p>
-    <div class="hotel-why" id="p-hotel-why-wrap" data-reveal data-delay="2" style="display:none;">
+    <div class="hotel-why js-hidden" id="p-hotel-why-wrap" data-reveal data-delay="2">
       <p class="hotel-why-label">למה בחרתי את זה דווקא בשבילכן</p>
       <p id="p-hotel-why"></p>
     </div>
@@ -822,7 +866,7 @@
           ערב ראשון: ארוחה על שפת הים. לא צריך להחליט על שום דבר - הכל שמור.
         </p>
         <div class="day-tags" data-reveal data-delay="3">
-          <span class="tag" id="p-flight-tag" style="display:none;">✈️ טיסה + העברה</span>
+          <span class="tag js-hidden" id="p-flight-tag">✈️ טיסה + העברה</span>
           <span class="tag">🛎️ Early check-in</span>
           <span class="tag">✨ ערכת Glow</span>
           <span class="tag">🍽️ ארוחת ערב</span>
@@ -880,7 +924,7 @@
     </div>
 
     <!-- DAY 4 (shown when nights >= 3) -->
-    <div class="day-block" id="day-4" style="display:none;">
+    <div class="day-block js-hidden" id="day-4">
       <div class="day-circle" data-reveal>4<span>יום</span></div>
       <div>
         <h3 class="day-title" data-reveal data-delay="1">יום 4 - היום שלכן בלבד</h3>
@@ -901,7 +945,7 @@
     </div>
 
     <!-- DAY 5 (shown when nights >= 4) -->
-    <div class="day-block" id="day-5" style="display:none;">
+    <div class="day-block js-hidden" id="day-5">
       <div class="day-circle" data-reveal>5<span>יום</span></div>
       <div>
         <h3 class="day-title" data-reveal data-delay="1">יום 5 - Workshop הטיפוח של <span id="d5-daughter">הבת</span></h3>
@@ -927,7 +971,7 @@
 <!-- INCLUSIONS -->
 <section class="inclusions-section">
   <div class="inclusions-inner">
-    <div style="text-align:center; margin-bottom:40px;">
+    <div class="inclusions-head">
       <p class="eyebrow eyebrow--green" data-reveal>מה כלול בחבילה</p>
       <h2 class="section-heading section-heading--dark" data-reveal data-delay="1">הכל דאגנו.</h2>
     </div>
@@ -1054,7 +1098,7 @@
       <p class="eyebrow eyebrow--green" data-reveal>שאלות שכולן שואלות</p>
       <h2 class="section-heading section-heading--dark" data-reveal data-delay="1">רגע לפני שסוגרות</h2>
     </div>
-    <div id="p-faq-flights" style="display:none;" class="faq-item">
+    <div id="p-faq-flights" class="faq-item js-hidden">
       <details>
         <summary class="faq-q">האם הטיסות כלולות?</summary>
         <p class="faq-a" id="p-faq-flights-ans"></p>
@@ -1106,7 +1150,7 @@
     </p>
 
     <!-- COUNTDOWN -->
-    <div id="p-countdown-wrap" class="countdown-box" data-reveal data-delay="3" style="display:none;">
+    <div id="p-countdown-wrap" class="countdown-box js-hidden" data-reveal data-delay="3">
       <div class="cd-unit"><span class="cd-num" id="cd-days">--</span><span class="cd-label">ימים</span></div>
       <span class="cd-sep">:</span>
       <div class="cd-unit"><span class="cd-num" id="cd-hours">--</span><span class="cd-label">שעות</span></div>
@@ -1127,22 +1171,22 @@
       <a id="p-share-btn" href="#" class="btn-share">
         📤 שתפי עם הבן/בעל
       </a>
-      <span class="cta-contact">050-827-8089 · coheadi@gmail.com</span>
+      <span class="cta-contact"><a href="tel:0508278089">050-827-8089</a> · <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a></span>
     </div>
 
     <div class="next-steps" data-reveal data-delay="5">
       <p class="next-steps-title">מה קורה אחרי שלוחצים?</p>
       <div class="next-step">
         <div class="step-num">1</div>
-        <p class="step-text"><strong style="color:var(--gold-light)">תוך 24 שעות</strong> - עדי מחזירה ווטסאפ לתאם שיחת 20 דקות</p>
+        <p class="step-text"><strong>תוך 24 שעות</strong> - עדי מחזירה ווטסאפ לתאם שיחת 20 דקות</p>
       </div>
       <div class="next-step">
         <div class="step-num">2</div>
-        <p class="step-text"><strong style="color:var(--gold-light)">בשיחה</strong> - מוודאות שהכל מתאים, מחדדות פרטים, מתאימות אישית</p>
+        <p class="step-text"><strong>בשיחה</strong> - מוודאות שהכל מתאים, מחדדות פרטים, מתאימות אישית</p>
       </div>
       <div class="next-step">
         <div class="step-num">3</div>
-        <p class="step-text"><strong style="color:var(--gold-light)">תוך 48 שעות</strong> - שולחים חוזה, מקבעים תאריכים, מאשרים את המקום</p>
+        <p class="step-text"><strong>תוך 48 שעות</strong> - שולחים חוזה, מקבעים תאריכים, מאשרים את המקום</p>
       </div>
     </div>
 
@@ -1202,7 +1246,7 @@
   document.addEventListener('DOMContentLoaded', () => {
 
     const set  = (id, val) => { const e = document.getElementById(id); if (e && val) e.textContent = val; };
-    const show = (id) => { const e = document.getElementById(id); if (e) e.style.display = ''; };
+    const show = (id) => { const e = document.getElementById(id); if (e) e.classList.remove('js-hidden'); };
     const esc  = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
 
     /* ── ACCESS GUARD ── */
@@ -1266,7 +1310,7 @@
     if (NIGHTS >= 3) {
       const d4 = document.getElementById('day-4');
       if (d4) {
-        d4.style.display = '';
+        d4.classList.remove('js-hidden');
         set('d4-dest', DEST.split('-')[0].trim());
         document.getElementById('day-3')?.classList.remove('last-day');
         d4.classList.add('last-day');
@@ -1275,7 +1319,7 @@
     if (NIGHTS >= 4) {
       const d5 = document.getElementById('day-5');
       if (d5) {
-        d5.style.display = '';
+        d5.classList.remove('js-hidden');
         set('d5-daughter', D);
         document.getElementById('day-4')?.classList.remove('last-day');
         d5.classList.add('last-day');
@@ -1293,7 +1337,7 @@
       set('p-faq-flights-ans', FLIGHTS.includes('כלול') || FLIGHTS.includes('כולל')
         ? `כן - ${FLIGHTS}`
         : `${FLIGHTS}. ניתן לתאם הוספת טיסות דרך עדי.`);
-      document.getElementById('p-flight-tag').style.display = '';
+      document.getElementById('p-flight-tag').classList.remove('js-hidden');
     } else {
       const faqFlights = document.getElementById('p-faq-flights');
       if (faqFlights) {
@@ -1335,7 +1379,7 @@
         }
       }
       if (MQ) {
-        noteHTML += `<div class="note-quote-block">"${esc(MQ)}"<br><span style="font-size:.8rem; opacity:.7">- את, בשיחה שלנו</span></div>`;
+        noteHTML += `<div class="note-quote-block">"${esc(MQ)}"<br><span class="note-quote-attr">- את, בשיחה שלנו</span></div>`;
       }
       noteHTML += `ה-72 שעות האלה הן לא חופשה. הן <strong>החלון שנשאר</strong>.`;
       noteEl.innerHTML = noteHTML;
@@ -1391,7 +1435,7 @@
       if (parts.length === 3) {
         const expDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]), 23, 59, 59);
         const cdWrap = document.getElementById('p-countdown-wrap');
-        if (cdWrap) cdWrap.style.display = 'inline-flex';
+        if (cdWrap) cdWrap.classList.remove('js-hidden');
         const tick = () => {
           const diff = expDate - new Date();
           if (diff <= 0) {
@@ -1479,8 +1523,8 @@
   if (stickyCta && coverEl) {
     const stickyObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
-        if (e.target === coverEl && !e.isIntersecting)    stickyCta.classList.add('visible');
-        if (e.target === coverEl && e.isIntersecting)     stickyCta.classList.remove('visible');
+        if (e.target === coverEl && !e.isIntersecting)    { stickyCta.classList.add('visible');    document.body.classList.add('sticky-visible'); }
+        if (e.target === coverEl && e.isIntersecting)     { stickyCta.classList.remove('visible'); document.body.classList.remove('sticky-visible'); }
         if (e.target === ctaSection && e.isIntersecting)  stickyCta.classList.remove('visible');
         if (e.target === ctaSection && !e.isIntersecting && !coverEl.getBoundingClientRect().bottom > 0) stickyCta.classList.add('visible');
       });
