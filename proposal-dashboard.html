@@ -591,12 +591,49 @@
         <input type="date" id="checkout">
       </div>
       <div class="field">
+        <label for="nights">מספר לילות</label>
+        <input type="number" id="nights" value="2" min="1" max="7">
+        <span class="hint">2 לילות = 72 שעות | 3+ ימים מוסיפים יום נוסף לו"ז</span>
+      </div>
+      <div class="field">
         <label for="room-type">סוג החדר (אם ידוע)</label>
         <input type="text" id="room-type" placeholder='לדוגמה: Junior Suite עם נוף לים'>
       </div>
       <div class="field">
         <label for="flight-details">פרטי טיסות (אם ידוע)</label>
         <input type="text" id="flight-details" placeholder="EL AL TLV→HER 03/09 07:20">
+      </div>
+    </div>
+
+    <!-- HOTEL IMAGES -->
+    <div style="margin-top:20px; border-top:1px dashed var(--border); padding-top:20px;">
+      <div style="font-size:0.75rem; font-weight:700; letter-spacing:2px; color:var(--green); text-transform:uppercase; margin-bottom:14px;">
+        תמונות המלון - מאתר הרשמי בלבד
+      </div>
+      <p style="font-size:0.76rem; color:var(--muted); margin-bottom:14px; line-height:1.6; background:var(--sky-soft); padding:10px 14px; border-radius:8px;">
+        כנסי לאתר הרשמי של המלון &rarr; לחצי ימין על תמונה &rarr; "העתק כתובת תמונה" &rarr; הדביקי כאן
+      </p>
+      <div class="grid-2">
+        <div class="field">
+          <label for="img1-url">תמונה 1 - ראשית (גדולה)</label>
+          <input type="url" id="img1-url" placeholder="https://www.hotel.com/photo1.jpg">
+        </div>
+        <div class="field">
+          <label for="img2-url">תמונה 2 - בריכה / ים</label>
+          <input type="url" id="img2-url" placeholder="https://www.hotel.com/pool.jpg">
+        </div>
+        <div class="field">
+          <label for="img3-url">תמונה 3 - חדר</label>
+          <input type="url" id="img3-url" placeholder="https://www.hotel.com/room.jpg">
+        </div>
+        <div class="field">
+          <label for="img4-url">תמונה 4 - ספא</label>
+          <input type="url" id="img4-url" placeholder="https://www.hotel.com/spa.jpg">
+        </div>
+      </div>
+      <div class="field" style="margin-top:10px;">
+        <label for="img5-url">תמונה 5 - נוף / כניסה</label>
+        <input type="url" id="img5-url" placeholder="https://www.hotel.com/view.jpg">
       </div>
     </div>
   </div>
@@ -797,16 +834,29 @@
     return parts[2] + '.' + parts[1] + '.' + parts[0];
   }
 
+  function genToken() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789';
+    return Array.from({length: 14}, () => chars[Math.floor(Math.random() * chars.length)]).join('');
+  }
+
   function buildProposalUrl() {
-    const e = encodeURIComponent;
     const momName      = val('mom-name')         || 'לקוחה יקרה';
     const daughterName = val('daughter-name')     || 'בתך';
     const daughterAge  = val('daughter-age')      || '13';
+    const city         = val('client-city')       || '';
+    const phone        = val('client-phone')      || '';
     const destination  = val('destination')       || '';
     const hotelName    = val('hotel-name')        || '';
     const checkin      = val('checkin')           || '';
     const checkout     = val('checkout')          || '';
+    const nights       = val('nights')            || '2';
+    const roomType     = val('room-type')         || '';
     const flights      = val('flight-details')    || '';
+    const img1         = val('img1-url')          || '';
+    const img2         = val('img2-url')          || '';
+    const img3         = val('img3-url')          || '';
+    const img4         = val('img4-url')          || '';
+    const img5         = val('img5-url')          || '';
     const inclusions   = getInclusionsForUrl();
     const priceBasic   = val('price-basic')       || '';
     const priceRec     = val('price-recommended') || '';
@@ -819,8 +869,9 @@
     const intakeNotes  = val('intake-notes')      || '';
     const momQuote     = val('mom-quote')         || '';
     const personalNote = val('personal-touch')    || '';
+    const occ          = selectedOccasion || val('occasion-val') || '';
 
-    const note = [intakeNotes, momQuote ? '"' + momQuote + '"' : '', personalNote].filter(Boolean).join(' | ');
+    const note = [intakeNotes, personalNote].filter(Boolean).join(' | ');
 
     const dateRange = checkin && checkout
       ? formatDateForUrl(checkin) + ' - ' + formatDateForUrl(checkout)
@@ -832,18 +883,30 @@
     params.set('da',   daughterAge);
     params.set('dest', destination);
     params.set('h',    hotelName);
-    if (dateRange)  params.set('dt', dateRange);
-    if (flights)    params.set('fl', flights);
-    if (inclusions) params.set('inc', inclusions);
-    if (priceBasic) params.set('p1', priceBasic);
-    if (priceRec)   params.set('p2', priceRec);
-    if (pricePrem)  params.set('p3', pricePrem);
-    if (basicDesc)  params.set('b1', basicDesc);
-    if (recDesc)    params.set('b2', recDesc);
-    if (premDesc)   params.set('b3', premDesc);
-    params.set('sp',  spots);
-    if (validUntil) params.set('exp', validUntil);
+    params.set('ni',   nights);
+    params.set('tok',  genToken());
+    if (city)       params.set('cc',   city);
+    if (occ)        params.set('occ',  occ);
+    if (phone)      params.set('ph',   phone.replace(/\D/g, ''));
+    if (dateRange)  params.set('dt',   dateRange);
+    if (roomType)   params.set('rt',   roomType);
+    if (flights)    params.set('fl',   flights);
+    if (inclusions) params.set('inc',  inclusions);
+    if (priceBasic) params.set('p1',   priceBasic);
+    if (priceRec)   params.set('p2',   priceRec);
+    if (pricePrem)  params.set('p3',   pricePrem);
+    if (basicDesc)  params.set('b1',   basicDesc);
+    if (recDesc)    params.set('b2',   recDesc);
+    if (premDesc)   params.set('b3',   premDesc);
+    params.set('sp',   spots);
+    if (validUntil) params.set('exp',  validUntil);
     if (note)       params.set('note', note);
+    if (momQuote)   params.set('mq',   momQuote);
+    if (img1)       params.set('img1', img1);
+    if (img2)       params.set('img2', img2);
+    if (img3)       params.set('img3', img3);
+    if (img4)       params.set('img4', img4);
+    if (img5)       params.set('img5', img5);
 
     const base = location.href.replace(/\/[^/]*$/, '') + '/proposals/template.html';
     return base + '?' + params.toString();
@@ -890,6 +953,7 @@
     const hotelName   = val('hotel-name')     || '[מלון]';
     const checkin     = val('checkin')        || '[תאריך כניסה]';
     const checkout    = val('checkout')       || '[תאריך יציאה]';
+    const nights      = val('nights')          || '2';
     const roomType    = val('room-type')      || 'לא צוין';
     const flights     = val('flight-details') || 'לא צוין';
     const inclusions  = getInclusions()       || '[לא נבחרו]';
@@ -919,7 +983,7 @@ ${intakeNotes}${momQuote ? `\nציטוט מהאמא: "${momQuote}"` : ''}
 ═══ נסיעה ═══
 • יעד: ${destination}
 • מלון: ${hotelName} — אנא כנסי לאתר הרשמי שלו ואספי 4-5 תמונות טובות
-• תאריכים: ${checkin} עד ${checkout}
+• תאריכים: ${checkin} עד ${checkout} (${nights} לילות)
 • חדר: ${roomType}
 • טיסות: ${flights}
 

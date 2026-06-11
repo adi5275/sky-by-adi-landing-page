@@ -36,6 +36,16 @@
     const NOTE    = _g('note', '');
     const MQ      = _g('mq', '');
     const PHONE   = _g('ph', '972508278089').replace(/\D/g, '');
+    const TOK     = _p.get('tok') || '';          // access token
+    // hotel images (fall back to generic if not provided)
+    const IMG1    = _g('img1', 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&q=85');
+    const IMG2    = _g('img2', 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=500&q=80');
+    const IMG3    = _g('img3', 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80');
+    const IMG4    = _g('img4', 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80');
+    const IMG5    = _g('img5', 'https://images.unsplash.com/photo-1540541338537-1220059af4ab?w=500&q=80');
+    // access guard (runs immediately, before DOM)
+    const _DAYS   = NIGHTS + 1;
+    const _LABEL  = NIGHTS === 2 ? '72 שעות' : _DAYS + ' ימים';
   </script>
 
   <style>
@@ -268,6 +278,7 @@
       background: linear-gradient(to bottom, var(--gold-light), transparent);
     }
     .day-block:last-child::after { display: none; }
+    .day-block.last-day::after  { display: none; }
     .day-circle {
       width: 60px; height: 60px; border-radius: 50%;
       background: var(--green); color: var(--gold-light);
@@ -611,6 +622,33 @@
     }
     .sticky-wa-btn:active { transform: scale(0.97); }
     .sticky-wa-btn svg { width: 20px; height: 20px; fill: white; flex-shrink: 0; }
+
+    /* ── ACCESS OVERLAYS ── */
+    .access-overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(26,50,9,.97);
+      -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+      z-index: 9999;
+      align-items: center; justify-content: center;
+      flex-direction: column; text-align: center; padding: 32px;
+    }
+    .access-overlay.active { display: flex; }
+    .overlay-logo { height: 60px; object-fit: contain; filter: brightness(1.3); margin-bottom: 26px; }
+    .overlay-brand { font-size: .6rem; letter-spacing: 4px; color: rgba(194,160,96,.6); text-transform: uppercase; font-weight: 700; font-family: 'Heebo', sans-serif; margin-bottom: 18px; }
+    .overlay-heading { font-family: 'Playfair Display', serif; color: white; font-size: clamp(1.6rem,4vw,2.4rem); margin-bottom: 14px; }
+    .overlay-sub { color: rgba(255,255,255,.62); font-size: .92rem; line-height: 1.75; margin-bottom: 32px; max-width: 380px; font-family: 'Heebo', sans-serif; }
+    .overlay-wa-btn {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #25D366; color: white; text-decoration: none;
+      padding: 15px 40px; border-radius: 50px;
+      font-family: 'Heebo', sans-serif; font-size: 1rem; font-weight: 700;
+      box-shadow: 0 8px 28px rgba(37,211,102,.3);
+      transition: transform 150ms ease-out, box-shadow 200ms ease-out;
+      will-change: transform;
+    }
+    .overlay-wa-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 36px rgba(37,211,102,.4); }
+    .overlay-wa-btn:active { transform: scale(0.97); }
+    .overlay-wa-btn svg { width: 22px; height: 22px; fill: white; flex-shrink: 0; }
   </style>
 </head>
 <body>
@@ -630,7 +668,7 @@
     <p class="cover-sub js-fill">
       <span id="p-dest">---</span> · <span id="p-dates">---</span>
     </p>
-    <div class="cover-badge js-fill">72 שעות · <span id="p-hotel-badge">---</span></div>
+    <div class="cover-badge js-fill"><span id="p-cover-duration">72 שעות</span> · <span id="p-hotel-badge">---</span></div>
   </div>
   <div class="cover-scroll" aria-hidden="true">
     <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
@@ -652,8 +690,8 @@
     </div>
     <span class="stat-sep">·</span>
     <div class="stat-item">
-      <span class="stat-num">72</span>
-      <span class="stat-label">שעות מדויקות</span>
+      <span class="stat-num" id="p-stat-duration">72</span>
+      <span class="stat-label" id="p-stat-duration-label">שעות מדויקות</span>
     </div>
     <span class="stat-sep">·</span>
     <div class="stat-item">
@@ -679,7 +717,7 @@
       <div class="pain-card" data-reveal data-delay="2">
         <span class="pain-icon">💬</span>
         <p class="pain-q">"בבית אנחנו רק רבות. כל שיחה נגמרת בריב. אני לא זוכרת מתי ישבנו בשקט."</p>
-        <p class="pain-sub">72 שעות שבהן אף אחת מכן לא ה"מומחית". אין בית, אין שגרה, אין מבנה כוח - רק שתיכן.</p>
+        <p class="pain-sub" id="p-pain-duration-sub">72 שעות שבהן אף אחת מכן לא ה"מומחית". אין בית, אין שגרה, אין מבנה כוח - רק שתיכן.</p>
       </div>
       <div class="pain-card" data-reveal data-delay="3">
         <span class="pain-icon">⏳</span>
@@ -688,7 +726,7 @@
       </div>
     </div>
     <div class="pain-answer" data-reveal data-delay="4">
-      <p>עדי לא מוכרת חופשה. היא מוכרת <strong>72 שעות שבהן המבנה הזה מתהפך</strong> - ושתיכן יוצאות אחרות ממה שנכנסתן.</p>
+      <p>עדי לא מוכרת חופשה. היא מוכרת <strong><span id="p-pain-answer-label">72 שעות</span> שבהן המבנה הזה מתהפך</strong> - ושתיכן יוצאות אחרות ממה שנכנסתן.</p>
     </div>
   </div>
 </section>
@@ -723,13 +761,11 @@
     <p class="section-sub section-sub--light js-fill" id="p-hotel-loc" data-reveal data-delay="2">---</p>
 
     <div class="hotel-gallery" data-reveal data-delay="1">
-      <img class="main"
-        src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&q=85"
-        alt="נוף ים מהריזורט" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=500&q=80" alt="בריכה" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80" alt="חדר" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80" alt="ספא" loading="lazy">
-      <img src="https://images.unsplash.com/photo-1540541338537-1220059af4ab?w=500&q=80" alt="שקיעה" loading="lazy">
+      <img id="p-img1" class="main" src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=900&q=85" alt="המלון" loading="lazy">
+      <img id="p-img2" src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=500&q=80" alt="בריכה" loading="lazy">
+      <img id="p-img3" src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80" alt="חדר" loading="lazy">
+      <img id="p-img4" src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=500&q=80" alt="ספא" loading="lazy">
+      <img id="p-img5" src="https://images.unsplash.com/photo-1540541338537-1220059af4ab?w=500&q=80" alt="נוף" loading="lazy">
     </div>
 
     <p class="hotel-stars" data-reveal>★★★★★</p>
@@ -745,7 +781,7 @@
 <section class="itinerary">
   <div class="itinerary-inner">
     <div class="itinerary-head">
-      <p class="eyebrow eyebrow--green" data-reveal>72 שעות - יום-יום</p>
+      <p class="eyebrow eyebrow--green" data-reveal id="p-itinerary-eyebrow">72 שעות - יום-יום</p>
       <h2 class="section-heading section-heading--dark" data-reveal data-delay="1">המסע שלכן</h2>
     </div>
 
@@ -775,7 +811,7 @@
     <div class="day-block">
       <div class="day-circle" data-reveal>2<span>יום</span></div>
       <div>
-        <h3 class="day-title" data-reveal data-delay="1">ה-Spa Day - הלב של 72 השעות</h3>
+        <h3 class="day-title" data-reveal data-delay="1">ה-Spa Day - הלב של <span id="p-day2-duration">72 השעות</span></h3>
         <p class="day-story" data-reveal data-delay="2">
           בוקר עצלן - ארוחת בוקר על המרפסת עם נוף לים.<br><br>
           <strong>צהריים - Spa:</strong>
@@ -796,7 +832,7 @@
       </div>
     </div>
 
-    <div class="day-block">
+    <div class="day-block last-day" id="day-3">
       <div class="day-circle" data-reveal>3<span>יום</span></div>
       <div>
         <h3 class="day-title" data-reveal data-delay="1">הבוקר האחרון - הרגע שיישאר</h3>
@@ -817,6 +853,49 @@
           alt="חוף ים, שחר" loading="lazy">
       </div>
     </div>
+
+    <!-- DAY 4 (shown when nights >= 3) -->
+    <div class="day-block" id="day-4" style="display:none;">
+      <div class="day-circle" data-reveal>4<span>יום</span></div>
+      <div>
+        <h3 class="day-title" data-reveal data-delay="1">יום 4 - היום שלכן בלבד</h3>
+        <p class="day-story" data-reveal data-delay="2">
+          אין תוכנית. אין לו"ז. שתיכן בוחרות.<br><br>
+          בריכה, חוף, עיר קרובה - מה שמתחשק. בחצי הצהריים עדי ממליצה על מקום אוכל אחד שאנשי המקום הולכים אליו - לא מסעדת מלון, לא תייר.<br><br>
+          זה הרגע שיצטלם הכי טוב בסטורי.
+        </p>
+        <div class="day-tags" data-reveal data-delay="3">
+          <span class="tag">🌊 יום חופשי</span>
+          <span class="tag">🗺️ <span id="d4-dest">יעד</span></span>
+          <span class="tag">🍽️ מסעדה מקומית</span>
+        </div>
+        <img class="day-img" data-reveal data-delay="4"
+          src="https://images.unsplash.com/photo-1530521954074-e64f6810b32d?w=800&q=80"
+          alt="ים ים ים" loading="lazy">
+      </div>
+    </div>
+
+    <!-- DAY 5 (shown when nights >= 4) -->
+    <div class="day-block" id="day-5" style="display:none;">
+      <div class="day-circle" data-reveal>5<span>יום</span></div>
+      <div>
+        <h3 class="day-title" data-reveal data-delay="1">יום 5 - Workshop הטיפוח של <span id="d5-daughter">הבת</span></h3>
+        <p class="day-story" data-reveal data-delay="2">
+          הלב הדידקטי של הנסיעה - אחר הצהריים. בוקר עצלן לפני.<br><br>
+          <strong>Workshop טיפוח מותאם גיל:</strong> מה כל מוצר עושה, מה מותר בגיל הזה, מה לקנות וממה להתרחק. שתיכן יוצאות עם רשימה כתובה בעצמן - לא ניחושים.<br><br>
+          <strong>חומרים מותרים בגיל זה:</strong> Hyaluronic Acid, Niacinamide, מינרל-SPF, Aloe. ללא רטינול, ללא Benzoyl Peroxide גבוה, ללא אנטי-אייג'ינג.
+        </p>
+        <div class="day-tags" data-reveal data-delay="3">
+          <span class="tag">☀️ בריכה בוקר</span>
+          <span class="tag">✨ Workshop טיפוח</span>
+          <span class="tag">📋 רשימת מוצרים</span>
+        </div>
+        <img class="day-img" data-reveal data-delay="4"
+          src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800&q=80"
+          alt="טיפוח ביחד" loading="lazy">
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1048,6 +1127,29 @@
   </p>
 </footer>
 
+<!-- ACCESS OVERLAYS -->
+<div id="overlay-locked" class="access-overlay" role="alertdialog" aria-modal="true" aria-label="הצעה נעולה">
+  <img src="../sky-logo.jpg" alt="SKY BY ADI AHARONI" class="overlay-logo">
+  <p class="overlay-brand">SKY BY ADI AHARONI</p>
+  <h2 class="overlay-heading">הצעה אישית ובלעדית</h2>
+  <p class="overlay-sub">הצעה זו נוצרה עבור לקוחה ספציפית ונשלחה ישירות מעדי.<br>לקבל הצעה אישית שלך - צרי קשר.</p>
+  <a href="#" id="overlay-locked-wa" class="overlay-wa-btn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    דברי עם עדי
+  </a>
+</div>
+
+<div id="overlay-expired" class="access-overlay" role="alertdialog" aria-modal="true" aria-label="ההצעה פגה">
+  <img src="../sky-logo.jpg" alt="SKY BY ADI AHARONI" class="overlay-logo">
+  <p class="overlay-brand">SKY BY ADI AHARONI</p>
+  <h2 class="overlay-heading">ההצעה פגה תוקף</h2>
+  <p class="overlay-sub">ההצעה האישית הזו פגה תוקפה.<br>עדי שמחה לעדכן אותה עבורך.</p>
+  <a href="#" id="overlay-expired-wa" class="overlay-wa-btn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    צרי קשר לחידוש ההצעה
+  </a>
+</div>
+
 <!-- STICKY MOBILE CTA (shown on mobile when scrolled past cover) -->
 <div class="sticky-mobile-cta" id="sticky-mobile-cta">
   <a id="sticky-wa-link" href="#" class="sticky-wa-btn" target="_blank" rel="noopener">
@@ -1069,6 +1171,32 @@
     const show = (id) => { const e = document.getElementById(id); if (e) e.style.display = ''; };
     const esc  = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;','\'':'&#39;'}[c]));
 
+    /* ── ACCESS GUARD ── */
+    const showOverlay = (id) => {
+      const ov = document.getElementById(id);
+      if (ov) { ov.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    };
+    // Token check
+    if (!TOK || TOK.length < 6) {
+      const lockedWa = document.getElementById('overlay-locked-wa');
+      if (lockedWa) lockedWa.href = `https://wa.me/${PHONE}?text=${encodeURIComponent('שלום עדי, אני רוצה לקבל הצעה אישית')}`;
+      showOverlay('overlay-locked');
+      return;
+    }
+    // Expiry check
+    if (EXPIRY) {
+      const parts = EXPIRY.split('.');
+      if (parts.length === 3) {
+        const expDate = new Date(parseInt(parts[2]), parseInt(parts[1]) - 1, parseInt(parts[0]), 23, 59, 59);
+        if (new Date() > expDate) {
+          const expWa = document.getElementById('overlay-expired-wa');
+          if (expWa) expWa.href = `https://wa.me/${PHONE}?text=${encodeURIComponent('שלום עדי, קיבלתי הצעה שפג תוקפה. אפשר לחדש?')}`;
+          showOverlay('overlay-expired');
+          return;
+        }
+      }
+    }
+
     /* COVER */
     set('p-client', C);
     set('p-daughter', D);
@@ -1076,6 +1204,49 @@
     set('p-dates', DT);
     set('p-hotel-badge', HOTEL);
     document.getElementById('page-title').textContent = `הצעה אישית ל${C} | SKY BY ADI`;
+
+    /* ── DYNAMIC DURATION ── */
+    set('p-cover-duration', _LABEL);
+    const statDur = document.getElementById('p-stat-duration');
+    const statLbl = document.getElementById('p-stat-duration-label');
+    if (NIGHTS === 2) {
+      if (statDur) statDur.textContent = '72';
+      if (statLbl) statLbl.textContent = 'שעות מדויקות';
+    } else {
+      if (statDur) statDur.textContent = String(_DAYS);
+      if (statLbl) statLbl.textContent = 'ימים מדויקים';
+    }
+    const itinEyebrow = document.getElementById('p-itinerary-eyebrow');
+    if (itinEyebrow) itinEyebrow.textContent = _LABEL + ' - יום-יום';
+    const painDurSub = document.getElementById('p-pain-duration-sub');
+    if (painDurSub) painDurSub.textContent = _LABEL + ' שבהן אף אחת מכן לא ה"מומחית". אין בית, אין שגרה, אין מבנה כוח - רק שתיכן.';
+    set('p-pain-answer-label', _LABEL);
+    set('p-day2-duration', NIGHTS === 2 ? '72 השעות' : String(_DAYS) + ' הימים');
+
+    /* ── HOTEL IMAGES from URL params ── */
+    [IMG1, IMG2, IMG3, IMG4, IMG5].forEach((src, i) => {
+      if (src) { const el = document.getElementById('p-img' + (i + 1)); if (el) el.src = src; }
+    });
+
+    /* ── EXTRA DAYS ── */
+    if (NIGHTS >= 3) {
+      const d4 = document.getElementById('day-4');
+      if (d4) {
+        d4.style.display = '';
+        set('d4-dest', DEST.split('-')[0].trim());
+        document.getElementById('day-3')?.classList.remove('last-day');
+        d4.classList.add('last-day');
+      }
+    }
+    if (NIGHTS >= 4) {
+      const d5 = document.getElementById('day-5');
+      if (d5) {
+        d5.style.display = '';
+        set('d5-daughter', D);
+        document.getElementById('day-4')?.classList.remove('last-day');
+        d5.classList.add('last-day');
+      }
+    }
 
     /* Remove .js-fill visibility once filled */
     document.querySelectorAll('.js-fill').forEach(e => e.style.visibility = '');
