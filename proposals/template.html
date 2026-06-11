@@ -326,6 +326,11 @@
     .tiers {
       display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
     }
+    /* anchoring: RTL reads right-to-left, so premium (DOM:3rd) anchors first */
+    @media (min-width: 701px) {
+      .tiers > .tier:nth-child(1) { order: 3; }
+      .tiers > .tier:nth-child(3) { order: 1; }
+    }
     @media (max-width: 700px) { .tiers { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; } }
     .tier {
       background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.14);
@@ -943,7 +948,7 @@
       <h2 class="section-heading section-heading--light" data-reveal data-delay="1">שלוש אפשרויות. אחת מומלצת.</h2>
     </div>
     <div class="tiers">
-      <div class="tier" data-reveal data-delay="1">
+      <div class="tier" data-reveal data-delay="3">
         <p class="tier-name">בסיסי</p>
         <p class="tier-price js-fill" id="p-price1">---</p>
         <p class="tier-per">לשתיכן יחד</p>
@@ -957,7 +962,7 @@
         <ul class="tier-list js-fill" id="p-tier2-list"></ul>
         <a onclick="chooseTier('מומלצת', document.getElementById('p-price2').textContent)" class="tier-btn">זו האפשרות שלי</a>
       </div>
-      <div class="tier" data-reveal data-delay="3">
+      <div class="tier" data-reveal data-delay="1">
         <p class="tier-name">פרמיום</p>
         <p class="tier-price js-fill" id="p-price3">---</p>
         <p class="tier-per">לשתיכן יחד</p>
