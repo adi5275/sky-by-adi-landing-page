@@ -211,6 +211,10 @@
       padding-bottom: 10px;
       margin-bottom: 22px;
       text-align: center;
+      text-wrap: balance;
+    }
+    @media (max-width: 580px) {
+      .contract-body h1 { font-size: 0.9rem; line-height: 1.55; }
     }
     .intro-text {
       background: linear-gradient(180deg, #fffdf7, #fbf6ea);
@@ -283,7 +287,7 @@
     table.fee-table td { padding: 9px 12px; border-bottom: 1px solid var(--cream-dark); }
     table.fee-table tr:nth-child(even) td { background: var(--cream); }
     /* עמודת הסכום - תמיד בשורה אחת (₪ לא נשבר לשורה נפרדת) */
-    table.fee-table th:last-child, table.fee-table td:last-child { white-space: nowrap; }
+    table.fee-table th:last-child, table.fee-table td:last-child { white-space: nowrap; text-align: center; }
     /* עמודת "תיאור" ממורכזת לאוורור */
     table.fee-table th:nth-child(2), table.fee-table td:nth-child(2) { text-align: center; }
     @media (max-width: 580px) {
@@ -430,6 +434,7 @@
     #submit-btn:hover { box-shadow: 0 10px 28px rgba(45,80,22,0.40); filter: brightness(1.05); }
     #submit-btn:active { transform: scale(0.98); }
     #submit-btn:disabled { background: #aaa; box-shadow: none; cursor: not-allowed; }
+    #submit-btn .chk { width: 1.2em; height: 1.2em; vertical-align: -0.24em; margin-left: 9px; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.25)); }
     .validation-msg { font-size: 0.8rem; color: #c0392b; margin-top: 10px; }
 
     /* ── SIGNATURE CANVAS PAD ── */
@@ -998,8 +1003,8 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
           <!-- חותמת עגולה בצבעי הלוגו: רקע ירוק + לוטוס וטקסט זהב -->
           <svg class="stamp-svg" viewBox="0 0 220 220" role="img" aria-label="חותמת SKY BY ADI AHARONI">
             <defs>
-              <path id="arcTop" d="M 38,110 A 72,72 0 0 1 182,110"/>
-              <path id="arcBot" d="M 42,110 A 68,68 0 0 0 178,110"/>
+              <path id="arcTop" d="M 44,110 A 66,66 0 0 1 176,110"/>
+              <path id="arcBot" d="M 44,110 A 66,66 0 0 0 176,110"/>
             </defs>
             <circle cx="110" cy="110" r="104" fill="#2d6a23"/>
             <g fill="none" stroke="#D8BE86" stroke-width="2.2">
@@ -1026,7 +1031,7 @@ SKY BY ADI AHARONI - DREAM IT. VISIT IT">
       <div class="terms-note">
         לחיצה על הכפתור תשלח את החתימה לנותן השירות וישמר תיעוד כולל: שם, ת.ז., כתובת IP, שעה ותאריך.
       </div>
-      <div class="btn-glow"><button type="submit" id="submit-btn">✅ קראתי, הבנתי ואני מאשר/ת את תנאי ההסכם</button></div>
+      <div class="btn-glow"><button type="submit" id="submit-btn"><svg class="chk" viewBox="0 0 24 24" aria-hidden="true"><defs><linearGradient id="chkGold" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#EBD79A"/><stop offset="0.5" stop-color="#C2A060"/><stop offset="1" stop-color="#A8842F"/></linearGradient></defs><circle cx="12" cy="12" r="11" fill="url(#chkGold)" stroke="#8c6c25" stroke-width="0.8"/><path d="M6.6 12.7 l3.4 3.4 L17.6 7.4" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>קראתי, הבנתי ואני מאשר/ת את תנאי ההסכם</button></div>
       <div class="validation-msg" id="validation-msg"></div>
     </div>
   </form>
