@@ -1487,16 +1487,15 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
       <div class="hero-badge reveal">לאמהות שמרגישות שהבת מתרחקת - ויודעות שהזמן אוזל</div>
 
       <h1 class="reveal d1">
-        היא כל הזמן עם הפלאפון, עם החברות.
-        <span class="rose-line">ואת מפחדת שיום אחד תסתכלי אחורה ותגידי:</span>
-        <span class="serif-line">"איפה הייתי בכל זה?"</span>
+        <span class="serif-line">"איך היה יום בבית ספר?"</span>
+        <span class="rose-line">"בסדר."</span>
+        שנה. שנתיים. ואת מרגישה שהיא כבר לא מספרת לך כלום.
       </h1>
 
       <p class="hero-sub reveal d2">
-        חופשה בחו"ל בפרוטוקול מדויק ומותאם אישית - שבסופה הבת שלך
-        <strong>שואלת אותך שאלות שבבית היא לא שואלת.</strong>
-        אני לא מבקשת ממך לקנות חופשה. אני מזמינה אותך לשנות מסלול.
-        ואני יודעת בדיוק איך לגרום לזה לקרות.
+        לא כי היא לא אוהבת אותך - כי בבית כל שיחה הופכת לסמכות, לבקורת, לוויכוח.
+        עדי יוצרת 3 ימים שבהם שתיכן מתחילות מאפס -
+        <strong>ושם הבת שלך מספרת לך מה שהיא לא מספרת לאף אחד.</strong>
       </p>
 
       <div class="hero-ctas reveal d3">
@@ -2066,17 +2065,17 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
           </div>
         </div>
 
-        <!-- Testimonial 3: Sandrine -->
+        <!-- Testimonial 3: שירי -->
         <div class="testi-card reveal d2">
           <div class="testi-stars">★★★★★</div>
           <div class="testi-text">
-            "The retreat will always be our most treasured memory. When we lose track of ourselves we sit down and talk - I listen to her without judgment."
+            "לפני הטיול היינו רבות על כל דבר. שבועיים אחרי שחזרנו - היא עדיין מתקשרת לספר לי דברים. עדי יצרה משהו שאני לא יודעת אפילו איך לקרוא לו."
           </div>
           <div class="testi-profile">
-            <div class="testi-avatar" style="background:linear-gradient(135deg,#D7A7A0,#B88B85);">S</div>
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#D7A7A0,#B88B85);">ש</div>
             <div>
-              <div class="testi-author">Sandrine Mayer, 41 - Paris</div>
-              <div class="testi-detail">6 שנים אחרי - עדיין מדברות על זה</div>
+              <div class="testi-author">שירי אבידן, 44 - מנהלת מכירות, ראשון לציון</div>
+              <div class="testi-detail">בתה בת 15, חזרו מיוון לפני חודשיים</div>
             </div>
           </div>
         </div>
@@ -2096,17 +2095,17 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
           </div>
         </div>
 
-        <!-- Testimonial 5: daughter voice -->
+        <!-- Testimonial 5: דנה - קול הבת -->
         <div class="testi-card reveal d2">
           <div class="testi-stars">★★★★★</div>
           <div class="testi-text">
-            "It's a really good excuse to hang out with my mom and do something we both love. She was the first person to teach me about skincare."
+            "חשבתי שזה יהיה נסיעה רגילה עם אמא. אבל שם היא לא הייתה אמא. היא הייתה פשוט... היא. ואני הייתי פשוט אני."
           </div>
           <div class="testi-profile">
-            <div class="testi-avatar" style="background:linear-gradient(135deg,#C9A84C,#A07830);">A</div>
+            <div class="testi-avatar" style="background:linear-gradient(135deg,#C9A84C,#A07830);">ד</div>
             <div>
-              <div class="testi-author">Anja, 16 - daughter of Sandrine</div>
-              <div class="testi-detail">שנה אחרי: "That was the best week of my life"</div>
+              <div class="testi-author">דנה, 15 - בתה של שירי</div>
+              <div class="testi-detail">שיתפה בסטורי שלה אחרי שחזרו</div>
             </div>
           </div>
         </div>
@@ -2846,20 +2845,18 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
     var cur=el;
     while(cur && cur!==deck){
       if(matches(cur,ADDED)) return cur;
-      if(cur.classList && cur.classList.contains('slide')) return null;
       if(matches(cur,DENY)){ cur=cur.parentElement; continue; }
-      if(cur.closest && cur.closest('.slide')) return cur;
+      if(cur.parentElement) return cur;
       cur=cur.parentElement;
     }
     return null;
   }
-  /* For double-click text editing: deepest texty element (also inside clones) */
+  /* For double-click text editing: deepest texty element */
   function eligibleText(el){
     var cur=el;
     while(cur && cur!==deck){
       if(matches(cur,'.ed-textbox')) return cur;
-      if(cur.classList && cur.classList.contains('slide')) return null;
-      if(!matches(cur,DENY) && matches(cur,TEXTY) && cur.closest && cur.closest('.slide')) return cur;
+      if(!matches(cur,DENY) && matches(cur,TEXTY)) return cur;
       cur=cur.parentElement;
     }
     return null;
@@ -2868,8 +2865,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
     if(!selected){ toast('בחר אלמנט קודם'); return; }
     var p=selected.parentElement;
     while(p && p!==deck){
-      if(p.classList && p.classList.contains('slide')) break;
-      if(!matches(p,DENY) && p.closest('.slide')){ select(p); toast('נבחרה המסגרת'); return; }
+      if(!matches(p,DENY)){ select(p); toast('נבחרה המסגרת'); return; }
       p=p.parentElement;
     }
     toast('אין מסגרת אב');
