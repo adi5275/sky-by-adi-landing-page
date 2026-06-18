@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -6,143 +6,373 @@
   <title>מדיניות פרטיות - SKY BY ADI AHARONI</title>
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --green:#2D5016; --green-mid:#3D7020; --gold:#C2A060; --gold-deep:#A8842F; --gold-light:#D8BE86;
-      --sky:#6E9FB8; --sky-soft:#EAF2F6; --sky-line:#BcD7E2; --blush:#C97E8E; --blush-soft:#FBEEF0;
-      --cream:#FAF6EE; --cream-dark:#F0E8D8; --text:#2A2A28; --muted:#6b6b66; --border:#DCD3C2;
+    :root {
+      --green: #2D5016;
+      --green-mid: #3D7020;
+      --gold: #C9A84C;
+      --gold-deep: #a8862a;
+      --gold-light: #e0c87a;
+      --cream: #FAF6EE;
+      --cream-dark: #F0E8D8;
+      --text: #1a1a1a;
+      --muted: #6b6b66;
+      --border: #DCD3C2;
+      --highlight-bg: #f4f9f0;
+      --highlight-border: #b5d18a;
     }
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Heebo',sans-serif;color:var(--text);font-size:15px;line-height:1.85;
-      background:radial-gradient(1200px 600px at 50% -200px,var(--sky-soft) 0%,transparent 60%),var(--cream);}
-    .header{position:relative;text-align:center;padding:34px 20px 26px;overflow:hidden;color:#fff;
-      background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 55%,#34611c 100%);}
-    .header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;
-      background:linear-gradient(90deg,transparent,var(--gold) 25%,var(--gold-light) 50%,var(--gold) 75%,transparent);}
-    .header::before{content:'';position:absolute;inset:-40% -10% auto -10%;height:220px;
-      background:radial-gradient(60% 80% at 50% 0%,rgba(110,159,184,0.30),transparent 70%);pointer-events:none;}
-    .logo-card{position:relative;background:#fff;border-radius:16px;padding:10px;display:inline-block;
-      margin-bottom:14px;box-shadow:0 6px 22px rgba(0,0,0,0.30);border:1px solid rgba(194,160,96,0.55);}
-    .logo-img{width:120px;height:120px;object-fit:cover;border-radius:10px;display:block;}
-    .header .doc-title{margin-top:6px;font-size:1.05rem;font-weight:600;background:rgba(255,255,255,0.14);
-      display:inline-block;padding:7px 20px;border-radius:6px;border:1px solid rgba(216,190,134,0.7);}
-    .container{max-width:820px;margin:26px auto 0;padding:0 16px 80px;}
-    .card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:34px 38px;
-      box-shadow:0 6px 26px rgba(45,80,22,0.06);}
-    h1{font-size:1.22rem;color:var(--green);border-bottom:2px solid var(--gold);padding-bottom:10px;
-      margin-bottom:14px;text-align:center;}
-    .intro{background:linear-gradient(180deg,#fffdf7,#fbf6ea);border-right:3px solid var(--gold);
-      padding:14px 18px;margin-bottom:24px;font-size:0.88rem;border-radius:0 6px 6px 0;}
-    .updated{text-align:center;font-size:0.78rem;color:var(--muted);margin-bottom:20px;}
-    .section{margin-bottom:24px;}
-    .section-title{font-size:1rem;font-weight:700;color:var(--green);border-bottom:1px solid var(--cream-dark);
-      padding-bottom:7px;margin-bottom:11px;display:flex;align-items:center;gap:8px;}
-    .section-title::before{content:'';width:8px;height:8px;border-radius:2px;background:var(--sky);flex:0 0 auto;}
-    .section-title .n{color:var(--gold-deep);font-weight:800;}
-    p{font-size:0.9rem;margin-bottom:8px;}
-    ul{margin:6px 28px 8px;font-size:0.88rem;}
-    li{margin-bottom:5px;}
-    .rights{background:var(--blush-soft);border:1px solid var(--blush-line);border-radius:8px;padding:14px 18px;font-size:0.88rem;}
-    .contact{background:var(--sky-soft);border:1px solid var(--sky-line);border-radius:8px;padding:14px 18px;font-size:0.9rem;}
-    a{color:var(--sky);font-weight:600;}
-    .back{display:inline-block;margin-top:10px;}
-    .footer-note{text-align:center;font-size:0.74rem;color:var(--muted);margin-top:22px;line-height:1.7;}
-    .footer-note .biz{color:var(--green);font-weight:600;letter-spacing:1px;}
-    @media (max-width:580px){.card{padding:24px 20px;}}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Heebo', sans-serif;
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.9;
+      background: var(--cream);
+    }
+    .header {
+      position: relative;
+      text-align: center;
+      padding: 36px 20px 28px;
+      overflow: hidden;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-mid) 60%, #34611c 100%);
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0; bottom: 0; height: 3px;
+      background: linear-gradient(90deg, transparent, var(--gold) 25%, var(--gold-light) 50%, var(--gold) 75%, transparent);
+    }
+    .header-brand {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: 2px;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+    .header-sub {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .doc-badge {
+      display: inline-block;
+      padding: 7px 22px;
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(201,168,76,0.7);
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+    .container {
+      max-width: 820px;
+      margin: 30px auto 0;
+      padding: 0 16px 80px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px 42px;
+      box-shadow: 0 6px 30px rgba(45,80,22,0.07);
+    }
+    .meta-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--cream-dark);
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .intro-box {
+      background: var(--highlight-bg);
+      border-right: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-bottom: 28px;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text);
+    }
+    .intro-box strong { color: var(--green); }
+    .section { margin-bottom: 28px; }
+    .section-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--green);
+      border-bottom: 1px solid var(--cream-dark);
+      padding-bottom: 8px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .n {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px; height: 24px;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 700;
+      flex: 0 0 auto;
+    }
+    p { font-size: 0.9rem; margin-bottom: 9px; }
+    ul { margin: 8px 28px 10px; font-size: 0.88rem; }
+    li { margin-bottom: 6px; }
+    strong { font-weight: 700; }
+    .highlight-block {
+      background: var(--highlight-bg);
+      border: 1px solid var(--highlight-border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 0.88rem;
+      margin-top: 6px;
+    }
+    .contact-block {
+      background: #f0f7ea;
+      border: 1px solid #b5d18a;
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+    .contact-block a { color: var(--green); font-weight: 600; text-decoration: none; }
+    .contact-block a:hover { text-decoration: underline; }
+    .third-party-links { font-size: 0.85rem; margin-top: 8px; }
+    .third-party-links a { color: var(--green-mid); font-weight: 600; }
+    .law-note {
+      background: #fff8e8;
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      padding: 12px 16px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-top: 8px;
+    }
+    .back-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-size: 0.85rem;
+      color: var(--green);
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .back-link:hover { text-decoration: underline; }
+    .footer-note {
+      text-align: center;
+      font-size: 0.74rem;
+      color: var(--muted);
+      margin-top: 26px;
+      line-height: 1.8;
+    }
+    .footer-note .biz { color: var(--green); font-weight: 700; letter-spacing: 1px; }
+    @media (max-width: 600px) {
+      .card { padding: 24px 18px; }
+      .meta-bar { flex-direction: column; gap: 4px; text-align: center; }
+    }
   </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="logo-card"><img src="sky-logo.jpg" class="logo-img" alt="SKY BY ADI AHARONI"></div>
-  <div class="doc-title">מדיניות פרטיות</div>
+  <div class="header-brand">SKY BY ADI AHARONI</div>
+  <div class="header-sub">DREAM IT. VISIT IT</div>
+  <div class="doc-badge">מדיניות פרטיות</div>
 </div>
 
 <div class="container">
 <div class="card">
 
-  <h1>מדיניות פרטיות - SKY BY ADI AHARONI</h1>
-  <div class="updated">עודכן: יוני 2026</div>
-
-  <div class="intro">
-    SKY BY ADI AHARONI (עדי אהרוני) מכבדת את פרטיותך. מדיניות זו מסבירה איזה מידע נאסף, לאילו מטרות, עם מי הוא משותף וכיצד את/ה יכול/ה לממש את זכויותיך - בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ולתיקון מס׳ 13 לחוק.
+  <div class="meta-bar">
+    <span>גרסה: יוני 2026</span>
+    <span>בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ותיקון מס' 13</span>
   </div>
 
-  <div class="section">
-    <div class="section-title"><span class="n">1.</span> מי אחראי על המידע</div>
-    <p>בעל/ת השליטה במידע: עדי אהרוני, SKY BY ADI AHARONI, המרגנית 6 חולון. לכל פנייה בנושא פרטיות: <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a> | 050-8278089.</p>
+  <div class="intro-box">
+    <strong>SKY BY ADI AHARONI</strong> מכבדת את פרטיותך. מסמך זה מפרט את מדיניות הפרטיות שלנו בהתאם לחוק הגנת הפרטיות, התשמ"א-1981, תיקון מס' 13 לחוק (תשפ"ד-2023), ותקנות הגנת הפרטיות (אבטחת מידע), התשע"ז-2017. קראי אותו בעיון - הוא מסביר מה נאסף, למה, עם מי משותף, וכיצד ניתן לממש את זכויותיך.
   </div>
 
+  <!-- 1. מי אחראי -->
   <div class="section">
-    <div class="section-title"><span class="n">2.</span> איזה מידע נאסף</div>
+    <div class="section-title"><span class="n">1</span> מי אוסף ואחראי על המידע</div>
+    <p>בעלת המאגר ואחראית על עיבוד המידע:</p>
+    <div class="highlight-block">
+      <strong>עדי אהרוני</strong>, SKY BY ADI AHARONI - DREAM IT. VISIT IT<br>
+      טלפון: <a href="tel:0508278089">050-8278089</a><br>
+      דוא"ל: <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a>
+    </div>
+    <p style="margin-top:10px;">לכל שאלה, בקשה או תלונה בנושא פרטיות - פני ישירות אל עדי בכתובות הנ"ל.</p>
+  </div>
+
+  <!-- 2. מה נאסף -->
+  <div class="section">
+    <div class="section-title"><span class="n">2</span> איזה מידע נאסף ואיך</div>
+    <p><strong>א. מידע שמוסרת המשתמשת ישירות (דרך טפסי הרשמה ויצירת קשר):</strong></p>
     <ul>
-      <li><strong>פרטי זיהוי וקשר:</strong> שם, ת.ז./דרכון, טלפון, דוא"ל, כתובת.</li>
-      <li><strong>פרטי ההזמנה:</strong> יעדים, מועדים, מספר משתתפים, העדפות, פרטי קטינים הנוסעים.</li>
-      <li><strong>מידע רגיש (בהסכמתך):</strong> מצב בריאותי, אלרגיות ומגבלות - לצורך התאמת הפעילות בלבד.</li>
-      <li><strong>מידע תשלום:</strong> פרטים הנדרשים לחיוב/העברה לספקים (איננו שומרים מספרי כרטיס אשראי מלאים).</li>
-      <li><strong>חתימה דיגיטלית ותיעוד:</strong> חתימה גרפית, תאריך, שעה, כתובת IP וגרסת ההסכם - כראיה לאישור.</li>
+      <li>שם מלא</li>
+      <li>כתובת דוא"ל</li>
+      <li>מספר טלפון</li>
+      <li>גיל הבת/ות המצטרפות - לצורך התאמת השירות בלבד (ראי סעיף 6)</li>
+      <li>יעד ומועד מועדף לחופשה</li>
+      <li>כל מידע נוסף שמוסרת המשתמשת מרצונה החופשי</li>
     </ul>
-  </div>
-
-  <div class="section">
-    <div class="section-title"><span class="n">3.</span> לאילו מטרות</div>
+    <p style="margin-top:8px;"><strong>ב. מידע טכני הנאסף אוטומטית (בכפוף להסכמה לעוגיות - ראי סעיף 5):</strong></p>
     <ul>
-      <li>ניהול ההזמנה, התאמת השירות והפקת מסמכים.</li>
-      <li>תיאום מול ספקי הקצה ואספקת השירות.</li>
-      <li>קשר שוטף, חיובים, חשבוניות וקיום חובות שבדין.</li>
-      <li>שיווק ופרסום - רק בהסכמתך הנפרדת (לרבות שימוש בתמונות; תמונות קטינים - בהסכמת הורה/אפוטרופוס בכתב).</li>
+      <li>כתובת IP, סוג דפדפן, מערכת הפעלה</li>
+      <li>דפים שנצפו, משך השהייה, מקור ההפניה</li>
+      <li>נתוני Facebook Pixel (אינטראקציות עם תוכן שיווקי)</li>
+      <li>נתוני Google Analytics (תנועה באתר, התנהגות משתמשים)</li>
     </ul>
-    <p>המידע נאסף ומעובד אך ורק למטרות שלשמן נמסר.</p>
+    <div class="law-note">המידע הטכני נאסף אך ורק בהסכמה מפורשת דרך מנגנון הסכמה לעוגיות. ללא הסכמה - כלי ניטור אלה אינם פעילים.</div>
   </div>
 
+  <!-- 3. מטרות -->
   <div class="section">
-    <div class="section-title"><span class="n">4.</span> שיתוף עם צדדים שלישיים והעברה לחו"ל</div>
-    <p>לצורך אספקת השירות, מידע נדרש מועבר לספקי הקצה הרלוונטיים - לרבות חברות תעופה, בתי מלון, ספא, מנפיקי כרטיסים וקונסולידטורים - חלקם <strong>מחוץ לישראל</strong>. ההעברה נעשית למטרת קיום ההזמנה ובהיקף הנדרש בלבד. איננו מוכרים מידע אישי לצדדים שלישיים.</p>
+    <div class="section-title"><span class="n">3</span> לאילו מטרות נעשה שימוש במידע</div>
+    <ul>
+      <li><strong>יצירת קשר עם הנרשמת</strong> - מענה לפנייה, תיאום שיחת היכרות</li>
+      <li><strong>התאמה אישית של השירות</strong> - בחירת יעד, מלון, טיפולי ספא ופעילויות המתאימות לגיל ולאופי</li>
+      <li><strong>שליחת עדכונים ומידע שיווקי</strong> - רק בהסכמה מפורשת; ניתן לביטול בכל עת</li>
+      <li><strong>ניהול קשר עסקי שוטף</strong> - לאחר התחלת תהליך ההרשמה</li>
+      <li><strong>ציות לחובות חוקיות</strong> - ניהול ספרים, חשבוניות, תיעוד לפי דין</li>
+    </ul>
+    <p>המידע מעובד אך ורק למטרות שלשמן נמסר. לא נעשה כל שימוש נוסף ללא הסכמתך.</p>
   </div>
 
+  <!-- 4. צדדים שלישיים -->
   <div class="section">
-    <div class="section-title"><span class="n">5.</span> תקופת שמירה</div>
-    <p>המידע נשמר למשך הזמן הנדרש לקיום ההתקשרות ולחובות שבדין (לרבות חובות חשבונאיות ומס). בתום התקופה - המידע יימחק או יהפוך לאנונימי, למעט מידע שחובה להמשיך ולהחזיק לפי דין.</p>
+    <div class="section-title"><span class="n">4</span> שיתוף עם צדדים שלישיים</div>
+    <p>המידע האישי שלך לא נמכר ולא מועבר לצדדים שלישיים, למעט במקרים הבאים:</p>
+    <p><strong>א. Meta Platforms (Facebook / Instagram):</strong></p>
+    <p>האתר עשוי לכלול Facebook Pixel - כלי של Meta המאפשר מדידת אפקטיביות פרסום. בכפוף להסכמתך, Meta עשויה לקבל נתוני גלישה בסיסיים. Meta מעבדת נתונים אלה לפי מדיניות הפרטיות שלה.</p>
+    <div class="third-party-links">
+      מדיניות פרטיות של Meta: <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">facebook.com/privacy/policy</a>
+    </div>
+    <p style="margin-top:10px;"><strong>ב. Google LLC (Google Analytics):</strong></p>
+    <p>בכפוף להסכמתך, Google Analytics אוסף נתונים סטטיסטיים אנונימיים על השימוש באתר. Google מעבדת נתונים אלה לפי מדיניות הפרטיות שלה.</p>
+    <div class="third-party-links">
+      מדיניות פרטיות של Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a><br>
+      ביטול מעקב Google Analytics: <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>
+    </div>
+    <p style="margin-top:10px;"><strong>ג. ספקי שירות ישירים:</strong></p>
+    <p>לאחר אישור הזמנה - מידע הכרחי (שמות הנוסעות, דרישות מיוחדות) יועבר למלונות, חברות תעופה וספקים אחרים הנדרשים לאספקת השירות. העברה זו נעשית רק במידה הנדרשת ולמטרת קיום ההזמנה בלבד.</p>
   </div>
 
+  <!-- 5. עוגיות -->
   <div class="section">
-    <div class="section-title"><span class="n">6.</span> אבטחת מידע</div>
-    <p>אנו נוקטים אמצעי אבטחה ארגוניים וטכנולוגיים סבירים להגנה על המידע מפני גישה, שימוש או גילוי לא מורשים, בהתאם לחוק הגנת הפרטיות ולתיקון מס׳ 13. מידע רגיש נשמר בנפרד ובמינימום ההכרחי.</p>
+    <div class="section-title"><span class="n">5</span> עוגיות (Cookies) - סוגים ושליטה</div>
+    <p>האתר עשוי לעשות שימוש בסוגי עוגיות הבאים:</p>
+    <ul>
+      <li><strong>עוגיות הכרחיות:</strong> נדרשות לתפעול בסיסי של האתר. אינן מצריכות הסכמה.</li>
+      <li><strong>עוגיות ניתוח (Google Analytics):</strong> אוספות נתונים סטטיסטיים אנונימיים על שימוש באתר. פעילות רק בהסכמה.</li>
+      <li><strong>עוגיות שיווק (Facebook Pixel):</strong> מאפשרות מדידת אפקטיביות פרסומות. פעילות רק בהסכמה.</li>
+    </ul>
+    <p><strong>כיצד לנהל עוגיות:</strong></p>
+    <ul>
+      <li>דרך מנגנון ההסכמה לעוגיות המופיע בכניסה לאתר</li>
+      <li>דרך הגדרות הדפדפן: Chrome - הגדרות &gt; פרטיות ואבטחה &gt; עוגיות; Firefox - אפשרויות &gt; פרטיות ואבטחה</li>
+      <li>שים לב: חסימת עוגיות הכרחיות עלולה לפגוע בתפקוד האתר</li>
+    </ul>
+    <div class="law-note">כלי ניתוח ושיווק אינם פעילים ללא הסכמה מפורשת. ביטול הסכמה בכל עת אינו פוגע בשירות שקיבלת.</div>
   </div>
 
+  <!-- 6. קטינים -->
   <div class="section">
-    <div class="section-title"><span class="n">7.</span> זכויותיך</div>
-    <div class="rights">
-      על פי דין, את/ה רשאי/ת: <strong>לעיין</strong> במידע שנשמר עליך; <strong>לבקש לתקן</strong> מידע שגוי; <strong>לבקש למחוק</strong> מידע (בכפוף לחובות שמירה שבדין); <strong>לחזור בך מהסכמה</strong> לשיווק או לשימוש בתמונות. למימוש: פנה/י אלינו ל-<a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a> ונטפל בבקשתך בתוך זמן סביר.
+    <div class="section-title"><span class="n">6</span> קטינים - כיצד מטפלים במידע</div>
+    <p>האתר פונה לאמהות בגירות. האתר <strong>אינו אוסף מידע ישירות מקטינים.</strong></p>
+    <p>גיל הבת/ות מוסר על ידי האם/האפוטרופוסית הבוגרת, לצורך התאמת השירות בלבד - בחירת טיפולי ספא המתאימים לגיל, קביעת תכנית ביקור מתאימה, והמלצה על מוצרי טיפוח בגיל-המתאים.</p>
+    <p>מידע זה:</p>
+    <ul>
+      <li>נשמר כחלק ממידע ההזמנה הכולל של האם</li>
+      <li>אינו משמש לפרסום ממוקד לקטינה</li>
+      <li>אינו משותף עם גורם שלישי מעבר לנדרש לאספקת השירות</li>
+    </ul>
+    <p>אם ברצונך לעיין, לתקן או למחוק מידע הנוגע לקטינה - פני אל <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a>.</p>
+  </div>
+
+  <!-- 7. שמירת מידע -->
+  <div class="section">
+    <div class="section-title"><span class="n">7</span> משך שמירת המידע</div>
+    <p>המידע נשמר לפי הכללים הבאים:</p>
+    <ul>
+      <li><strong>פניות ללא הזמנה:</strong> עד שנה מיום הפנייה, אלא אם ניתנה הסכמה לקבלת תוכן שיווקי</li>
+      <li><strong>מידע הקשור להזמנה שיצאה לפועל:</strong> למשך קיום ההתקשרות ו-7 שנים לאחריה, בהתאם לחובות חשבונאיות ומס לפי חוק</li>
+      <li><strong>מסמכים חוזיים וחשבוניות:</strong> 7 שנים מתאריך העסקה, לפי חוק עסקאות גופים ציבוריים ופקודת מס הכנסה</li>
+      <li><strong>מידע שיווקי (רשימת תפוצה):</strong> עד לביטול הסכמה</li>
+    </ul>
+    <p>בתום תקופת השמירה - המידע יימחק בצורה מאובטחת.</p>
+  </div>
+
+  <!-- 8. זכויות -->
+  <div class="section">
+    <div class="section-title"><span class="n">8</span> זכויותיך לפי חוק</div>
+    <div class="highlight-block">
+      <p>בהתאם לחוק הגנת הפרטיות ותיקון מס' 13, יש לך זכות:</p>
+      <ul style="margin-top:8px;">
+        <li><strong>עיון:</strong> לבקש לראות את המידע השמור עלייך</li>
+        <li><strong>תיקון:</strong> לבקש תיקון מידע שגוי או לא עדכני</li>
+        <li><strong>מחיקה:</strong> לבקש מחיקת המידע - בכפוף לחובות שמירה חוקיות (ראי סעיף 7)</li>
+        <li><strong>ביטול הסכמה לשיווק:</strong> להסיר עצמך מרשימת תפוצה בכל עת, ללא עלות</li>
+        <li><strong>הגבלת עיבוד:</strong> לבקש הגבלת השימוש במידע במקרים מסוימים</li>
+        <li><strong>קבלת מידע:</strong> לדעת אילו מידע מוחזק ועם מי הוא משותף</li>
+      </ul>
+      <p style="margin-top:10px;">לממוש כל אחת מהזכויות הנ"ל - שלחי בקשה בכתב אל:</p>
+      <p><a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a> | 050-8278089</p>
+      <p style="font-size:0.83rem; color:var(--muted); margin-top:6px;">נטפל בבקשה בתוך 30 יום ממועד קבלתה, בהתאם לדרישות החוק.</p>
     </div>
   </div>
 
+  <!-- 9. העברות לחו"ל -->
   <div class="section">
-    <div class="section-title"><span class="n">8.</span> קטינים</div>
-    <p>מידע על קטינים נאסף ומעובד רק בהסכמת הורה/אפוטרופוס. פרסום תמונות של קטינים מחייב אישור נפרד בכתב, וניתן לבטלו בכל עת.</p>
+    <div class="section-title"><span class="n">9</span> העברת מידע לחוץ לארץ</div>
+    <p>שרתי Meta (Facebook) ו-Google ממוקמים מחוץ לישראל, בכלל זה בארצות הברית ובמדינות אחרות. בכפוף להסכמתך לעוגיות, חלק מהנתונים הטכניים עשוי להיות מועבר לשרתים אלה.</p>
+    <p>העברות אלה נעשות על בסיס:</p>
+    <ul>
+      <li>מסגרות הגנה בינלאומיות מוכרות (Standard Contractual Clauses)</li>
+      <li>מדיניות הפרטיות של Meta ו-Google, המחייבות אמצעי הגנה נאותים</li>
+    </ul>
+    <p>כמו כן, לאחר אישור הזמנה - מידע הכרחי עשוי להיות מועבר לספקי שירות בחו"ל (מלונות, חברות תעופה) אך ורק לצורך אספקת השירות.</p>
+    <div class="law-note">לפי תיקון מס' 13 לחוק הגנת הפרטיות, העברת מידע לחו"ל מותרת כאשר רמת ההגנה המוענקת שם שקולה לזו הנדרשת בישראל, או בהסכמת הנשוא.</div>
   </div>
 
+  <!-- 10. עדכונים -->
   <div class="section">
-    <div class="section-title"><span class="n">9.</span> עוגיות ואתר</div>
-    <p>ככל שנעשה שימוש בעוגיות או בכלי ניתוח באתר/בטפסים - הם משמשים לתפעול תקין ולשיפור החוויה בלבד. ניתן לחסום עוגיות בהגדרות הדפדפן.</p>
+    <div class="section-title"><span class="n">10</span> עדכונים למדיניות זו</div>
+    <p>מדיניות זו עשויה להתעדכן מעת לעת - בשל שינויי חקיקה, שינויים בשירות, או שינויים טכנולוגיים.</p>
+    <p>עדכונים מהותיים יפורסמו בדף זה עם תאריך עדכון חדש, וייתכן כי תישלח הודעה בדוא"ל לנרשמות בעלות הסכמה לתכתובת.</p>
+    <p><strong>גרסה נוכחית:</strong> יוני 2026. המשך שימוש באתר לאחר פרסום עדכון מהווה הסכמה למדיניות המעודכנת.</p>
   </div>
 
+  <!-- 11. דין ושיפוט -->
   <div class="section">
-    <div class="section-title"><span class="n">10.</span> שינויים במדיניות</div>
-    <p>נעדכן מדיניות זו מעת לעת. הגרסה המעודכנת תפורסם בעמוד זה עם תאריך עדכון.</p>
+    <div class="section-title"><span class="n">11</span> דין חל וסמכות שיפוטית</div>
+    <p>מדיניות פרטיות זו, וכל עניין הנובע ממנה, יוסדרו לפי <strong>חוקי מדינת ישראל</strong> בלבד.</p>
+    <p>סמכות שיפוט בלעדית לכל עניין הנובע ממדיניות זו תהא נתונה ל<strong>בתי המשפט המוסמכים במחוז תל אביב</strong>.</p>
   </div>
 
+  <!-- 12. יצירת קשר -->
   <div class="section">
-    <div class="section-title"><span class="n">11.</span> יצירת קשר</div>
-    <div class="contact">
-      <strong>SKY BY ADI AHARONI</strong> | עדי אהרוני<br>
-      המרגנית 6, חולון | 050-8278089 | <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a>
-      <br><a class="back" href="contract.html">→ חזרה להסכם</a>
+    <div class="section-title"><span class="n">12</span> יצירת קשר</div>
+    <div class="contact-block">
+      <strong>SKY BY ADI AHARONI - DREAM IT. VISIT IT</strong><br>
+      עדי אהרוני, בעלת העסק ואחראית על הפרטיות<br>
+      טלפון: <a href="tel:0508278089">050-8278089</a><br>
+      דוא"ל: <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a><br>
+      <span style="font-size:0.82rem; color:var(--muted);">זמינות: ימים א-ה, 9:00-18:00 (שישי בתיאום מראש)</span>
     </div>
+    <a class="back-link" href="sky-by-adi-landing-page.html">- חזרה לדף הבית</a>
   </div>
 
   <div class="footer-note">
     <span class="biz">SKY BY ADI AHARONI - DREAM IT. VISIT IT</span><br>
-    © SKY BY ADI AHARONI | כל הזכויות שמורות
+    גרסת מסמך: יוני 2026 | בהתאם לחוק הגנת הפרטיות, התשמ"א-1981 ותיקון מס' 13<br>
+    &copy; כל הזכויות שמורות לעדי אהרוני
   </div>
 
 </div>
