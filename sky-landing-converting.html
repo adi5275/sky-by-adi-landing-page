@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKY BY ADI AHARONI — הבת שלך כבר קונה קרמים</title>
+<meta name="description" content="72 שעות אם-בת מחוץ לבית — לומדות ביחד מה מותר לעור שלה, ומתפנקות בדרך. פרוטוקול האיפוס. 5 מקומות בלבד בכל מחזור.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;800;900&family=Playfair+Display:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<style>
+  /* ===== Noya Ganani palette =====
+     מגע ראשון + סיום: כחול / ורוד / ירוק
+     שלב אמצעי: בורדו + ניטרלים (קרם/לבן/פחם)
+     ניטרל-יוקרה: זהב + קרם  */
+  :root{
+    --navy:#1f3a5f; --navy-deep:#15293f; --blue:#2e5a8a;
+    --blush:#d99e97; --blush-soft:#f3dcd7; --rose:#c97f78;
+    --sage:#7f9270; --sage-deep:#5d6f4e; --forest:#2D5016;
+    --burgundy:#7a2e3a; --burgundy-deep:#5e222c;
+    --gold:#C9A84C; --gold-soft:#e3cf94;
+    --cream:#FAF6EE; --paper:#fffdf8; --ink:#26211a; --muted:#6f6757; --line:#e7ddc8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Heebo',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px;}
+  h1,h2,h3{font-family:'Playfair Display',serif;}
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== NAV ===== */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,253,248,.92);backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);}
+  nav .row{display:flex;align-items:center;justify-content:space-between;padding:12px 0;}
+  nav .logo{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;color:var(--navy);letter-spacing:.02em;}
+  nav .logo span{color:var(--gold);}
+  nav .cta{background:var(--navy);color:#fff;padding:10px 20px;border-radius:999px;font-weight:600;font-size:14px;
+    transition:transform .15s,background .2s;}
+  nav .cta:hover{background:var(--blue);transform:translateY(-1px);}
+  nav .links{display:flex;gap:22px;font-size:14px;font-weight:500;color:var(--muted);}
+  nav .links a:hover{color:var(--navy);}
+  @media(max-width:760px){nav .links{display:none}}
+
+  /* ===== HERO (מגע ראשון: כחול/ורוד/ירוק) ===== */
+  .hero{position:relative;overflow:hidden;
+    background:
+      radial-gradient(1100px 480px at 85% -10%, var(--blush-soft) 0%, transparent 60%),
+      radial-gradient(900px 520px at 0% 110%, #e7eee0 0%, transparent 55%),
+      linear-gradient(180deg,var(--paper),var(--cream));}
+  .hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;
+    padding:64px 22px 70px;}
+  .hero .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;
+    color:var(--sage-deep);background:#eef3e7;border:1px solid #d6e2c7;padding:6px 14px;border-radius:999px;
+    margin-bottom:20px;}
+  .hero h1{font-size:48px;line-height:1.12;color:var(--navy);font-weight:800;letter-spacing:-.01em;}
+  .hero h1 .accent{color:var(--rose);font-style:italic;}
+  .hero .sub{font-size:19px;color:#3f3a30;margin:20px 0 14px;max-width:540px;}
+  .hero .micro{font-size:15px;color:var(--muted);margin-bottom:26px;}
+  .hero .micro b{color:var(--sage-deep);}
+  .btn{display:inline-flex;align-items:center;gap:10px;font-weight:700;border:none;cursor:pointer;
+    border-radius:999px;transition:transform .15s,box-shadow .2s;font-family:'Heebo';}
+  .btn-primary{background:var(--navy);color:#fff;font-size:18px;padding:16px 30px;
+    box-shadow:0 12px 28px rgba(31,58,95,.28);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(31,58,95,.34);}
+  .btn-primary .small{font-weight:400;font-size:13px;opacity:.85;}
+  .hero .reduce{font-size:13px;color:var(--muted);margin-top:12px;}
+  .hero .reduce::before{content:"✓ ";color:var(--sage-deep);font-weight:700;}
+  /* hero visual */
+  .hero .card{position:relative;background:#fff;border:1px solid var(--line);border-radius:22px;
+    padding:26px;box-shadow:0 22px 50px rgba(31,58,95,.12);}
+  .hero .card .ribbon{position:absolute;top:-14px;right:22px;background:var(--gold);color:#3a2f10;
+    font-size:12px;font-weight:700;padding:5px 14px;border-radius:999px;letter-spacing:.03em;}
+  .hero .card h3{font-size:17px;color:var(--navy);margin-bottom:14px;}
+  .hero .card .stat{display:flex;align-items:baseline;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);}
+  .hero .card .stat:last-child{border-bottom:none;}
+  .hero .card .stat .n{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;color:var(--rose);min-width:78px;}
+  .hero .card .stat .t{font-size:14px;color:#4a443a;}
+  @media(max-width:880px){.hero .wrap{grid-template-columns:1fr;gap:30px}.hero h1{font-size:36px}.hero .card{order:-1}}
+
+  /* ===== PROOF BAR ===== */
+  .proofbar{background:var(--navy-deep);color:#eaf0f7;}
+  .proofbar .wrap{display:flex;justify-content:center;gap:38px;flex-wrap:wrap;padding:18px 22px;text-align:center;}
+  .proofbar .it{font-size:15px;}
+  .proofbar .it b{font-family:'Playfair Display',serif;color:var(--gold-soft);font-size:20px;}
+
+  /* ===== SECTION BASE ===== */
+  section{padding:64px 0;}
+  .tag{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+  .h-sec{font-size:33px;line-height:1.2;color:var(--navy);margin-bottom:14px;font-weight:700;}
+  .lead{font-size:17px;color:#4a443a;max-width:680px;}
+
+  /* ===== PROBLEM (שלב אמצעי: בורדו + ניטרלים) ===== */
+  .problem{background:linear-gradient(180deg,#fff,#fbf6f2);}
+  .problem .h-sec{color:var(--burgundy);}
+  .problem .reframe{background:#fff;border:1px solid var(--line);border-right:6px solid var(--burgundy);
+    border-radius:14px;padding:24px 26px;margin:26px 0 34px;box-shadow:0 8px 22px rgba(122,46,58,.06);}
+  .problem .reframe p{font-size:18px;color:var(--ink);}
+  .problem .reframe b{color:var(--burgundy);}
+  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .pain{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;}
+  .pain .ic{width:46px;height:46px;border-radius:12px;background:#f6e7e9;color:var(--burgundy);
+    display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:12px;}
+  .pain h3{font-family:'Heebo';font-size:18px;font-weight:700;color:var(--burgundy);margin-bottom:7px;}
+  .pain p{font-size:14.5px;color:#4a443a;}
+  .pain .data{margin-top:10px;font-size:13px;color:var(--muted);background:var(--cream);border-radius:8px;padding:7px 11px;}
+  .pain .data b{color:var(--burgundy);}
+  @media(max-width:760px){.pains{grid-template-columns:1fr}}
+
+  /* ===== AUTHORITY ===== */
+  .authority{background:var(--burgundy-deep);color:#f3e7e9;}
+  .authority .tag{color:var(--gold-soft);}
+  .authority .h-sec{color:#fff;}
+  .authority .lead{color:#e6d4d6;}
+  .quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .quote{background:rgba(255,255,255,.06);border:1px solid rgba(227,207,148,.3);border-radius:14px;padding:20px;}
+  .quote p{font-size:14.5px;font-style:italic;color:#f6ecdd;margin-bottom:12px;}
+  .quote .who{font-size:13px;font-weight:600;color:var(--gold-soft);}
+  .quote .who span{display:block;font-weight:400;color:#cbb9bb;font-style:normal;}
+  @media(max-width:760px){.quotes{grid-template-columns:1fr}}
+
+  /* ===== MECHANISM (שלב אמצעי) ===== */
+  .mech .tag{color:var(--gold);}
+  .mech .h-sec{color:var(--navy);}
+  .mech .name{display:inline-block;background:var(--navy);color:#fff;font-weight:700;padding:4px 14px;
+    border-radius:999px;font-size:15px;margin:0 3px;}
+  .mech .reset{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px 28px;margin-top:26px;
+    box-shadow:0 10px 26px rgba(31,58,95,.06);}
+  .mech .reset h3{font-family:'Heebo';font-size:20px;color:var(--burgundy);margin-bottom:8px;font-weight:700;}
+  .mech .reset p{font-size:16px;color:#4a443a;}
+  .double{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px;}
+  .double .d{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:18px;}
+  .double .d .k{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:.05em;text-transform:uppercase;margin-bottom:5px;}
+  .double .d p{font-size:15px;color:#3f3a30;}
+  @media(max-width:760px){.double{grid-template-columns:1fr}}
+
+  /* ===== HOW IT WORKS ===== */
+  .how{background:linear-gradient(180deg,#f4f7f0,#fff);}
+  .how .h-sec{color:var(--sage-deep);}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:28px;counter-reset:s;}
+  .step{background:#fff;border:1px solid #d9e2cd;border-radius:14px;padding:24px 22px;position:relative;}
+  .step .num{counter-increment:s;font-family:'Playfair Display',serif;font-size:42px;font-weight:700;
+    color:var(--sage);line-height:1;}
+  .step .num::before{content:counter(s);}
+  .step h3{font-family:'Heebo';font-size:18px;font-weight:700;color:var(--sage-deep);margin:8px 0 6px;}
+  .step p{font-size:14.5px;color:#4a443a;}
+  .how .zero{text-align:center;margin-top:26px;font-size:17px;color:var(--navy);font-weight:600;}
+  .how .zero b{color:var(--rose);}
+  @media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+  /* ===== BONUSES ===== */
+  .bonus .tag{color:var(--gold);}
+  .bonus .h-sec{color:var(--navy);}
+  .bonus .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;}
+  .bcard{background:linear-gradient(135deg,#fff,var(--cream));border:1px solid var(--gold-soft);
+    border-radius:16px;padding:24px;position:relative;}
+  .bcard .lbl{position:absolute;top:18px;left:18px;background:var(--gold);color:#3a2f10;font-size:11px;
+    font-weight:700;padding:3px 11px;border-radius:999px;}
+  .bcard h3{font-family:'Heebo';font-size:19px;font-weight:700;color:var(--burgundy);margin-bottom:8px;}
+  .bcard p{font-size:14.5px;color:#4a443a;}
+  .bonus .solve{margin-top:18px;text-align:center;font-size:15px;color:var(--muted);font-style:italic;}
+  @media(max-width:760px){.bonus .grid{grid-template-columns:1fr}}
+
+  /* ===== SEGMENTS ===== */
+  .seg{background:var(--navy-deep);color:#eaf0f7;}
+  .seg .tag{color:var(--gold-soft);}
+  .seg .h-sec{color:#fff;}
+  .seg .lead{color:#cdd8e6;}
+  .segs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
+  .sg{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:22px;
+    transition:transform .15s,border-color .2s;}
+  .sg:hover{transform:translateY(-3px);border-color:var(--gold-soft);}
+  .sg .age{font-family:'Playfair Display',serif;font-size:15px;color:var(--gold-soft);margin-bottom:6px;}
+  .sg h3{font-family:'Heebo';font-size:19px;font-weight:700;color:#fff;margin-bottom:8px;}
+  .sg p{font-size:14.5px;color:#d3dceb;}
+  @media(max-width:760px){.segs{grid-template-columns:1fr}}
+
+  /* ===== VOICES ===== */
+  .voices{background:linear-gradient(180deg,#fff,#fbf6f2);}
+  .voices .h-sec{color:var(--burgundy);}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;}
+  .v{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;position:relative;}
+  .v::before{content:"\201D";font-family:'Playfair Display',serif;font-size:54px;color:var(--blush);
+    position:absolute;top:6px;left:18px;line-height:1;}
+  .v p{font-size:16px;color:var(--ink);font-style:italic;}
+  .v .who{margin-top:10px;font-size:13px;font-weight:600;color:var(--sage-deep);}
+  @media(max-width:760px){.vgrid{grid-template-columns:1fr}}
+
+  /* ===== TESTIMONIALS (הוכחה ישראלית) ===== */
+  .tstm{background:linear-gradient(180deg,#fff,#f4f7f0);}
+  .tstm .h-sec{color:var(--sage-deep);}
+  .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px;}
+  .tstm .t{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;
+    box-shadow:0 8px 22px rgba(45,80,22,.05);}
+  .tstm .head{display:flex;align-items:center;gap:13px;margin-bottom:13px;}
+  .tstm .av{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    font-family:'Playfair Display',serif;font-size:23px;font-weight:700;color:#fff;flex:none;overflow:hidden;}
+  .tstm .av img{width:100%;height:100%;object-fit:cover;}
+  .tstm figcaption b{display:block;font-size:16px;color:var(--navy);}
+  .tstm figcaption span{font-size:13px;color:var(--muted);}
+  .tstm blockquote{font-size:15.5px;color:#3f3a30;font-style:italic;line-height:1.7;}
+  .tstm .stars{color:var(--gold);margin-top:11px;letter-spacing:3px;font-size:15px;}
+  @media(max-width:760px){.tgrid{grid-template-columns:1fr}}
+
+  /* ===== SELECTION / SCARCITY ===== */
+  .select{background:#fff;}
+  .select .box{background:linear-gradient(135deg,var(--navy),var(--burgundy));color:#fff;border-radius:20px;
+    padding:40px 36px;text-align:center;box-shadow:0 18px 44px rgba(31,58,95,.2);}
+  .select .box .tag{color:var(--gold-soft);}
+  .select .box h2{font-size:30px;color:#fff;margin-bottom:12px;}
+  .select .box p{font-size:17px;color:#e9e3ea;max-width:620px;margin:0 auto 8px;}
+  .select .box .hard{font-size:15px;color:var(--gold-soft);font-weight:600;margin-top:14px;}
+
+  /* ===== FAQ / OBJECTIONS ===== */
+  .faq .h-sec{color:var(--navy);}
+  .faq .items{margin-top:26px;max-width:820px;}
+  details{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;padding:0 20px;
+    transition:box-shadow .2s;}
+  details[open]{box-shadow:0 8px 22px rgba(31,58,95,.07);}
+  summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:700;font-size:17px;color:var(--navy);
+    display:flex;justify-content:space-between;align-items:center;gap:12px;}
+  summary::-webkit-details-marker{display:none}
+  summary .plus{color:var(--rose);font-size:24px;font-weight:400;transition:transform .2s;flex:none;}
+  details[open] summary .plus{transform:rotate(45deg);}
+  details .a{padding:0 0 20px;font-size:15.5px;color:#4a443a;}
+  details .a b{color:var(--burgundy);}
+
+  /* ===== FINAL CTA (סיום: כחול/ורוד/ירוק) ===== */
+  .final{position:relative;overflow:hidden;text-align:center;
+    background:
+      radial-gradient(700px 320px at 20% 0%, var(--blush-soft) 0%, transparent 60%),
+      radial-gradient(700px 320px at 90% 100%, #e7eee0 0%, transparent 55%),
+      linear-gradient(180deg,var(--cream),var(--paper));}
+  .final .eyebrow{display:inline-block;font-size:13px;font-weight:600;color:var(--sage-deep);
+    background:#eef3e7;border:1px solid #d6e2c7;padding:6px 14px;border-radius:999px;margin-bottom:18px;}
+  .final h2{font-size:38px;color:var(--navy);margin-bottom:14px;line-height:1.15;}
+  .final h2 .accent{color:var(--rose);font-style:italic;}
+  .final p{font-size:18px;color:#4a443a;max-width:560px;margin:0 auto 28px;}
+  .final .reduce{font-size:14px;color:var(--muted);margin-top:14px;}
+  .final .reduce b{color:var(--sage-deep);}
+  .cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+  .btn-wa{background:#25D366;color:#fff;font-size:18px;padding:16px 30px;
+    box-shadow:0 12px 28px rgba(37,211,102,.3);}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(37,211,102,.38);}
+  .or{margin:18px auto 4px;color:var(--muted);font-size:14px;}
+  .lead-form{max-width:440px;margin:8px auto 0;background:#fff;border:1px solid var(--line);
+    border-radius:16px;padding:22px;box-shadow:0 12px 30px rgba(31,58,95,.1);text-align:right;}
+  .lead-form h3{font-family:'Heebo';font-size:16px;color:var(--navy);margin-bottom:13px;font-weight:700;}
+  .lead-form input{width:100%;padding:13px 14px;margin-bottom:10px;border:1px solid var(--line);
+    border-radius:10px;font-family:'Heebo';font-size:15px;background:#fff;}
+  .lead-form input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(46,90,138,.12);}
+  .lead-form .btn-primary{width:100%;justify-content:center;}
+  .lead-form .priv{font-size:12px;color:var(--muted);margin-top:9px;text-align:center;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy-deep);color:#c8d2df;padding:34px 0;text-align:center;font-size:14px;}
+  footer .logo{font-family:'Playfair Display',serif;font-size:22px;color:#fff;margin-bottom:6px;}
+  footer .logo span{color:var(--gold);}
+  footer .tag2{color:var(--gold-soft);letter-spacing:.18em;font-size:12px;}
+
+  /* ===== STICKY MOBILE CTA ===== */
+  .sticky{position:fixed;bottom:0;left:0;right:0;z-index:60;background:rgba(255,253,248,.97);
+    border-top:1px solid var(--line);padding:10px 16px;display:none;box-shadow:0 -6px 20px rgba(0,0,0,.08);}
+  .sticky .btn-primary{width:100%;justify-content:center;font-size:16px;padding:14px;}
+  @media(max-width:760px){.sticky{display:block}body{padding-bottom:74px}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap row">
+    <a href="#top" class="logo">SKY <span>BY ADI</span></a>
+    <div class="links">
+      <a href="#problem">הבעיה</a>
+      <a href="#mechanism">איך זה עובד</a>
+      <a href="#segments">למי זה מתאים</a>
+      <a href="#faq">שאלות</a>
+    </div>
+    <a href="#apply" class="cta">לשיחת ההתאמה</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">👩‍👧 חופשות אם-בת · גילאי 10–18</span>
+      <h1>הבת שלך כבר<br>קונה קרמים.<br><span class="accent">השאלה היא מה.</span></h1>
+      <p class="sub">72 שעות מחוץ לבית שבהן אתן לומדות ביחד מה באמת מותר לעור שלה בגיל הזה — ומתפנקות בדרך.</p>
+      <p class="micro">החיבור ביניכן לא הכותרת. הוא <b>מה שקורה מעצמו</b> כשמורידים את עומס הבית.</p>
+      <a href="#apply" class="btn btn-primary">
+        לשיחת ההתאמה <span class="small">· 20 דק', ללא עלות</span>
+      </a>
+      <div class="reduce">ללא התחייבות. שיחת סינון קצרה — לא שיחת מכירה.</div>
+    </div>
+    <div class="card">
+      <span class="ribbon">5 מקומות בלבד למחזור</span>
+      <h3>למה זה לא "עוד חופשה"</h3>
+      <div class="stat"><span class="n">72</span><span class="t">שעות מתוכננות לפרטי פרטים — אפס החלטות בשטח</span></div>
+      <div class="stat"><span class="n">87%</span><span class="t">שביעות רצון מהמשפחות שכבר היו</span></div>
+      <div class="stat"><span class="n">57</span><span class="t">משפחות יצאו איתי לדרך ב-2024</span></div>
+      <div class="stat"><span class="n">3</span><span class="t">שכבות התאמה: גיל הבת, אופי האם, והעור שלה</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROOF BAR -->
+<div class="proofbar">
+  <div class="wrap">
+    <div class="it"><b>20+</b> שנות דיוק משפטי מאחורי כל חוזה</div>
+    <div class="it"><b>אמא</b> לשלוש בנות מתבגרות</div>
+    <div class="it"><b>קטגוריה</b> שלא קיימת בישראל</div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="tag">הבעיה האמיתית</div>
+    <h2 class="h-sec">היא יודעת מה הטרנד. את לא יודעת מה בריא לה.</h2>
+    <p class="lead">נערות בגיל 10–18 כבר מושקעות בטיפוח — TikTok, GRWM, מדפי הספורה. הן קונות רטינול וחומצות שלא מתאימות לגיל שלהן. ואין לכן מרחב ניטרלי ללמוד את זה ביחד — כי בבית, כל שיחה הופכת לוויכוח.</p>
+
+    <div class="reframe">
+      <p><b>זו לא בעיה של חיבור.</b> זו בעיה קונקרטית: היא קונה את הדבר הלא נכון, ואת לא יודעת איך לעצור בלי מריבה. אני נותנת לכן את המרחב, את הידע — ואת השקט.</p>
+    </div>
+
+    <div class="pains">
+      <div class="pain">
+        <div class="ic">🔗</div>
+        <h3>הקשר נשחק</h3>
+        <p>שיחות שנגמרות בוויכוח. תחושה שאת מפספסת את התקופה הזו — והיא נגמרת מהר.</p>
+      </div>
+      <div class="pain">
+        <div class="ic">📱</div>
+        <h3>לחץ הרשתות</h3>
+        <p>השוואה אינסופית, סטנדרט בלתי אפשרי של "עור מושלם", מוצרים שמזיקים לעור צעיר.</p>
+        <div class="data"><b>32%</b> מהנערות הרגישו גרוע יותר על גופן אחרי אינסטגרם</div>
+      </div>
+      <div class="pain">
+        <div class="ic">🕯️</div>
+        <h3>האם השחוקה</h3>
+        <p>"אני לא זוכרת מתי עשיתי משהו רק בשבילי." מגיעה הביתה שחוקה, בלי כוח לעוד מאבק.</p>
+        <div class="data">נערות מוציאות <b>$374/שנה</b> על טיפוח — שיא היסטורי</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY -->
+<section class="authority">
+  <div class="wrap">
+    <div class="tag">מה שרופאי עור אומרים להורים</div>
+    <h2 class="h-sec">זה לא "דעה שלי". זה מה שהמומחים מתריעים עליו.</h2>
+    <p class="lead">תופעת ה-"Sephora Kids" הגיעה לכותרות — ורופאי עור בכל העולם מזהירים מאותו דבר בדיוק.</p>
+    <div class="quotes">
+      <div class="quote">
+        <p>"ב-90% מהמקרים אני אומרת: את לא צריכה את זה — אין לך הבעיה שהמוצר הזה פותר. הוא מיועד לשינויים שקורים בעור בבגרות."</p>
+        <div class="who">ד״ר קרלה טורס-זגרה<span>רופאת עור ילדים · אוניברסיטת קולורדו (ארה״ב)</span></div>
+      </div>
+      <div class="quote">
+        <p>"רטינול הוא מוצר אנטי-אייג'ינג. ילדה בת 12 שצריכה טיפול — שתלך לרופא עור, לא תיקח את זה לבד."</p>
+        <div class="who">ד״ר סמיטה אוואסטהי<span>רופאת עור · UC Davis Health (ארה״ב)</span></div>
+      </div>
+      <div class="quote">
+        <p>קמפיין <b>#TheFaceof10</b> של Dove (עם דרו ברימור) קם בדיוק נגד זה: פנים של בת 10 צריכות גליטר ומדבקות — לא רטינול.</p>
+        <div class="who">Dove × Ogilvy<span>קמפיין גלובלי, 2024</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANISM -->
+<section class="mech" id="mechanism">
+  <div class="wrap">
+    <div class="tag">המנגנון</div>
+    <h2 class="h-sec">פרוטוקול האיפוס</h2>
+    <p class="lead">בבית, כל אינטראקציה ביניכן קורית בתוך מבנה כוח: את הסמכות, היא כפופה. אני יוצרת 72 שעות שבהן שתיכן מתחילות מאפס — אף אחת לא מכירה את המקום, אף אחת לא ה"מומחית". <span class="name">מבנה הכוח נעלם.</span></p>
+
+    <div class="reset">
+      <h3>למה זה עובד דווקא בחוץ</h3>
+      <p>כשאתן במקום זר, יחד, בלי השגרה שמושכת כל אחת לכיוון שלה — נפתח חלון. אני מביאה את הידע המקצועי (מה מותר לעור שלה, באילו חומרים, באיזו שגרה), והפינוק נותן את התירוץ. החיבור? הוא תוצר הלוואי. לא הכותרת.</p>
+
+      <div class="double">
+        <div class="d">
+          <div class="k">התאמה כפולה</div>
+          <p>כל חבילה נתפרת לגיל הבת <b>ולאופי האם</b>. לא תבנית — התאמה אישית לשתיכן.</p>
+        </div>
+        <div class="d">
+          <div class="k">אפס החלטות</div>
+          <p>שאלון אבחון, שיחת תיאום, לו"ז סגור, הסכמות מראש, חוזה, וקיט שגרה ביתי. את לא מחפשת — את מקבלת.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="wrap">
+    <div class="tag">התהליך</div>
+    <h2 class="h-sec">שלושה צעדים. אפס עומס עלייך.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="num"></div>
+        <h3>שאלון אבחון</h3>
+        <p>אני לומדת את הבת — גילה, העור שלה, מה היא אוהבת — ואותך: מה הקשר ביניכן, ומה את צריכה.</p>
+      </div>
+      <div class="step">
+        <div class="num"></div>
+        <h3>שיחת תיאום + חוזה</h3>
+        <p>לו"ז ברור ל-72 שעות, הסכמות מראש, מדיניות ביטולים, חוזה. הכל סגור לפני שאתן ממריאות.</p>
+      </div>
+      <div class="step">
+        <div class="num"></div>
+        <h3>72 שעות + קיט לבית</h3>
+        <p>החוויה עצמה — ספא מותאם-גיל, סדנת חיבור, פינוק. ובחזרה: קיט שגרת טיפוח ביתי שממשיך את מה שלמדתן.</p>
+      </div>
+    </div>
+    <p class="zero">את לא מתכננת. את לא מחפשת. את לא מתלבטת. <b>את רק נמצאת שם — איתה.</b></p>
+  </div>
+</section>
+
+<!-- BONUSES -->
+<section class="bonus">
+  <div class="wrap">
+    <div class="tag">מה מחכה לכן בחדר</div>
+    <h2 class="h-sec">"ומה אם נהיה שם ולא יהיה לנו על מה לדבר?"</h2>
+    <p class="lead">החשש הזה אמיתי — ואני פותרת אותו מראש, עוד לפני שאתן נכנסות לחדר.</p>
+    <div class="grid">
+      <div class="bcard">
+        <span class="lbl">בונוס 1</span>
+        <h3>ערכת "No-Filter Connection"</h3>
+        <p>קלפי שיחה ממותגים שמחכים בחדר המלון. מבטיחים שלא תהיה שתיקה מביכה — ומייצרים גילויים משותפים שלא היו קורים בבית.</p>
+      </div>
+      <div class="bcard">
+        <span class="lbl">בונוס 2</span>
+        <h3>ערכת "Glow לדרך"</h3>
+        <p>תיק מוצרי יוקרה + headbands + דוגמיות שמחכים על המיטה בצ'ק-אין. WOW factor מיידי — ומושלם לסטורי שלה.</p>
+      </div>
+    </div>
+    <p class="solve">שני הבונוסים פותרים את ההתנגדות הכי שקטה — וגם הכי נפוצה.</p>
+  </div>
+</section>
+
+<!-- SEGMENTS -->
+<section class="seg" id="segments">
+  <div class="wrap">
+    <div class="tag">למי זה מתאים</div>
+    <h2 class="h-sec">כל גיל — והרגע המדויק שלו</h2>
+    <p class="lead">לא "חבילה אחת לכולן". כל שלב בחיים של הבת שלך מקבל מסר, קצב ותוכן אחרים.</p>
+    <div class="segs">
+      <div class="sg">
+        <div class="age">גילאי 12–13</div>
+        <h3>בת מצווה</h3>
+        <p>הדבר הכי טוב שיהיה לה ממך לפני שהיא נכנסת לתיכון. הרגע שבו עוד אפשר להתחיל נכון.</p>
+      </div>
+      <div class="sg">
+        <div class="age">גילאי 15–16</div>
+        <h3>Sweet 16</h3>
+        <p>לפני שהיא מחליטה שהיא כבר גדולה ולא צריכה אותך. חלון שנסגר — ואת רוצה להיות בו.</p>
+      </div>
+      <div class="sg">
+        <div class="age">גילאי 17–18</div>
+        <h3>כמעט-18</h3>
+        <p>עוד שנה היא עוזבת — לצבא, ללימודים, לחיים. זו ההזדמנות האחרונה שלכן לרגע כזה.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS — הוכחה חברתית ישראלית -->
+<!-- ============================================================
+     ⚠️⚠️ עדי, חובה לקרוא: ארבע העדויות למטה הן מקומות-שמורים (PLACEHOLDER).
+     לפני פרסום — החליפי בעדויות אמיתיות מ-57 המשפחות שלך:
+       1. שם אמיתי (או שם פרטי + אות) של לקוחה אמיתית
+       2. עיר אמיתית
+       3. תמונה אמיתית — שימי <img src="..."> בתוך ה-<span class="av"> במקום האות
+       4. אישור פרסום בכתב מהלקוחה (חשוב משפטית!)
+     אסור לפרסם עדות שלא נאמרה. זה גם לא חוקי וגם שובר את האמינות שלך.
+     ============================================================ -->
+<section class="tstm">
+  <div class="wrap">
+    <div class="tag">אמהות ובנות שכבר היו</div>
+    <h2 class="h-sec">57 משפחות יצאו לדרך. 87% חזרו מרוצות.</h2>
+    <p class="lead">עדויות מאמהות ישראליות — מהמקום, מהרגש, ומהקשר שהשתנה. (להחלפה בלקוחות אמיתיות שלך + תמונה)</p>
+    <div class="tgrid">
+      <figure class="t">
+        <figcaption class="head">
+          <span class="av" style="background:var(--navy)">ש</span>
+          <div><b>שירה ל׳</b><span>תל אביב · עם הבת, גיל 13</span></div>
+        </figcaption>
+        <blockquote>חזרנו אחרות. בפעם הראשונה מזה שנה היא סיפרה לי דברים בלי שביקשתי. עדי חשבה על כל פרט — לא היה לי על מה לדאוג, רק להיות איתה.</blockquote>
+        <div class="stars">★★★★★</div>
+      </figure>
+      <figure class="t">
+        <figcaption class="head">
+          <span class="av" style="background:var(--burgundy)">מ</span>
+          <div><b>מיכל ר׳</b><span>חיפה · עם הבת, גיל 16</span></div>
+        </figcaption>
+        <blockquote>פחדתי שהיא תשתעמם או תהיה בטלפון כל הזמן. במקום זה היא לא רצתה לעזוב. הקלפים בחדר שברו את הקרח בדיוק כמו שעדי הבטיחה.</blockquote>
+        <div class="stars">★★★★★</div>
+      </figure>
+      <figure class="t">
+        <figcaption class="head">
+          <span class="av" style="background:var(--sage-deep)">ד</span>
+          <div><b>דנה כ׳</b><span>מודיעין · בת מצווה, גיל 12</span></div>
+        </figcaption>
+        <blockquote>חיפשתי מתנה שתישאר לה לכל החיים במקום עוד אירוע. זה היה זה. למדנו ביחד מה מתאים לעור שלה — ופתאום היא הקשיבה לי.</blockquote>
+        <div class="stars">★★★★★</div>
+      </figure>
+      <figure class="t">
+        <figcaption class="head">
+          <span class="av" style="background:var(--blue)">ע</span>
+          <div><b>ענת ב׳</b><span>רעננה · עם הבת, גיל 17</span></div>
+        </figcaption>
+        <blockquote>שנה לפני הגיוס. ידעתי שזו ההזדמנות האחרונה לרגע כזה. עדי לקחה את כל הלוגיסטיקה ממני — אני פשוט הייתי אמא. שווה כל שקל.</blockquote>
+        <div class="stars">★★★★★</div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- SELECTION -->
+<section class="select">
+  <div class="wrap">
+    <div class="box">
+      <div class="tag">מנגנון סלקציה</div>
+      <h2>אני בוחרת עם מי לעבוד.</h2>
+      <p>5 מקומות בלבד בכל מחזור. אם את מחפשת מלון וטיסה זולים בבוקינג — אני לא הכתובת.</p>
+      <p>אם את מבינה שנופש הוא לא רק חופשה אלא זיכרון שנשאר לכל החיים — בואי נדבר.</p>
+      <div class="hard">הכניסה היא דרך שיחת התאמה של 20 דקות — ללא עלות, ללא התחייבות.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="tag">לפני שתשאלי</div>
+    <h2 class="h-sec">ההתלבטויות שכבר שמעתי</h2>
+    <div class="items">
+      <details>
+        <summary>זה יקר. <span class="plus">+</span></summary>
+        <div class="a">מה שווה לך שקט נפשי מלא? אצלי את לא קונה טיסה ומלון — את קונה 72 שעות מתוכננות לפרטי פרטים, עם מנגנון, חוזה, ותוכן מקצועי. <b>את לא מחפשת — את מקבלת.</b> זה ההבדל בין הוצאה להשקעה בקשר.</div>
+      </details>
+      <details>
+        <summary>הבת שלי לא תרצה לבוא. <span class="plus">+</span></summary>
+        <div class="a">זה החשש הכי נפוץ — ולכן אני מדברת אל הבת <b>בנפרד</b>, בשפה שלה, ומראה לה עדויות מבנות אחרות. ברוב המקרים, ברגע שהיא מבינה שזה לא "עוד טיול עם אמא" אלא משהו שהוא שלה — היא זו שגוררת אותך.</div>
+      </details>
+      <details>
+        <summary>אני מרגישה אשמה לבזבז על עצמי. <span class="plus">+</span></summary>
+        <div class="a"><b>אם שמחה נותנת יותר לכולם.</b> זה לא בזבוז עלייך — זה השקעה בבת, בקשר, ובאישה שהיא רואה כשהיא מסתכלת עלייך. הרגעים האלה הם בדיוק מה שהיא תיקח איתה.</div>
+      </details>
+      <details>
+        <summary>מה אם זה לא בשבילי? <span class="plus">+</span></summary>
+        <div class="a">בשביל זה יש שיחת התאמה. 20 דקות, בלי עלות ובלי התחייבות, שבהן נבדוק יחד אם זה מתאים לכן. אני לא לכולן — וזה בסדר גמור אם נגלה ביחד שזה לא הזמן.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="apply">
+  <div class="wrap">
+    <span class="eyebrow">⏳ חלון ההזדמנויות נסגר מהר יותר ממה שנדמה</span>
+    <h2>היא לא תהיה בת 13<br><span class="accent">פעמיים.</span></h2>
+    <p>5 מקומות בלבד בכל מחזור. הכניסה דרך שיחת התאמה קצרה — נבדוק אם זה מתאים לכן, בלי לחץ ובלי מכירה.</p>
+    <div class="cta-actions">
+      <!-- ⚠️ עדי: החליפי 972500000000 במספר הוואטסאפ שלך — פורמט בינלאומי, בלי 0 בהתחלה (לדוגמה: 972541234567) -->
+      <a href="https://wa.me/972500000000?text=%D7%94%D7%99%D7%99%20%D7%A2%D7%93%D7%99%2C%20%D7%A8%D7%90%D7%99%D7%AA%D7%99%20%D7%90%D7%AA%20%D7%94%D7%93%D7%A3%20%D7%95%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%95%D7%93%20%D7%A2%D7%9C%20%D7%97%D7%95%D7%A4%D7%A9%D7%AA%20%D7%90%D7%9D-%D7%91%D7%AA" class="btn btn-wa" target="_blank" rel="noopener">💬 דברו איתי בוואטסאפ</a>
+    </div>
+    <div class="or">— או השאירי פרטים ואחזור אלייך —</div>
+    <!-- ⚠️ עדי: לחיבור ל"רב מסר": החליפי REPLACE_WITH_RAVMESSER_FORM_URL בכתובת ה-action של הטופס מרב מסר,
+         ושמרי על שמות השדות (name / email / phone) או התאימי אותם לשדות שהגדרת ברב מסר. -->
+    <form class="lead-form" action="REPLACE_WITH_RAVMESSER_FORM_URL" method="post">
+      <h3>השאירי פרטים — שיחת התאמה של 20 דקות, ללא עלות</h3>
+      <input type="text" name="name" placeholder="שם מלא" required>
+      <input type="email" name="email" placeholder="אימייל" required>
+      <input type="tel" name="phone" placeholder="טלפון" required>
+      <button type="submit" class="btn btn-primary">קבעי שיחת התאמה</button>
+      <div class="priv">✓ הפרטים נשמרים אצלי בלבד · אחזור אלייך תוך 24 שעות · שיחת סינון, לא מכירה</div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="logo">SKY <span>BY ADI AHARONI</span></div>
+    <div class="tag2">DREAM IT. VISIT IT.</div>
+    <p style="margin-top:14px;opacity:.8;">חופשות אם-בת פרימיום · גילאי 10–18 · מגשימת חלומות, לא סוכנת נסיעות</p>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky">
+  <a href="#apply" class="btn btn-primary">לשיחת ההתאמה · 20 דק', ללא עלות</a>
+</div>
+
+</body>
+</html>

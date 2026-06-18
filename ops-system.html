@@ -1,0 +1,731 @@
+﻿<!DOCTYPE html><html lang="he" dir="rtl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>מרכז הבקרה | SKY BY ADI</title><link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet"><style>:root{--forest:#2D5016;--forest-light:#3d6b1e;--gold:#C9A84C;--cream:#FAF6EE;--dark:#1a1a1a;--mid:#555;--border:#ddd;--green:#22c55e;--orange:#f59e0b;--red:#ef4444;--blue:#3b82f6;}*{margin:0;padding:0;box-sizing:border-box;}body{font-family:'Heebo',sans-serif;background:#f0ebe0;color:var(--dark);}.hdr{background:linear-gradient(135deg,var(--forest) 0%,#1a3009 100%);padding:28px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}.hdr-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:11px;letter-spacing:4px;}.hdr-title{color:white;font-size:22px;font-weight:700;}.hdr-sub{color:rgba(255,255,255,.55);font-size:13px;margin-top:3px;}.hdr-badge{background:rgba(201,168,76,.15);border:1px solid var(--gold);border-radius:20px;padding:6px 14px;color:var(--gold);font-size:12px;font-weight:700;}.nav{background:white;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,.07);display:flex;overflow-x:auto;}.nb{padding:14px 20px;font-size:13px;font-weight:600;color:var(--mid);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;border:none;background:none;font-family:'Heebo',sans-serif;}.nb.active,.nb:hover{color:var(--forest);border-bottom-color:var(--forest);}.tab{display:none;padding:28px 24px;max-width:1100px;margin:0 auto;}.tab.active{display:block;}.sec{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--forest);text-transform:uppercase;margin:28px 0 14px;}.del-table{width:100%;border-collapse:collapse;}.del-table th{background:var(--forest);color:white;padding:10px 14px;font-size:12px;text-align:right;font-weight:600;}.del-table td{padding:12px 14px;border-bottom:1px solid var(--border);font-size:13px;background:white;}.del-table tr:last-child td{border-bottom:none;}.del-table tr:hover td{background:#faf7f2;}.tag{font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;display:inline-block;}.tag.done{background:#dcfce7;color:#15803d;}.tag.inprog{background:#fef9c3;color:#92400e;}.tag.planned{background:#e0f2fe;color:#0369a1;}.card-link{display:inline-block;background:var(--forest);color:white;padding:7px 14px;border-radius:7px;font-size:12px;font-weight:700;text-decoration:none;}.auto-flow{background:white;border-radius:14px;padding:24px;margin-bottom:16px;box-shadow:0 2px 12px rgba(0,0,0,.07);}.flow-title{font-weight:700;font-size:15px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}.flow-badge{background:var(--forest);color:white;font-size:11px;padding:3px 10px;border-radius:12px;font-weight:600;}.flow-badge.build{background:var(--orange);color:var(--dark);}.flow-steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}.flow-node{background:var(--cream);border:1px solid var(--border);border-radius:8px;padding:8px 14px;font-size:13px;font-weight:600;}.flow-node.trigger{background:#e8f4fd;border-color:#3b82f6;color:#1d4ed8;}.flow-node.action{background:#f0fdf4;border-color:#22c55e;color:#15803d;}.flow-node.missing{background:#fef2f2;border-color:#ef4444;color:#991b1b;}.flow-arrow{color:var(--mid);font-size:18px;}.note-box{margin-top:14px;padding:12px;background:var(--cream);border-radius:8px;font-size:13px;}.note-box.warn{background:#fef9c3;}.int-row{background:white;border-radius:12px;padding:16px 20px;margin-bottom:12px;display:flex;align-items:center;gap:16px;box-shadow:0 1px 6px rgba(0,0,0,.06);flex-wrap:wrap;}.int-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}.int-info{flex:1;min-width:200px;}.int-name{font-weight:700;font-size:14px;}.int-status{font-size:12px;color:var(--mid);margin-top:3px;}.int-badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:12px;white-space:nowrap;}.int-badge.ok{background:#dcfce7;color:#15803d;}.int-badge.warn{background:#fef9c3;color:#92400e;}.int-badge.no{background:#fee2e2;color:#991b1b;}.int-action{font-size:12px;color:var(--forest);font-weight:600;text-decoration:none;border:1px solid var(--forest);padding:5px 12px;border-radius:6px;white-space:nowrap;}.task-card{background:white;border-radius:12px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.06);}.cal-header{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:8px;}.cal-day-name{text-align:center;font-size:11px;font-weight:700;color:var(--mid);}.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;}.cal-cell{min-height:70px;border-radius:8px;padding:6px;background:#f9f7f3;border:1px solid var(--border);font-size:11px;}.cal-cell.today{border-color:var(--forest);background:#f0f7ea;}.cal-cell .day-num{font-weight:700;color:var(--mid);margin-bottom:4px;}.cal-post{border-radius:4px;padding:2px 5px;margin-bottom:2px;font-size:10px;line-height:1.4;color:white;}.cal-post.post{background:var(--forest);}.cal-post.reel{background:var(--gold);color:var(--dark);}.cal-post.email{background:#3b82f6;}.cal-post.li{background:#0a66c2;}#edit-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;background:var(--forest);color:var(--gold);border:none;border-radius:50px;padding:10px 18px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.3);}@media(max-width:600px){.hdr{padding:16px;}}
+/* ===== BRAIN DECK · EDIT MODE UI v2 (additive) ===== */
+#ed-fab{position:fixed;bottom:24px;right:24px;z-index:9998;background:linear-gradient(135deg,#5f3698,#8f4fd7);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:50px;padding:13px 24px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 14px 40px rgba(143,79,215,.45);font-family:'Futurism',sans-serif;transition:transform .15s;}
+#ed-fab:hover{transform:translateY(-2px);}
+#ed-toolbar{position:fixed;top:14px;right:14px;z-index:9999;display:none;flex-direction:column;gap:7px;background:rgba(13,15,36,.96);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:9px 11px;box-shadow:0 18px 50px rgba(0,0,0,.6);font-family:'Futurism',sans-serif;direction:rtl;max-width:96vw;}
+#ed-toolbar.on{display:flex;}
+#ed-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;}
+#ed-ctx{display:none;gap:7px;align-items:center;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:8px;}
+.ed-ctx-lbl{font-size:13px;color:#9a9ba6;font-weight:700;}
+.ed-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#dfe0e6;border-radius:10px;padding:9px 13px;font-size:14px;font-weight:700;cursor:pointer;transition:all .14s;white-space:nowrap;font-family:inherit;}
+.ed-btn:hover{background:rgba(98,170,191,.18);border-color:rgba(98,170,191,.5);color:#fff;}
+.ed-btn.primary{background:linear-gradient(135deg,#5f3698,#8f4fd7);border-color:rgba(143,79,215,.5);color:#fff;}
+.ed-btn.danger:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.5);color:#fff;}
+.ed-sep{width:1px;height:24px;background:rgba(255,255,255,.14);margin:0 3px;}
+.ed-dot{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;padding:0;transition:transform .12s;}
+.ed-dot:hover{transform:scale(1.18);border-color:#fff;}
+.ed-dot.grad-dot{background:linear-gradient(135deg,#71b9c3,#549cbc,#2d70aa,#6556d0,#9c4ed7);}
+#ed-hint{position:fixed;bottom:24px;left:24px;z-index:9998;background:rgba(13,15,36,.92);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 16px;font-size:13px;color:#9a9ba6;font-family:'Futurism',sans-serif;display:none;direction:rtl;max-width:46vw;}
+body.ed-on #ed-hint{display:block;}
+#ed-toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%) translateY(12px);z-index:9999;background:rgba(143,79,215,.95);color:#fff;padding:11px 22px;border-radius:10px;font-size:15px;font-weight:700;font-family:'Futurism',sans-serif;opacity:0;pointer-events:none;transition:all .25s;box-shadow:0 12px 34px rgba(0,0,0,.5);direction:rtl;}
+#ed-toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+#ed-restore{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:10000;display:flex;gap:10px;align-items:center;background:rgba(13,15,36,.97);border:1px solid rgba(143,79,215,.5);border-radius:12px;padding:10px 18px;font-family:'Futurism',sans-serif;font-size:14px;color:#dfe0e6;direction:rtl;box-shadow:0 18px 50px rgba(0,0,0,.6);}
+#ed-guide-v{position:absolute;left:959px;top:0;width:2px;height:1080px;background:rgba(98,170,191,.85);z-index:9990;display:none;pointer-events:none;box-shadow:0 0 10px rgba(98,170,191,.7);}
+#ed-guide-h{position:absolute;top:539px;left:0;height:2px;width:1920px;background:rgba(98,170,191,.85);z-index:9990;display:none;pointer-events:none;box-shadow:0 0 10px rgba(98,170,191,.7);}
+body.ed-on .ed-hover{outline:1.5px dashed rgba(98,170,191,.6) !important;outline-offset:3px;cursor:move;}
+body.ed-on .ed-selected{outline:2px solid #8f4fd7 !important;outline-offset:3px;}
+[contenteditable=true]{cursor:text !important;outline:2px solid #62aabf !important;outline-offset:3px;user-select:text !important;-webkit-user-select:text !important;}
+.ed-img,.ed-blur,.ed-shape,.ed-textbox,.ed-clone{position:absolute;z-index:50;}
+.ed-img img{width:100%;height:100%;display:block;object-fit:cover;border-radius:6px;pointer-events:none;}
+.ed-blur{backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);background:rgba(20,22,48,.16);border-radius:10px;}
+.ed-blur.ed-opaque{background:#14163a !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;border:1px solid rgba(255,255,255,.06);}
+.ed-shape{background:rgba(143,79,215,.22);border:2px solid rgba(143,79,215,.6);border-radius:12px;}
+.ed-textbox{font-family:'Futurism',sans-serif;font-weight:900;font-size:40px;color:#fff;min-width:60px;line-height:1.1;}
+body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textbox,body.ed-on .ed-clone{cursor:move;}
+.ed-handle{position:absolute;z-index:60;width:20px;height:20px;border-radius:50%;background:#8f4fd7;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.5);}
+.ed-handle.br{cursor:nwse-resize;right:-10px;bottom:-10px;}
+.ed-del{position:absolute;z-index:61;top:-15px;right:-15px;width:28px;height:28px;border-radius:50%;background:#ef4444;color:#fff;border:2px solid #fff;font-size:17px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+
+</style></head><body><div class="hdr"><div><div class="hdr-logo">SKY BY ADI AHARONI</div><div class="hdr-title">מרכז הבקרה</div><div class="hdr-sub">Operations Hub - 18.6.2026</div></div><div class="hdr-badge">Make &#10003; | RavMesser - בדקי API | Fireberry - שלחי לינק</div></div><div class="nav"><button class="nb active" onclick="sw(0,this)">&#128193; תוצרים</button><button class="nb" onclick="sw(1,this)">&#128200; מסע הליד</button><button class="nb" onclick="sw(2,this)">&#9881; אוטומציות Make</button><button class="nb" onclick="sw(3,this)">&#128197; תוכן ותזמון</button><button class="nb" onclick="sw(4,this)">&#128279; אינטגרציות</button><button class="nb" onclick="sw(5,this)">&#9989; משימות פתוחות</button></div><div id="t0" class="tab active"><div class="sec">כל התוצרים שנבנו</div><table class="del-table"><tr><th>קובץ</th><th>תיאור</th><th>סטטוס</th><th>פתח</th></tr><tr><td><strong>sky-by-adi-landing-page.html</strong></td><td>דף נחיתה ראשי - כאב קשר, גיל-סגמנטים, ציטוטים ישראלים, CTA כפול</td><td><span class="tag done">מוכן</span></td><td><a href="sky-by-adi-landing-page.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>sky-landing-v2.html</strong></td><td>גרסה 2 - פלטת נויה גנני, חבילות לפי גיל, GDPR/a11y מלא</td><td><span class="tag done">מוכן</span></td><td><a href="sky-landing-v2.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>sky-landing-converting.html</strong></td><td>גרסה ממירה - STOP/FEEL/PROOF, WA dual CTA</td><td><span class="tag done">מוכן</span></td><td><a href="sky-landing-converting.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>sky-landing-magnetic.html</strong></td><td>גרסה מגנטית - כאב ישיר, ירוק יער</td><td><span class="tag done">מוכן</span></td><td><a href="sky-landing-magnetic.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>instagram-linkedin-profiles.html</strong></td><td>@skybyadi ביו 4 גרסאות, 6 הייליטס, Stories, About לינקדין</td><td><span class="tag done">מוכן</span></td><td><a href="instagram-linkedin-profiles.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>content-system.html</strong></td><td>30 פוסטים, 3 ריילס, 6 הייליטס, לוח תוכן חודשי</td><td><span class="tag done">מוכן</span></td><td><a href="content-system.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>pricing-proposal.html</strong></td><td>הצעת מחיר אישית - 3 יעדים, ניתן לעריכה, ערבות</td><td><span class="tag done">מוכן</span></td><td><a href="pricing-proposal.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>email-sequence.html</strong></td><td>4 מיילים: ברוכה הבאה / כאב / מנגנון (שרית+נועה) / 8 מקומות</td><td><span class="tag done">מוכן</span></td><td><a href="email-sequence.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>sales-script.html</strong></td><td>תסריט שיחת סינון 20 דק - 5 שלבים, שאלות כוח, סגירה אלגנטית</td><td><span class="tag done">מוכן</span></td><td><a href="sales-script.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>contract.html</strong></td><td>חוזה - 14 סעיפים, הסכמת קטינים, ביטולים</td><td><span class="tag done">מוכן</span></td><td><a href="contract.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>logo-sky.html</strong></td><td>לוגו SVG - לוטוס + מטוס, ירוק/זהב/קרם</td><td><span class="tag done">מוכן</span></td><td><a href="logo-sky.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>sky-landing-v3.html</strong></td><td>דף נחיתה ראשי חדש - גרסה 3, עודכן מלא</td><td><span class="tag done">מוכן - גרסה 3</span></td><td><a href="sky-landing-v3.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>thank-you.html</strong></td><td>דף תודה לאחר הגשת טופס</td><td><span class="tag done">מוכן</span></td><td><a href="thank-you.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>accessibility.html</strong></td><td>דף נגישות - הצהרת נגישות ומדיניות</td><td><span class="tag done">מוכן - עדכון</span></td><td><a href="accessibility.html" target="_blank" class="card-link">פתח</a></td></tr><tr><td><strong>ops-system.html</strong></td><td>מרכז הבקרה הזה - דאשבורד, מסע ליד, Make, תוכן</td><td><span class="tag done">מוכן</span></td><td>-</td></tr></table></div><div id="t1" class="tab"><div class="sec">מסע הליד המלא - מגילוי עד לקוח</div><div class="auto-flow"><div class="flow-title">שלב 1 - גילוי וכניסה <span class="flow-badge build">לבנות ב-Make</span></div><div class="flow-steps"><div class="flow-node trigger">מודעת מטא / ריל</div><div class="flow-arrow">&#8592;</div><div class="flow-node trigger">דף הנחיתה</div><div class="flow-arrow">&#8592;</div><div class="flow-node trigger">טופס רישום</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">Make Webhook</div></div></div><div class="auto-flow"><div class="flow-title">שלב 2 - קליטה אוטומטית <span class="flow-badge build">לבנות ב-Make</span></div><div class="flow-steps"><div class="flow-node action">Make מקבל Webhook</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">RavMesser: Add Subscriber</div><div class="flow-arrow">&#8592;</div><div class="flow-node missing">Fireberry: Create Contact</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">Google Sheets: שמור ליד</div></div></div><div class="auto-flow"><div class="flow-title">שלב 3 - טיפוח Nurture <span class="flow-badge">RavMesser</span></div><div class="flow-steps"><div class="flow-node action">יום 0: ברוכה הבאה</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">יום 2: כאב הקשר</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">יום 4: מנגנון + שרית לוי</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">יום 7: 8 מקומות</div></div></div><div class="auto-flow"><div class="flow-title">שלב 4 - המרה <span class="flow-badge">ידני</span></div><div class="flow-steps"><div class="flow-node trigger">לחיצה על WhatsApp</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">שיחת סינון 20 דק</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">הצעת מחיר אישית</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">חוזה + תשלום</div></div></div><div class="auto-flow"><div class="flow-title">שלב 5 - Retention <span class="flow-badge build">לבנות</span></div><div class="flow-steps"><div class="flow-node missing">Fireberry: הטיול הסתיים</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">המתן 30 יום</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">מייל ביקורת</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">Upsell - מסלול הבא</div></div></div><div style="background:white;border-radius:14px;padding:20px;margin-top:20px;box-shadow:0 2px 12px rgba(0,0,0,.07);"><div class="sec" style="margin-top:0;">סגמנטציה לפי גיל הבת ב-RavMesser</div><div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;"><div style="background:#f0f7ea;border-radius:10px;padding:16px;border-right:3px solid var(--forest);"><strong>בת מצווה (12-13)</strong><br><span style="font-size:13px;color:var(--mid);">הדבר הכי טוב לפני שנכנסת לתיכון</span></div><div style="background:#fdf9f0;border-radius:10px;padding:16px;border-right:3px solid var(--gold);"><strong>Sweet 16 (15-16)</strong><br><span style="font-size:13px;color:var(--mid);">לפני שמחליטה שכבר לא צריכה אותך</span></div><div style="background:#fef2f2;border-radius:10px;padding:16px;border-right:3px solid var(--red);"><strong>כמעט 18 (17-18)</strong><br><span style="font-size:13px;color:var(--mid);">עוד שנה היא עוזבת. ההזדמנות האחרונה.</span></div></div></div></div><div id="t2" class="tab"><div class="sec">סצנריות קיימות ב-Make (Team 968453)</div><div class="task-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>Integration RSS, Google Sheets</strong><span class="tag done">פעיל</span></div><div style="font-size:13px;color:var(--mid);">RSS &#8592; Google Sheets | כל 15 דק | עדכון אחרון: 18.6.2026</div></div><div class="task-card"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>RSS - מחקר מתחרים (6 גרסאות)</strong><span class="tag inprog">לא פעיל</span></div><div style="font-size:13px;color:var(--mid);">6 סצנריות מחקר שנבנו נוב 2024. ניתן להפעיל.</div></div><div class="sec">סצנריות לבנות - מסע הליד</div><div class="auto-flow"><div class="flow-title">SCENARIO 1 - קליטת ליד <span class="flow-badge build">ממתין ל-RavMesser + Fireberry</span></div><div class="flow-steps"><div class="flow-node trigger">Webhook (טופס דף הנחיתה)</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">Parse שם/מייל/טלפון/גיל</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">HTTP &#8592; RavMesser API</div><div class="flow-arrow">&#8592;</div><div class="flow-node missing">HTTP &#8592; Fireberry API</div><div class="flow-arrow">&#8592;</div><div class="flow-node action">Google Sheets Row</div></div><div class="note-box"><strong>נדרש:</strong> API Key של RavMesser + לינק Fireberry</div></div><div class="auto-flow"><div class="flow-title">SCENARIO 2 - פרסום אינסטגרם <span class="flow-badge build">לבנות - אחרי Meta API</span></div><div class="flow-steps"><div class="flow-node trigger">Google Sheets - תאריך פרסום</div><div class="flow-arrow">&#8592;</div><div class="flow-node missing">Instagram Graph API</div><div class="flow-arrow">&#8592;</div><div class="flow-node missing">LinkedIn API</div></div><div class="note-box warn"><strong>דרישה:</strong> Meta Business Suite + Instagram Business Account + Graph API Token</div></div></div><div id="t3" class="tab"><div class="sec">לוח תוכן - יוני 2026</div><div style="background:white;border-radius:14px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,.07);"><div style="display:flex;gap:12px;margin-bottom:16px;flex-wrap:wrap;"><div style="display:flex;align-items:center;gap:6px;font-size:12px;"><div style="width:12px;height:12px;background:var(--forest);border-radius:3px;"></div>פוסט</div><div style="display:flex;align-items:center;gap:6px;font-size:12px;"><div style="width:12px;height:12px;background:var(--gold);border-radius:3px;"></div>ריל</div><div style="display:flex;align-items:center;gap:6px;font-size:12px;"><div style="width:12px;height:12px;background:#3b82f6;border-radius:3px;"></div>מייל</div><div style="display:flex;align-items:center;gap:6px;font-size:12px;"><div style="width:12px;height:12px;background:#0a66c2;border-radius:3px;"></div>לינקדין</div></div><div class="cal-header"><div class="cal-day-name">א</div><div class="cal-day-name">ב</div><div class="cal-day-name">ג</div><div class="cal-day-name">ד</div><div class="cal-day-name">ה</div><div class="cal-day-name">ו</div><div class="cal-day-name">ש</div></div><div class="cal-grid"><div class="cal-cell"><div class="day-num">15</div></div><div class="cal-cell"><div class="day-num">16</div><div class="cal-post post">תזמון כרתים</div></div><div class="cal-cell"><div class="day-num">17</div></div><div class="cal-cell today"><div class="day-num">18 - היום</div><div class="cal-post reel">ריל: הקלפים</div></div><div class="cal-cell"><div class="day-num">19</div><div class="cal-post email">מייל 2: כאב</div></div><div class="cal-cell"><div class="day-num">20</div><div class="cal-post li">LI: 72 שעות</div></div><div class="cal-cell"><div class="day-num">21</div></div><div class="cal-cell"><div class="day-num">22</div><div class="cal-post post">Sweet 16 quote</div></div><div class="cal-cell"><div class="day-num">23</div></div><div class="cal-cell"><div class="day-num">24</div></div><div class="cal-cell"><div class="day-num">25</div><div class="cal-post reel">ריל: skin 13</div><div class="cal-post email">מייל 3</div></div><div class="cal-cell"><div class="day-num">26</div></div><div class="cal-cell"><div class="day-num">27</div><div class="cal-post post">ציטוט שרית</div></div><div class="cal-cell"><div class="day-num">28</div></div><div class="cal-cell"><div class="day-num">29</div><div class="cal-post email">מייל 4</div><div class="cal-post li">Collegemoon</div></div><div class="cal-cell"><div class="day-num">30</div><div class="cal-post reel">ריל: גיוס</div></div></div></div></div><div id="t4" class="tab"><div class="sec">סטטוס חיבורים</div><div class="int-row"><div class="int-icon" style="background:#f0f7ea;">&#9881;</div><div class="int-info"><div class="int-name">Make (Integromat)</div><div class="int-status">Org: My Organization | Team: My Team (968453) | Core plan | 10,000 ops/month | coheadi@gmail.com</div></div><span class="int-badge ok">מחובר</span></div><div class="int-row"><div class="int-icon" style="background:#fef9c3;">&#128139;</div><div class="int-info"><div class="int-name">RavMesser</div><div class="int-status">ממתין ל-API key (ביום ראשון)</div></div><span class="int-badge warn">ממתין ל-API key</span></div><div class="int-row"><div class="int-icon" style="background:#fee2e2;">&#128293;</div><div class="int-info"><div class="int-name">Fireberry CRM</div><div class="int-status">ממתין לפרטי כניסה - app.fireberry.com</div></div><span class="int-badge warn">ממתין לפרטי כניסה</span></div><div class="int-row"><div class="int-icon" style="background:#f0f0ff;">&#128248;</div><div class="int-info"><div class="int-name">Meta Business Suite (Instagram)</div><div class="int-status">נדרש: חיבור Facebook Page + Instagram Business + Graph API Token</div></div><span class="int-badge warn">דרוש חיבור</span></div><div class="int-row"><div class="int-icon" style="background:#f0f7ea;">&#128197;</div><div class="int-info"><div class="int-name">Google Calendar + Drive + Gmail</div><div class="int-status">MCP מחובר - שיחות, לידים, מיילים</div></div><span class="int-badge ok">מחובר</span></div></div><div id="t5" class="tab"><div class="sec">משימות פתוחות - לפי עדיפות</div><div class="task-card" style="border-right:4px solid var(--green);opacity:.7;"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>0. בניית מרכז הבקרה (ops-system)</strong><span class="tag done">הושלם</span></div><div style="font-size:13px;color:var(--mid);">דאשבורד הבקרה הזה - תוצרים, מסע ליד, Make, אינטגרציות, משימות. בנוי ומחובר.</div></div><div class="task-card" style="border-right:4px solid var(--red);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>1. RavMesser API Key - דחוף</strong><span class="tag" style="background:#fee2e2;color:#991b1b;">דחוף</span></div><div style="font-size:13px;color:var(--mid);">API מחזיר 500. כנסי ל-ravmesser.co.il - הגדרות - API - שלחי לי את המפתח. אחרי זה - לידים נכנסים אוטומטית לרשימת התפוצה.</div></div><div class="task-card" style="border-right:4px solid var(--orange);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>2. Fireberry - שלחי לינק</strong><span class="tag inprog">ממתין לך</span></div><div style="font-size:13px;color:var(--mid);">שלחי לינק לכניסה. אבנה Make scenario: כל ליד - contact + deal אוטומטי ב-CRM.</div></div><div class="task-card" style="border-right:4px solid var(--orange);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>3. Make Webhook - קליטת ליד</strong><span class="tag inprog">מוכן לבנייה אחרי 1+2</span></div><div style="font-size:13px;color:var(--mid);">Webhook בדף הנחיתה - שליחה ל-RavMesser + Fireberry + Sheets. אבנה אוטומטית ברגע שיהיו ה-API Keys.</div></div><div class="task-card" style="border-right:4px solid var(--gold);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>4. Instagram Business - Meta API</strong><span class="tag planned">שבוע הבא</span></div><div style="font-size:13px;color:var(--mid);">ודאי ש-@skybyadi = Business Account. חברי ל-Facebook Page. הגדרי Graph API. Make יפרסם אוטומטי.</div></div><div class="task-card" style="border-right:4px solid var(--orange);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>3.5 חיבור Make Webhook - ממתין ל-RavMesser (ביום ראשון)</strong><span class="tag inprog">ממתין לאחד</span></div><div style="font-size:13px;color:var(--mid);">ברגע שמגיע API Key של RavMesser ביום ראשון - אבנה Scenario בMake: Webhook - RavMesser - Fireberry - Sheets. תהליך אוטומטי מלא.</div></div><div class="task-card" style="border-right:4px solid var(--gold);"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;flex-wrap:wrap;gap:8px;"><strong>5. Google Sheet - Content + Leads</strong><span class="tag planned">שבוע הבא</span></div><div style="font-size:13px;color:var(--mid);">גיליון 1: תאריך/פלטפורמה/טקסט/תמונה. גיליון 2: שם/מייל/טלפון/גיל/סטטוס. Make כותב אליהם אוטומטית.</div></div></div><button id="edit-toggle" onclick="toggleEdit()">&#9999; עריכה</button><script>function sw(i,el){document.querySelectorAll(".tab").forEach(function(t,idx){t.classList.toggle("active",idx===i);});document.querySelectorAll(".nb").forEach(function(b){b.classList.remove("active");});el.classList.add("active");}function toggleEdit(){var on=!document.body.classList.contains("edit-mode");document.body.classList.toggle("edit-mode",on);document.getElementById("edit-toggle").textContent=on?"&#10003; סיום עריכה":"&#9999; עריכה";document.querySelectorAll("p,strong,td,th,.int-name,.flow-node,.hdr-title,.task-card").forEach(function(el){el.contentEditable=on;});}</script><script>
+/* ===== BRAIN DECK · EDIT MODE v2 (additive, self-contained) =====
+   v2 adds: clipboard image paste (Cmd+V) + file drag-drop, internal element
+   copy/paste (Cmd+C/Cmd+V), brand color swatches (whole element OR selected
+   word while editing), center snap-guides while dragging, arrow-key nudge,
+   z-order, center buttons, redo, autosave to localStorage with restore bar,
+   blur intensity/opaque controls, proportional image resize, Cmd+S save. */
+(function(){
+  if(window.__brainEdInit) return; window.__brainEdInit=true;
+  var deck=document.getElementById('deck');
+  if(!deck) return;
+  var edOn=false, selected=null, undoStack=[], redoStack=[], editState=null;
+  var clipInternal=null, pasteCount=0, zTop=60, lastNudge={el:null,t:0};
+  var touched={}, persistTimer=null, persistWarned=false;
+  var LS_KEY='brainEd:'+(location.pathname.split('/').pop()||'deck');
+  var MARKER='__brain-ed-copy__';
+
+  var ADDED='.ed-img,.ed-blur,.ed-shape,.ed-textbox,.ed-clone';
+  /* DENY = full-bleed backgrounds, slide-filling wrappers, deck chrome, editor UI */
+  var DENY='#deck,.slide,.bg-img,.foot,.pg,#nav,.nav-btn,#slide-counter,#btn-fs,#progress-bar,#ed-toolbar,#ed-fab,#ed-hint,#ed-toast,#ed-ctx,#ed-restore,#ed-guide-v,#ed-guide-h,.wrap,.div-wrap,.show-wrap,.bs-wrap,.applayer,.hero-image-content,.hero-image-vignette,.lay-side,.lay-wrap,.tower,.tower-inner,.hero-image,.hero-ring,.hero-ring2,.loop-wrap,.loop-content';
+  /* TEXTY = elements that may be inline-edited on double-click */
+  var TEXTY='h1,h2,h3,h4,h5,h6,p,li,span,.div-word,.s-title,.eyebrow,.bp-text,.bs-context,.hero-title,.hero-sub,.div-sub,.div-eyebrow,.ed-textbox,.vl-name,.vl-val,.lay-tx,.pl-tx,.card,.chip,.engine,.step-name,.price-num,.vt-num,.hbar-lbl,.hbar-val,.vs-name,.vs-item,.bs-number,.bs-label';
+
+  function scale(){ var r=deck.getBoundingClientRect(); return (r.width/1920)||1; }
+  function activeSlide(){ return document.querySelector('.slide.active')||document.querySelector('.slide'); }
+  function slideIndex(s){ return [].slice.call(document.querySelectorAll('.slide')).indexOf(s); }
+  function matches(el,sel){ return el && el.matches && el.matches(sel); }
+  function deckXY(cx,cy){ var d=deck.getBoundingClientRect(), s=scale(); return {x:(cx-d.left)/s, y:(cy-d.top)/s}; }
+
+  /* Permissive: deepest element under the cursor that is NOT a denied wrapper.
+     Clicking inside an ADDED element (image/clone/...) grabs the whole unit. */
+  function eligible(el){
+    if(el && el.closest){ var ad=el.closest(ADDED); if(ad) return ad; }
+    var cur=el;
+    while(cur && cur!==deck){
+      if(matches(cur,ADDED)) return cur;
+      if(cur.classList && cur.classList.contains('slide')) return null;
+      if(matches(cur,DENY)){ cur=cur.parentElement; continue; }
+      if(cur.closest && cur.closest('.slide')) return cur;
+      cur=cur.parentElement;
+    }
+    return null;
+  }
+  /* For double-click text editing: deepest texty element (also inside clones) */
+  function eligibleText(el){
+    var cur=el;
+    while(cur && cur!==deck){
+      if(matches(cur,'.ed-textbox')) return cur;
+      if(cur.classList && cur.classList.contains('slide')) return null;
+      if(!matches(cur,DENY) && matches(cur,TEXTY) && cur.closest && cur.closest('.slide')) return cur;
+      cur=cur.parentElement;
+    }
+    return null;
+  }
+  function selectParent(){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    var p=selected.parentElement;
+    while(p && p!==deck){
+      if(p.classList && p.classList.contains('slide')) break;
+      if(!matches(p,DENY) && p.closest('.slide')){ select(p); toast('נבחרה המסגרת'); return; }
+      p=p.parentElement;
+    }
+    toast('אין מסגרת אב');
+  }
+
+  /* ---------- undo / redo (per-slide innerHTML snapshots) ---------- */
+  function snap(){
+    var s=activeSlide(); if(!s) return;
+    var idx=slideIndex(s);
+    undoStack.push({slide:s, idx:idx, html:s.innerHTML});
+    if(undoStack.length>80) undoStack.shift();
+    redoStack.length=0;
+    touched[idx]=1; schedulePersist();
+    toast('');
+  }
+  function undo(){
+    var last=undoStack.pop(); if(!last){ toast('אין מה לבטל'); return; }
+    deselect();
+    if(last.slide!==activeSlide() && last.idx>=0 && typeof show==='function'){ show(last.idx); }
+    redoStack.push({slide:last.slide, idx:last.idx, html:last.slide.innerHTML});
+    last.slide.innerHTML=last.html;
+    touched[last.idx]=1; schedulePersist();
+    toast('בוטל');
+  }
+  function redo(){
+    var nx=redoStack.pop(); if(!nx){ toast('אין מה להחזיר'); return; }
+    deselect();
+    if(nx.slide!==activeSlide() && nx.idx>=0 && typeof show==='function'){ show(nx.idx); }
+    undoStack.push({slide:nx.slide, idx:nx.idx, html:nx.slide.innerHTML});
+    nx.slide.innerHTML=nx.html;
+    touched[nx.idx]=1; schedulePersist();
+    toast('הוחזר');
+  }
+
+  /* ---------- autosave (localStorage, debounced, normalized compare) ---------- */
+  function cleanSlideHTML(slide){
+    var c=slide.cloneNode(true), i, n;
+    n=c.querySelectorAll('.ed-runtime,.ed-handle,.ed-del'); for(i=0;i<n.length;i++) n[i].remove();
+    n=c.querySelectorAll('.ed-hover,.ed-selected'); for(i=0;i<n.length;i++){ n[i].classList.remove('ed-hover'); n[i].classList.remove('ed-selected'); }
+    n=c.querySelectorAll('[contenteditable]'); for(i=0;i<n.length;i++) n[i].removeAttribute('contenteditable');
+    n=c.querySelectorAll('.on'); for(i=0;i<n.length;i++) n[i].classList.remove('on');
+    n=c.querySelectorAll('.anim'); for(i=0;i<n.length;i++) n[i].style.animationDelay='';
+    n=c.querySelectorAll('[data-w]'); for(i=0;i<n.length;i++) n[i].style.width='';
+    var fmt; try{ fmt=new Intl.NumberFormat('he-IL'); }catch(e){ fmt=null; }
+    n=c.querySelectorAll('[data-count]');
+    for(i=0;i<n.length;i++){ var v=parseInt(n[i].getAttribute('data-count'),10); if(isNaN(v)) continue;
+      var out=n[i].querySelector('.cval')||n[i]; out.textContent= fmt?fmt.format(v):(''+v); }
+    n=c.querySelectorAll('[style=""]'); for(i=0;i<n.length;i++) n[i].removeAttribute('style');
+    return c.innerHTML;
+  }
+  function persist(){
+    try{
+      var data; try{ data=JSON.parse(localStorage.getItem(LS_KEY)||'{}'); }catch(e){ data={}; }
+      data.ts=Date.now(); data.slides=data.slides||{};
+      var list=document.querySelectorAll('.slide');
+      for(var k in touched){ if(list[k]) data.slides[k]=cleanSlideHTML(list[k]); }
+      localStorage.setItem(LS_KEY,JSON.stringify(data));
+    }catch(err){
+      if(!persistWarned){ persistWarned=true; toast('גיבוי אוטומטי נכשל - הקובץ גדול, שמור ידנית'); }
+    }
+  }
+  function schedulePersist(){ clearTimeout(persistTimer); persistTimer=setTimeout(persist,800); }
+  function checkRestore(){
+    var data; try{ data=JSON.parse(localStorage.getItem(LS_KEY)||'null'); }catch(e){ return; }
+    if(!data || !data.slides) return;
+    var list=document.querySelectorAll('.slide'), diff=[];
+    for(var k in data.slides){ var i=+k; if(list[i] && cleanSlideHTML(list[i])!==data.slides[k]) diff.push(i); }
+    if(!diff.length) return;
+    var bar=document.createElement('div'); bar.id='ed-restore';
+    var when=new Date(data.ts||Date.now());
+    var hh=('0'+when.getHours()).slice(-2)+':'+('0'+when.getMinutes()).slice(-2);
+    var lbl=document.createElement('span'); lbl.textContent='🕘 נמצאו שינויים לא שמורים ('+hh+') - '+diff.length+' שקפים';
+    var b1=document.createElement('button'); b1.className='ed-btn primary'; b1.textContent='שחזר';
+    var b2=document.createElement('button'); b2.className='ed-btn'; b2.textContent='התעלם ומחק';
+    b1.onclick=function(){
+      for(var j=0;j<diff.length;j++){ list[diff[j]].innerHTML=data.slides[diff[j]]; touched[diff[j]]=1; }
+      var cur=slideIndex(activeSlide());
+      if(typeof activate==='function' && cur>=0) activate(cur);
+      bar.remove(); toast('שוחזר ✓');
+    };
+    b2.onclick=function(){ try{ localStorage.removeItem(LS_KEY); }catch(e){} bar.remove(); };
+    bar.appendChild(lbl); bar.appendChild(b1); bar.appendChild(b2);
+    document.body.appendChild(bar);
+  }
+
+  /* ---------- selection + handles ---------- */
+  function deselect(){
+    if(selected){
+      selected.classList.remove('ed-selected');
+      if(selected.__edRel && !selected.style.zIndex){ selected.style.position=''; selected.__edRel=false; }
+    }
+    var rt=document.querySelectorAll('.ed-runtime'); for(var i=0;i<rt.length;i++) rt[i].remove();
+    selected=null; refreshTb();
+  }
+  function select(el){
+    deselect();
+    selected=el; el.classList.add('ed-selected');
+    if(!matches(el,ADDED) && getComputedStyle(el).position==='static'){ el.style.position='relative'; el.__edRel=true; }
+    var del=document.createElement('div'); del.className='ed-del ed-runtime'; del.textContent='×';
+    del.addEventListener('mousedown',function(e){ e.stopPropagation(); e.preventDefault(); });
+    del.addEventListener('click',function(e){ e.stopPropagation(); snap(); var t=selected; deselect(); if(t) t.remove(); schedulePersist(); });
+    el.appendChild(del);
+    if(matches(el,ADDED)){
+      var h=document.createElement('div'); h.className='ed-handle br ed-runtime';
+      h.addEventListener('mousedown',function(e){ startResize(e,el); });
+      el.appendChild(h);
+    }
+    refreshTb();
+  }
+
+  /* ---------- generic move helper (nudge/center share it) ---------- */
+  function moveBy(el,dx,dy){
+    if(matches(el,ADDED)){
+      el.style.left=((parseFloat(el.style.left)||el.offsetLeft)+dx)+'px';
+      el.style.top=((parseFloat(el.style.top)||el.offsetTop)+dy)+'px';
+    }else{
+      el.style.animation='none';
+      var m=(el.style.transform||'').match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+      var tx=m?parseFloat(m[1]):0, ty=m?parseFloat(m[2]):0;
+      var base=(el.style.transform||'').replace(/translate\([^)]*\)/,'').trim();
+      el.style.transform=(base+' translate('+(tx+dx)+'px,'+(ty+dy)+'px)').trim();
+    }
+  }
+
+  /* ---------- drag move with center snap-guides ---------- */
+  var drag=null, gV=null, gH=null;
+  function hideGuides(){ if(gV) gV.style.display='none'; if(gH) gH.style.display='none'; }
+  function onDown(e){
+    if(!edOn) return;
+    if(e.target.closest && e.target.closest('#ed-toolbar,#ed-fab,#ed-hint,#ed-toast,#ed-restore')) return;
+    if(e.target.classList && (e.target.classList.contains('ed-handle')||e.target.classList.contains('ed-del'))) return;
+    var el;
+    if(selected && selected.contains(e.target)){
+      /* clicking within the current selection drags THAT element (e.g. a group
+         you escalated to with "⤴ מסגרת"), instead of re-grabbing a child */
+      el=selected;
+    } else {
+      el=eligible(e.target);
+      if(!el){ deselect(); return; }
+      if(el.isContentEditable) return;
+      select(el);
+    }
+    var s=scale(), d=deck.getBoundingClientRect();
+    drag={el:el,x:e.clientX,y:e.clientY,moved:false,added:matches(el,ADDED),s:s};
+    var r0=el.getBoundingClientRect();
+    if(drag.added){
+      drag.l=parseFloat(el.style.left)||el.offsetLeft; drag.t=parseFloat(el.style.top)||el.offsetTop;
+      drag.w2=el.offsetWidth/2; drag.h2=el.offsetHeight/2;
+    }else{
+      var m=(el.style.transform||'').match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+      drag.tx=m?parseFloat(m[1]):0; drag.ty=m?parseFloat(m[2]):0;
+      drag.base=(el.style.transform||'').replace(/translate\([^)]*\)/,'').trim();
+      /* element center in deck coords EXCLUDING current translate (for snapping) */
+      drag.cx0=((r0.left-d.left)+r0.width/2)/s - drag.tx;
+      drag.cy0=((r0.top-d.top)+r0.height/2)/s - drag.ty;
+    }
+    e.preventDefault();
+    window.addEventListener('mousemove',onMove);
+    window.addEventListener('mouseup',onUp);
+  }
+  function onMove(e){
+    if(!drag) return;
+    var dx=(e.clientX-drag.x)/drag.s, dy=(e.clientY-drag.y)/drag.s;
+    if(!drag.moved){ if((Math.abs(dx)+Math.abs(dy))>2){ drag.moved=true; snap();
+        /* neutralise the entry animation (fadeUp, fill:both) which otherwise
+           pins `transform` and blocks our inline translate */
+        if(!drag.added) drag.el.style.animation='none';
+      } else return; }
+    var SN=7, offX=null, offY=null;
+    if(drag.added){
+      var lx=drag.l+dx, ty=drag.t+dy;
+      if(!e.altKey){
+        var cx=lx+drag.w2, cy=ty+drag.h2;
+        if(Math.abs(960-cx)<SN){ lx+=(960-cx); offX=true; }
+        if(Math.abs(540-cy)<SN){ ty+=(540-cy); offY=true; }
+      }
+      drag.el.style.left=lx+'px'; drag.el.style.top=ty+'px';
+    }else{
+      var txr=drag.tx+dx, tyr=drag.ty+dy;
+      if(!e.altKey){
+        var ecx=drag.cx0+txr, ecy=drag.cy0+tyr;
+        if(Math.abs(960-ecx)<SN){ txr+=(960-ecx); offX=true; }
+        if(Math.abs(540-ecy)<SN){ tyr+=(540-ecy); offY=true; }
+      }
+      drag.el.style.transform=(drag.base+' translate('+txr+'px,'+tyr+'px)').trim();
+    }
+    if(gV) gV.style.display=offX?'block':'none';
+    if(gH) gH.style.display=offY?'block':'none';
+  }
+  function onUp(){
+    window.removeEventListener('mousemove',onMove); window.removeEventListener('mouseup',onUp);
+    hideGuides(); if(drag&&drag.moved) schedulePersist(); drag=null;
+  }
+
+  /* ---------- resize (images keep aspect ratio; Shift = free) ---------- */
+  function startResize(e,el){
+    e.preventDefault(); e.stopPropagation();
+    var s=scale(), w=el.offsetWidth, h=el.offsetHeight, x=e.clientX, y=e.clientY, moved=false;
+    var isImg=matches(el,'.ed-img'), ratio=(h/w)||1;
+    function mv(ev){ var dx=(ev.clientX-x)/s, dy=(ev.clientY-y)/s; if(!moved){moved=true;snap();}
+      var nw=Math.max(40,w+dx), nh=Math.max(28,h+dy);
+      if(isImg && !ev.shiftKey) nh=Math.max(28,Math.round(nw*ratio));
+      el.style.width=nw+'px'; el.style.height=nh+'px'; }
+    function up(){ window.removeEventListener('mousemove',mv); window.removeEventListener('mouseup',up); schedulePersist(); }
+    window.addEventListener('mousemove',mv); window.addEventListener('mouseup',up);
+  }
+
+  /* ---------- inline text edit ---------- */
+  /* if an edited element drives a [data-count] counter, sync the attribute so the
+     deck's re-animation (activate()) lands on the NEW number instead of reverting */
+  function bakeCountFromEdit(el){
+    var dc=el.closest ? el.closest('[data-count]') : null;
+    if(!dc) return;
+    var cv=dc.querySelector('.cval')||dc;
+    var n=parseInt((cv.textContent||'').replace(/[^0-9]/g,''),10);
+    if(!isNaN(n)) dc.setAttribute('data-count', n);
+  }
+  function onDbl(e){
+    if(!edOn) return;
+    var el=eligibleText(e.target)||eligible(e.target);
+    if(!el) return;
+    if(matches(el,ADDED) && !matches(el,'.ed-textbox')) return;
+    if(!matches(el,TEXTY)){ toast('האלמנט הזה לא טקסט לעריכה'); return; }
+    deselect(); snap();
+    editState={el:el, orig:el.innerHTML, cancelled:false};
+    refreshTb();
+    el.setAttribute('contenteditable','true'); el.focus();
+    el.addEventListener('blur',function h(){
+      el.removeAttribute('contenteditable'); el.removeEventListener('blur',h);
+      if(!(editState && editState.cancelled)) bakeCountFromEdit(el);
+      if(editState && editState.el===el) editState=null;
+      refreshTb(); schedulePersist();
+    });
+    e.preventDefault();
+  }
+
+  /* ---------- add elements ---------- */
+  function insertImageFile(f, pos){
+    if(!f || !/^image\//.test(f.type)) return;
+    var rd=new FileReader();
+    rd.onload=function(){ var im=new Image(); im.onload=function(){
+      snap(); var s=activeSlide();
+      var w=560, h=Math.round(560*im.naturalHeight/im.naturalWidth);
+      if(h>820){ h=820; w=Math.round(820*im.naturalWidth/im.naturalHeight); }
+      var box=document.createElement('div'); box.className='ed-img';
+      var lx=pos? Math.round(pos.x-w/2) : Math.round(960-w/2);
+      var ly=pos? Math.round(pos.y-h/2) : Math.round(540-h/2);
+      box.style.left=lx+'px'; box.style.top=ly+'px'; box.style.width=w+'px'; box.style.height=h+'px';
+      var img=document.createElement('img'); img.src=rd.result; box.appendChild(img);
+      s.appendChild(box); select(box); toast('תמונה נוספה'); schedulePersist();
+    }; im.src=rd.result; };
+    rd.readAsDataURL(f);
+  }
+  function addImage(){
+    var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+    inp.onchange=function(){ insertImageFile(inp.files[0], null); };
+    inp.click();
+  }
+  function addBlur(){ snap(); var s=activeSlide(); var b=document.createElement('div'); b.className='ed-blur'; b.style.cssText='left:760px;top:460px;width:400px;height:150px;'; s.appendChild(b); select(b); toast('טשטוש - גרור מעל נתון'); schedulePersist(); }
+  function addShape(){ snap(); var s=activeSlide(); var b=document.createElement('div'); b.className='ed-shape'; b.style.cssText='left:760px;top:450px;width:420px;height:200px;'; s.appendChild(b); select(b); schedulePersist(); }
+  function mkTextbox(text,x,y){
+    var s=activeSlide(); var t=document.createElement('div'); t.className='ed-textbox';
+    t.style.left=(x!=null?x:720)+'px'; t.style.top=(y!=null?y:480)+'px';
+    t.textContent=text||'טקסט חדש'; s.appendChild(t); select(t); return t;
+  }
+  function addText(){ snap(); mkTextbox('טקסט חדש'); toast('לחץ פעמיים לעריכה'); schedulePersist(); }
+
+  /* ---------- copy / paste (Cmd+C / Cmd+V) ---------- */
+  function cleanOuter(el){
+    var c=el.cloneNode(true), i, n;
+    n=c.querySelectorAll('.ed-runtime,.ed-handle,.ed-del'); for(i=0;i<n.length;i++) n[i].remove();
+    c.classList.remove('ed-selected'); c.classList.remove('ed-hover');
+    c.removeAttribute('contenteditable');
+    n=c.querySelectorAll('[contenteditable]'); for(i=0;i<n.length;i++) n[i].removeAttribute('contenteditable');
+    /* strip our positioning so the stored copy is pristine */
+    if(c.style && c.style.transform) c.style.transform=c.style.transform.replace(/translate\([^)]*\)/,'').trim()||'';
+    if(el.__edRel) c.style.position='';
+    return c.outerHTML;
+  }
+  function copySel(){
+    if(!selected) return false;
+    var d=deck.getBoundingClientRect(), s=scale(), r=selected.getBoundingClientRect();
+    clipInternal={
+      html:cleanOuter(selected),
+      added:matches(selected,ADDED),
+      left:(r.left-d.left)/s, top:(r.top-d.top)/s, width:r.width/s
+    };
+    pasteCount=0;
+    try{ navigator.clipboard.writeText(MARKER).catch(function(){}); }catch(e){}
+    toast('הועתק ✓ (Cmd+V להדבקה)');
+    return true;
+  }
+  function pasteInternal(){
+    if(!clipInternal) return;
+    snap(); pasteCount++;
+    var off=24*pasteCount, s=activeSlide(), el;
+    var tmp=document.createElement('div'); tmp.innerHTML=clipInternal.html;
+    var src=tmp.firstElementChild; if(!src) return;
+    if(clipInternal.added){
+      el=src;
+      el.style.left=Math.round((parseFloat(el.style.left)||clipInternal.left)+off)+'px';
+      el.style.top=Math.round((parseFloat(el.style.top)||clipInternal.top)+off)+'px';
+    }else{
+      el=document.createElement('div'); el.className='ed-clone';
+      el.style.left=Math.round(clipInternal.left+off)+'px';
+      el.style.top=Math.round(clipInternal.top+off)+'px';
+      el.style.width=Math.round(clipInternal.width)+'px';
+      el.appendChild(src);
+    }
+    s.appendChild(el); select(el); toast('הודבק'); schedulePersist();
+  }
+  document.addEventListener('paste',function(e){
+    if(!edOn) return;
+    var ae=document.activeElement;
+    if(ae && ae.isContentEditable) return; /* normal paste inside a text edit */
+    var items=(e.clipboardData&&e.clipboardData.items)||[];
+    for(var i=0;i<items.length;i++){
+      if(items[i].type && items[i].type.indexOf('image')===0){
+        var f=items[i].getAsFile();
+        if(f){ e.preventDefault(); insertImageFile(f,null); return; }
+      }
+    }
+    var txt=''; try{ txt=e.clipboardData.getData('text/plain')||''; }catch(err){}
+    if(clipInternal && (txt===MARKER || txt==='')){ e.preventDefault(); pasteInternal(); return; }
+    if(txt){ e.preventDefault(); snap(); mkTextbox(txt); toast('טקסט הודבק כתיבה חדשה'); schedulePersist(); }
+  });
+  /* drag & drop image files from Finder/desktop */
+  deck.addEventListener('dragover',function(e){ if(edOn){ e.preventDefault(); } });
+  deck.addEventListener('drop',function(e){
+    if(!edOn) return; e.preventDefault();
+    var fs=e.dataTransfer && e.dataTransfer.files;
+    if(!fs || !fs.length) return;
+    for(var i=0;i<fs.length;i++){
+      if(/^image\//.test(fs[i].type)){ insertImageFile(fs[i], deckXY(e.clientX,e.clientY)); return; }
+    }
+  });
+
+  /* ---------- colors (whole element, or selected word while editing) ---------- */
+  var GRAD='linear-gradient(135deg,#71b9c3,#549cbc,#2d70aa,#6556d0,#9c4ed7)';
+  var COLORS=[['לבן','#ffffff'],['טורקיז','#62aabf'],['סגול','#8f4fd7'],['אדום','#ef4444'],['ירוק','#22c55e'],['אפור','#8f8f9b']];
+  function applyColor(c){
+    var ae=document.activeElement, sel=window.getSelection();
+    if(ae && ae.isContentEditable && sel && !sel.isCollapsed){
+      document.execCommand('styleWithCSS',false,true);
+      document.execCommand('foreColor',false,c);
+      return;
+    }
+    if(!selected){ toast('בחר אלמנט או סמן מילה'); return; }
+    snap();
+    if(matches(selected,'.ed-shape')){
+      selected.style.background=c+'33'; selected.style.borderColor=c; schedulePersist(); return;
+    }
+    selected.style.background='none';
+    selected.style.webkitBackgroundClip=''; selected.style.backgroundClip='';
+    selected.style.webkitTextFillColor=c; selected.style.color=c;
+    schedulePersist();
+  }
+  function applyGradient(){
+    var ae=document.activeElement, sel=window.getSelection();
+    if(ae && ae.isContentEditable && sel && !sel.isCollapsed){
+      var t=sel.toString();
+      document.execCommand('insertHTML',false,'<span class="grad">'+t.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>');
+      return;
+    }
+    if(!selected){ toast('בחר אלמנט או סמן מילה'); return; }
+    snap();
+    selected.style.background=GRAD;
+    selected.style.webkitBackgroundClip='text'; selected.style.backgroundClip='text';
+    selected.style.webkitTextFillColor='transparent'; selected.style.color='';
+    schedulePersist();
+  }
+
+  /* ---------- z-order / center / nudge / blur controls ---------- */
+  function zOrder(front){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    snap();
+    if(getComputedStyle(selected).position==='static'){ selected.style.position='relative'; selected.__edRel=true; }
+    selected.style.zIndex= front? (++zTop) : 0;
+    toast(front?'הובא לקדמה':'נשלח לאחור'); schedulePersist();
+  }
+  function centerSel(axis){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    snap();
+    var d=deck.getBoundingClientRect(), s=scale(), r=selected.getBoundingClientRect();
+    var cx=((r.left-d.left)+r.width/2)/s, cy=((r.top-d.top)+r.height/2)/s;
+    if(axis==='h') moveBy(selected, 960-cx, 0); else moveBy(selected, 0, 540-cy);
+    schedulePersist();
+  }
+  function nudge(dx,dy){
+    if(!selected) return false;
+    var now=Date.now();
+    if(lastNudge.el!==selected || now-lastNudge.t>1200) snap();
+    lastNudge={el:selected,t:now};
+    moveBy(selected,dx,dy); schedulePersist();
+    return true;
+  }
+  function blurDelta(d){
+    if(!selected || !matches(selected,'.ed-blur')) return;
+    snap();
+    var cur=parseFloat(((selected.style.backdropFilter||'').match(/[\d.]+/)||[15])[0])||15;
+    var v=Math.min(40,Math.max(2,cur+d));
+    selected.style.backdropFilter='blur('+v+'px)'; selected.style.webkitBackdropFilter='blur('+v+'px)';
+    toast('עוצמת טשטוש: '+v); schedulePersist();
+  }
+  function toggleOpaque(){
+    if(!selected || !matches(selected,'.ed-blur')) return;
+    snap(); selected.classList.toggle('ed-opaque');
+    toast(selected.classList.contains('ed-opaque')?'אטום (מסתיר לגמרי)':'טשטוש שקוף'); schedulePersist();
+  }
+  function imgCorners(){
+    if(!selected || !matches(selected,'.ed-img')) return;
+    snap(); var img=selected.querySelector('img'); if(!img) return;
+    img.style.borderRadius=(img.style.borderRadius==='18px')?'0px':'18px'; schedulePersist();
+  }
+  function cycleOpacity(){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    snap();
+    var cur=parseFloat(selected.style.opacity||'1');
+    var next= cur>0.85?0.75 : cur>0.6?0.5 : cur>0.35?0.25 : 1;
+    selected.style.opacity=(next===1)?'':String(next);
+    toast('שקיפות: '+Math.round(next*100)+'%'); schedulePersist();
+  }
+
+  function fontDelta(d){ if(!selected){ toast('בחר טקסט קודם'); return; } snap();
+    var cs=parseFloat(getComputedStyle(selected).fontSize)||30; selected.style.fontSize=Math.max(10,cs+d)+'px'; schedulePersist(); }
+  function deleteSel(){ if(!selected){ toast('בחר אלמנט קודם'); return; } snap(); var el=selected; deselect(); el.remove(); schedulePersist(); }
+
+  /* ---------- navigation (reuse deck) ---------- */
+  function go(dir){
+    deselect();
+    var list=[].slice.call(document.querySelectorAll('.slide'));
+    var i=list.indexOf(activeSlide());
+    var n=Math.max(0,Math.min(list.length-1,i+dir));
+    if(typeof show==='function') show(n);
+    else { list[i].classList.remove('active'); list[n].classList.add('active'); }
+  }
+
+  /* ---------- export ---------- */
+  /* rewrite every relative url (img src, font/href, css url()) to an absolute
+     file:// path so the saved file keeps its background + fonts from any folder */
+  function absolutizeURLs(root){
+    var base=location.href, keep=/^(data:|https?:|file:|blob:|#)/i;
+    function abs(u){ try{ return new URL(u, base).href; }catch(e){ return u; } }
+    function fixCss(t){ return t.replace(/url\((['"]?)([^'")]+)\1\)/g,function(m,q,u){ return keep.test(u)?m:('url('+q+abs(u)+q+')'); }); }
+    var s=root.querySelectorAll('[src]'); for(var i=0;i<s.length;i++){ var v=s[i].getAttribute('src'); if(v&&!keep.test(v)) s[i].setAttribute('src',abs(v)); }
+    var h=root.querySelectorAll('[href]'); for(var j=0;j<h.length;j++){ var w=h[j].getAttribute('href'); if(w&&!keep.test(w)) h[j].setAttribute('href',abs(w)); }
+    var st=root.querySelectorAll('style'); for(var k=0;k<st.length;k++){ st[k].textContent=fixCss(st[k].textContent); }
+    var il=root.querySelectorAll('[style]'); for(var l=0;l<il.length;l++){ var sv=il[l].getAttribute('style'); if(sv&&sv.indexOf('url(')>-1) il[l].setAttribute('style',fixCss(sv)); }
+  }
+  /* bake every [data-count] to its final formatted number so un-visited stat
+     slides aren't frozen at 0 in the saved file */
+  function bakeCounters(root){
+    var fmt; try{ fmt=new Intl.NumberFormat('he-IL'); }catch(e){ fmt=null; }
+    var n=root.querySelectorAll('[data-count]');
+    for(var i=0;i<n.length;i++){ var v=parseInt(n[i].getAttribute('data-count'),10); if(isNaN(v)) continue;
+      var out=n[i].querySelector('.cval')||n[i]; out.textContent= fmt?fmt.format(v):(''+v); }
+  }
+  function exportHTML(){
+    deselect(); var was=edOn; setEdit(false);
+    var clone=document.documentElement.cloneNode(true);
+    var kill=clone.querySelectorAll('#ed-toolbar,#ed-fab,#ed-hint,#ed-toast,#ed-restore,#ed-guide-v,#ed-guide-h,.ed-runtime,.ed-handle,.ed-del');
+    for(var i=0;i<kill.length;i++) kill[i].remove();
+    var cl=clone.querySelectorAll('.ed-hover,.ed-selected'); for(var j=0;j<cl.length;j++){ cl[j].classList.remove('ed-hover'); cl[j].classList.remove('ed-selected'); }
+    var ce=clone.querySelectorAll('[contenteditable]'); for(var k=0;k<ce.length;k++) ce[k].removeAttribute('contenteditable');
+    var sl=clone.querySelectorAll('.slide'); for(var m=0;m<sl.length;m++){ if(m===0) sl[m].classList.add('active'); else sl[m].classList.remove('active'); }
+    var b=clone.querySelector('body'); if(b) b.classList.remove('ed-on');
+    absolutizeURLs(clone);
+    bakeCounters(clone);
+    var html='<!DOCTYPE html>\n'+clone.outerHTML;
+    var blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    var fname=(location.pathname.split('/').pop()||'deck.html').replace(/\.html?$/i,'');
+    try{ fname=decodeURIComponent(fname); }catch(e){}
+    a.download=fname+'-edited.html'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },3000);
+    if(was) setEdit(true);
+    toast('נשמר! החלף את הקובץ המקורי בקובץ שירד');
+  }
+
+  /* ---------- toolbar UI ---------- */
+  var fab=document.createElement('button'); fab.id='ed-fab'; fab.type='button'; fab.textContent='✏️ עריכה';
+  fab.addEventListener('click',function(){ setEdit(true); });
+  document.body.appendChild(fab);
+
+  var tb=document.createElement('div'); tb.id='ed-toolbar';
+  var toast_el, ctx;
+  function mkBtn(label,fn,cls){ var b=document.createElement('button'); b.type='button'; b.className='ed-btn'+(cls?(' '+cls):''); b.textContent=label;
+    b.addEventListener('mousedown',function(e){e.preventDefault();}); b.addEventListener('click',function(e){e.stopPropagation();fn();}); return b; }
+  function mkSep(){ var s=document.createElement('span'); s.className='ed-sep'; return s; }
+  function mkDot(name,color){ var d=document.createElement('button'); d.type='button'; d.className='ed-dot'; d.title=name; d.style.background=color;
+    d.addEventListener('mousedown',function(e){e.preventDefault();}); d.addEventListener('click',function(e){e.stopPropagation();applyColor(color);}); return d; }
+
+  var row=document.createElement('div'); row.id='ed-row';
+  row.appendChild(mkBtn('› הקודם',function(){go(-1);}));
+  row.appendChild(mkBtn('הבא ‹',function(){go(1);}));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('🖼️ תמונה',addImage));
+  row.appendChild(mkBtn('🌫️ טשטוש',addBlur));
+  row.appendChild(mkBtn('▭ צורה',addShape));
+  row.appendChild(mkBtn('🔤 טקסט',addText));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('⤴ מסגרת',selectParent));
+  row.appendChild(mkBtn('⬆ קדימה',function(){zOrder(true);}));
+  row.appendChild(mkBtn('⬇ אחורה',function(){zOrder(false);}));
+  row.appendChild(mkBtn('↔ מרכז',function(){centerSel('h');}));
+  row.appendChild(mkBtn('↕ מרכז',function(){centerSel('v');}));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('A+',function(){fontDelta(4);}));
+  row.appendChild(mkBtn('A−',function(){fontDelta(-4);}));
+  row.appendChild(mkBtn('🗑️ מחק',deleteSel,'danger'));
+  row.appendChild(mkBtn('↶ ביטול',undo));
+  row.appendChild(mkBtn('↷ חזרה',redo));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('💾 שמור',exportHTML,'primary'));
+  row.appendChild(mkBtn('✖ סגור',function(){ setEdit(false); }));
+  tb.appendChild(row);
+
+  ctx=document.createElement('div'); ctx.id='ed-ctx'; tb.appendChild(ctx);
+  document.body.appendChild(tb);
+
+  function buildColors(forShape){
+    var lbl=document.createElement('span'); lbl.className='ed-ctx-lbl'; lbl.textContent= forShape?'צבע צורה:':'צבע:';
+    ctx.appendChild(lbl);
+    if(!forShape){
+      var g=document.createElement('button'); g.type='button'; g.className='ed-dot grad-dot'; g.title='גרדיאנט';
+      g.addEventListener('mousedown',function(e){e.preventDefault();});
+      g.addEventListener('click',function(e){e.stopPropagation();applyGradient();});
+      ctx.appendChild(g);
+    }
+    for(var i=0;i<COLORS.length;i++) ctx.appendChild(mkDot(COLORS[i][0],COLORS[i][1]));
+    if(!forShape && editState){
+      var tip=document.createElement('span'); tip.className='ed-ctx-lbl'; tip.textContent='(סמן מילה כדי לצבוע רק אותה)';
+      ctx.appendChild(tip);
+    }
+  }
+  function refreshTb(){
+    if(!ctx) return;
+    ctx.innerHTML='';
+    var show=false;
+    if(editState){ buildColors(); show=true; }
+    else if(selected){
+      if(matches(selected,'.ed-blur')){
+        ctx.appendChild(mkBtn('עוצמה −',function(){blurDelta(-5);}));
+        ctx.appendChild(mkBtn('עוצמה +',function(){blurDelta(5);}));
+        ctx.appendChild(mkBtn('אטום ◼',toggleOpaque));
+        show=true;
+      } else if(matches(selected,'.ed-img')){
+        ctx.appendChild(mkBtn('פינות ◰',imgCorners));
+        ctx.appendChild(mkBtn('שקיפות 👻',cycleOpacity));
+        show=true;
+      } else if(matches(selected,'.ed-shape')){
+        buildColors(true);
+        ctx.appendChild(mkBtn('שקיפות 👻',cycleOpacity));
+        show=true;
+      } else {
+        buildColors();
+        show=true;
+      }
+    }
+    ctx.style.display=show?'flex':'none';
+  }
+
+  var hint=document.createElement('div'); hint.id='ed-hint';
+  hint.innerHTML='לחיצה = בחירה · גרירה = הזזה (Alt = בלי הצמדה) · לחיצה כפולה = עריכת טקסט · חצים = הזזה עדינה (Shift=10) · Cmd+C/V = העתק/הדבק · Cmd+S = שמור';
+  document.body.appendChild(hint);
+
+  toast_el=document.createElement('div'); toast_el.id='ed-toast'; document.body.appendChild(toast_el);
+  var toastTimer;
+  function toast(msg){ if(!toast_el) return; toast_el.textContent=msg||''; toast_el.classList.toggle('on',!!msg);
+    clearTimeout(toastTimer); if(msg) toastTimer=setTimeout(function(){ toast_el.classList.remove('on'); },2600); }
+
+  /* center snap guide lines (live inside #deck so they scale with it) */
+  gV=document.createElement('div'); gV.id='ed-guide-v'; deck.appendChild(gV);
+  gH=document.createElement('div'); gH.id='ed-guide-h'; deck.appendChild(gH);
+
+  function setEdit(on){
+    edOn=on; document.body.classList.toggle('ed-on',on);
+    tb.classList.toggle('on',on); fab.style.display=on?'none':'block';
+    hideGuides();
+    if(!on){ deselect(); toast(''); }
+    else toast('מצב עריכה פעיל');
+  }
+
+  /* ---------- hover outline ---------- */
+  document.addEventListener('mouseover',function(e){ if(!edOn) return; var el=eligible(e.target);
+    var hv=document.querySelectorAll('.ed-hover'); for(var i=0;i<hv.length;i++){ if(hv[i]!==el) hv[i].classList.remove('ed-hover'); }
+    if(el && el!==selected) el.classList.add('ed-hover'); });
+  document.addEventListener('mouseout',function(e){ if(!edOn) return; var el=eligible(e.target); if(el) el.classList.remove('ed-hover'); });
+
+  /* ---------- bind ---------- */
+  deck.addEventListener('mousedown',onDown);
+  deck.addEventListener('dblclick',onDbl);
+
+  document.addEventListener('keydown',function(e){
+    if(!edOn) return;
+    var editing=document.activeElement && document.activeElement.isContentEditable;
+    var meta=e.metaKey||e.ctrlKey;
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'||e.key==='ArrowUp'||e.key==='ArrowDown'){
+      if(!editing && selected){
+        e.preventDefault();
+        var st=e.shiftKey?10:1;
+        nudge(e.key==='ArrowLeft'?-st:e.key==='ArrowRight'?st:0, e.key==='ArrowUp'?-st:e.key==='ArrowDown'?st:0);
+      }
+      e.stopImmediatePropagation(); return;
+    }
+    if(meta && (e.key==='z'||e.key==='Z')){
+      e.preventDefault(); e.stopImmediatePropagation();
+      if(e.shiftKey) redo(); else undo();
+      return;
+    }
+    if(meta && (e.key==='s'||e.key==='S')){ e.preventDefault(); e.stopImmediatePropagation(); exportHTML(); return; }
+    if(meta && (e.key==='c'||e.key==='C') && !editing && selected){ copySel(); return; }
+    if(meta && (e.key==='d'||e.key==='D') && !editing && selected){ e.preventDefault(); e.stopImmediatePropagation(); if(copySel()) pasteInternal(); return; }
+    if((e.key==='Delete'||e.key==='Backspace') && !editing){
+      if(selected){ e.preventDefault(); deleteSel(); }
+      return;
+    }
+    if(e.key==='Escape'){
+      if(editing){
+        if(editState && editState.el){ editState.cancelled=true; editState.el.innerHTML=editState.orig; if(undoStack.length) undoStack.pop(); editState.el.blur(); }
+        else document.activeElement.blur();
+      } else deselect();
+    }
+  },true);
+
+  /* optional: auto-enter for screenshot testing via ?edtest */
+  if(location.search.indexOf('edtest')>-1){ setEdit(true); }
+  /* offer to restore unsaved work (after deck init settles) */
+  setTimeout(checkRestore,400);
+})();
+
+</script>
+</body></html>

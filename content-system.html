@@ -1,0 +1,2954 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKY BY ADI - מערכת תוכן רשתות חברתיות</title>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #2D5016;
+    --gold: #C9A84C;
+    --cream: #FAF6EE;
+    --green-light: #3d6b1e;
+    --gold-light: #e8c76a;
+    --text-dark: #1a1a1a;
+    --text-mid: #444;
+    --border: #e0d8c8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Heebo', sans-serif;
+    background: var(--cream);
+    color: var(--text-dark);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  /* HEADER */
+  .doc-header {
+    background: var(--green);
+    color: white;
+    padding: 48px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .doc-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; left: -40px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.15);
+  }
+  .doc-header::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: 60px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.08);
+  }
+  .doc-header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--gold);
+    margin-bottom: 8px;
+    position: relative; z-index: 1;
+  }
+  .doc-header p {
+    font-size: 1rem;
+    opacity: 0.85;
+    position: relative; z-index: 1;
+  }
+  .doc-header .meta {
+    margin-top: 20px;
+    display: flex;
+    gap: 32px;
+    position: relative; z-index: 1;
+  }
+  .doc-header .meta span {
+    background: rgba(201,168,76,0.2);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: var(--gold-light);
+  }
+  /* NAV */
+  .toc {
+    background: white;
+    border-bottom: 3px solid var(--gold);
+    padding: 16px 60px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  }
+  .toc a {
+    color: var(--green);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    transition: all 0.2s;
+  }
+  .toc a:hover { background: var(--green); color: white; border-color: var(--green); }
+  /* MAIN */
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 40px; }
+  /* SECTION HEADERS */
+  .section-header {
+    background: var(--green);
+    color: white;
+    padding: 24px 36px;
+    border-radius: 12px 12px 0 0;
+    margin-bottom: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .section-header .section-num {
+    background: var(--gold);
+    color: var(--green);
+    font-weight: 900;
+    font-size: 1.1rem;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+  }
+  .section-header p { font-size: 0.9rem; opacity: 0.8; margin-top: 4px; }
+  .section-body {
+    background: white;
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 36px;
+    margin-bottom: 48px;
+  }
+  /* PLATFORM CARDS */
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .platform-card {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .platform-card-header {
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .platform-card-header .icon { font-size: 1.5rem; }
+  .ig .platform-card-header { background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045); }
+  .fb .platform-card-header { background: #1877F2; }
+  .tt .platform-card-header { background: #000; }
+  .li .platform-card-header { background: #0A66C2; }
+  .platform-card-body { padding: 20px 24px; }
+  .platform-card-body h4 {
+    color: var(--green);
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 4px;
+  }
+  .platform-card-body h4:first-child { margin-top: 0; }
+  .platform-card-body p { font-size: 0.88rem; color: var(--text-mid); }
+  .platform-card-body ul { padding-right: 20px; }
+  .platform-card-body ul li { font-size: 0.88rem; color: var(--text-mid); margin-bottom: 4px; }
+  .pillars-list { list-style: none; padding: 0; }
+  .pillars-list li {
+    background: var(--cream);
+    border-right: 3px solid var(--gold);
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.87rem;
+    font-weight: 500;
+  }
+  .ratio-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 6px;
+  }
+  .ratio-label { font-size: 0.78rem; color: var(--text-mid); display: flex; gap: 12px; flex-wrap: wrap; }
+  .ratio-label span { display: flex; align-items: center; gap: 4px; }
+  .ratio-label span::before { content: ''; width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
+  .r-edu::before { background: var(--green); }
+  .r-emo::before { background: var(--gold); }
+  .r-proof::before { background: #8B4513; }
+  .r-offer::before { background: #2196F3; }
+  .hashtag-cloud { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+  .hashtag-cloud span {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.78rem;
+    color: var(--green);
+    font-weight: 500;
+  }
+  /* POST CARDS */
+  .post-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    transition: box-shadow 0.2s;
+  }
+  .post-card:hover { box-shadow: 0 4px 20px rgba(45,80,22,0.1); }
+  .post-card-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .post-card-header.ig { background: linear-gradient(90deg, rgba(131,58,180,0.12), rgba(252,176,69,0.12)); border-bottom: 2px solid rgba(131,58,180,0.3); }
+  .post-card-header.fb { background: rgba(24,119,242,0.08); border-bottom: 2px solid rgba(24,119,242,0.3); }
+  .post-card-header.tt { background: rgba(0,0,0,0.05); border-bottom: 2px solid rgba(0,0,0,0.2); }
+  .post-card-header.li { background: rgba(10,102,194,0.08); border-bottom: 2px solid rgba(10,102,194,0.3); }
+  .post-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .post-num {
+    background: var(--green);
+    color: white;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 3px 10px;
+    border-radius: 10px;
+    min-width: 36px;
+    text-align: center;
+  }
+  .platform-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 10px;
+    color: white;
+  }
+  .platform-badge.ig { background: linear-gradient(135deg, #833ab4, #fd1d1d); }
+  .platform-badge.fb { background: #1877F2; }
+  .platform-badge.tt { background: #000; }
+  .platform-badge.li { background: #0A66C2; }
+  .type-badge {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    color: var(--text-mid);
+    font-weight: 500;
+  }
+  .goal-badge {
+    font-size: 0.78rem;
+    padding: 3px 10px;
+    border-radius: 10px;
+    font-weight: 600;
+  }
+  .goal-badge.awareness { background: #e8f5e9; color: #2e7d32; }
+  .goal-badge.trust { background: #fff3e0; color: #e65100; }
+  .goal-badge.conversion { background: #e3f2fd; color: #1565c0; }
+  .post-card-body { padding: 20px 24px; }
+  .post-section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    margin-bottom: 6px;
+    margin-top: 16px;
+  }
+  .post-section-label:first-child { margin-top: 0; }
+  .hook-text {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--green);
+    background: var(--cream);
+    padding: 10px 16px;
+    border-right: 4px solid var(--gold);
+    border-radius: 0 8px 8px 0;
+    line-height: 1.5;
+  }
+  .copy-text {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    white-space: pre-wrap;
+    line-height: 1.8;
+    background: #f8f8f8;
+    padding: 14px 16px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+  }
+  .cta-text {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--green);
+    background: rgba(201,168,76,0.12);
+    padding: 8px 16px;
+    border-radius: 6px;
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+  }
+  .visual-text {
+    font-size: 0.88rem;
+    color: var(--text-mid);
+    font-style: italic;
+    padding: 8px 14px;
+    border-right: 3px solid var(--border);
+  }
+  /* REEL SCRIPTS */
+  .reel-card {
+    background: white;
+    border: 2px solid var(--green);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 32px;
+  }
+  .reel-header {
+    background: var(--green);
+    color: white;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .reel-header .reel-num {
+    background: var(--gold);
+    color: var(--green);
+    font-weight: 900;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+  .reel-header h3 { font-size: 1.1rem; }
+  .reel-header p { font-size: 0.82rem; opacity: 0.8; }
+  .reel-body { padding: 24px; }
+  .reel-scene {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 12px;
+    align-items: start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .reel-scene:last-child { border-bottom: none; }
+  .reel-scene .time {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--gold);
+    padding-top: 2px;
+  }
+  .reel-scene .visual {
+    font-size: 0.85rem;
+    color: var(--text-mid);
+    font-style: italic;
+  }
+  .reel-scene .text {
+    font-size: 0.88rem;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+  .reel-scene .text strong { color: var(--green); }
+  .reel-scene-header {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-mid);
+    border-bottom: 2px solid var(--green);
+    margin-bottom: 4px;
+  }
+  /* BIO */
+  .bio-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .bio-card {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 18px;
+    position: relative;
+  }
+  .bio-card:hover { border-color: var(--gold); }
+  .bio-num {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--green);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bio-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: center;
+    padding: 0 8px;
+  }
+  .bio-char {
+    font-size: 0.78rem;
+    color: var(--text-mid);
+    text-align: center;
+  }
+  .bio-char span { color: var(--green); font-weight: 700; }
+  /* HIGHLIGHTS */
+  .highlight-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .highlight-card {
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .highlight-card-header {
+    background: var(--green);
+    color: white;
+    padding: 14px 18px;
+    text-align: center;
+  }
+  .highlight-card-header .emoji { font-size: 2rem; display: block; margin-bottom: 4px; }
+  .highlight-card-header h4 { font-size: 1rem; font-weight: 700; }
+  .highlight-card-header p { font-size: 0.78rem; opacity: 0.8; }
+  .highlight-card-body { padding: 16px 18px; }
+  .story-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.84rem;
+  }
+  .story-item:last-child { border-bottom: none; }
+  .story-num {
+    background: var(--gold);
+    color: var(--green);
+    font-weight: 700;
+    font-size: 0.72rem;
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  /* FORMULA REMINDER */
+  .formula-bar {
+    background: linear-gradient(90deg, var(--green), var(--green-light));
+    color: white;
+    padding: 16px 28px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  .formula-bar .step {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+  }
+  .formula-bar .step .step-name {
+    background: rgba(201,168,76,0.3);
+    border: 1px solid rgba(201,168,76,0.5);
+    padding: 4px 12px;
+    border-radius: 14px;
+    font-weight: 700;
+    color: var(--gold-light);
+    font-size: 0.82rem;
+  }
+  .formula-bar .arrow {
+    color: var(--gold);
+    font-size: 1.1rem;
+    margin: 0 6px;
+  }
+  /* DIVIDER */
+  .section-divider {
+    height: 3px;
+    background: linear-gradient(90deg, var(--green), var(--gold), var(--green));
+    border-radius: 2px;
+    margin: 48px 0 0;
+  }
+  /* PRINT */
+  @media print {
+    .toc { display: none; }
+    .post-card { break-inside: avoid; }
+    body { font-size: 12px; }
+  }
+
+/* ===== BRAIN DECK · EDIT MODE UI v2 (additive) ===== */
+#ed-fab{position:fixed;bottom:24px;right:24px;z-index:9998;background:linear-gradient(135deg,#5f3698,#8f4fd7);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:50px;padding:13px 24px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 14px 40px rgba(143,79,215,.45);font-family:'Futurism',sans-serif;transition:transform .15s;}
+#ed-fab:hover{transform:translateY(-2px);}
+#ed-toolbar{position:fixed;top:14px;right:14px;z-index:9999;display:none;flex-direction:column;gap:7px;background:rgba(13,15,36,.96);border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:9px 11px;box-shadow:0 18px 50px rgba(0,0,0,.6);font-family:'Futurism',sans-serif;direction:rtl;max-width:96vw;}
+#ed-toolbar.on{display:flex;}
+#ed-row{display:flex;gap:7px;align-items:center;flex-wrap:wrap;}
+#ed-ctx{display:none;gap:7px;align-items:center;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.1);padding-top:8px;}
+.ed-ctx-lbl{font-size:13px;color:#9a9ba6;font-weight:700;}
+.ed-btn{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#dfe0e6;border-radius:10px;padding:9px 13px;font-size:14px;font-weight:700;cursor:pointer;transition:all .14s;white-space:nowrap;font-family:inherit;}
+.ed-btn:hover{background:rgba(98,170,191,.18);border-color:rgba(98,170,191,.5);color:#fff;}
+.ed-btn.primary{background:linear-gradient(135deg,#5f3698,#8f4fd7);border-color:rgba(143,79,215,.5);color:#fff;}
+.ed-btn.danger:hover{background:rgba(239,68,68,.2);border-color:rgba(239,68,68,.5);color:#fff;}
+.ed-sep{width:1px;height:24px;background:rgba(255,255,255,.14);margin:0 3px;}
+.ed-dot{width:26px;height:26px;border-radius:50%;border:2px solid rgba(255,255,255,.25);cursor:pointer;padding:0;transition:transform .12s;}
+.ed-dot:hover{transform:scale(1.18);border-color:#fff;}
+.ed-dot.grad-dot{background:linear-gradient(135deg,#71b9c3,#549cbc,#2d70aa,#6556d0,#9c4ed7);}
+#ed-hint{position:fixed;bottom:24px;left:24px;z-index:9998;background:rgba(13,15,36,.92);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:10px 16px;font-size:13px;color:#9a9ba6;font-family:'Futurism',sans-serif;display:none;direction:rtl;max-width:46vw;}
+body.ed-on #ed-hint{display:block;}
+#ed-toast{position:fixed;bottom:78px;left:50%;transform:translateX(-50%) translateY(12px);z-index:9999;background:rgba(143,79,215,.95);color:#fff;padding:11px 22px;border-radius:10px;font-size:15px;font-weight:700;font-family:'Futurism',sans-serif;opacity:0;pointer-events:none;transition:all .25s;box-shadow:0 12px 34px rgba(0,0,0,.5);direction:rtl;}
+#ed-toast.on{opacity:1;transform:translateX(-50%) translateY(0);}
+#ed-restore{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:10000;display:flex;gap:10px;align-items:center;background:rgba(13,15,36,.97);border:1px solid rgba(143,79,215,.5);border-radius:12px;padding:10px 18px;font-family:'Futurism',sans-serif;font-size:14px;color:#dfe0e6;direction:rtl;box-shadow:0 18px 50px rgba(0,0,0,.6);}
+#ed-guide-v{position:absolute;left:959px;top:0;width:2px;height:1080px;background:rgba(98,170,191,.85);z-index:9990;display:none;pointer-events:none;box-shadow:0 0 10px rgba(98,170,191,.7);}
+#ed-guide-h{position:absolute;top:539px;left:0;height:2px;width:1920px;background:rgba(98,170,191,.85);z-index:9990;display:none;pointer-events:none;box-shadow:0 0 10px rgba(98,170,191,.7);}
+body.ed-on .ed-hover{outline:1.5px dashed rgba(98,170,191,.6) !important;outline-offset:3px;cursor:move;}
+body.ed-on .ed-selected{outline:2px solid #8f4fd7 !important;outline-offset:3px;}
+[contenteditable=true]{cursor:text !important;outline:2px solid #62aabf !important;outline-offset:3px;user-select:text !important;-webkit-user-select:text !important;}
+.ed-img,.ed-blur,.ed-shape,.ed-textbox,.ed-clone{position:absolute;z-index:50;}
+.ed-img img{width:100%;height:100%;display:block;object-fit:cover;border-radius:6px;pointer-events:none;}
+.ed-blur{backdrop-filter:blur(15px);-webkit-backdrop-filter:blur(15px);background:rgba(20,22,48,.16);border-radius:10px;}
+.ed-blur.ed-opaque{background:#14163a !important;backdrop-filter:none !important;-webkit-backdrop-filter:none !important;border:1px solid rgba(255,255,255,.06);}
+.ed-shape{background:rgba(143,79,215,.22);border:2px solid rgba(143,79,215,.6);border-radius:12px;}
+.ed-textbox{font-family:'Futurism',sans-serif;font-weight:900;font-size:40px;color:#fff;min-width:60px;line-height:1.1;}
+body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textbox,body.ed-on .ed-clone{cursor:move;}
+.ed-handle{position:absolute;z-index:60;width:20px;height:20px;border-radius:50%;background:#8f4fd7;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.5);}
+.ed-handle.br{cursor:nwse-resize;right:-10px;bottom:-10px;}
+.ed-del{position:absolute;z-index:61;top:-15px;right:-15px;width:28px;height:28px;border-radius:50%;background:#ef4444;color:#fff;border:2px solid #fff;font-size:17px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
+
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <h1>SKY BY ADI AHARONI<br>מערכת תוכן - רשתות חברתיות</h1>
+  <p>מסמך עבודה מלא | לבדיקה ואישור עדי אהרוני</p>
+  <div class="meta">
+    <span>30 פוסטים מוכנים</span>
+    <span>4 פלטפורמות</span>
+    <span>3 סקריפטים לרילס</span>
+    <span>5 אופציות לביו</span>
+    <span>6 הייליטס</span>
+  </div>
+</div>
+
+<nav class="toc">
+  <a href="#section1">1. אסטרטגיית פלטפורמות</a>
+  <a href="#section2">2. לוח תוכן - 30 פוסטים</a>
+  <a href="#section3">3. סקריפטים לרילס</a>
+  <a href="#section4">4. ביו אינסטגרם</a>
+  <a href="#section5">5. הייליטס</a>
+</nav>
+
+<div class="container">
+
+<!-- SECTION 1: PLATFORM STRATEGY -->
+<div id="section1" class="section-divider"></div>
+<div style="margin-top: 32px;">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <div>
+      <h2>אסטרטגיית פלטפורמות</h2>
+      <p>מי הקהל בכל פלטפורמה, מה עוצר את הגלילה, יחסי תוכן ועמודי תוכן ייעודיים</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="platform-grid">
+
+      <!-- INSTAGRAM -->
+      <div class="platform-card ig">
+        <div class="platform-card-header ig">
+          <span class="icon">📸</span>
+          <div>Instagram<br><small style="font-weight:400;opacity:0.9">רגש + ויזואל + קופי קצר</small></div>
+        </div>
+        <div class="platform-card-body">
+          <h4>הקהל כאן</h4>
+          <p>אמהות 32-50 שמחפשות השראה. גוללות בין שיעורי יוגה, מתכונים, ורגעים משפחתיים. יש להן 7 שניות. הן מגיבות לכאב שמדבר ישירות אליהן - לא לפתרון.</p>
+
+          <h4>מה עוצר את הגלילה</h4>
+          <ul>
+            <li>שורה ראשונה שמדברת אל הכאב הספציפי שלהן</li>
+            <li>תמונה שמחזירה אותן לרגע שכאב (ריב, מסך, פספוס)</li>
+            <li>מספר מפתיע (87%, 72 שעות, 57 משפחות)</li>
+            <li>קרוסלים שמבטיחים "5 דברים שלא ידעת"</li>
+          </ul>
+
+          <h4>יחסי תוכן</h4>
+          <div class="ratio-bar">
+            <div style="background:var(--green);width:25%"></div>
+            <div style="background:var(--gold);width:40%"></div>
+            <div style="background:#8B4513;width:25%"></div>
+            <div style="background:#2196F3;width:10%"></div>
+          </div>
+          <div class="ratio-label">
+            <span class="r-edu">25% חינוך</span>
+            <span class="r-emo">40% רגש</span>
+            <span class="r-proof">25% הוכחה</span>
+            <span class="r-offer">10% מכירה</span>
+          </div>
+
+          <h4>5 עמודי תוכן</h4>
+          <ul class="pillars-list">
+            <li>1. "הרגע שמכל דבר" - רגע שקי קשר שנשחק</li>
+            <li>2. ילדות ורשתות - "הבת שלך כבר קונה קרמים"</li>
+            <li>3. עדויות ותוצאות - מה שנשמע אחרי 72 שעות</li>
+            <li>4. מאחורי הקלעים - עדי, הכנות, הפרטים</li>
+            <li>5. ידע מקצועי - מה מותר לגיל הזה (עור + חוויה)</li>
+          </ul>
+
+          <h4>זמני פוסט אופטימליים</h4>
+          <p>ראשון-שישי: 7:00-8:30 (בוקר, לפני עבודה)<br>
+          ראשון-שלישי: 21:00-22:30 (אחרי שהילדים ישנו)<br>
+          שישי: 10:00-12:00 (לפני שבת)</p>
+
+          <h4>אסטרטגיית האשטאגים</h4>
+          <div class="hashtag-cloud">
+            <span>#אמאובת</span><span>#חופשהמשפחתית</span>
+            <span>#בתשלי</span><span>#קשרמיוחד</span>
+            <span>#ריטריטאמאובת</span><span>#טיולעם הבת</span>
+            <span>#יוון</span><span>#קפריסין</span><span>#דובאי</span>
+            <span>#motherdaughter</span><span>#girlstrip</span>
+            <span>#skybyadi</span><span>#72שעות</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- FACEBOOK -->
+      <div class="platform-card fb">
+        <div class="platform-card-header fb">
+          <span class="icon">👥</span>
+          <div>Facebook<br><small style="font-weight:400;opacity:0.9">סיפורים ארוכים + קהילות אמהות</small></div>
+        </div>
+        <div class="platform-card-body">
+          <h4>הקהל כאן</h4>
+          <p>אמהות 38-55, חלקן בקבוצות "אמהות לבנות מתבגרות", "הורים לבני נוער". מגיבות לסיפורים אישיים וארוכים. פחות ויזואל, יותר זהות. "זה בדיוק אני" - זה מה שמניע שיתוף.</p>
+
+          <h4>מה עוצר את הגלילה</h4>
+          <ul>
+            <li>שאלה ישירה: "כמה פעמים אמרת לה 'אין זמן' השבוע?"</li>
+            <li>פוסט טקסט ארוך עם סיפור אישי של עדי</li>
+            <li>עדות של אמא שנשמעת כמוהן</li>
+            <li>תמונה לפני/אחרי (קשר, לא חיצוני)</li>
+          </ul>
+
+          <h4>יחסי תוכן</h4>
+          <div class="ratio-bar">
+            <div style="background:var(--green);width:20%"></div>
+            <div style="background:var(--gold);width:35%"></div>
+            <div style="background:#8B4513;width:35%"></div>
+            <div style="background:#2196F3;width:10%"></div>
+          </div>
+          <div class="ratio-label">
+            <span class="r-edu">20% חינוך</span>
+            <span class="r-emo">35% רגש</span>
+            <span class="r-proof">35% הוכחה</span>
+            <span class="r-offer">10% מכירה</span>
+          </div>
+
+          <h4>5 עמודי תוכן</h4>
+          <ul class="pillars-list">
+            <li>1. סיפורים אישיים של אמהות (עדויות ארוכות)</li>
+            <li>2. שאלות שמעוררות שיחה ("מה הריב האחרון שהיה לכן?")</li>
+            <li>3. ידע הורי - מחקרים ועובדות על בנות מתבגרות</li>
+            <li>4. סיפור עדי - הדרך מעורכת דין ל-SKY BY ADI</li>
+            <li>5. המנגנון - פרוטוקול האיפוס מוסבר בפירוט</li>
+          </ul>
+
+          <h4>זמני פוסט אופטימליים</h4>
+          <p>שני-חמישי: 12:00-14:00 (הפסקת צהריים)<br>
+          ראשון: 20:00-22:00 (תחילת שבוע, רגש גבוה)<br>
+          שישי: 9:00-11:00</p>
+
+          <h4>קבוצות פייסבוק למיקוד</h4>
+          <div class="hashtag-cloud">
+            <span>אמהות לבנות מתבגרות</span>
+            <span>הורים לבני נוער ישראל</span>
+            <span>נסיעות לנשים</span>
+            <span>ספא ורגיעה לאמהות</span>
+            <span>בנות מצווה 2025-2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TIKTOK -->
+      <div class="platform-card tt">
+        <div class="platform-card-header tt">
+          <span class="icon">🎵</span>
+          <div>TikTok<br><small style="font-weight:400;opacity:0.9">גולמי, אמיתי, נקודת מבט הבת</small></div>
+        </div>
+        <div class="platform-card-body">
+          <h4>הקהל כאן</h4>
+          <p>שני קהלים: (א) בנות 13-17 שיכולות לשלוח לאמא. (ב) אמהות 30-45 שגוללות ב-TikTok. האלגוריתם מחפש תגובות ראשוניות חזקות - 3 שניות הראשונות = הכל.</p>
+
+          <h4>מה עוצר את הגלילה</h4>
+          <ul>
+            <li>"POV: אמא שלך לא יודעת שאת גוססת לראות אותה"</li>
+            <li>עדי מדברת ישירות למצלמה - גולמי, לא ערוך</li>
+            <li>Trend sound עם ריב אמא-בת ריאלי</li>
+            <li>"דברים שאמהות לא יודעות על הבנות שלהן"</li>
+          </ul>
+
+          <h4>יחסי תוכן</h4>
+          <div class="ratio-bar">
+            <div style="background:var(--green);width:15%"></div>
+            <div style="background:var(--gold);width:50%"></div>
+            <div style="background:#8B4513;width:25%"></div>
+            <div style="background:#2196F3;width:10%"></div>
+          </div>
+          <div class="ratio-label">
+            <span class="r-edu">15% חינוך</span>
+            <span class="r-emo">50% רגש</span>
+            <span class="r-proof">25% הוכחה</span>
+            <span class="r-offer">10% מכירה</span>
+          </div>
+
+          <h4>5 עמודי תוכן</h4>
+          <ul class="pillars-list">
+            <li>1. "POV" - נקודת מבט הבת על הקשר עם אמא</li>
+            <li>2. עדי מדברת - ישיר, גולמי, אמיתי</li>
+            <li>3. הוכחת כישלון קרמים (Sephora kids - עובדות)</li>
+            <li>4. "מה שרופאי עור לא אומרים לאמהות"</li>
+            <li>5. Check-in reveal - מה מחכה בחדר (WOW factor)</li>
+          </ul>
+
+          <h4>זמני פוסט אופטימליים</h4>
+          <p>כל יום: 19:00-21:00 (שיא TikTok ישראלי)<br>
+          שישי-שבת: 14:00-16:00<br>
+          שני: 7:00-9:00 (חזרה לשגרה, נוסטלגיה)</p>
+
+          <h4>האשטאגים TikTok</h4>
+          <div class="hashtag-cloud">
+            <span>#אמאובת</span><span>#sephorakids</span>
+            <span>#motherdaughter</span><span>#momlife</span>
+            <span>#skybyadi</span><span>#teenskincare</span>
+            <span>#ישראל</span><span>#girlstrip</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LINKEDIN -->
+      <div class="platform-card li">
+        <div class="platform-card-header li">
+          <span class="icon">💼</span>
+          <div>LinkedIn<br><small style="font-weight:400;opacity:0.9">מותג אישי של עדי + מנהיגות מחשבתית</small></div>
+        </div>
+        <div class="platform-card-body">
+          <h4>הקהל כאן</h4>
+          <p>שני קהלים: (א) אמהות מקצועיות 35-50 - מנהלות, עצמאיות - שרואות בעדי שיקוף של עצמן. (ב) עמיתים ורשת עסקית שיכולים להפנות לקוחות. Thought leadership = אמון = המרה.</p>
+
+          <h4>מה עוצר את הגלילה</h4>
+          <ul>
+            <li>פוסט אישי של עדי שפותח בחולשה ("עזבתי 20 שנה של עריכת דין כי...")</li>
+            <li>עובדות מפתיעות על שוק בנות + טיפוח</li>
+            <li>"הדבר שלמדתי מ-57 משפחות"</li>
+            <li>עדי כמומחית קטגוריה חדשה</li>
+          </ul>
+
+          <h4>יחסי תוכן</h4>
+          <div class="ratio-bar">
+            <div style="background:var(--green);width:35%"></div>
+            <div style="background:var(--gold);width:30%"></div>
+            <div style="background:#8B4513;width:25%"></div>
+            <div style="background:#2196F3;width:10%"></div>
+          </div>
+          <div class="ratio-label">
+            <span class="r-edu">35% חינוך</span>
+            <span class="r-emo">30% רגש</span>
+            <span class="r-proof">25% הוכחה</span>
+            <span class="r-offer">10% מכירה</span>
+          </div>
+
+          <h4>5 עמודי תוכן</h4>
+          <ul class="pillars-list">
+            <li>1. בניית קטגוריה חדשה - "אין לי מתחרים בישראל"</li>
+            <li>2. שיעורים מ-20 שנה בעריכת דין שמיושמים בעסק</li>
+            <li>3. נתוני שוק - שוק טיפוח נערות, Sephora kids</li>
+            <li>4. כשל ומה שלמדתי - פגיעות אסטרטגית</li>
+            <li>5. "כך בניתי מוצר עם חוזה, פרוטוקול ומדיניות"</li>
+          </ul>
+
+          <h4>זמני פוסט אופטימליים</h4>
+          <p>שלישי-רביעי: 8:00-9:30 (שיא LinkedIn ישראלי)<br>
+          ראשון: 17:00-18:30<br>
+          חמישי: 12:00-13:00</p>
+
+          <h4>האשטאגים LinkedIn</h4>
+          <div class="hashtag-cloud">
+            <span>#יזמות</span><span>#מותגאישי</span>
+            <span>#עסקים</span><span>#אמהות</span>
+            <span>#motherdaughter</span><span>#wellnesstech</span>
+            <span>#startupIsrael</span><span>#womeninbusiness</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end platform-grid -->
+  </div>
+</div>
+
+<!-- SECTION 2: 30 POSTS -->
+<div id="section2" class="section-divider"></div>
+<div style="margin-top: 32px;">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <div>
+      <h2>לוח תוכן - 30 פוסטים מוכנים</h2>
+      <p>כל פוסט כולל: הוק, קופי מלא בנוסחת עצירה-הזדהות-תחושה-הוכחה-פעולה, CTA, כיוון ויזואלי ומטרה</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="formula-bar">
+      <div class="step"><span class="step-name">עצירה</span></div>
+      <span class="arrow">-&gt;</span>
+      <div class="step"><span class="step-name">הזדהות</span></div>
+      <span class="arrow">-&gt;</span>
+      <div class="step"><span class="step-name">תחושה</span></div>
+      <span class="arrow">-&gt;</span>
+      <div class="step"><span class="step-name">הוכחה</span></div>
+      <span class="arrow">-&gt;</span>
+      <div class="step"><span class="step-name">פעולה</span></div>
+    </div>
+
+    <!-- POST 1 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#1</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">Reel / 60 שניות</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">היא עדיין לא אמרה לך שהיא כועסת. אבל הדלת שמעה.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">היא עדיין לא אמרה לך שהיא כועסת.
+אבל הדלת שמעה.
+
+אתם יודעות את הצליל הזה.
+לא ריב. לא צעקות. רק... סגירה.
+הרגע שבו הבנת שאתה מצד אחד של הדלת, והיא בצד השני.
+
+אני עדי. עורכת דין לשעבר. אמא לשלוש בנות.
+ראיתי מאות חוזים בחיי - אבל החוזה הכי חשוב שלי היה עם הבנות שלי.
+וגיליתי שהוא נשחק בשקט, שבוע אחרי שבוע.
+
+ב-72 שעות, בלי לוגיסטיקה, בלי ויכוחים על מה אוכלים לארוחת ערב -
+משהו מתאפס.
+
+57 משפחות כבר עשו את זה. 87% אמרו שהקשר השתנה.
+
+כתבי "72" בתגובות ואשלח לך את הפרטים.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "72" בתגובות - אשלח פרטים</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי מדברת ישירות למצלמה, אור טבעי, בבית. ברקע: רגע מטושטש של בת שנכנסת לחדר. לא ערוך מדי - אמיתי ונגיש.</div>
+      </div>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="post-card">
+      <div class="post-card-header fb">
+        <div class="post-meta">
+          <span class="post-num">#2</span>
+          <span class="platform-badge fb">Facebook</span>
+          <span class="type-badge">טקסט ארוך</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">שאלתי 57 אמהות: "מה הריב האחרון שהיה לכן עם הבת?" כל אחת ענתה אחרת. התשובה שלהן הייתה זהה.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שאלתי 57 אמהות: "מה הריב האחרון שהיה לכן עם הבת?"
+כל אחת ענתה אחרת. התשובה שלהן הייתה זהה.
+
+"היא לא מקשיבה לי."
+"אני לא מבינה אותה."
+"זה לא היה כך לפני."
+
+אחת אמרה לי: "אני יושבת איתה בחדר ומרגישה בודדה."
+
+בבית, כל שיחה קורית בתוך מבנה כוח שלא ביחרתן בו.
+את האמא. היא הבת. ברור מי הסמכות ומי "צריכה להקשיב".
+גם כשאת לא רוצה שיהיה ככה - זה קורה.
+
+מה שלמדתי מ-57 משפחות:
+כשמוצאים אותן ממבנה הכוח הזה - לפחות פעם אחת -
+הכל יכול להשתנות.
+
+בחדר מלון ביוון, אף אחת לא יודעת את הדרך לסופרמרקט.
+אף אחת לא הייתה שם לפני.
+שתיהן מתחילות מאפס.
+
+זה מה שאני יוצרת.
+
+אם הבת שלך 10-17 ואת מרגישה שמשהו נשחק בינכן - כתבי לי בהודעה פרטית.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי לי בהודעה פרטית</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה של שני צדי דלת - רגליים של אמא מחוץ לדלת, אור מהחדר מבפנים. או: שתי כוסות תה ליד שולחן, ידיים לא נוגעות.</div>
+      </div>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="post-card">
+      <div class="post-card-header tt">
+        <div class="post-meta">
+          <span class="post-num">#3</span>
+          <span class="platform-badge tt">TikTok</span>
+          <span class="type-badge">Reel / 30 שניות</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">POV: הבת שלך קונה רטינול בגיל 13 ואת לא יודעת מה לגיד לה</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">POV: הבת שלך קונה רטינול בגיל 13 ואת לא יודעת מה לגיד לה.
+
+כי אם תגידי "לא" - היא תעשה את זה בחשאי.
+אם תגידי "בסדר" - את מרגישה שאת מפסידה אותה לטיקטוק.
+
+Dr. Carla Torres-Zegarra, רופאת עור מאוניברסיטת קולורדו, אמרה:
+"90% מהזמן התשובה שלי היא: את לא צריכה את זה. אין לך את הבעיה שהמוצר הזה פותר."
+
+אבל מי ישמע אותה - אם לא תהיי שם?
+
+זה מה שאני עושה. 72 שעות. אתן מתפנקות. והיא לומדת מה מותר לגיל שלה.
+
+לינק בביו.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">לינק בביו</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">טקסט על מסך שחור, sound טרנדי. אחר כך מעבר לתמונת ספא - contrasting visual. מהיר, ישיר, ללא פנים.</div>
+      </div>
+    </div>
+
+    <!-- POST 4 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#4</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">קרוסל - 7 שקפים</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק (שקף 1)</div>
+        <div class="hook-text">5 דברים שרופאי עור רוצים שתדעי לפני שהבת שלך נכנסת לספורה</div>
+        <div class="post-section-label">קופי מלא (שקף 1 + תיאור שקפים)</div>
+        <div class="copy-text">שקף 1: 5 דברים שרופאי עור רוצים שתדעי לפני שהבת שלך נכנסת לספורה
+
+שקף 2: "היא לא צריכה רטינול. היא לא צריכה אנטי-אייג'ינג. העור שלה צעיר - זה לא בעיה שצריך לפתור." - Dr. Torres-Zegarra, אוניברסיטת קולורדו
+
+שקף 3: מה שמותר לגיל 10-13: לחות עדינה + SPF + ניקוי עדין. מה שאסור: רטינול, חומצות, peptides.
+
+שקף 4: מה שמותר לגיל 14-16: ניקוי מתאים לסוג עור, לחות, SPF. אפשר: ויטמין C עדין. מה שאסור: רטינול חזק, AHA חזק.
+
+שקף 5: מה שתמיד מותר: hyaluronic acid, niacinamide, aloe, מינרל-SPF. בלי גיל מינימלי.
+
+שקף 6: הבעיה האמיתית: 68% מהנערות כבר עם שגרת טיפוח של 3+ מוצרים. חלק מהם נועדו לאנשים בני 40. מחקר PubMed 2025 מאשר: יש סיכון נזק אמיתי לעור ילדה.
+
+שקף 7: את לא יכולה להיות שם כשהיא גוללת טיקטוק בחצות. אבל יש 72 שעות שבהן תוכלי ללמד אותה - בצורה שהיא תקשיב לה. כתבי "מידע" בתגובות.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "מידע" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">רקע ירוק כהה עם טקסט זהב. ניקי ומינימליסטי. שקף 2 - ציטוט על רקע לבן עם גבול זהב. שקפי המידע - אייקונים פשוטים של בקבוקוני קרם.</div>
+      </div>
+    </div>
+
+    <!-- POST 5 -->
+    <div class="post-card">
+      <div class="post-card-header li">
+        <div class="post-meta">
+          <span class="post-num">#5</span>
+          <span class="platform-badge li">LinkedIn</span>
+          <span class="type-badge">פוסט אישי</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">עזבתי 20 שנה של עריכת דין בגלל משפחה שלא הייתה שלי.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">עזבתי 20 שנה של עריכת דין בגלל משפחה שלא הייתה שלי.
+
+לא הכרתי אותן. קראתי את הסיפורים שלהן בכתבות.
+57 משפחות שהיו בדיוק שם - רבות, מרוחקות, מפספסות.
+
+ואז הבנתי שיש כשל שוק.
+
+יש אמהות שיכולות לשלם על נסיעה לחו"ל עם הבת.
+אבל לא יודעות איך להפוך נסיעה ל-72 שעות שמשנות משהו.
+כי הן מגיעות לחדר מלון, שתיהן שולפות טלפון, ואף דבר לא השתנה.
+
+הכישרון שלי מ-20 שנה של עריכת דין: לקרוא חוזה ולמצוא מה חסר.
+מה שחסר לנסיעה משפחתית: פרוטוקול. מבנה. כלים ספציפיים.
+
+בניתי מוצר עם חוזה, מדיניות ביטולים, שאלון אבחון, שיחת תיאום, ערכת "No-Filter Connection" שמחכה בחדר.
+
+לא סוכנות נסיעות. קטגוריה חדשה.
+בישראל - אין עוד אחד כמוני.
+
+מה השוק הבלתי מכובש שאתם רואים?</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">מה השוק הבלתי מכובש שאתם רואים? (שאלה לשיח)</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה מקצועית של עדי, חצי מסתכלת הצידה. לא פוז מושלם - חשיבה. רקע נקי. לינקדאין אוהב כן/לא, לא מכירה ישירה.</div>
+      </div>
+    </div>
+
+    <!-- POST 6 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#6</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">תמונה + קפשן</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">שש שנים אחרי הנסיעה, Sandrine אמרה לי: "כשאנחנו מאבדות את עצמנו, אנחנו יושבות ומדברות. אני מקשיבה לה בלי שיפוטיות."</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שש שנים אחרי הנסיעה, Sandrine אמרה לי:
+"כשאנחנו מאבדות את עצמנו, אנחנו יושבות ומדברות. אני מקשיבה לה בלי שיפוטיות."
+
+שש שנים.
+
+היא לא מדברת על הנסיעה. היא מדברת על מה שנשאר ממנה.
+הרגל. שפה משותפת. זיכרון שמנוע.
+
+הבת שלה, Anja, אמרה שנה אחרי: "זו היתה השבוע הכי טוב בחיי."
+
+לא "נסיעה מדהימה". "השבוע הכי טוב בחיי."
+
+אני לא מוכרת חופשה.
+אני מוכרת 72 שעות שיהיו שם כשתצטרכי אותן - שנים אחרי.
+
+5 מקומות בחודש. שיחת היכרות ללא עלות.
+כתבי "סנדרין" בתגובות ואשלח לך את הפרטים.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "סנדרין" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה של שתי ידיים - אמא ובת - על שולחן. לא מוחזקות, פשוט קרובות. לא stock photography - אמיתי. אור חם.</div>
+      </div>
+    </div>
+
+    <!-- POST 7 -->
+    <div class="post-card">
+      <div class="post-card-header tt">
+        <div class="post-meta">
+          <span class="post-num">#7</span>
+          <span class="platform-badge tt">TikTok</span>
+          <span class="type-badge">Reel / 45 שניות</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">אמא, זה מה שהבת שלך לא מספרת לך (אני יודעת כי שאלתי)</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">אמא, זה מה שהבת שלך לא מספרת לך.
+
+"אני רוצה שאמא תראה שאני כבר גדולה."
+"אני רוצה לעשות משהו מגניב איתה - לא שגרה."
+"אמא לא מבינה. היא חיה בתקופה אחרת."
+
+הן לא מתרחקות כי הן לא אוהבות אותך.
+הן מתרחקות כי הן לא רוצות שתראי אותן כשהן עדיין קטנות.
+
+72 שעות שבהן אף אחת מכן לא "האמא" ואף אחת לא "הבת".
+רק שתי נשים שמגלות מקום חדש ביחד.
+
+אני עדי. ויצרתי בדיוק את זה.
+שמרי את הוידאו הזה ותשלחי לה.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">שמרי את הוידאו ותשלחי לה</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי מדברת ישיר למצלמה, מהר ואנרגטי. טקסט מופיע על המסך תוך כדי. Sound אמוציונלי ברקע.</div>
+      </div>
+    </div>
+
+    <!-- POST 8 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#8</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">קרוסל - 5 שקפים</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק (שקף 1)</div>
+        <div class="hook-text">מה מחכה לכן בחדר (ולמה הבת שלך תעשה סטורי ברגע הזה)</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שקף 1: מה מחכה לכן בחדר ברגע הצ'ק-אין
+
+שקף 2: ערכת "Glow לדרך" - על המיטה. תיק קטן עם מוצרי יוקרה, headbands, דוגמיות. לא מתנה סתמית - WOW factor מחושב. הבת תצלם את זה לסטורי לפני שתגיד תודה.
+
+שקף 3: קלפי "No-Filter Connection" - על השולחן. 40 קלפים שאין בהם "ספרי לי על בית הספר". יש בהם שאלות שיחשפו לכן אחת את השניה. ערבויות שלא יהיה שקט מביך.
+
+שקף 4: שאלות לדוגמה מהקלפים - "אם יכולת לחיות חיים אחרים, מה היה בהם?" / "מה הדבר שאת הכי גאה בו שאף אחד לא יודע?"
+
+שקף 5: 5 מקומות בלבד בכל חודש. שיחת היכרות ב-20 דקות ללא עלות. מהר.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "קלפים" בתגובות - אשלח פרטים</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה אמיתית של ערכת ה-Glow על מיטת מלון. פריים של קלפי ה-No-Filter. אסתטיקה ירוק-זהב-קרם. שקף 5 - טקסט נקי על ירוק כהה.</div>
+      </div>
+    </div>
+
+    <!-- POST 9 -->
+    <div class="post-card">
+      <div class="post-card-header fb">
+        <div class="post-meta">
+          <span class="post-num">#9</span>
+          <span class="platform-badge fb">Facebook</span>
+          <span class="type-badge">שיתוף אישי</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">הבת שלי בת 10. ואני כבר עובדת על זה.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">הבת שלי בת 10. ואני כבר עובדת על זה.
+
+עלמה ועדן. 10 ו-8. לא מתבגרות עדיין.
+אבל אני רואה מה קורה לאמהות שמחכות "עד שיהיה בעיה".
+
+אני עורכת דין לשעבר. 20 שנה.
+למדתי שכי הכי זול לחתום על חוזה לפני הבעיה.
+זה נכון גם לקשר בין אמא לבת.
+
+הסמכות שלי בתחום הזה היא לא "עברתי את זה".
+הסמכות שלי היא: חקרתי, בניתי, ראיתי מה עובד - ב-57 משפחות.
+
+הבת שלך 10-17?
+עוד לא מאוחר. אבל חלון ההזדמנויות נסגר כל שנה שעוברת.
+
+כתבי כמה שנים יש לבת שלך בתגובות.
+אשיב לכולן.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי כמה שנים יש לבת שלך בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונת עדי עם בת שלה (לא לחשוף פנים ילדה אלא ידיים/גב). אמיתי ואינטימי. לא stock.</div>
+      </div>
+    </div>
+
+    <!-- POST 10 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#10</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">Reel / 30 שניות</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">בעוד שנה היא בצבא. עדיין חושבת שיש לך זמן?</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">בעוד שנה היא בצבא.
+עדיין חושבת שיש לך זמן?
+
+זה לא פחד. זה לוח זמנים.
+
+"כמעט 18" - שנה לפני הגיוס.
+זו ההזדמנות האחרונה שלכן לפני שהחיים שלה נהיים שלה לגמרי.
+
+לא נסיעה. 72 שעות של איפוס.
+לפני שהיא מחליטה שהיא כבר לא צריכה אותך.
+
+5 מקומות. שיחה של 20 דקות.
+לינק בביו - ספרי לי מתי היא נולדה.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">לינק בביו - ספרי לי מתי היא נולדה</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">Text on screen בלבד: ספירה לאחור ויזואלית. שחור ולבן. מעבר חד לצבעי המותג בסוף עם ה-CTA.</div>
+      </div>
+    </div>
+
+    <!-- POST 11 -->
+    <div class="post-card">
+      <div class="post-card-header li">
+        <div class="post-meta">
+          <span class="post-num">#11</span>
+          <span class="platform-badge li">LinkedIn</span>
+          <span class="type-badge">Thought Leadership</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">שוק טיפוח בנות מתבגרות: 200 מיליארד דולר עד 2030. ולאף אחד אין מה לגיד להוריהן.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שוק טיפוח בנות מתבגרות: 200 מיליארד דולר עד 2030.
+ולאף אחד אין מה לגיד להוריהן.
+
+הנתונים:
+- בנות 12-16 מוציאות 374 דולר לשנה על טיפוח (עלייה של 10% ב-2025, שיא היסטורי)
+- 68% מהנערות - שגרת טיפוח של 3+ מוצרים יומית
+- Sephora kids: נערות קונות Drunk Elephant, רטינול, ופילינגים לעור מבוגרים
+- מחקר PubMed 2025 מאשר: סיכון נזק אמיתי לעור ילדה
+
+הנישה שמצאתי:
+אמא שרוצה להיות שם + בת שכבר קנתה קרמים + 72 שעות + מומחיות = קטגוריה שלא קיימת בישראל.
+
+אני לא מוכרת פחד. אני מוכרת הזדמנות:
+להיות האדם שהלמד אותה - לפני שהאינטרנט עשה את זה במקומך.
+
+מה אתם רואים בנישות שמחכות למישהו שיבנה אותן?</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">מה אתם רואים? (שיח מקצועי)</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">אינפוגרפיק נקי עם הנתונים. ירוק/זהב. מקצועי. לינקדאין אוהב דאטה ויזואלי.</div>
+      </div>
+    </div>
+
+    <!-- POST 12 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#12</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">תמונה + קפשן</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">היא אמרה: "זה היה תירוץ מגניב לבלות עם אמא שלי ולעשות ביחד מה ששתינו אוהבות."</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">היא אמרה: "זה היה תירוץ מגניב לבלות עם אמא שלי ולעשות ביחד מה ששתינו אוהבות."
+
+זו לא אמא שדיברה. זו הבת.
+
+כי זה מה שהבנות לא יגידו לאמהות בבית:
+"אני רוצה לבלות איתך. אני רק צריכה תירוץ שלא יגרום לי להיראות קטנה."
+
+ספא. פינוק. מוצרים. לוקיישן.
+כל אלה הם לא המטרה.
+הם ה"תירוץ" שהיא צריכה כדי לאמר "כן".
+
+אני בונה תירוצים טובים מספיק.
+
+בת שלך 10-17? היא מחכה שתציעי משהו שהיא לא תצטרך לסרב לו.
+כתבי לי.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי לי (DM)</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונת נערה ואמא בספא - אחורה, לא פנים. ידיים על שולחן עיסוי. חם, פרטי, לא מוצג לראווה.</div>
+      </div>
+    </div>
+
+    <!-- POST 13 -->
+    <div class="post-card">
+      <div class="post-card-header fb">
+        <div class="post-meta">
+          <span class="post-num">#13</span>
+          <span class="platform-badge fb">Facebook</span>
+          <span class="type-badge">שאלה לקהילה</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">מה הדבר שהכי רצית לעשות עם הבת שלך - ועדיין לא עשית?</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">מה הדבר שהכי רצית לעשות עם הבת שלך - ועדיין לא עשית?
+
+לא "טיול לחו"ל" הכללי.
+הדבר הספציפי. שעלה לך בראש לפני שניה.
+
+ספרי בתגובות. לא שופטת.
+
+כי מה שאני שמעת מ-57 אמהות: התשובה תמיד שם.
+היא יודעת מה רוצה. היא רק לא ממהרת.
+
+אני עדי. אני יוצרת 72 שעות שעושות בדיוק את הדבר הזה שכתבת.
+קראי את התגובות. ואם משהו מדליק אותך - כתבי לי בפרטי.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">ספרי בתגובות + DM</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה פשוטה - אמא מסתכלת הצידה, חשיבה. לא בכי, לא שמחה - ביניים. רגש אמיתי.</div>
+      </div>
+    </div>
+
+    <!-- POST 14 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#14</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">קרוסל - 6 שקפים</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק (שקף 1)</div>
+        <div class="hook-text">פרוטוקול האיפוס - מה קורה בפועל ב-72 השעות האלה</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שקף 1: פרוטוקול האיפוס - מה קורה בפועל ב-72 השעות האלה
+
+שקף 2: לפני הנסיעה - שאלון אבחון לשתיהן בנפרד + שיחת תיאום עם עדי + לו"ז מפורט + הסכמות מראש. כל ההפתעות הן מתוכננות.
+
+שקף 3: שעה 0: הצ'ק-אין. על המיטה - ערכת Glow לדרך. קרמים, headbands, דוגמיות. לא "מתנה סתמית" - WOW מחושב שהבת לא תצפה לו.
+
+שקף 4: שעה 1-24: אפס החלטות. עדי בחרה את הכל. האוכל, הטיפול, הזמן. האם לא מנהלת ולא מחליטה - היא רק נמצאת.
+
+שקף 5: שעה 24-48: קלפי No-Filter Connection. שאלות שיחשפו לכן אחת את השניה. לא "ספרי לי על בית הספר". שאלות שמגיעות לדברים שנאמרים פעם אחת בחיים.
+
+שקף 6: אחרי הנסיעה - קיט שגרה ביתי. שגרת טיפוח משותפת לאמא ולבת שמחזיקה את הקשר חי גם בבית. לא חופשה שנגמרת. מבנה שממשיך.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "פרוטוקול" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">כל שקף - אלמנט ויזואלי אחד: שאלון, ערכת מוצרים, קלפים, קיט שגרה. עיצוב נקי, ירוק-זהב.</div>
+      </div>
+    </div>
+
+    <!-- POST 15 -->
+    <div class="post-card">
+      <div class="post-card-header tt">
+        <div class="post-meta">
+          <span class="post-num">#15</span>
+          <span class="platform-badge tt">TikTok</span>
+          <span class="type-badge">Reel / 60 שניות</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">כמה שווה לך שקט נפשי? אני שואלת ברצינות.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">כמה שווה לך שקט נפשי? אני שואלת ברצינות.
+
+לא שלום לב. שקט נפשי אמיתי.
+לדעת שהרגע הזה קרה.
+שהיה לכן נסיעה. שיחה אמיתית. חיבור.
+לפני שהיא עוזבת.
+
+אמהות אומרות לי: "המחיר הוא הרבה."
+ואני שואלת: "כמה שילמת על הנסיעה האחרונה שלך לחו"ל?"
+
+ברוב המקרים - יותר.
+אבל ההבדל הוא שמנסיעה רגילה לא חוזרים עם משהו שמשנה.
+
+אצלי את לא מחפשת - את מקבלת.
+הכל בנוי. הכל מתואם. הכל מותאם לגיל הבת שלך.
+
+שיחה של 20 דקות. ללא עלות. ללא התחייבות.
+ואם לא מתאים - זה בסדר גמור.
+אבל לפחות תדעי מה את מחמיצה.
+
+לינק בביו.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">לינק בביו - שיחה של 20 דקות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי מדברת ישיר, נינוח, לא "מוכרת". ישיבה נוחה, אור טבעי. Overlay של נתוני מחיר vs. ערך.</div>
+      </div>
+    </div>
+
+    <!-- POST 16 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#16</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">תמונה + קפשן</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">בת מצווה עוד 3 חודשים. כולם קנו לה מתנה. רק אחת תישאר.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">בת מצווה עוד 3 חודשים.
+כולם קנו לה מתנה. רק אחת תישאר.
+
+לא הצמיד. לא הכסף. לא הנסיעה לאילת.
+
+מה שנשאר אחרי בת מצווה: הזיכרון הראשון שהיה שלכן לבד.
+לפני שהיא נכנסת לתיכון ומתחיל השלב שבו "חברות" יותר חשובות מ"אמא".
+
+72 שעות. יוון, קפריסין, או דובאי.
+מותאם לגיל הבת שלך, לאופי שלך, לגיל הקשר שלכן.
+
+"הדבר הכי טוב שיהיה לה ממך לפני שהיא נכנסת לתיכון."
+
+כתבי "בת מצווה" בתגובות ואשלח פרטים.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "בת מצווה" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונת נרות בת מצווה + ידיים קטנות + ידיים גדולות. רך, חם, לא ערב שמחה - רגע אינטימי.</div>
+      </div>
+    </div>
+
+    <!-- POST 17 -->
+    <div class="post-card">
+      <div class="post-card-header fb">
+        <div class="post-meta">
+          <span class="post-num">#17</span>
+          <span class="platform-badge fb">Facebook</span>
+          <span class="type-badge">עדות ארוכה</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">אמא אחת כתבה לי אחרי הנסיעה: "לא ידעתי שאני לא מכירה אותה."</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">אמא אחת כתבה לי אחרי הנסיעה:
+"לא ידעתי שאני לא מכירה אותה."
+
+היא לא כתבה את זה מהנסיעה. היא כתבה מהבית.
+שבועיים אחרי שחזרו.
+
+"ישבנו על קלפי ה-No-Filter ושאלה אותי שאלה שמעולם לא שאלה.
+ואני הסתכלתי בה וחשבתי: 14 שנה ועכשיו אני מכירה אותה."
+
+14 שנה. לא מכירה.
+
+לא כי היא לא אהבה. לא כי לא היו יחד.
+כי בבית תמיד יש משהו אחר. משהו דחוף. משהו לנהל.
+
+ב-72 שעות בלי לוגיסטיקה - לראשונה, לא היה כלום אחר.
+
+אני לא מוכרת נסיעה. אני מוכרת "כלום אחר".
+
+שלחי לי הודעה פרטית אם את מרגישה שגם אצלך תמיד יש "משהו אחר".</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">הודעה פרטית</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה שחור-לבן של ידיים מחזיקות קלפים. לא פנים. תחושת אינטימיות.</div>
+      </div>
+    </div>
+
+    <!-- POST 18 -->
+    <div class="post-card">
+      <div class="post-card-header tt">
+        <div class="post-meta">
+          <span class="post-num">#18</span>
+          <span class="platform-badge tt">TikTok</span>
+          <span class="type-badge">Trend Hook / 30 שניות</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">דברים שלא לגיד לבת שלך כשהיא מביאה קרם חדש הביתה (ומה כן)</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">דברים שלא לגיד לבת שלך כשהיא מביאה קרם חדש הביתה:
+
+לא: "את עוד ילדה, למה את צריכה את זה?"
+לא: "זה יקר מדי ומיותר"
+לא: "אין לך בעיות עור"
+
+כי מה שהיא שמעת: "הרגשות שלך לא חשובים לי."
+
+מה כן:
+"בואי נסתכל ביחד מה יש בו"
+"יש לך עור נהדר - בואי נשמר עליו נכון"
+
+Dr. Smita Awasthi מ-UC Davis: "אם נערה בת 12 צריכה טיפול רפואי, אני מקווה שתפנה לרופא - לא שתקנה בעצמה."
+
+הפתרון: להיות שם.
+ללמד לפני שהאינטרנט מלמד.
+אני יוצרת בדיוק את זה. 72 שעות.
+
+עוקבת? שמרי את הוידאו לאמא שלך.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">שמרי לאמא שלך</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי מדברת מהיר עם text overlay. X אדום על הלא, V ירוק על הכן. ויזואל חזק וברור.</div>
+      </div>
+    </div>
+
+    <!-- POST 19 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#19</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">קרוסל - 4 שקפים</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק (שקף 1)</div>
+        <div class="hook-text">Sweet 16 שלה עוד שבועיים. מה שתיתי לה יישאר 30 שנה.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שקף 1: Sweet 16 שלה עוד שבועיים. מה שתיתי לה יישאר 30 שנה.
+
+שקף 2: בגיל 16 הבת שלך מתחילה להחליט שהיא "כבר גדולה". שהיא לא צריכה עצות. שחברות זה הכל. זה נורמלי. אבל זה אומר שחלון ההזדמנויות נסגר.
+
+שקף 3: "לפני שהיא מחליטה שהיא כבר גדולה מדי לצאת איתך." - זו ההגדרה של Sweet 16 trip עם SKY BY ADI. 72 שעות שהיא תציין בתור "הדבר שאמא עשתה בשבילי".
+
+שקף 4: 5 מקומות. 72 שעות. הכל מתואם. שיחה של 20 דקות. כתבי "16" בתגובות.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "16" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">שקף 1: תמונת נרות 16 בעוגה אלגנטית. שקפים 2-3: טקסט על ירוק. שקף 4: CTA נקי עם זהב.</div>
+      </div>
+    </div>
+
+    <!-- POST 20 -->
+    <div class="post-card">
+      <div class="post-card-header li">
+        <div class="post-meta">
+          <span class="post-num">#20</span>
+          <span class="platform-badge li">LinkedIn</span>
+          <span class="type-badge">שיעור עסקי</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">מה הרמס לימדה אותי על בניית קטגוריה שאי אפשר לשכפל.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">מה הרמס לימדה אותי על בניית קטגוריה שאי אפשר לשכפל.
+
+הרמס לקחה "תפירה ידנית" - טכניקה של בית מלאכה -
+ועשתה ממנה אימפריה של 40 מיליארד דולר.
+לא המוצר. ה"שריטה" הייחודית שאי אפשר להעתיק.
+
+שלי: "תפר כפול" ש-SKY BY ADI בנויה עליו:
+1. דיוק משפטי של 20 שנה - חוזה, פרוטוקול, מדיניות. לא "חופשה". מוצר מובנה.
+2. אמא לשלוש בנות שבונה את הקשר עכשיו - לא "עברתי את זה", אלא: "אני בונה בכוונה".
+
+תוסיפי לזה: נישה שלא קיימת בישראל + ידע מקצועי על טיפוח נערות שאמהות לא מכירות.
+
+אי אפשר לשכפל אותי. לא מתחרה במחיר. לא "גם".
+
+מה ה"תפר הכפול" שלכם בעסק?</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">מה ה"תפר הכפול" שלכם? (שיח)</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונת יד עם חוט תפירה - ייחודי ומינימליסטי. לינקדאין: פשוט ועמוק.</div>
+      </div>
+    </div>
+
+    <!-- POST 21 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#21</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">Reel / 45 שניות</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">אני לא לכולן. ואני גאה בזה.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">אני לא לכולן. ואני גאה בזה.
+
+אם את מחפשת טיסה זולה ומלון - בוקינג.
+אם את רוצה "חבילת ספא שמחה" כללית - יש אינסוף כאלה.
+
+אני עובדת עם עד 8 משפחות בחודש.
+בוחרת עם מי אני עובדת.
+כי אני לא מוכרת מוצר - אני יוצרת חוויה מותאמת.
+
+מה אני מחפשת:
+אמא שמוכנה להיות פגיעה. שיודעת שמשהו נשחק.
+שלא מחפשת "להפתיע" את הבת - אלא ליצור משהו ביחד.
+
+שיחת סינון של 20 דקות.
+ללא עלות. ללא התחייבות.
+ואם לא מתאים - אגיד לך ישר.
+
+8 משפחות בחודש. לינק בביו.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">לינק בביו - שיחת סינון</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי ישירה למצלמה, ביטחון עצמי. לא מוכרת - מסננת. עוצמה שקטה.</div>
+      </div>
+    </div>
+
+    <!-- POST 22 -->
+    <div class="post-card">
+      <div class="post-card-header fb">
+        <div class="post-meta">
+          <span class="post-num">#22</span>
+          <span class="platform-badge fb">Facebook</span>
+          <span class="type-badge">מאמר / חינוך</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">הבעיה עם "חופשה רגילה" עם הבת: את מגיעה לחדר מלון ושתיהן שולפות טלפון.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">הבעיה עם "חופשה רגילה" עם הבת: את מגיעה לחדר מלון ושתיהן שולפות טלפון.
+
+כי לא השתנה כלום.
+עדיין אין לכן "מה לדבר".
+עדיין יש ריחוק.
+עדיין את "האמא" והיא "הבת" שצריכה לרצות אותך.
+
+מה שמשנה: כלים ספציפיים.
+
+קלפי No-Filter Connection - 40 שאלות שעוצבו כדי לעקוף את ה"מה נאמר עכשיו". לא "ספרי לי על בית הספר". שאלות שמגיעות למקומות שפעמים רבות לא מגיעים.
+
+ערכת Glow לדרך - WOW factor שהבת תצלם לסטורי. כי כשהיא מצלמת - היא מסמנת לכולם "אני בסטטוס טוב עם אמא שלי". וזה מרגיש טוב לה.
+
+קיט שגרה ביתית - שגרת טיפוח משותפת שממשיכה אחרי הנסיעה. כי חופשה שנגמרת בחדר הבית - זה עצוב.
+
+אני לא מוכרת יעד. אני מוכרת מנגנון.
+
+שלחי לי "מנגנון" בהודעה פרטית ואשלח מידע מלא.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">שלחי "מנגנון" בהודעה פרטית</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">שתי תמונות: לפני (שתיהן בטלפון בחדר מלון) ואחרי (שתיהן עם קלפים, צוחקות). ריאליסטי.</div>
+      </div>
+    </div>
+
+    <!-- POST 23 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#23</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">קרוסל - 5 שקפים</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק (שקף 1)</div>
+        <div class="hook-text">3 יעדים. כל אחד לסוג אחר של אמא ובת. איפה אתן?</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שקף 1: 3 יעדים. כל אחד לסוג אחר של אמא ובת.
+
+שקף 2: יוון (כרתים / אתונה) - למי שרוצה קסם ים-תיכוני. Grecotel Marine Palace - ספא על הים, ילדים מגיל 12, טיפולי פנים מותאמי גיל. Nana Princess - "Princess Glow" מגיל 5. טמפ' מושלמת, שפה קלה, נוחות ישראלית.
+
+שקף 3: קפריסין - למי שרוצה קרובה ולא מכירה. Azia Resort - "Little Girl's Morning" + Film Academy לנערות. מצוין לבת שאוהבת יצירה ואמא שאוהבת שקט.
+
+שקף 4: דובאי - ה-WOW factor. Palazzo Versace - "Junior Wellness" מגיל 6. Ritz-Carlton - "Skin Stabilizing Facial" מגיל 12. לבת שרוצה להיות ריל + לאמא שרוצה יוקרה.
+
+שקף 5: כתבי איזה יעד קרוב לך - ואני אבנה לך חבילה שמתאימה לגיל הבת שלך ולאופי שלכן.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי יעד + גיל בת בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">כל שקף יעד - תמונה אחת אמיתית של הריזורט. לא stock - official hotel photos. צבעי המותג בטקסט.</div>
+      </div>
+    </div>
+
+    <!-- POST 24 -->
+    <div class="post-card">
+      <div class="post-card-header tt">
+        <div class="post-meta">
+          <span class="post-num">#24</span>
+          <span class="platform-badge tt">TikTok</span>
+          <span class="type-badge">Reel / 30 שניות - לבנות</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">לבת שרוצה נסיעה מגניבה עם אמא אבל לא יודעת איך לבקש</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">לבת שרוצה נסיעה מגניבה עם אמא - אבל לא יודעת איך לבקש.
+
+שלחי לה את הוידאו הזה.
+
+אמא, הבת שלך רוצה נסיעה של שתיכן.
+היא פשוט לא תאמר את זה ישירות כי:
+א. היא לא רוצה להיראות ילדה קטנה
+ב. היא לא בטוחה שתסכימי
+ג. היא מפחדת שתגידי "בסדר" ואז זה יהיה משעמם
+
+אני עדי. ואני יוצרת 72 שעות שאפילו הבנות הכי ציניות אומרות אחריהן "זה היה הכי טוב".
+
+שמרי ושלחי לאמא. אולי היא תבין.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">שמרי ושלחי לאמא</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי מדברת ישיר, כאילו לבת - לא לאמא. טון שונה, נגיש, קצת משעשע. Sound טרנדי שבנות אוהבות.</div>
+      </div>
+    </div>
+
+    <!-- POST 25 -->
+    <div class="post-card">
+      <div class="post-card-header li">
+        <div class="post-meta">
+          <span class="post-num">#25</span>
+          <span class="platform-badge li">LinkedIn</span>
+          <span class="type-badge">שיעור מנהיגות</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">20 שנה עריכת דין לימדה אותי שחוזה טוב הוא לא מסמך - הוא תהליך.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">20 שנה עריכת דין לימדה אותי שחוזה טוב הוא לא מסמך - הוא תהליך.
+
+לקוחות שחתמו מבלי להבין - חזרו לבית משפט.
+לקוחות שעברנו על כל סעיף - כמעט אף פעם.
+
+לקחתי את זה ל-SKY BY ADI:
+
+כל לקוחה מקבלת:
+- שאלון אבחון לפני
+- שיחת תיאום לאחר
+- חוזה ברור עם מדיניות ביטולים
+- לו"ז שיחה - מה מצפים, מה לא
+- הסכמות מראש
+
+זה לא bureaucracy. זה מניעת אכזבה.
+
+התוצאה: 87% שביעות רצון. לא כי הנסיעה הייתה מושלמת. כי הציפיות היו מיושרות.
+
+מה "החוזה" שאתם חותמים עם לקוחות לפני שמתחילים?</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">מה החוזה שלכם? (שיח מקצועי)</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונת יד כותבת על נייר. מינימליסטי. לינקדאין אוהב סיפור + תובנה.</div>
+      </div>
+    </div>
+
+    <!-- POST 26 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#26</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">תמונה + קפשן</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">כמה פעמים אמרת לה "אין זמן" השבוע? אני לא שופטת. אני שואלת.</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">כמה פעמים אמרת לה "אין זמן" השבוע?
+אני לא שופטת. אני שואלת.
+
+כי כשאמהות באות אליי, הדבר הראשון שהן אומרות הוא:
+"אני עובדת שעות ומגיעה הביתה שחוקה. אין לי כוח."
+
+ואני אומרת להן: בדיוק בגלל זה.
+
+לא צריך לחדש את עצמך. לא צריך כוח לשיחות "עומק".
+צריך 72 שעות שבהן מישהי אחרת דאגה לכל הלוגיסטיקה.
+ואת פשוט... שם. נוכחת.
+
+"אם שמחה נותנת יותר לכולם."
+לא סלוגן - עובדה.
+
+כתבי "שחוקה" בתגובות אם זה מדבר אליך.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "שחוקה" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונת אמא שחוקה עם כוס קפה, עיניים עייפות - אמיתי ולא מגלומרי. אור חם, מצלמה נמוכה.</div>
+      </div>
+    </div>
+
+    <!-- POST 27 -->
+    <div class="post-card">
+      <div class="post-card-header fb">
+        <div class="post-meta">
+          <span class="post-num">#27</span>
+          <span class="platform-badge fb">Facebook</span>
+          <span class="type-badge">שאלה + עדות</span>
+        </div>
+        <span class="goal-badge trust">אמון</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">מתי הייתה הפעם האחרונה שישבת עם הבת שלך בלי שכולם ידעו מאיפה אתן ומה אתן עושות?</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">מתי הייתה הפעם האחרונה שישבת עם הבת שלך בלי שכולם ידעו מאיפה אתן ומה אתן עושות?
+
+לא "ביחד בבית". ביחד - ללא הבית.
+בלי השכנים, הבית הספר, המטבח שצריך ניקוי.
+בלי הרשימות.
+
+אחת מהלקוחות שלי כתבה:
+"אני לא זוכרת מתי ישבתי איתה באמת בלי טלפון."
+
+אני שאלתי: "מה הייתה עושה אם טלפון לא היה קיים?"
+היא שתקה דקה ואמרה: "כנראה הייתי מסתכלת עליה."
+
+זה.
+
+לפעמים הדבר שאנחנו הכי מחפשות - הוא פשוט הסכמה להסתכל.
+
+72 שעות. אני עושה את הכל. את רק מסתכלת.
+
+שלחי לי "להסתכל" בפרטי.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">שלחי "להסתכל" בפרטי</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">תמונה של אמא ובת - האמא מסתכלת על הבת, הבת לא יודעת שהיא מסתכלת. רגע גנוב. אמיתי.</div>
+      </div>
+    </div>
+
+    <!-- POST 28 -->
+    <div class="post-card">
+      <div class="post-card-header tt">
+        <div class="post-meta">
+          <span class="post-num">#28</span>
+          <span class="platform-badge tt">TikTok</span>
+          <span class="type-badge">Check-in Reveal / 45 שניות</span>
+        </div>
+        <span class="goal-badge awareness">מודעות</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">מה הבת שלך רואה כשהן נכנסות לחדר המלון (reveal)</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">מה הבת שלך רואה כשהיא נכנסת לחדר.
+
+[צילום של המיטה, הערכה, הקלפים]
+
+לא פרחים. לא בלונים.
+ערכת Glow לדרך - מוצרים, headbands, דוגמיות.
+קלפי No-Filter Connection - 40 שאלות על השולחן.
+פתק ממני - "ברוכות הבאות. הכל מוכן. עכשיו - רק להיות."
+
+בת 13 שראתה את זה אמרה: "אמא, תצלמי."
+
+אם הבת שלך תצלם - היא מאושרת.
+אם הבת שלך מאושרת - את מנצחת.
+
+לינק בביו.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">לינק בביו</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">וידאו reveal אמיתי - כניסה לחדר, פנינג על המיטה עם הערכה. Aesthetic, לא commercial. כמו סטורי טיקטוק רגיל.</div>
+      </div>
+    </div>
+
+    <!-- POST 29 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#29</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">קרוסל - 4 שקפים</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק (שקף 1)</div>
+        <div class="hook-text">הבת שלך עוזבת לצבא בעוד שנה. מה הזיכרון שיישאר?</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">שקף 1: הבת שלך עוזבת לצבא בעוד שנה. מה הזיכרון שיישאר?
+
+שקף 2: כשהיא תהיה בבסיס, עייפה, מתגעגעת - מה היא תצלצל אליך להגיד? "תזכרי שעשינו..." מה?
+
+שקף 3: Collegemoon - הטרנד שפרץ בארה"ב. טיול של אמא+ילד/ה לפני הקולג', כ"פרידה רכה" לפני שהחיים שלה מתחילים. המקביל הישראלי: לפני הגיוס. לפני הריחוק האמיתי.
+
+שקף 4: 72 שעות. לפני שהיא עוזבת. כתבי "גיוס" ואשלח פרטים מלאים.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "גיוס" בתגובות</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">שקף 1: תמונת מזוודה + יד קטנה + יד גדולה. שקף 3: מפת ישראל/יעדים. Emotional, לא military.</div>
+      </div>
+    </div>
+
+    <!-- POST 30 -->
+    <div class="post-card">
+      <div class="post-card-header ig">
+        <div class="post-meta">
+          <span class="post-num">#30</span>
+          <span class="platform-badge ig">Instagram</span>
+          <span class="type-badge">Reel / 60 שניות - סיכום</span>
+        </div>
+        <span class="goal-badge conversion">המרה</span>
+      </div>
+      <div class="post-card-body">
+        <div class="post-section-label">הוק</div>
+        <div class="hook-text">57 משפחות. 87%. 72 שעות. מה זה אומר עליך?</div>
+        <div class="post-section-label">קופי מלא</div>
+        <div class="copy-text">57 משפחות. 87% שביעות רצון. 72 שעות.
+
+מה המספרים האלה אומרים עליך?
+
+שאם 87 מתוך 100 אמהות יצאו עם משהו שהשתנה -
+הסיכוי שזה יעבוד גם אצלך גבוה מאוד.
+
+אני לא מבטיחה נס.
+אני מבטיחה מבנה. פרוטוקול. 20 שנה של דיוק.
+ואת שם.
+
+אין לי מתחרים בישראל.
+אין עוד מי שבנה מה שאני בניתי - לנישה הזו, לגיל הזה, בשפה הזו.
+
+8 משפחות בחודש.
+שיחת סינון של 20 דקות ללא עלות.
+ואם לא מתאים - אגיד לך את זה ישר.
+
+לינק בביו. או כתבי לי "57" בתגובות.</div>
+        <div class="post-section-label">CTA</div>
+        <div class="cta-text">כתבי "57" בתגובות / לינק בביו</div>
+        <div class="post-section-label">כיוון ויזואלי</div>
+        <div class="visual-text">עדי ישירה, מהירה, ביטחון מלא. Numbers appear as text overlays. מסתיים ב-logo SKY BY ADI ועם CTA ברור.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 3: REEL SCRIPTS -->
+<div id="section3" class="section-divider"></div>
+<div style="margin-top: 32px;">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <div>
+      <h2>סקריפטים לרילס - 3 רילס מוכנים</h2>
+      <p>כל סקריפט: טמפלייט זמן + ויזואל + טקסט לדיבור. 30-60 שניות כל אחד.</p>
+    </div>
+  </div>
+  <div class="section-body">
+
+    <!-- REEL 1 -->
+    <div class="reel-card">
+      <div class="reel-header">
+        <div class="reel-num">1</div>
+        <div>
+          <h3>הדבר שאמהות לא רואות</h3>
+          <p>אינסטגרם + TikTok | 50 שניות | מטרה: מודעות + הזדהות</p>
+        </div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-scene-header">
+          <span>זמן</span>
+          <span>ויזואל</span>
+          <span>טקסט / דיבור</span>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:00 - 0:03</div>
+          <div class="visual">עדי ישירה למצלמה, ביתית</div>
+          <div class="text"><strong>HOOK:</strong> "הדבר שאמהות לא רואות - ורק הבנות יודעות."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:03 - 0:10</div>
+          <div class="visual">Text overlay: "כשהיא נכנסת לחדר ושותקת..."</div>
+          <div class="text">"כשהיא נכנסת לחדר ושותקת - זה לא כעס. זה ניסיון להגן על עצמה."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:10 - 0:20</div>
+          <div class="visual">עדי, מהיר, נמרץ</div>
+          <div class="text">"בנות 10-17 לא מתרחקות כי לא אוהבות אתכן. הן מתרחקות כי הן לא רוצות שתראו אותן עוד ילדות קטנות. ואתן, בלי לדעת, מחזקות את הריחוק כי אתן עדיין ב'מצב אמא'."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:20 - 0:30</div>
+          <div class="visual">B-roll: בת עם טלפון, אמא בצד</div>
+          <div class="text">"מבנה הכוח בבית לא נעלם - הוא מוטמע. גם כשאת לא מתכוונת, הוא שם. היא יודעת מי 'האמא' ומי 'צריכה להקשיב'. ואז היא מפסיקה לנסות."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:30 - 0:40</div>
+          <div class="visual">עדי, קרוב, אמיתי</div>
+          <div class="text">"72 שעות במקום שאף אחת מכן לא הייתה בו - מאפסות את מבנה הכוח. שם, אתן שתיים עם מפה. לא אמא ובת. שתי נשים שמגלות ביחד."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:40 - 0:50</div>
+          <div class="visual">Text overlay + logo</div>
+          <div class="text">"אני עדי. יצרתי את זה ל-57 משפחות. 87% אמרו שהקשר השתנה. שיחת היכרות ב-20 דקות - ללא עלות. לינק בביו."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REEL 2 -->
+    <div class="reel-card">
+      <div class="reel-header">
+        <div class="reel-num">2</div>
+        <div>
+          <h3>72 שעות שינו הכל</h3>
+          <p>אינסטגרם + Facebook | 60 שניות | מטרה: אמון + המרה</p>
+        </div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-scene-header">
+          <span>זמן</span>
+          <span>ויזואל</span>
+          <span>טקסט / דיבור</span>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:00 - 0:04</div>
+          <div class="visual">Text שחור: "72 שעות שינו הכל"</div>
+          <div class="text"><strong>HOOK:</strong> "72 שעות שינו הכל. ואני הולכת לספר לך בדיוק איך."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:04 - 0:15</div>
+          <div class="visual">עדי מדברת, נינוחה</div>
+          <div class="text">"Sandrine הגיעה אליי לפני כמה שנים. היא ובתה. הן רבו על הכל. כל שיחה נגמרה בוויכוח. 'אני מרגישה שאני מאבדת אותה', היא אמרה לי."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:15 - 0:28</div>
+          <div class="visual">B-roll: ספא, ידיים, קרמים</div>
+          <div class="text">"הלכנו על יוון. 72 שעות. ערכת הקלפים. הספא. אפס החלטות - Sandrine לא ניהלה שום דבר. היא רק הייתה שם. והבת ראתה אמא שמתפנקת. לא אמא שמנהלת."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:28 - 0:40</div>
+          <div class="visual">ציטוט Sandrine על מסך</div>
+          <div class="text">"שש שנים אחרי, Sandrine כתבה לי: 'כשאנחנו מאבדות את עצמנו, אנחנו יושבות ומדברות. אני מקשיבה לה בלי שיפוטיות.' שש שנים. זה נשאר."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:40 - 0:50</div>
+          <div class="visual">עדי, ישיר</div>
+          <div class="text">"אני לא מוכרת חופשה. אני מוכרת 72 שעות שיהיו שם כשתצטרכי אותן - שנים אחרי."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:50 - 1:00</div>
+          <div class="visual">Logo + CTA overlay</div>
+          <div class="text">"8 משפחות בחודש. שיחה ללא עלות. לינק בביו, או כתבי 'סנדרין' בתגובות."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REEL 3 -->
+    <div class="reel-card">
+      <div class="reel-header">
+        <div class="reel-num">3</div>
+        <div>
+          <h3>למה הבת שלך מסתגרת</h3>
+          <p>TikTok + Instagram | 45 שניות | מטרה: מודעות + שיתוף</p>
+        </div>
+      </div>
+      <div class="reel-body">
+        <div class="reel-scene-header">
+          <span>זמן</span>
+          <span>ויזואל</span>
+          <span>טקסט / דיבור</span>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:00 - 0:03</div>
+          <div class="visual">Text: "למה הבת שלך מסתגרת"</div>
+          <div class="text"><strong>HOOK:</strong> "למה הבת שלך מסתגרת - ולמה זה לא אשמתך."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:03 - 0:12</div>
+          <div class="visual">עדי, מהיר, list-style</div>
+          <div class="text">"3 סיבות שהיא מסתגרת: אחת - היא רוצה שתראי אותה כגדולה, לא כילדה. שתיים - כל שיחה בבית מרגישה כמו מבחן. שלוש - היא מפחדת שתאכזבי אותך."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:12 - 0:22</div>
+          <div class="visual">B-roll: דלת נסגרת, טלפון</div>
+          <div class="text">"זה לא מרד. זה הגנה עצמית. כשאת ניסית לשוחח - היא קיבלה את זה כביקורת. לא כי היא רעה. כי בבית, כל שיחה קורית בתוך מבנה שמכין אותה לכשל."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:22 - 0:32</div>
+          <div class="visual">עדי, אמפטית</div>
+          <div class="text">"72 שעות שבהן אתן יוצאות מהמבנה הזה - אף אחת לא 'האמא', אף אחת לא 'הבת שצריכה להיות מסודרת'. רק שתי נשים שמתכוונות אחת לשניה."</div>
+        </div>
+        <div class="reel-scene">
+          <div class="time">0:32 - 0:45</div>
+          <div class="visual">CTA + שמרי/שתפי</div>
+          <div class="text">"שמרי את הוידאו הזה. שלחי אותו לאמא שצריכה לשמוע את זה. אני עדי - ויוצרת 72 שעות שמאפסות את הכל. לינק בביו."</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- SECTION 4: BIO OPTIONS -->
+<div id="section4" class="section-divider"></div>
+<div style="margin-top: 32px;">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <div>
+      <h2>אופציות לביו אינסטגרם</h2>
+      <p>5 גרסאות, עד 150 תווים כל אחת. עונות: מי, מה, למה צריך.</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="bio-cards">
+      <div class="bio-card">
+        <div class="bio-num">1</div>
+        <div class="bio-text">עדי אהרוני | עו"ד לשעבר, אמא לשלוש
+72 שעות שמאפסות את הקשר בין אמא לבת
+יוון - קפריסין - דובאי
+57 משפחות. 87% שביעות רצון
+שיחת היכרות חינם - לינק בביו</div>
+        <div class="bio-char">תווים: <span>142</span> / 150</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-num">2</div>
+        <div class="bio-text">SKY BY ADI - DREAM IT. VISIT IT.
+72 שעות. אמא + בת. בלי החלטות.
+הבת שלך 10-17? חלון ההזדמנויות נסגר.
+8 משפחות בחודש. שיחה ללא עלות.</div>
+        <div class="bio-char">תווים: <span>128</span> / 150</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-num">3</div>
+        <div class="bio-text">לאמא שיודעת שמשהו נשחק
+72 שעות שמאפסות את מבנה הכוח
+עו"ד 20 שנה - עכשיו יוצרת קטגוריה
+יוון / קפריסין / דובאי
+לינק - שיחה ללא עלות</div>
+        <div class="bio-char">תווים: <span>130</span> / 150</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-num">4</div>
+        <div class="bio-text">הבת שלך כבר קונה קרמים.
+את יודעת מה מותר לגיל שלה?
+72 שעות | ספא + למידה + חיבור
+עדי אהרוני | 57 משפחות</div>
+        <div class="bio-char">תווים: <span>110</span> / 150 (קצר, לביו+שם+לינק)</div>
+      </div>
+      <div class="bio-card">
+        <div class="bio-num">5</div>
+        <div class="bio-text">אמא לשלוש בנות. עו"ד לשעבר.
+יצרתי מה שלא קיים בישראל:
+72 שעות אמא-בת שמשנות הכל.
+לא חופשה. פרוטוקול.</div>
+        <div class="bio-char">תווים: <span>115</span> / 150 (מומלץ + תיאור + קישור)</div>
+      </div>
+    </div>
+    <div style="margin-top:20px; padding:16px; background:var(--cream); border-radius:8px; border:1px solid var(--border);">
+      <strong style="color:var(--green);">המלצה:</strong> ביו מספר 1 הוא הכי מלא. ביו מספר 5 הוא הכי ממוקד בסיפור. A/B לפי מה מביא יותר DMs.
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: HIGHLIGHTS -->
+<div id="section5" class="section-divider"></div>
+<div style="margin-top: 32px; margin-bottom: 60px;">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <div>
+      <h2>מבנה הייליטס אינסטגרם</h2>
+      <p>6 הייליטס, כל אחד עם שם, תוכן, סדר סטוריז</p>
+    </div>
+  </div>
+  <div class="section-body">
+    <div class="highlight-grid">
+
+      <div class="highlight-card">
+        <div class="highlight-card-header">
+          <span class="emoji">✨</span>
+          <h4>מי אני</h4>
+          <p>SKY BY ADI - הסיפור</p>
+        </div>
+        <div class="highlight-card-body">
+          <div class="story-item"><div class="story-num">1</div><div>עדי מציגה את עצמה - 20 שנה עו"ד</div></div>
+          <div class="story-item"><div class="story-num">2</div><div>למה עזבתי את עריכת הדין</div></div>
+          <div class="story-item"><div class="story-num">3</div><div>מה SKY BY ADI ועל מי זה</div></div>
+          <div class="story-item"><div class="story-num">4</div><div>הנתונים: 57 משפחות, 87%</div></div>
+          <div class="story-item"><div class="story-num">5</div><div>"אני לא לכולן" - הסלקציה</div></div>
+          <div class="story-item"><div class="story-num">6</div><div>CTA: שיחת היכרות</div></div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-header">
+          <span class="emoji">🔄</span>
+          <h4>פרוטוקול</h4>
+          <p>איך זה עובד בפועל</p>
+        </div>
+        <div class="highlight-card-body">
+          <div class="story-item"><div class="story-num">1</div><div>שלב 1: שיחת סינון</div></div>
+          <div class="story-item"><div class="story-num">2</div><div>שלב 2: שאלון אבחון</div></div>
+          <div class="story-item"><div class="story-num">3</div><div>שלב 3: בניית חבילה מותאמת</div></div>
+          <div class="story-item"><div class="story-num">4</div><div>הצ'ק-אין: הערכות, הקלפים</div></div>
+          <div class="story-item"><div class="story-num">5</div><div>72 שעות - לו"ז לדוגמה</div></div>
+          <div class="story-item"><div class="story-num">6</div><div>אחרי: קיט שגרה ביתי</div></div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-header">
+          <span class="emoji">💬</span>
+          <h4>אמרו עלינו</h4>
+          <p>עדויות ותוצאות</p>
+        </div>
+        <div class="highlight-card-body">
+          <div class="story-item"><div class="story-num">1</div><div>Sandrine 6 שנים אחרי</div></div>
+          <div class="story-item"><div class="story-num">2</div><div>Anja הבת - "השבוע הכי טוב"</div></div>
+          <div class="story-item"><div class="story-num">3</div><div>ציטוט: "לא ידעתי שאני לא מכירה אותה"</div></div>
+          <div class="story-item"><div class="story-num">4</div><div>עדות מסך: הודעות אמיתיות</div></div>
+          <div class="story-item"><div class="story-num">5</div><div>87% - מה השאלה הייתה</div></div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-header">
+          <span class="emoji">🌍</span>
+          <h4>יעדים</h4>
+          <p>יוון, קפריסין, דובאי</p>
+        </div>
+        <div class="highlight-card-body">
+          <div class="story-item"><div class="story-num">1</div><div>יוון - Grecotel Marine Palace</div></div>
+          <div class="story-item"><div class="story-num">2</div><div>יוון - Four Seasons Astir אתונה</div></div>
+          <div class="story-item"><div class="story-num">3</div><div>יוון - Nana Princess (Princess Glow)</div></div>
+          <div class="story-item"><div class="story-num">4</div><div>קפריסין - Azia Resort</div></div>
+          <div class="story-item"><div class="story-num">5</div><div>דובאי - Palazzo Versace + Ritz</div></div>
+          <div class="story-item"><div class="story-num">6</div><div>עתיד: קוריאה K-beauty</div></div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-header">
+          <span class="emoji">🧴</span>
+          <h4>עור לגיל</h4>
+          <p>ידע מקצועי לאמהות</p>
+        </div>
+        <div class="highlight-card-body">
+          <div class="story-item"><div class="story-num">1</div><div>גיל 10-13: מה מותר, מה אסור</div></div>
+          <div class="story-item"><div class="story-num">2</div><div>גיל 14-16: עדכון ההמלצות</div></div>
+          <div class="story-item"><div class="story-num">3</div><div>גיל 17-18: מה אפשר להתחיל</div></div>
+          <div class="story-item"><div class="story-num">4</div><div>Sephora kids - הסיכון האמיתי</div></div>
+          <div class="story-item"><div class="story-num">5</div><div>ציטוט Dr. Torres-Zegarra</div></div>
+          <div class="story-item"><div class="story-num">6</div><div>מה תמיד מותר (hyaluronic, SPF)</div></div>
+        </div>
+      </div>
+
+      <div class="highlight-card">
+        <div class="highlight-card-header">
+          <span class="emoji">🎁</span>
+          <h4>הערכות</h4>
+          <p>מה מחכה בחדר</p>
+        </div>
+        <div class="highlight-card-body">
+          <div class="story-item"><div class="story-num">1</div><div>Reveal: ערכת Glow לדרך</div></div>
+          <div class="story-item"><div class="story-num">2</div><div>מה בתוך הערכה (פירוט)</div></div>
+          <div class="story-item"><div class="story-num">3</div><div>קלפי No-Filter Connection</div></div>
+          <div class="story-item"><div class="story-num">4</div><div>שאלות לדוגמה מהקלפים</div></div>
+          <div class="story-item"><div class="story-num">5</div><div>קיט שגרה ביתי - מה כלול</div></div>
+          <div class="story-item"><div class="story-num">6</div><div>CTA: להזמין מקום</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</div><!-- container -->
+
+<div style="background:var(--green); color:white; text-align:center; padding:32px 20px; margin-top:0;">
+  <p style="font-size:1rem; opacity:0.9;">SKY BY ADI AHARONI - DREAM IT. VISIT IT.</p>
+  <p style="font-size:0.85rem; opacity:0.7; margin-top:8px;">מסמך עבודה | לבדיקה ואישור עדי אהרוני | coheadi@gmail.com</p>
+</div>
+
+<script>
+/* ===== BRAIN DECK · EDIT MODE v2 (additive, self-contained) =====
+   v2 adds: clipboard image paste (Cmd+V) + file drag-drop, internal element
+   copy/paste (Cmd+C/Cmd+V), brand color swatches (whole element OR selected
+   word while editing), center snap-guides while dragging, arrow-key nudge,
+   z-order, center buttons, redo, autosave to localStorage with restore bar,
+   blur intensity/opaque controls, proportional image resize, Cmd+S save. */
+(function(){
+  if(window.__brainEdInit) return; window.__brainEdInit=true;
+  var deck=document.getElementById('deck');
+  if(!deck) return;
+  var edOn=false, selected=null, undoStack=[], redoStack=[], editState=null;
+  var clipInternal=null, pasteCount=0, zTop=60, lastNudge={el:null,t:0};
+  var touched={}, persistTimer=null, persistWarned=false;
+  var LS_KEY='brainEd:'+(location.pathname.split('/').pop()||'deck');
+  var MARKER='__brain-ed-copy__';
+
+  var ADDED='.ed-img,.ed-blur,.ed-shape,.ed-textbox,.ed-clone';
+  /* DENY = full-bleed backgrounds, slide-filling wrappers, deck chrome, editor UI */
+  var DENY='#deck,.slide,.bg-img,.foot,.pg,#nav,.nav-btn,#slide-counter,#btn-fs,#progress-bar,#ed-toolbar,#ed-fab,#ed-hint,#ed-toast,#ed-ctx,#ed-restore,#ed-guide-v,#ed-guide-h,.wrap,.div-wrap,.show-wrap,.bs-wrap,.applayer,.hero-image-content,.hero-image-vignette,.lay-side,.lay-wrap,.tower,.tower-inner,.hero-image,.hero-ring,.hero-ring2,.loop-wrap,.loop-content';
+  /* TEXTY = elements that may be inline-edited on double-click */
+  var TEXTY='h1,h2,h3,h4,h5,h6,p,li,span,.div-word,.s-title,.eyebrow,.bp-text,.bs-context,.hero-title,.hero-sub,.div-sub,.div-eyebrow,.ed-textbox,.vl-name,.vl-val,.lay-tx,.pl-tx,.card,.chip,.engine,.step-name,.price-num,.vt-num,.hbar-lbl,.hbar-val,.vs-name,.vs-item,.bs-number,.bs-label';
+
+  function scale(){ var r=deck.getBoundingClientRect(); return (r.width/1920)||1; }
+  function activeSlide(){ return document.querySelector('.slide.active')||document.querySelector('.slide'); }
+  function slideIndex(s){ return [].slice.call(document.querySelectorAll('.slide')).indexOf(s); }
+  function matches(el,sel){ return el && el.matches && el.matches(sel); }
+  function deckXY(cx,cy){ var d=deck.getBoundingClientRect(), s=scale(); return {x:(cx-d.left)/s, y:(cy-d.top)/s}; }
+
+  /* Permissive: deepest element under the cursor that is NOT a denied wrapper.
+     Clicking inside an ADDED element (image/clone/...) grabs the whole unit. */
+  function eligible(el){
+    if(el && el.closest){ var ad=el.closest(ADDED); if(ad) return ad; }
+    var cur=el;
+    while(cur && cur!==deck){
+      if(matches(cur,ADDED)) return cur;
+      if(cur.classList && cur.classList.contains('slide')) return null;
+      if(matches(cur,DENY)){ cur=cur.parentElement; continue; }
+      if(cur.closest && cur.closest('.slide')) return cur;
+      cur=cur.parentElement;
+    }
+    return null;
+  }
+  /* For double-click text editing: deepest texty element (also inside clones) */
+  function eligibleText(el){
+    var cur=el;
+    while(cur && cur!==deck){
+      if(matches(cur,'.ed-textbox')) return cur;
+      if(cur.classList && cur.classList.contains('slide')) return null;
+      if(!matches(cur,DENY) && matches(cur,TEXTY) && cur.closest && cur.closest('.slide')) return cur;
+      cur=cur.parentElement;
+    }
+    return null;
+  }
+  function selectParent(){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    var p=selected.parentElement;
+    while(p && p!==deck){
+      if(p.classList && p.classList.contains('slide')) break;
+      if(!matches(p,DENY) && p.closest('.slide')){ select(p); toast('נבחרה המסגרת'); return; }
+      p=p.parentElement;
+    }
+    toast('אין מסגרת אב');
+  }
+
+  /* ---------- undo / redo (per-slide innerHTML snapshots) ---------- */
+  function snap(){
+    var s=activeSlide(); if(!s) return;
+    var idx=slideIndex(s);
+    undoStack.push({slide:s, idx:idx, html:s.innerHTML});
+    if(undoStack.length>80) undoStack.shift();
+    redoStack.length=0;
+    touched[idx]=1; schedulePersist();
+    toast('');
+  }
+  function undo(){
+    var last=undoStack.pop(); if(!last){ toast('אין מה לבטל'); return; }
+    deselect();
+    if(last.slide!==activeSlide() && last.idx>=0 && typeof show==='function'){ show(last.idx); }
+    redoStack.push({slide:last.slide, idx:last.idx, html:last.slide.innerHTML});
+    last.slide.innerHTML=last.html;
+    touched[last.idx]=1; schedulePersist();
+    toast('בוטל');
+  }
+  function redo(){
+    var nx=redoStack.pop(); if(!nx){ toast('אין מה להחזיר'); return; }
+    deselect();
+    if(nx.slide!==activeSlide() && nx.idx>=0 && typeof show==='function'){ show(nx.idx); }
+    undoStack.push({slide:nx.slide, idx:nx.idx, html:nx.slide.innerHTML});
+    nx.slide.innerHTML=nx.html;
+    touched[nx.idx]=1; schedulePersist();
+    toast('הוחזר');
+  }
+
+  /* ---------- autosave (localStorage, debounced, normalized compare) ---------- */
+  function cleanSlideHTML(slide){
+    var c=slide.cloneNode(true), i, n;
+    n=c.querySelectorAll('.ed-runtime,.ed-handle,.ed-del'); for(i=0;i<n.length;i++) n[i].remove();
+    n=c.querySelectorAll('.ed-hover,.ed-selected'); for(i=0;i<n.length;i++){ n[i].classList.remove('ed-hover'); n[i].classList.remove('ed-selected'); }
+    n=c.querySelectorAll('[contenteditable]'); for(i=0;i<n.length;i++) n[i].removeAttribute('contenteditable');
+    n=c.querySelectorAll('.on'); for(i=0;i<n.length;i++) n[i].classList.remove('on');
+    n=c.querySelectorAll('.anim'); for(i=0;i<n.length;i++) n[i].style.animationDelay='';
+    n=c.querySelectorAll('[data-w]'); for(i=0;i<n.length;i++) n[i].style.width='';
+    var fmt; try{ fmt=new Intl.NumberFormat('he-IL'); }catch(e){ fmt=null; }
+    n=c.querySelectorAll('[data-count]');
+    for(i=0;i<n.length;i++){ var v=parseInt(n[i].getAttribute('data-count'),10); if(isNaN(v)) continue;
+      var out=n[i].querySelector('.cval')||n[i]; out.textContent= fmt?fmt.format(v):(''+v); }
+    n=c.querySelectorAll('[style=""]'); for(i=0;i<n.length;i++) n[i].removeAttribute('style');
+    return c.innerHTML;
+  }
+  function persist(){
+    try{
+      var data; try{ data=JSON.parse(localStorage.getItem(LS_KEY)||'{}'); }catch(e){ data={}; }
+      data.ts=Date.now(); data.slides=data.slides||{};
+      var list=document.querySelectorAll('.slide');
+      for(var k in touched){ if(list[k]) data.slides[k]=cleanSlideHTML(list[k]); }
+      localStorage.setItem(LS_KEY,JSON.stringify(data));
+    }catch(err){
+      if(!persistWarned){ persistWarned=true; toast('גיבוי אוטומטי נכשל - הקובץ גדול, שמור ידנית'); }
+    }
+  }
+  function schedulePersist(){ clearTimeout(persistTimer); persistTimer=setTimeout(persist,800); }
+  function checkRestore(){
+    var data; try{ data=JSON.parse(localStorage.getItem(LS_KEY)||'null'); }catch(e){ return; }
+    if(!data || !data.slides) return;
+    var list=document.querySelectorAll('.slide'), diff=[];
+    for(var k in data.slides){ var i=+k; if(list[i] && cleanSlideHTML(list[i])!==data.slides[k]) diff.push(i); }
+    if(!diff.length) return;
+    var bar=document.createElement('div'); bar.id='ed-restore';
+    var when=new Date(data.ts||Date.now());
+    var hh=('0'+when.getHours()).slice(-2)+':'+('0'+when.getMinutes()).slice(-2);
+    var lbl=document.createElement('span'); lbl.textContent='🕘 נמצאו שינויים לא שמורים ('+hh+') - '+diff.length+' שקפים';
+    var b1=document.createElement('button'); b1.className='ed-btn primary'; b1.textContent='שחזר';
+    var b2=document.createElement('button'); b2.className='ed-btn'; b2.textContent='התעלם ומחק';
+    b1.onclick=function(){
+      for(var j=0;j<diff.length;j++){ list[diff[j]].innerHTML=data.slides[diff[j]]; touched[diff[j]]=1; }
+      var cur=slideIndex(activeSlide());
+      if(typeof activate==='function' && cur>=0) activate(cur);
+      bar.remove(); toast('שוחזר ✓');
+    };
+    b2.onclick=function(){ try{ localStorage.removeItem(LS_KEY); }catch(e){} bar.remove(); };
+    bar.appendChild(lbl); bar.appendChild(b1); bar.appendChild(b2);
+    document.body.appendChild(bar);
+  }
+
+  /* ---------- selection + handles ---------- */
+  function deselect(){
+    if(selected){
+      selected.classList.remove('ed-selected');
+      if(selected.__edRel && !selected.style.zIndex){ selected.style.position=''; selected.__edRel=false; }
+    }
+    var rt=document.querySelectorAll('.ed-runtime'); for(var i=0;i<rt.length;i++) rt[i].remove();
+    selected=null; refreshTb();
+  }
+  function select(el){
+    deselect();
+    selected=el; el.classList.add('ed-selected');
+    if(!matches(el,ADDED) && getComputedStyle(el).position==='static'){ el.style.position='relative'; el.__edRel=true; }
+    var del=document.createElement('div'); del.className='ed-del ed-runtime'; del.textContent='×';
+    del.addEventListener('mousedown',function(e){ e.stopPropagation(); e.preventDefault(); });
+    del.addEventListener('click',function(e){ e.stopPropagation(); snap(); var t=selected; deselect(); if(t) t.remove(); schedulePersist(); });
+    el.appendChild(del);
+    if(matches(el,ADDED)){
+      var h=document.createElement('div'); h.className='ed-handle br ed-runtime';
+      h.addEventListener('mousedown',function(e){ startResize(e,el); });
+      el.appendChild(h);
+    }
+    refreshTb();
+  }
+
+  /* ---------- generic move helper (nudge/center share it) ---------- */
+  function moveBy(el,dx,dy){
+    if(matches(el,ADDED)){
+      el.style.left=((parseFloat(el.style.left)||el.offsetLeft)+dx)+'px';
+      el.style.top=((parseFloat(el.style.top)||el.offsetTop)+dy)+'px';
+    }else{
+      el.style.animation='none';
+      var m=(el.style.transform||'').match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+      var tx=m?parseFloat(m[1]):0, ty=m?parseFloat(m[2]):0;
+      var base=(el.style.transform||'').replace(/translate\([^)]*\)/,'').trim();
+      el.style.transform=(base+' translate('+(tx+dx)+'px,'+(ty+dy)+'px)').trim();
+    }
+  }
+
+  /* ---------- drag move with center snap-guides ---------- */
+  var drag=null, gV=null, gH=null;
+  function hideGuides(){ if(gV) gV.style.display='none'; if(gH) gH.style.display='none'; }
+  function onDown(e){
+    if(!edOn) return;
+    if(e.target.closest && e.target.closest('#ed-toolbar,#ed-fab,#ed-hint,#ed-toast,#ed-restore')) return;
+    if(e.target.classList && (e.target.classList.contains('ed-handle')||e.target.classList.contains('ed-del'))) return;
+    var el;
+    if(selected && selected.contains(e.target)){
+      /* clicking within the current selection drags THAT element (e.g. a group
+         you escalated to with "⤴ מסגרת"), instead of re-grabbing a child */
+      el=selected;
+    } else {
+      el=eligible(e.target);
+      if(!el){ deselect(); return; }
+      if(el.isContentEditable) return;
+      select(el);
+    }
+    var s=scale(), d=deck.getBoundingClientRect();
+    drag={el:el,x:e.clientX,y:e.clientY,moved:false,added:matches(el,ADDED),s:s};
+    var r0=el.getBoundingClientRect();
+    if(drag.added){
+      drag.l=parseFloat(el.style.left)||el.offsetLeft; drag.t=parseFloat(el.style.top)||el.offsetTop;
+      drag.w2=el.offsetWidth/2; drag.h2=el.offsetHeight/2;
+    }else{
+      var m=(el.style.transform||'').match(/translate\(([-\d.]+)px,\s*([-\d.]+)px\)/);
+      drag.tx=m?parseFloat(m[1]):0; drag.ty=m?parseFloat(m[2]):0;
+      drag.base=(el.style.transform||'').replace(/translate\([^)]*\)/,'').trim();
+      /* element center in deck coords EXCLUDING current translate (for snapping) */
+      drag.cx0=((r0.left-d.left)+r0.width/2)/s - drag.tx;
+      drag.cy0=((r0.top-d.top)+r0.height/2)/s - drag.ty;
+    }
+    e.preventDefault();
+    window.addEventListener('mousemove',onMove);
+    window.addEventListener('mouseup',onUp);
+  }
+  function onMove(e){
+    if(!drag) return;
+    var dx=(e.clientX-drag.x)/drag.s, dy=(e.clientY-drag.y)/drag.s;
+    if(!drag.moved){ if((Math.abs(dx)+Math.abs(dy))>2){ drag.moved=true; snap();
+        /* neutralise the entry animation (fadeUp, fill:both) which otherwise
+           pins `transform` and blocks our inline translate */
+        if(!drag.added) drag.el.style.animation='none';
+      } else return; }
+    var SN=7, offX=null, offY=null;
+    if(drag.added){
+      var lx=drag.l+dx, ty=drag.t+dy;
+      if(!e.altKey){
+        var cx=lx+drag.w2, cy=ty+drag.h2;
+        if(Math.abs(960-cx)<SN){ lx+=(960-cx); offX=true; }
+        if(Math.abs(540-cy)<SN){ ty+=(540-cy); offY=true; }
+      }
+      drag.el.style.left=lx+'px'; drag.el.style.top=ty+'px';
+    }else{
+      var txr=drag.tx+dx, tyr=drag.ty+dy;
+      if(!e.altKey){
+        var ecx=drag.cx0+txr, ecy=drag.cy0+tyr;
+        if(Math.abs(960-ecx)<SN){ txr+=(960-ecx); offX=true; }
+        if(Math.abs(540-ecy)<SN){ tyr+=(540-ecy); offY=true; }
+      }
+      drag.el.style.transform=(drag.base+' translate('+txr+'px,'+tyr+'px)').trim();
+    }
+    if(gV) gV.style.display=offX?'block':'none';
+    if(gH) gH.style.display=offY?'block':'none';
+  }
+  function onUp(){
+    window.removeEventListener('mousemove',onMove); window.removeEventListener('mouseup',onUp);
+    hideGuides(); if(drag&&drag.moved) schedulePersist(); drag=null;
+  }
+
+  /* ---------- resize (images keep aspect ratio; Shift = free) ---------- */
+  function startResize(e,el){
+    e.preventDefault(); e.stopPropagation();
+    var s=scale(), w=el.offsetWidth, h=el.offsetHeight, x=e.clientX, y=e.clientY, moved=false;
+    var isImg=matches(el,'.ed-img'), ratio=(h/w)||1;
+    function mv(ev){ var dx=(ev.clientX-x)/s, dy=(ev.clientY-y)/s; if(!moved){moved=true;snap();}
+      var nw=Math.max(40,w+dx), nh=Math.max(28,h+dy);
+      if(isImg && !ev.shiftKey) nh=Math.max(28,Math.round(nw*ratio));
+      el.style.width=nw+'px'; el.style.height=nh+'px'; }
+    function up(){ window.removeEventListener('mousemove',mv); window.removeEventListener('mouseup',up); schedulePersist(); }
+    window.addEventListener('mousemove',mv); window.addEventListener('mouseup',up);
+  }
+
+  /* ---------- inline text edit ---------- */
+  /* if an edited element drives a [data-count] counter, sync the attribute so the
+     deck's re-animation (activate()) lands on the NEW number instead of reverting */
+  function bakeCountFromEdit(el){
+    var dc=el.closest ? el.closest('[data-count]') : null;
+    if(!dc) return;
+    var cv=dc.querySelector('.cval')||dc;
+    var n=parseInt((cv.textContent||'').replace(/[^0-9]/g,''),10);
+    if(!isNaN(n)) dc.setAttribute('data-count', n);
+  }
+  function onDbl(e){
+    if(!edOn) return;
+    var el=eligibleText(e.target)||eligible(e.target);
+    if(!el) return;
+    if(matches(el,ADDED) && !matches(el,'.ed-textbox')) return;
+    if(!matches(el,TEXTY)){ toast('האלמנט הזה לא טקסט לעריכה'); return; }
+    deselect(); snap();
+    editState={el:el, orig:el.innerHTML, cancelled:false};
+    refreshTb();
+    el.setAttribute('contenteditable','true'); el.focus();
+    el.addEventListener('blur',function h(){
+      el.removeAttribute('contenteditable'); el.removeEventListener('blur',h);
+      if(!(editState && editState.cancelled)) bakeCountFromEdit(el);
+      if(editState && editState.el===el) editState=null;
+      refreshTb(); schedulePersist();
+    });
+    e.preventDefault();
+  }
+
+  /* ---------- add elements ---------- */
+  function insertImageFile(f, pos){
+    if(!f || !/^image\//.test(f.type)) return;
+    var rd=new FileReader();
+    rd.onload=function(){ var im=new Image(); im.onload=function(){
+      snap(); var s=activeSlide();
+      var w=560, h=Math.round(560*im.naturalHeight/im.naturalWidth);
+      if(h>820){ h=820; w=Math.round(820*im.naturalWidth/im.naturalHeight); }
+      var box=document.createElement('div'); box.className='ed-img';
+      var lx=pos? Math.round(pos.x-w/2) : Math.round(960-w/2);
+      var ly=pos? Math.round(pos.y-h/2) : Math.round(540-h/2);
+      box.style.left=lx+'px'; box.style.top=ly+'px'; box.style.width=w+'px'; box.style.height=h+'px';
+      var img=document.createElement('img'); img.src=rd.result; box.appendChild(img);
+      s.appendChild(box); select(box); toast('תמונה נוספה'); schedulePersist();
+    }; im.src=rd.result; };
+    rd.readAsDataURL(f);
+  }
+  function addImage(){
+    var inp=document.createElement('input'); inp.type='file'; inp.accept='image/*';
+    inp.onchange=function(){ insertImageFile(inp.files[0], null); };
+    inp.click();
+  }
+  function addBlur(){ snap(); var s=activeSlide(); var b=document.createElement('div'); b.className='ed-blur'; b.style.cssText='left:760px;top:460px;width:400px;height:150px;'; s.appendChild(b); select(b); toast('טשטוש - גרור מעל נתון'); schedulePersist(); }
+  function addShape(){ snap(); var s=activeSlide(); var b=document.createElement('div'); b.className='ed-shape'; b.style.cssText='left:760px;top:450px;width:420px;height:200px;'; s.appendChild(b); select(b); schedulePersist(); }
+  function mkTextbox(text,x,y){
+    var s=activeSlide(); var t=document.createElement('div'); t.className='ed-textbox';
+    t.style.left=(x!=null?x:720)+'px'; t.style.top=(y!=null?y:480)+'px';
+    t.textContent=text||'טקסט חדש'; s.appendChild(t); select(t); return t;
+  }
+  function addText(){ snap(); mkTextbox('טקסט חדש'); toast('לחץ פעמיים לעריכה'); schedulePersist(); }
+
+  /* ---------- copy / paste (Cmd+C / Cmd+V) ---------- */
+  function cleanOuter(el){
+    var c=el.cloneNode(true), i, n;
+    n=c.querySelectorAll('.ed-runtime,.ed-handle,.ed-del'); for(i=0;i<n.length;i++) n[i].remove();
+    c.classList.remove('ed-selected'); c.classList.remove('ed-hover');
+    c.removeAttribute('contenteditable');
+    n=c.querySelectorAll('[contenteditable]'); for(i=0;i<n.length;i++) n[i].removeAttribute('contenteditable');
+    /* strip our positioning so the stored copy is pristine */
+    if(c.style && c.style.transform) c.style.transform=c.style.transform.replace(/translate\([^)]*\)/,'').trim()||'';
+    if(el.__edRel) c.style.position='';
+    return c.outerHTML;
+  }
+  function copySel(){
+    if(!selected) return false;
+    var d=deck.getBoundingClientRect(), s=scale(), r=selected.getBoundingClientRect();
+    clipInternal={
+      html:cleanOuter(selected),
+      added:matches(selected,ADDED),
+      left:(r.left-d.left)/s, top:(r.top-d.top)/s, width:r.width/s
+    };
+    pasteCount=0;
+    try{ navigator.clipboard.writeText(MARKER).catch(function(){}); }catch(e){}
+    toast('הועתק ✓ (Cmd+V להדבקה)');
+    return true;
+  }
+  function pasteInternal(){
+    if(!clipInternal) return;
+    snap(); pasteCount++;
+    var off=24*pasteCount, s=activeSlide(), el;
+    var tmp=document.createElement('div'); tmp.innerHTML=clipInternal.html;
+    var src=tmp.firstElementChild; if(!src) return;
+    if(clipInternal.added){
+      el=src;
+      el.style.left=Math.round((parseFloat(el.style.left)||clipInternal.left)+off)+'px';
+      el.style.top=Math.round((parseFloat(el.style.top)||clipInternal.top)+off)+'px';
+    }else{
+      el=document.createElement('div'); el.className='ed-clone';
+      el.style.left=Math.round(clipInternal.left+off)+'px';
+      el.style.top=Math.round(clipInternal.top+off)+'px';
+      el.style.width=Math.round(clipInternal.width)+'px';
+      el.appendChild(src);
+    }
+    s.appendChild(el); select(el); toast('הודבק'); schedulePersist();
+  }
+  document.addEventListener('paste',function(e){
+    if(!edOn) return;
+    var ae=document.activeElement;
+    if(ae && ae.isContentEditable) return; /* normal paste inside a text edit */
+    var items=(e.clipboardData&&e.clipboardData.items)||[];
+    for(var i=0;i<items.length;i++){
+      if(items[i].type && items[i].type.indexOf('image')===0){
+        var f=items[i].getAsFile();
+        if(f){ e.preventDefault(); insertImageFile(f,null); return; }
+      }
+    }
+    var txt=''; try{ txt=e.clipboardData.getData('text/plain')||''; }catch(err){}
+    if(clipInternal && (txt===MARKER || txt==='')){ e.preventDefault(); pasteInternal(); return; }
+    if(txt){ e.preventDefault(); snap(); mkTextbox(txt); toast('טקסט הודבק כתיבה חדשה'); schedulePersist(); }
+  });
+  /* drag & drop image files from Finder/desktop */
+  deck.addEventListener('dragover',function(e){ if(edOn){ e.preventDefault(); } });
+  deck.addEventListener('drop',function(e){
+    if(!edOn) return; e.preventDefault();
+    var fs=e.dataTransfer && e.dataTransfer.files;
+    if(!fs || !fs.length) return;
+    for(var i=0;i<fs.length;i++){
+      if(/^image\//.test(fs[i].type)){ insertImageFile(fs[i], deckXY(e.clientX,e.clientY)); return; }
+    }
+  });
+
+  /* ---------- colors (whole element, or selected word while editing) ---------- */
+  var GRAD='linear-gradient(135deg,#71b9c3,#549cbc,#2d70aa,#6556d0,#9c4ed7)';
+  var COLORS=[['לבן','#ffffff'],['טורקיז','#62aabf'],['סגול','#8f4fd7'],['אדום','#ef4444'],['ירוק','#22c55e'],['אפור','#8f8f9b']];
+  function applyColor(c){
+    var ae=document.activeElement, sel=window.getSelection();
+    if(ae && ae.isContentEditable && sel && !sel.isCollapsed){
+      document.execCommand('styleWithCSS',false,true);
+      document.execCommand('foreColor',false,c);
+      return;
+    }
+    if(!selected){ toast('בחר אלמנט או סמן מילה'); return; }
+    snap();
+    if(matches(selected,'.ed-shape')){
+      selected.style.background=c+'33'; selected.style.borderColor=c; schedulePersist(); return;
+    }
+    selected.style.background='none';
+    selected.style.webkitBackgroundClip=''; selected.style.backgroundClip='';
+    selected.style.webkitTextFillColor=c; selected.style.color=c;
+    schedulePersist();
+  }
+  function applyGradient(){
+    var ae=document.activeElement, sel=window.getSelection();
+    if(ae && ae.isContentEditable && sel && !sel.isCollapsed){
+      var t=sel.toString();
+      document.execCommand('insertHTML',false,'<span class="grad">'+t.replace(/&/g,'&amp;').replace(/</g,'&lt;')+'</span>');
+      return;
+    }
+    if(!selected){ toast('בחר אלמנט או סמן מילה'); return; }
+    snap();
+    selected.style.background=GRAD;
+    selected.style.webkitBackgroundClip='text'; selected.style.backgroundClip='text';
+    selected.style.webkitTextFillColor='transparent'; selected.style.color='';
+    schedulePersist();
+  }
+
+  /* ---------- z-order / center / nudge / blur controls ---------- */
+  function zOrder(front){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    snap();
+    if(getComputedStyle(selected).position==='static'){ selected.style.position='relative'; selected.__edRel=true; }
+    selected.style.zIndex= front? (++zTop) : 0;
+    toast(front?'הובא לקדמה':'נשלח לאחור'); schedulePersist();
+  }
+  function centerSel(axis){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    snap();
+    var d=deck.getBoundingClientRect(), s=scale(), r=selected.getBoundingClientRect();
+    var cx=((r.left-d.left)+r.width/2)/s, cy=((r.top-d.top)+r.height/2)/s;
+    if(axis==='h') moveBy(selected, 960-cx, 0); else moveBy(selected, 0, 540-cy);
+    schedulePersist();
+  }
+  function nudge(dx,dy){
+    if(!selected) return false;
+    var now=Date.now();
+    if(lastNudge.el!==selected || now-lastNudge.t>1200) snap();
+    lastNudge={el:selected,t:now};
+    moveBy(selected,dx,dy); schedulePersist();
+    return true;
+  }
+  function blurDelta(d){
+    if(!selected || !matches(selected,'.ed-blur')) return;
+    snap();
+    var cur=parseFloat(((selected.style.backdropFilter||'').match(/[\d.]+/)||[15])[0])||15;
+    var v=Math.min(40,Math.max(2,cur+d));
+    selected.style.backdropFilter='blur('+v+'px)'; selected.style.webkitBackdropFilter='blur('+v+'px)';
+    toast('עוצמת טשטוש: '+v); schedulePersist();
+  }
+  function toggleOpaque(){
+    if(!selected || !matches(selected,'.ed-blur')) return;
+    snap(); selected.classList.toggle('ed-opaque');
+    toast(selected.classList.contains('ed-opaque')?'אטום (מסתיר לגמרי)':'טשטוש שקוף'); schedulePersist();
+  }
+  function imgCorners(){
+    if(!selected || !matches(selected,'.ed-img')) return;
+    snap(); var img=selected.querySelector('img'); if(!img) return;
+    img.style.borderRadius=(img.style.borderRadius==='18px')?'0px':'18px'; schedulePersist();
+  }
+  function cycleOpacity(){
+    if(!selected){ toast('בחר אלמנט קודם'); return; }
+    snap();
+    var cur=parseFloat(selected.style.opacity||'1');
+    var next= cur>0.85?0.75 : cur>0.6?0.5 : cur>0.35?0.25 : 1;
+    selected.style.opacity=(next===1)?'':String(next);
+    toast('שקיפות: '+Math.round(next*100)+'%'); schedulePersist();
+  }
+
+  function fontDelta(d){ if(!selected){ toast('בחר טקסט קודם'); return; } snap();
+    var cs=parseFloat(getComputedStyle(selected).fontSize)||30; selected.style.fontSize=Math.max(10,cs+d)+'px'; schedulePersist(); }
+  function deleteSel(){ if(!selected){ toast('בחר אלמנט קודם'); return; } snap(); var el=selected; deselect(); el.remove(); schedulePersist(); }
+
+  /* ---------- navigation (reuse deck) ---------- */
+  function go(dir){
+    deselect();
+    var list=[].slice.call(document.querySelectorAll('.slide'));
+    var i=list.indexOf(activeSlide());
+    var n=Math.max(0,Math.min(list.length-1,i+dir));
+    if(typeof show==='function') show(n);
+    else { list[i].classList.remove('active'); list[n].classList.add('active'); }
+  }
+
+  /* ---------- export ---------- */
+  /* rewrite every relative url (img src, font/href, css url()) to an absolute
+     file:// path so the saved file keeps its background + fonts from any folder */
+  function absolutizeURLs(root){
+    var base=location.href, keep=/^(data:|https?:|file:|blob:|#)/i;
+    function abs(u){ try{ return new URL(u, base).href; }catch(e){ return u; } }
+    function fixCss(t){ return t.replace(/url\((['"]?)([^'")]+)\1\)/g,function(m,q,u){ return keep.test(u)?m:('url('+q+abs(u)+q+')'); }); }
+    var s=root.querySelectorAll('[src]'); for(var i=0;i<s.length;i++){ var v=s[i].getAttribute('src'); if(v&&!keep.test(v)) s[i].setAttribute('src',abs(v)); }
+    var h=root.querySelectorAll('[href]'); for(var j=0;j<h.length;j++){ var w=h[j].getAttribute('href'); if(w&&!keep.test(w)) h[j].setAttribute('href',abs(w)); }
+    var st=root.querySelectorAll('style'); for(var k=0;k<st.length;k++){ st[k].textContent=fixCss(st[k].textContent); }
+    var il=root.querySelectorAll('[style]'); for(var l=0;l<il.length;l++){ var sv=il[l].getAttribute('style'); if(sv&&sv.indexOf('url(')>-1) il[l].setAttribute('style',fixCss(sv)); }
+  }
+  /* bake every [data-count] to its final formatted number so un-visited stat
+     slides aren't frozen at 0 in the saved file */
+  function bakeCounters(root){
+    var fmt; try{ fmt=new Intl.NumberFormat('he-IL'); }catch(e){ fmt=null; }
+    var n=root.querySelectorAll('[data-count]');
+    for(var i=0;i<n.length;i++){ var v=parseInt(n[i].getAttribute('data-count'),10); if(isNaN(v)) continue;
+      var out=n[i].querySelector('.cval')||n[i]; out.textContent= fmt?fmt.format(v):(''+v); }
+  }
+  function exportHTML(){
+    deselect(); var was=edOn; setEdit(false);
+    var clone=document.documentElement.cloneNode(true);
+    var kill=clone.querySelectorAll('#ed-toolbar,#ed-fab,#ed-hint,#ed-toast,#ed-restore,#ed-guide-v,#ed-guide-h,.ed-runtime,.ed-handle,.ed-del');
+    for(var i=0;i<kill.length;i++) kill[i].remove();
+    var cl=clone.querySelectorAll('.ed-hover,.ed-selected'); for(var j=0;j<cl.length;j++){ cl[j].classList.remove('ed-hover'); cl[j].classList.remove('ed-selected'); }
+    var ce=clone.querySelectorAll('[contenteditable]'); for(var k=0;k<ce.length;k++) ce[k].removeAttribute('contenteditable');
+    var sl=clone.querySelectorAll('.slide'); for(var m=0;m<sl.length;m++){ if(m===0) sl[m].classList.add('active'); else sl[m].classList.remove('active'); }
+    var b=clone.querySelector('body'); if(b) b.classList.remove('ed-on');
+    absolutizeURLs(clone);
+    bakeCounters(clone);
+    var html='<!DOCTYPE html>\n'+clone.outerHTML;
+    var blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+    var fname=(location.pathname.split('/').pop()||'deck.html').replace(/\.html?$/i,'');
+    try{ fname=decodeURIComponent(fname); }catch(e){}
+    a.download=fname+'-edited.html'; document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); },3000);
+    if(was) setEdit(true);
+    toast('נשמר! החלף את הקובץ המקורי בקובץ שירד');
+  }
+
+  /* ---------- toolbar UI ---------- */
+  var fab=document.createElement('button'); fab.id='ed-fab'; fab.type='button'; fab.textContent='✏️ עריכה';
+  fab.addEventListener('click',function(){ setEdit(true); });
+  document.body.appendChild(fab);
+
+  var tb=document.createElement('div'); tb.id='ed-toolbar';
+  var toast_el, ctx;
+  function mkBtn(label,fn,cls){ var b=document.createElement('button'); b.type='button'; b.className='ed-btn'+(cls?(' '+cls):''); b.textContent=label;
+    b.addEventListener('mousedown',function(e){e.preventDefault();}); b.addEventListener('click',function(e){e.stopPropagation();fn();}); return b; }
+  function mkSep(){ var s=document.createElement('span'); s.className='ed-sep'; return s; }
+  function mkDot(name,color){ var d=document.createElement('button'); d.type='button'; d.className='ed-dot'; d.title=name; d.style.background=color;
+    d.addEventListener('mousedown',function(e){e.preventDefault();}); d.addEventListener('click',function(e){e.stopPropagation();applyColor(color);}); return d; }
+
+  var row=document.createElement('div'); row.id='ed-row';
+  row.appendChild(mkBtn('› הקודם',function(){go(-1);}));
+  row.appendChild(mkBtn('הבא ‹',function(){go(1);}));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('🖼️ תמונה',addImage));
+  row.appendChild(mkBtn('🌫️ טשטוש',addBlur));
+  row.appendChild(mkBtn('▭ צורה',addShape));
+  row.appendChild(mkBtn('🔤 טקסט',addText));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('⤴ מסגרת',selectParent));
+  row.appendChild(mkBtn('⬆ קדימה',function(){zOrder(true);}));
+  row.appendChild(mkBtn('⬇ אחורה',function(){zOrder(false);}));
+  row.appendChild(mkBtn('↔ מרכז',function(){centerSel('h');}));
+  row.appendChild(mkBtn('↕ מרכז',function(){centerSel('v');}));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('A+',function(){fontDelta(4);}));
+  row.appendChild(mkBtn('A−',function(){fontDelta(-4);}));
+  row.appendChild(mkBtn('🗑️ מחק',deleteSel,'danger'));
+  row.appendChild(mkBtn('↶ ביטול',undo));
+  row.appendChild(mkBtn('↷ חזרה',redo));
+  row.appendChild(mkSep());
+  row.appendChild(mkBtn('💾 שמור',exportHTML,'primary'));
+  row.appendChild(mkBtn('✖ סגור',function(){ setEdit(false); }));
+  tb.appendChild(row);
+
+  ctx=document.createElement('div'); ctx.id='ed-ctx'; tb.appendChild(ctx);
+  document.body.appendChild(tb);
+
+  function buildColors(forShape){
+    var lbl=document.createElement('span'); lbl.className='ed-ctx-lbl'; lbl.textContent= forShape?'צבע צורה:':'צבע:';
+    ctx.appendChild(lbl);
+    if(!forShape){
+      var g=document.createElement('button'); g.type='button'; g.className='ed-dot grad-dot'; g.title='גרדיאנט';
+      g.addEventListener('mousedown',function(e){e.preventDefault();});
+      g.addEventListener('click',function(e){e.stopPropagation();applyGradient();});
+      ctx.appendChild(g);
+    }
+    for(var i=0;i<COLORS.length;i++) ctx.appendChild(mkDot(COLORS[i][0],COLORS[i][1]));
+    if(!forShape && editState){
+      var tip=document.createElement('span'); tip.className='ed-ctx-lbl'; tip.textContent='(סמן מילה כדי לצבוע רק אותה)';
+      ctx.appendChild(tip);
+    }
+  }
+  function refreshTb(){
+    if(!ctx) return;
+    ctx.innerHTML='';
+    var show=false;
+    if(editState){ buildColors(); show=true; }
+    else if(selected){
+      if(matches(selected,'.ed-blur')){
+        ctx.appendChild(mkBtn('עוצמה −',function(){blurDelta(-5);}));
+        ctx.appendChild(mkBtn('עוצמה +',function(){blurDelta(5);}));
+        ctx.appendChild(mkBtn('אטום ◼',toggleOpaque));
+        show=true;
+      } else if(matches(selected,'.ed-img')){
+        ctx.appendChild(mkBtn('פינות ◰',imgCorners));
+        ctx.appendChild(mkBtn('שקיפות 👻',cycleOpacity));
+        show=true;
+      } else if(matches(selected,'.ed-shape')){
+        buildColors(true);
+        ctx.appendChild(mkBtn('שקיפות 👻',cycleOpacity));
+        show=true;
+      } else {
+        buildColors();
+        show=true;
+      }
+    }
+    ctx.style.display=show?'flex':'none';
+  }
+
+  var hint=document.createElement('div'); hint.id='ed-hint';
+  hint.innerHTML='לחיצה = בחירה · גרירה = הזזה (Alt = בלי הצמדה) · לחיצה כפולה = עריכת טקסט · חצים = הזזה עדינה (Shift=10) · Cmd+C/V = העתק/הדבק · Cmd+S = שמור';
+  document.body.appendChild(hint);
+
+  toast_el=document.createElement('div'); toast_el.id='ed-toast'; document.body.appendChild(toast_el);
+  var toastTimer;
+  function toast(msg){ if(!toast_el) return; toast_el.textContent=msg||''; toast_el.classList.toggle('on',!!msg);
+    clearTimeout(toastTimer); if(msg) toastTimer=setTimeout(function(){ toast_el.classList.remove('on'); },2600); }
+
+  /* center snap guide lines (live inside #deck so they scale with it) */
+  gV=document.createElement('div'); gV.id='ed-guide-v'; deck.appendChild(gV);
+  gH=document.createElement('div'); gH.id='ed-guide-h'; deck.appendChild(gH);
+
+  function setEdit(on){
+    edOn=on; document.body.classList.toggle('ed-on',on);
+    tb.classList.toggle('on',on); fab.style.display=on?'none':'block';
+    hideGuides();
+    if(!on){ deselect(); toast(''); }
+    else toast('מצב עריכה פעיל');
+  }
+
+  /* ---------- hover outline ---------- */
+  document.addEventListener('mouseover',function(e){ if(!edOn) return; var el=eligible(e.target);
+    var hv=document.querySelectorAll('.ed-hover'); for(var i=0;i<hv.length;i++){ if(hv[i]!==el) hv[i].classList.remove('ed-hover'); }
+    if(el && el!==selected) el.classList.add('ed-hover'); });
+  document.addEventListener('mouseout',function(e){ if(!edOn) return; var el=eligible(e.target); if(el) el.classList.remove('ed-hover'); });
+
+  /* ---------- bind ---------- */
+  deck.addEventListener('mousedown',onDown);
+  deck.addEventListener('dblclick',onDbl);
+
+  document.addEventListener('keydown',function(e){
+    if(!edOn) return;
+    var editing=document.activeElement && document.activeElement.isContentEditable;
+    var meta=e.metaKey||e.ctrlKey;
+    if(e.key==='ArrowLeft'||e.key==='ArrowRight'||e.key==='ArrowUp'||e.key==='ArrowDown'){
+      if(!editing && selected){
+        e.preventDefault();
+        var st=e.shiftKey?10:1;
+        nudge(e.key==='ArrowLeft'?-st:e.key==='ArrowRight'?st:0, e.key==='ArrowUp'?-st:e.key==='ArrowDown'?st:0);
+      }
+      e.stopImmediatePropagation(); return;
+    }
+    if(meta && (e.key==='z'||e.key==='Z')){
+      e.preventDefault(); e.stopImmediatePropagation();
+      if(e.shiftKey) redo(); else undo();
+      return;
+    }
+    if(meta && (e.key==='s'||e.key==='S')){ e.preventDefault(); e.stopImmediatePropagation(); exportHTML(); return; }
+    if(meta && (e.key==='c'||e.key==='C') && !editing && selected){ copySel(); return; }
+    if(meta && (e.key==='d'||e.key==='D') && !editing && selected){ e.preventDefault(); e.stopImmediatePropagation(); if(copySel()) pasteInternal(); return; }
+    if((e.key==='Delete'||e.key==='Backspace') && !editing){
+      if(selected){ e.preventDefault(); deleteSel(); }
+      return;
+    }
+    if(e.key==='Escape'){
+      if(editing){
+        if(editState && editState.el){ editState.cancelled=true; editState.el.innerHTML=editState.orig; if(undoStack.length) undoStack.pop(); editState.el.blur(); }
+        else document.activeElement.blur();
+      } else deselect();
+    }
+  },true);
+
+  /* optional: auto-enter for screenshot testing via ?edtest */
+  if(location.search.indexOf('edtest')>-1){ setEdit(true); }
+  /* offer to restore unsaved work (after deck init settles) */
+  setTimeout(checkRestore,400);
+})();
+
+</script>
+</body>
+</html>
+

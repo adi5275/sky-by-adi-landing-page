@@ -1,0 +1,400 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKY BY ADI - קיבלתי!</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+<!-- Meta Pixel - fires immediately, user already submitted form (implied consent) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'PLACEHOLDER_PIXEL_ID');
+fbq('track', 'PageView');
+fbq('track', 'Lead');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=PLACEHOLDER_PIXEL_ID&ev=Lead&noscript=1"
+/></noscript>
+
+<!-- GA4 conversion -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-PLACEHOLDER');
+  gtag('event', 'conversion', {
+    'send_to': 'G-PLACEHOLDER',
+    'event_category': 'lead',
+    'event_label': 'form_submit'
+  });
+</script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --green: #2D5016;
+  --green-light: #3D6B20;
+  --gold: #C9A84C;
+  --cream: #FAF6EE;
+  --dark: #1a1a1a;
+}
+body {
+  font-family: 'Heebo', sans-serif;
+  background: var(--cream);
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  direction: rtl;
+}
+nav {
+  width: 100%;
+  background: var(--green);
+  padding: 16px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.hero {
+  width: 100%;
+  background: linear-gradient(160deg, var(--green) 0%, var(--green-light) 60%, #4A7A25 100%);
+  padding: 60px 24px 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: -80px;
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.checkmark {
+  width: 72px;
+  height: 72px;
+  background: rgba(201,168,76,0.18);
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 28px;
+}
+.hero h1 {
+  font-family: 'Heebo', sans-serif;
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 16px;
+  max-width: 620px;
+}
+.hero h1 span { color: var(--gold); }
+.hero-sub {
+  font-size: clamp(15px, 3vw, 17px);
+  color: rgba(250,246,238,0.8);
+  font-weight: 400;
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 22px;
+}
+.phone-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(201,168,76,0.18);
+  border: 1.5px solid rgba(201,168,76,0.5);
+  border-radius: 40px;
+  padding: 12px 26px;
+  color: var(--gold);
+  font-size: 16px;
+  font-weight: 600;
+  direction: ltr;
+  unicode-bidi: embed;
+}
+.main {
+  width: 100%;
+  max-width: 700px;
+  padding: 52px 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.steps-box {
+  background: #fff;
+  border: 1.5px solid rgba(45,80,22,0.12);
+  border-radius: 16px;
+  padding: 36px 32px;
+  box-shadow: 0 4px 24px rgba(45,80,22,0.07);
+}
+.steps-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201,168,76,0.25);
+}
+.steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.step-num {
+  width: 36px;
+  height: 36px;
+  background: var(--green);
+  color: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.step-text strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 3px;
+}
+.step-text span {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.55;
+}
+.quote-box {
+  background: var(--green);
+  border-radius: 16px;
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+}
+.quote-box::before {
+  content: '"';
+  position: absolute;
+  top: -10px;
+  right: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 120px;
+  color: rgba(201,168,76,0.14);
+  line-height: 1;
+  pointer-events: none;
+}
+.quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(17px, 3vw, 21px);
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.65;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+}
+.quote-attr {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+}
+.cta-section {
+  text-align: center;
+  padding: 4px 0 12px;
+}
+.cta-section p {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 18px;
+}
+.btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid var(--green);
+  color: var(--green);
+  padding: 14px 32px;
+  border-radius: 40px;
+  font-family: 'Heebo', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-back:hover {
+  background: var(--green);
+  color: var(--cream);
+}
+footer {
+  width: 100%;
+  background: var(--green);
+  color: rgba(250,246,238,0.65);
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 13px;
+  margin-top: auto;
+}
+footer a { color: var(--gold); text-decoration: none; }
+footer p + p { margin-top: 6px; font-size: 11px; opacity: 0.6; }
+@media (max-width: 600px) {
+  .hero { padding: 44px 20px 52px; }
+  .steps-box, .quote-box { padding: 26px 20px; }
+  .main { padding: 36px 16px 48px; gap: 24px; }
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <radialGradient id="bgDark" cx="42%" cy="38%" r="64%">
+      <stop offset="0%" stop-color="#3D6B20"/>
+      <stop offset="100%" stop-color="#2D5016"/>
+    </radialGradient>
+    <linearGradient id="petalGold" x1="30%" y1="0%" x2="70%" y2="100%">
+      <stop offset="0%" stop-color="#EDD070"/>
+      <stop offset="50%" stop-color="#C9A84C"/>
+      <stop offset="100%" stop-color="#A07C28"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<nav>
+  <a href="sky-by-adi-landing-page.html" style="display:inline-block;text-decoration:none">
+    <svg width="52" height="52" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="99" fill="url(#bgDark)"/>
+      <circle cx="100" cy="100" r="94" fill="none" stroke="#C9A84C" stroke-width="1.2" opacity="0.45"/>
+      <g transform="translate(100,120)">
+        <path d="M-3,4 C-22,1-40,8-46,20 C-27,9-13,7-3,5Z" fill="#2A5012" opacity="0.85"/>
+        <path d="M3,4 C22,1 40,8 46,20 C27,9 13,7 3,5Z" fill="#2A5012" opacity="0.85"/>
+        <g transform="rotate(-70)"><ellipse cx="0" cy="-25" rx="8" ry="22" fill="url(#petalGold)" opacity="0.5"/></g>
+        <g transform="rotate(70)"><ellipse cx="0" cy="-25" rx="8" ry="22" fill="url(#petalGold)" opacity="0.5"/></g>
+        <g transform="rotate(-40)"><ellipse cx="0" cy="-27" rx="9" ry="25" fill="url(#petalGold)" opacity="0.78"/></g>
+        <g transform="rotate(40)"><ellipse cx="0" cy="-27" rx="9" ry="25" fill="url(#petalGold)" opacity="0.78"/></g>
+        <ellipse cx="0" cy="-29" rx="10.5" ry="27" fill="url(#petalGold)"/>
+        <circle cx="0" cy="0" r="12" fill="#1E3A0C"/>
+        <circle cx="0" cy="0" r="8.5" fill="#C9A84C"/>
+        <circle cx="0" cy="0" r="4.5" fill="#E8D060"/>
+        <g transform="rotate(18)">
+          <ellipse cx="0" cy="-14" rx="3" ry="10" fill="#FAF6EE"/>
+          <path d="M-3,-10 L-15,-4 L-13,-1 L-3,-6 L3,-6 L13,-1 L15,-4 L3,-10Z" fill="#FAF6EE"/>
+          <path d="M-3.2,-3 L-7,2 L-5.5,2 L-3,-1Z" fill="#FAF6EE"/>
+          <path d="M3.2,-3 L7,2 L5.5,2 L3,-1Z" fill="#FAF6EE"/>
+        </g>
+      </g>
+      <text x="100" y="158" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="13.5" font-weight="600" fill="#C9A84C" letter-spacing="3.5">SKY BY ADI</text>
+      <text x="100" y="171" text-anchor="middle" font-family="'Playfair Display',Georgia,serif" font-size="7" fill="#FAF6EE" letter-spacing="2.5" opacity="0.7">DREAM IT. VISIT IT.</text>
+    </svg>
+  </a>
+</nav>
+
+<div class="hero">
+  <div class="checkmark">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+      <path d="M6 16L13 23L26 10" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+  <h1>קיבלתי! עדי תחזור אליך <span>תוך 24 שעות</span></h1>
+  <p class="hero-sub">בינתיים - שמרי את המספר ישירות לטלפון</p>
+  <div class="phone-pill">
+    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.74a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+    0508278089 - עדי ישירות
+  </div>
+</div>
+
+<main class="main">
+  <div class="steps-box">
+    <div class="steps-title">מה קורה עכשיו?</div>
+    <ul class="steps-list">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          <strong>עדי קוראת את הפרטים שלך</strong>
+          <span>לא בוט, לא עוזר. עדי עצמה קוראת כל פנייה לפני שמחזירה</span>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          <strong>שיחת היכרות של 20 דקות - בזמן שנוח לך</strong>
+          <span>שיחה ישירה. בלי מצגת מכירתית. מבינות יחד אם זה מתאים לכן</span>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          <strong>בונות יחד את החבילה המותאמת לך ולבת שלך</strong>
+          <span>גיל הבת, יעד, תאריכים, מה חשוב לכן - הכל מותאם. אין "חבילה קיימת"</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quote-box">
+    <p class="quote-text">כבר שנים שאמרתי 'בשנה הבאה'. שמחה שהפסקתי.</p>
+    <p class="quote-attr">- אמא לבת 14</p>
+  </div>
+
+  <div class="cta-section">
+    <p>רוצה לקרוא עוד על SKY BY ADI?</p>
+    <a href="sky-by-adi-landing-page.html" class="btn-back">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 12h14M12 5l7 7-7 7"/>
+      </svg>
+      חזרה לדף הבית
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>SKY BY ADI AHARONI &nbsp;|&nbsp; <a href="mailto:coheadi@gmail.com">coheadi@gmail.com</a> &nbsp;|&nbsp; <a href="tel:0508278089">0508278089</a></p>
+  <p>DREAM IT. VISIT IT.</p>
+</footer>
+
+<div id="edit-btn" onclick="toggleEdit()" style="position:fixed;bottom:24px;left:24px;background:#C9A84C;color:#fff;border:none;padding:10px 18px;border-radius:24px;cursor:pointer;font-family:'Heebo',sans-serif;font-size:13px;box-shadow:0 2px 12px rgba(0,0,0,0.18);z-index:9999">&#9998; עריכה</div>
+<script>
+function toggleEdit(){
+  var on = document.body.getAttribute('data-edit') === 'true';
+  document.body.setAttribute('data-edit', String(!on));
+  var els = document.querySelectorAll('h1,h2,h3,p,span,li,strong');
+  els.forEach(function(e){
+    if(!on){ e.setAttribute('contenteditable','true'); e.style.outline='2px dashed #C9A84C'; }
+    else { e.removeAttribute('contenteditable'); e.style.outline=''; }
+  });
+  document.getElementById('edit-btn').textContent = on ? '✎ עריכה' : '✅ סיום עריכה';
+}
+</script>
+
+</body>
+</html>
