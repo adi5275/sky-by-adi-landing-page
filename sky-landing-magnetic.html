@@ -1,0 +1,642 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SKY BY ADI AHARONI - חופשות אם ובת שמחזירות את הקשר</title>
+<meta name="description" content="חופשת אם ובת מותאמת אישית, מובנית ומלווה - בליווי עורכת דין ואמא. ליווי בוטיק, עד 8 משפחות בחודש." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#FAF6EE;
+    --cream-deep:#F2EBDC;
+    --green:#2D5016;
+    --green-mid:#4A7A2A;
+    --pistachio:#7AAF42;
+    --pistachio-dark:#5F8F30;
+    --gold:#C2A060;
+    --gold-deep:#A8843E;
+    --gold-light:#DCC594;
+    --ink:#2F3326;
+    --ink-soft:#6C7060;
+    --forest-deep:#21380F;
+    --white:#ffffff;
+    --maxw:1180px;
+    --serif:'Frank Ruhl Libre', serif;
+    --sans:'Heebo', sans-serif;
+    --latin:'Playfair Display', serif;
+    --r-lg:24px;
+    --r-md:16px;
+    --r-sm:10px;
+    --shadow-soft:0 16px 44px -26px rgba(45,80,22,.32);
+    --shadow-card:0 26px 60px -34px rgba(45,80,22,.4);
+    --hair:1px solid rgba(45,80,22,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:700;line-height:1.2;color:var(--green)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .latin{font-family:var(--latin);letter-spacing:.14em}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* divider flourish */
+  .flourish{display:flex;align-items:center;gap:14px;margin:0 0 6px}
+  .flourish::before,.flourish::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--gold-light))}
+  .flourish img{width:30px;opacity:.9}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;font-family:var(--sans);font-weight:700;font-size:1.06rem;
+    padding:17px 34px;border:none;border-radius:8px;cursor:pointer;
+    background:linear-gradient(135deg,var(--gold) 0%,var(--gold-deep) 130%);color:#fff;
+    box-shadow:0 14px 30px -14px rgba(168,132,62,.75);
+    transition:transform .25s ease,box-shadow .25s ease,filter .25s ease;letter-spacing:.01em;
+  }
+  .btn:hover{transform:translateY(-3px);box-shadow:0 20px 40px -14px rgba(168,132,62,.85);filter:brightness(1.04)}
+  .btn:active{transform:translateY(-1px) scale(.99)}
+  .btn.green{background:linear-gradient(135deg,var(--green-mid),var(--green))}
+  .btn .arr{transition:transform .25s ease}
+  .btn:hover .arr{transform:translateX(-6px)}
+
+  /* CTA with rotating gold border-beam (same as the contract) */
+  .cta-glow{position:relative;display:inline-block;padding:3px;border-radius:11px;overflow:hidden;isolation:isolate;filter:drop-shadow(0 0 9px rgba(216,190,134,.6));transition:filter .3s ease,transform .12s ease}
+  .cta-glow::before{content:'';position:absolute;inset:-160%;z-index:0;border-radius:50%;
+    background:conic-gradient(from 0deg,rgba(150,116,40,.35) 0deg,#EAD08F 22deg,#FFFFFF 46deg,#FFF3BC 56deg,#FFFFFF 66deg,#EAD08F 90deg,rgba(150,116,40,.35) 135deg,rgba(150,116,40,.35) 200deg,#EAD08F 222deg,#FFFFFF 246deg,#FFF3BC 256deg,#FFFFFF 266deg,#EAD08F 290deg,rgba(150,116,40,.35) 335deg,rgba(150,116,40,.35) 360deg);
+    filter:blur(2px);will-change:transform;transform-origin:50% 50%;animation:beamSpin 4.5s linear infinite}
+  .cta-glow:hover{filter:drop-shadow(0 0 15px rgba(216,190,134,.95));transform:translateY(-2px)}
+  .cta-glow:hover::before{animation-duration:3s}
+  .cta-glow .btn{position:relative;z-index:1;border-radius:8px;box-shadow:none}
+  .cta-glow.full{display:block;width:100%;grid-column:1/-1}
+  .cta-glow.full .btn{width:100%;justify-content:center}
+  .sticky-cta .cta-glow{flex:1}
+  .sticky-cta .cta-glow .btn{width:100%}
+  @keyframes beamSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+
+  /* ===== hero ===== */
+  .hero{position:relative;padding:34px 0 84px;overflow:hidden;
+    background:radial-gradient(1200px 560px at 82% -12%, #F6F0E0 0%, rgba(246,240,224,0) 60%),linear-gradient(180deg,var(--cream),var(--cream) 76%,var(--cream-deep))}
+  .hero::after{content:"";position:absolute;left:-80px;bottom:-60px;width:360px;height:360px;
+    background:url('sky-emblem.png') no-repeat center/contain;opacity:.05;pointer-events:none}
+  .topbar{display:flex;align-items:center;justify-content:space-between;padding:4px 0 36px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand .mark{width:48px;height:48px;flex:0 0 auto}
+  .brand .name{font-family:var(--serif);font-weight:700;font-size:1.12rem;letter-spacing:.02em;line-height:1.15;color:var(--green)}
+  .brand .name small{display:block;font-family:var(--latin);font-size:.58rem;letter-spacing:.24em;color:var(--gold-deep);font-weight:600}
+  .topbar .btn{padding:11px 22px;font-size:.92rem}
+
+  .hero-grid{display:grid;grid-template-columns:1.12fr .88fr;gap:50px;align-items:center}
+  .eyebrow{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.8rem;letter-spacing:.04em;color:var(--green);
+    background:#fff;padding:8px 18px;border-radius:60px;box-shadow:var(--shadow-soft);margin-bottom:22px}
+  .eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--pistachio)}
+  h1.title{font-size:clamp(2.2rem,4.9vw,3.6rem);font-weight:900;letter-spacing:-.01em;color:var(--green)}
+  h1.title .hl{color:var(--pistachio-dark);position:relative;white-space:nowrap}
+  h1.title .hl::after{content:"";position:absolute;right:0;left:0;bottom:.04em;height:.26em;background:var(--gold-light);opacity:.55;z-index:-1;border-radius:4px}
+  .lead{font-size:1.18rem;color:var(--ink-soft);margin:24px 0 30px;max-width:36em}
+  .lead b{color:var(--ink);font-weight:700}
+  .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .cta-sub{font-size:.9rem;color:var(--ink-soft);display:flex;align-items:center;gap:8px}
+
+  .trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
+  .trust .item{display:flex;align-items:center;gap:10px;background:#fff;padding:11px 16px;border-radius:12px;box-shadow:var(--shadow-soft);font-weight:500;font-size:.9rem;border:var(--hair)}
+  .trust .item .ic{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto;background:#F1EAD6;color:var(--gold-deep)}
+  .trust .item:nth-child(2) .ic,.trust .item:nth-child(4) .ic{background:#EAF1DF;color:var(--pistachio-dark)}
+
+  .hero-visual{position:relative;height:100%;min-height:400px;display:flex;align-items:center;justify-content:center}
+  .photo-frame{position:relative;z-index:2;background:#fff;border-radius:var(--r-lg);padding:12px;box-shadow:var(--shadow-card);border:1px solid var(--gold-light);transform:rotate(-1.5deg)}
+  .photo-frame .ph{border-radius:16px;width:330px;max-width:100%;aspect-ratio:4/5;
+    background:linear-gradient(160deg,#fff,var(--cream-deep));display:grid;place-items:center;text-align:center;color:var(--ink-soft);border:1px solid rgba(194,160,96,.4)}
+  .photo-frame .ph .em{width:60px;opacity:.55;margin-bottom:14px}
+  .photo-frame .ph span{font-size:.84rem;max-width:15em;line-height:1.55}
+  .photo-frame .ph .big{display:block;font-family:var(--serif);font-size:1.05rem;color:var(--green);margin-bottom:6px}
+  .float-badge{position:absolute;z-index:3;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:var(--shadow-card);font-weight:700;font-size:.88rem;display:flex;align-items:center;gap:10px;border:var(--hair)}
+  .float-badge.t{top:4%;left:-4%;animation:float 7s ease-in-out infinite}
+  .float-badge.b{bottom:6%;right:-3%;animation:float 8s ease-in-out infinite .8s}
+  .float-badge .num{font-family:var(--serif);font-size:1.5rem;color:var(--gold-deep);line-height:1}
+  .float-badge.b .num{color:var(--pistachio-dark)}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+  /* sections */
+  section.block{padding:88px 0;position:relative}
+  .kicker{display:inline-block;font-weight:800;letter-spacing:.16em;font-size:.76rem;color:var(--gold-deep);text-transform:uppercase;margin-bottom:14px}
+  h2.sec{font-size:clamp(1.75rem,3.5vw,2.6rem);font-weight:900;max-width:18em;color:var(--green)}
+  .sec-lead{font-size:1.1rem;color:var(--ink-soft);max-width:40em;margin-top:18px}
+
+  .recognition{background:var(--cream-deep)}
+  .mind-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:44px 0 34px}
+  .mind-card{background:#fff;border-radius:var(--r-md);padding:30px 26px;box-shadow:var(--shadow-soft);border-top:3px solid var(--gold);border-left:var(--hair);border-right:var(--hair);border-bottom:var(--hair)}
+  .mind-card .q{font-family:var(--serif);font-size:4.5rem;line-height:.6;color:var(--gold-light);height:32px;display:block}
+  .mind-card p{font-size:1.1rem;color:var(--ink);font-weight:500;margin-top:6px}
+  .close-line{font-family:var(--serif);font-size:clamp(1.25rem,2.4vw,1.65rem);color:var(--green);max-width:30em;line-height:1.5}
+  .close-line b{color:var(--gold-deep)}
+
+  .gap-sec{background:var(--cream)}
+  .gap-grid{display:grid;grid-template-columns:1fr .9fr;gap:54px;align-items:center;margin-top:28px}
+  .gap-body p{font-size:1.12rem;margin-bottom:18px;color:var(--ink-soft)}
+  .gap-body p b{color:var(--ink);font-weight:700}
+  .pullquote{background:linear-gradient(150deg,var(--green),var(--forest-deep));color:#fff;border-radius:var(--r-lg);padding:38px 34px;box-shadow:var(--shadow-card);position:relative}
+  .pullquote .mk{font-family:var(--serif);font-size:3.6rem;color:var(--gold-light);line-height:.4;height:30px;display:block}
+  .pullquote q{font-family:var(--serif);font-size:1.3rem;line-height:1.5;display:block;quotes:none;color:#fff}
+  .pullquote cite{display:block;margin-top:18px;font-style:normal;font-size:.92rem;color:var(--gold-light);font-family:var(--sans)}
+  .symptom-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+  .symptom-tags span{background:#fff;color:var(--green);font-weight:500;font-size:.85rem;padding:8px 14px;border-radius:40px;border:var(--hair)}
+
+  .mech{background:var(--cream-deep)}
+  .mech-head{text-align:center;max-width:46em;margin:0 auto}
+  .mech-head h2{margin:0 auto}
+  .mech-head .pill{display:inline-block;background:#fff;color:var(--green);font-weight:700;padding:10px 22px;border-radius:40px;margin-top:18px;box-shadow:var(--shadow-soft);border:var(--hair)}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px}
+  .step{background:#fff;border-radius:var(--r-md);padding:28px 22px;box-shadow:var(--shadow-soft);text-align:center;border:var(--hair)}
+  .step .n{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;margin:0 auto 14px;background:linear-gradient(140deg,var(--green-mid),var(--green));color:var(--gold-light);font-family:var(--serif);font-weight:700;font-size:1.3rem}
+  .step h3{font-size:1.1rem;margin-bottom:8px;color:var(--green)}
+  .step p{font-size:.94rem;color:var(--ink-soft)}
+  .mech-foot{text-align:center;font-family:var(--serif);font-size:clamp(1.25rem,2.3vw,1.65rem);margin-top:44px;color:var(--green)}
+  .mech-foot b{color:var(--gold-deep)}
+
+  .offer{background:var(--cream)}
+  .offer-grid{display:grid;grid-template-columns:1fr 1fr;gap:42px;margin-top:38px;align-items:start}
+  .deliver{background:#fff;border-radius:var(--r-lg);padding:36px 34px;box-shadow:var(--shadow-card);border:var(--hair)}
+  .deliver h3{font-size:1.35rem;margin-bottom:18px;color:var(--green)}
+  .deliver ul{list-style:none}
+  .deliver li{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #f0e8d8;font-size:1.02rem}
+  .deliver li:last-child{border-bottom:none}
+  .deliver li .ck{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--pistachio);color:#fff;display:grid;place-items:center;margin-top:3px}
+  .bonus-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+  .bonus-head .tag{background:var(--gold);color:#fff;font-weight:700;font-size:.76rem;letter-spacing:.08em;padding:5px 14px;border-radius:40px}
+  .bonus{background:#fff;border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--shadow-soft);margin-bottom:14px;border-right:3px solid var(--gold);border-top:var(--hair);border-bottom:var(--hair);border-left:var(--hair);display:flex;gap:16px;align-items:flex-start}
+  .bonus .bic{flex:0 0 auto;width:50px;height:50px;border-radius:12px;display:grid;place-items:center;background:#EAF1DF;color:var(--pistachio-dark)}
+  .bonus h4{font-family:var(--serif);font-size:1.12rem;margin-bottom:4px;color:var(--green)}
+  .bonus p{font-size:.94rem;color:var(--ink-soft)}
+
+  .auth{background:var(--cream-deep)}
+  .auth-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center}
+  .auth-photo-wrap{position:relative}
+  .auth-photo-wrap img{border-radius:var(--r-lg);box-shadow:var(--shadow-card);border:1px solid var(--gold-light);width:100%;aspect-ratio:3/4;object-fit:cover;object-position:center top}
+  .auth-photo-wrap .emblem{position:absolute;bottom:-26px;left:50%;transform:translateX(-50%);width:90px;background:#fff;border-radius:50%;padding:14px;box-shadow:var(--shadow-card)}
+  .auth-body h2{margin-bottom:20px}
+  .auth-body p{font-size:1.1rem;color:var(--ink-soft);margin-bottom:16px}
+  .auth-body p b{color:var(--ink);font-weight:700}
+  .seam{display:flex;gap:14px;flex-wrap:wrap;margin-top:22px}
+  .seam .s{background:#fff;border-radius:12px;padding:14px 18px;box-shadow:var(--shadow-soft);font-weight:500;font-size:.92rem;flex:1 1 150px;border:var(--hair)}
+  .seam .s b{display:block;font-family:var(--serif);color:var(--gold-deep);font-size:1.05rem}
+
+  .proof{background:var(--cream)}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:8px 0 48px}
+  .stat{background:#fff;border-radius:var(--r-md);padding:30px 24px;text-align:center;box-shadow:var(--shadow-soft);border:var(--hair)}
+  .stat .n{font-family:var(--serif);font-weight:900;font-size:2.7rem;color:var(--green);line-height:1}
+  .stat:nth-child(2) .n{color:var(--gold-deep)}
+  .stat:nth-child(3) .n{color:var(--pistachio-dark)}
+  .stat p{margin-top:8px;color:var(--ink-soft);font-weight:500}
+  .testi{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .tcard{background:#fff;border-radius:var(--r-md);padding:28px 26px;box-shadow:var(--shadow-soft);border-top:3px solid var(--gold);border-left:var(--hair);border-right:var(--hair);border-bottom:var(--hair)}
+  .tcard .stars{color:var(--gold);letter-spacing:3px;margin-bottom:12px}
+  .tcard q{font-size:1.02rem;quotes:none;color:var(--ink);display:block;line-height:1.6}
+  .tcard cite{display:block;margin-top:16px;font-style:normal;font-weight:700;color:var(--ink-soft);font-size:.9rem}
+  .dest{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:44px}
+  .dest .d{background:#fff;border-radius:40px;padding:11px 24px;box-shadow:var(--shadow-soft);font-weight:500;display:flex;align-items:center;gap:10px;border:var(--hair)}
+  .dest .d svg{color:var(--gold-deep)}
+  .note{font-size:.8rem;color:var(--ink-soft);text-align:center;margin-top:18px;opacity:.8}
+
+  .obj{background:var(--cream-deep)}
+  .obj-list{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
+  .obj-card{background:#fff;border-radius:var(--r-md);padding:30px 28px;box-shadow:var(--shadow-soft);border:var(--hair)}
+  .obj-card .says{font-family:var(--serif);font-size:1.2rem;color:var(--gold-deep);margin-bottom:14px}
+  .obj-card p{font-size:1rem;color:var(--ink-soft)}
+  .obj-card p b{color:var(--ink)}
+
+  .scarcity{background:linear-gradient(150deg,var(--green) 0%,var(--forest-deep) 100%);color:#fff;text-align:center;position:relative;overflow:hidden}
+  .scarcity::after{content:"";position:absolute;right:-70px;top:-50px;width:320px;height:320px;background:url('sky-emblem.png') no-repeat center/contain;opacity:.08}
+  .scarcity .kicker{color:var(--gold-light)}
+  .scarcity h2{color:#fff;margin:0 auto;font-size:clamp(2rem,4vw,3rem)}
+  .scarcity .big-num{font-family:var(--serif);font-weight:900;font-size:5rem;color:var(--gold-light);line-height:1;margin:26px 0 4px}
+  .scarcity .small{color:var(--gold-light);font-size:1rem;margin-bottom:22px;font-weight:500}
+  .scarcity .sec-lead{color:#EAF0E0;margin:0 auto;font-size:1.16rem;position:relative;z-index:1}
+
+  .final{background:var(--cream-deep)}
+  .final-card{background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-card);padding:52px;max-width:760px;margin:0 auto;text-align:center;border:1px solid var(--gold-light)}
+  .final-card .em{width:54px;margin:0 auto 14px;opacity:.9}
+  .final-card h2{font-size:clamp(1.75rem,3.3vw,2.4rem);margin:0 auto 12px}
+  .final-card .sub{color:var(--ink-soft);font-size:1.08rem;max-width:34em;margin:0 auto 28px}
+  form.apply{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:right}
+  form.apply .full{grid-column:1/-1}
+  form.apply label{display:block;font-weight:500;font-size:.88rem;margin-bottom:6px;color:var(--ink)}
+  form.apply input,form.apply textarea{width:100%;font-family:var(--sans);font-size:1rem;padding:13px 16px;border:1px solid var(--gold-light);border-radius:10px;background:var(--cream);color:var(--ink);transition:border-color .2s,box-shadow .2s}
+  form.apply input:focus,form.apply textarea:focus{outline:none;border-color:var(--green-mid);box-shadow:0 0 0 4px rgba(122,175,66,.18)}
+  form.apply textarea{resize:vertical;min-height:84px}
+  form.apply .btn{grid-column:1/-1;justify-content:center;width:100%;margin-top:6px;font-size:1.12rem}
+  form.apply .consent{display:flex;align-items:flex-start;gap:9px;font-size:.85rem;color:var(--ink-soft);font-weight:400;cursor:pointer;line-height:1.5}
+  form.apply .consent input{width:auto;margin:3px 0 0;accent-color:var(--green-mid);flex:0 0 auto}
+  form.apply .consent a{color:var(--green-mid);font-weight:700;text-decoration:underline}
+  .final-card .reassure{margin-top:18px;font-size:.88rem;color:var(--ink-soft);display:flex;gap:8px;align-items:center;justify-content:center}
+
+  footer{background:var(--forest-deep);color:#dfe6d4;padding:58px 0 30px;text-align:center}
+  footer .mark{width:54px;margin:0 auto 14px}
+  footer .name{color:#fff;font-family:var(--serif);font-size:1.2rem;font-weight:700}
+  footer .tagline{font-family:var(--latin);letter-spacing:.24em;color:var(--gold-light);font-size:.82rem;margin:6px 0 24px}
+  footer .links{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:22px}
+  footer .links a{background:rgba(255,255,255,.08);padding:11px 22px;border-radius:40px;font-weight:500;transition:background .2s}
+  footer .links a:hover{background:rgba(255,255,255,.16)}
+  footer .copy{font-size:.78rem;color:#9aa78a;margin-top:16px}
+
+  .sticky-cta{position:fixed;bottom:0;right:0;left:0;z-index:50;background:#fff;box-shadow:0 -10px 30px -12px rgba(45,80,22,.4);padding:12px 16px;display:none;align-items:center;justify-content:space-between;gap:12px}
+  .sticky-cta .btn{padding:13px 22px;font-size:1rem;flex:1;justify-content:center}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  .reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+  @media(max-width:900px){
+    .hero-grid,.gap-grid,.offer-grid,.auth-grid{grid-template-columns:1fr;gap:36px}
+    .hero-visual{min-height:auto;order:-1}
+    .mind-cards,.testi,.obj-list,.stats{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    h1.title .hl{white-space:normal}
+    .topbar .btn{display:none}
+    .final-card{padding:34px 22px}
+    form.apply{grid-template-columns:1fr}
+    .sticky-cta{display:flex}
+    body{padding-bottom:74px}
+    section.block{padding:62px 0}
+    .auth-photo-wrap{max-width:340px;margin:0 auto}
+  }
+  @media(max-width:560px){.steps{grid-template-columns:1fr}.trust .item{font-size:.84rem;padding:10px 13px}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <img class="mark" src="sky-emblem.png" alt="" aria-hidden="true" />
+        <div class="name">SKY BY ADI<small>DREAM IT · VISIT IT</small></div>
+      </div>
+      <span class="cta-glow"><a href="#apply" class="btn">לבדיקת התאמה</a></span>
+    </div>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal in"><span class="dot"></span> חופשות אם ובת · מותאמות אישית</span>
+        <h1 class="title reveal in d1">את כבר לא זוכרת מתי דיברתן באמת <span class="hl">בלי שזה נגמר בדלת טרוקה.</span></h1>
+        <p class="lead reveal in d2">כל יום היא מתרחקת עוד קצת. הדלת נסגרת, הטלפון עולה, וכל ניסיון לדבר נגמר בריב - ואת שואלת את עצמך מתי בדיוק התחלת לאבד אותה.</p>
+        <p class="lead reveal in d2">אני עדי, ואני עושה דבר אחד: לוקחת רק אותך ואת הבת שלך לחופשה אחת בחו"ל, שכולה בנויה כדי להחזיר אתכן זו לזו. הכל דרכי - טיסה, מלון, לו"ז, חוזה וליווי. <b>כתובת אחת, ראש שקט מלא.</b> את לא מתעסקת עם אף אחד - את רק חוזרת להיות אמא שלה.</p>
+        <div class="cta-row reveal in d3">
+          <span class="cta-glow"><a href="#apply" class="btn">אני רוצה לבדוק התאמה <span class="arr">←</span></a></span>
+          <span class="cta-sub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#5F8F30" stroke-width="2"/><path d="M8 12l3 3 5-6" stroke="#5F8F30" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            שיחת התאמה 20 דק', בלי עלות ובלי התחייבות
+          </span>
+        </div>
+
+        <div class="trust reveal in d4">
+          <div class="item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9 1 5.5L12 21l-5 2.1 1-5.5-4-3.9 5.5-.8L12 3z" fill="currentColor"/></svg></span> 87% שביעות רצון</div>
+          <div class="item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l3 3v15H6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> ליווי משפטי מלא</div>
+          <div class="item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M3 7h18M3 12h18M3 17h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> ליווי בוטיק · עד 8 משפחות בחודש</div>
+          <div class="item"><span class="ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="9" r="2.3" stroke="currentColor" stroke-width="2"/><path d="M4 19c0-3 2.5-5 5-5s5 2 5 5M14 19c0-2 1-3.6 3-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span> התאמה אישית 1:1</div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="photo-frame">
+          <div class="ph">
+            <img class="em" src="sky-emblem.png" alt="" aria-hidden="true" />
+            <span><span class="big">תמונת אם ובת שלך כאן</span>גררי לכאן תמונה (או הדביקי) דרך כפתור העריכה ✏️</span>
+          </div>
+        </div>
+        <div class="float-badge t"><span class="num">87%</span><span>שביעות רצון<br>של אמהות</span></div>
+        <div class="float-badge b"><span class="num">1:1</span><span>הכל מותאם<br>רק אלייך ואליה</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== RECOGNITION ===== -->
+<section class="block recognition">
+  <div class="wrap">
+    <span class="kicker reveal">קראתי לך את המחשבות</span>
+    <h2 class="sec reveal">אם את קוראת את זה ומהנהנת - את במקום הנכון.</h2>
+    <div class="mind-cards">
+      <div class="mind-card reveal d1"><span class="q">&rdquo;</span><p>"אני יודעת לנהל עשרים עובדים, אבל אני לא יודעת לדבר עם הילדה שלי."</p></div>
+      <div class="mind-card reveal d2"><span class="q">&rdquo;</span><p>"כשהיא הייתה קטנה היא הייתה אומרת לי הכל. איך הגענו לכאן?"</p></div>
+      <div class="mind-card reveal d3"><span class="q">&rdquo;</span><p>"אני עייפה. לא מהעבודה - מלהיות נוכחת לכולם, ולא לעצמי."</p></div>
+    </div>
+    <p class="close-line reveal">זה לא כי את אמא לא טובה. זה כי בבית, כל שיחה ביניכן קורית בתוך מבנה של כוח - <b>את הסמכות, היא כפופה.</b> אי אפשר להיות חברות ככה.</p>
+  </div>
+</section>
+
+<!-- ===== THE GAP ===== -->
+<section class="block gap-sec">
+  <div class="wrap">
+    <span class="kicker reveal">מה באמת קורה</span>
+    <h2 class="sec reveal">ובתוך הפער הזה - צומחים דברים.</h2>
+    <div class="gap-grid">
+      <div class="gap-body">
+        <p class="reveal">ככל שהמרחק גדל, היא מחפשת תשובות במקום אחר. ב-TikTok. אצל חברות. ב-Sephora.</p>
+        <p class="reveal d1">היא משווה את עצמה לפילטרים, סופגת לחץ על איך שהיא נראית, ומתחילה להשתמש במוצרים שבכלל לא מתאימים לגיל שלה - רטינול, חומצות, אנטי-אייג'ינג.</p>
+        <p class="reveal d2"><b>זו לא הבעיה. זו התוצאה של הריחוק.</b> וכשאת מנסה להגיד לה משהו - זה רק עוד ויכוח.</p>
+        <p class="reveal d2" style="font-family:var(--serif);font-size:1.16rem;color:var(--green);border-right:3px solid var(--gold);padding-right:14px;margin-bottom:6px">"אני רואה כמה היא קשוחה עם עצמה מול המראה. הלוואי שהיתה רואה את מה שאני רואה בה."</p>
+        <div class="symptom-tags reveal d3"><span>השוואה לרשתות</span><span>לחץ על דימוי גוף</span><span>מוצרים לא לגיל</span><span>"אמא לא מבינה"</span></div>
+      </div>
+      <div class="pullquote reveal d2">
+        <span class="mk">&rdquo;</span>
+        <q>ב-90% מהמקרים אני אומרת להורים: היא לא צריכה את זה. המוצר הזה מתוכנן לשינויים בעור של מבוגרת.</q>
+        <cite>ד"ר קרלה טורס-זגרה, רופאת עור ילדים, אוניברסיטת קולורדו</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HER SIDE ===== -->
+<section class="block recognition">
+  <div class="wrap">
+    <span class="kicker reveal">ומהצד שלה</span>
+    <h2 class="sec reveal">היא לא מתרחקת כי לא אכפת לה. היא מתרחקת כי גם לה כואב.</h2>
+    <div class="mind-cards">
+      <div class="mind-card reveal d1" style="border-top-color:var(--pistachio)"><span class="q" style="color:#CFE3B8">&rdquo;</span><p>"אמא לא מבינה את העולם שלי. לפעמים יותר קל לי לדבר עם חברה מאשר איתה."</p></div>
+      <div class="mind-card reveal d2" style="border-top-color:var(--pistachio)"><span class="q" style="color:#CFE3B8">&rdquo;</span><p>"אני רוצה שאמא תראה אותי כאילו אני כבר גדולה. שתשמע אותי, לא רק תגיד לי מה לעשות."</p></div>
+      <div class="mind-card reveal d3" style="border-top-color:var(--pistachio)"><span class="q" style="color:#CFE3B8">&rdquo;</span><p>"כולן נראות מושלמות, ואני מרגישה שאני לא נראית ככה בכלל."</p></div>
+    </div>
+    <p class="close-line reveal">שתיכן רוצות בדיוק את אותו הדבר - להיות קרובות. פשוט אף אחת לא יודעת איך לחזור לשם. <b>זה התפקיד שלי.</b></p>
+  </div>
+</section>
+
+<!-- ===== MECHANISM ===== -->
+<section class="block mech">
+  <div class="wrap">
+    <div class="mech-head">
+      <span class="kicker reveal">השיטה שלי</span>
+      <h2 class="sec reveal" style="max-width:none">מה שאני עושה נקרא "פרוטוקול האיפוס".</h2>
+      <span class="pill reveal d1">התאמה כפולה - לגיל הבת ולאופי שלך</span>
+    </div>
+    <div class="steps">
+      <div class="step reveal d1"><span class="n">1</span><h3>שאלון אבחון</h3><p>אני לומדת מי את, מי היא, ומה באמת קורה ביניכן.</p></div>
+      <div class="step reveal d2"><span class="n">2</span><h3>שיחת תיאום</h3><p>אנחנו בונות יחד את החופשה המדויקת. אפס ניחושים.</p></div>
+      <div class="step reveal d3"><span class="n">3</span><h3>לו"ז וחוזה</h3><p>לו"ז יומי ברור, הסכמות מראש, חוזה ומדיניות מלאה.</p></div>
+      <div class="step reveal d4"><span class="n">4</span><h3>את רק מגיעה</h3><p>אני מסירה את כל הלוגיסטיקה. את נוכחת, לא מנהלת.</p></div>
+    </div>
+    <p class="mech-foot reveal"><b>אפס החלטות בשבילך.</b> זה מה שיקרה: את מגיעה, ונותנת לקשר לקרות.</p>
+  </div>
+</section>
+
+<!-- ===== OFFER ===== -->
+<section class="block offer">
+  <div class="wrap">
+    <span class="kicker reveal">מה את מקבלת</span>
+    <h2 class="sec reveal">זו לא חופשה. זה מוצר מובנה.</h2>
+    <div class="offer-grid">
+      <div class="deliver reveal d1">
+        <h3>הכל כלול, הכל סגור:</h3>
+        <ul>
+          <li><span class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> שאלון אבחון מותאם לכן</li>
+          <li><span class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> שיחת תיאום אישית איתי</li>
+          <li><span class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> יעד פרימיום נבחר (יוון · קפריסין · דובאי)</li>
+          <li><span class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> לו"ז יומי ברור ומתוכנן</li>
+          <li><span class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> חוזה ומדיניות ביטולים מלאה</li>
+          <li><span class="ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4 10-11" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span> ליווי אישי לאורך כל הדרך</li>
+        </ul>
+      </div>
+      <div class="bonuses">
+        <div class="bonus-head reveal d1"><span class="tag">בונוסים</span><span style="color:var(--ink-soft);font-weight:500">כלולים, בלי תוספת</span></div>
+        <div class="bonus reveal d2">
+          <span class="bic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="2"/><path d="M10 6h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <div><h4>אפליקציית חיבור No-Filter</h4><p>במקום שתיקה מביכה: שאלות שיחה שנכתבו במיוחד לכן, נגישות בטלפון לאורך כל החופשה.</p></div>
+        </div>
+        <div class="bonus reveal d3">
+          <span class="bic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2"/><path d="M9.5 11l1.8 1.8 3.5-3.6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <div><h4>מדריך ביוטי מותאם-גיל</h4><p>בדיוק מה מותר ומה אסור לעור של הבת בגיל שלה, מבוסס רופאי עור. הידע שאמהות לא יודעות - ושבנות לא מסכימות לשמוע בבית.</p></div>
+        </div>
+        <div class="bonus reveal d4">
+          <span class="bic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H7l-3 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <div><h4>ליווי אישי בוואטסאפ</h4><p>אני איתך לפני ובמהלך החופשה. ראש שקט מוחלט - תמיד יש למי לפנות.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== AUTHORITY ===== -->
+<section class="block auth">
+  <div class="wrap">
+    <div class="auth-grid">
+      <div class="auth-photo-wrap reveal">
+        <img src="adi-photo.png" alt="עדי אהרוני, מייסדת SKY BY ADI" />
+        <img class="emblem" src="sky-emblem.png" alt="" aria-hidden="true" />
+      </div>
+      <div class="auth-body">
+        <span class="kicker reveal">למה דווקא איתי</span>
+        <h2 class="sec reveal">אני לא סוכנת נסיעות. אני יוצרת קטגוריה.</h2>
+        <p class="reveal d1">אני עדי אהרוני. 20 שנה הייתי עורכת דין. אני אמא לשלוש בנות. אני <b>לא</b> מדברת אלייך מתוך "עברתי את זה כבר" - אלא מתוך אמא שמסרבת לתת לריחוק להתחיל, ושבנתה בכוונה את השיטה הזו.</p>
+        <p class="reveal d2">הדיוק המשפטי של 20 שנה הוא מה שהופך חופשה ל<b>"ראש שקט" מוחלט</b>: חוזה, מדיניות ביטולים, הסכמות מראש. כלום לא נשאר ליד המקרה.</p>
+        <div class="seam reveal d3">
+          <div class="s"><b>20 שנה</b> דיוק משפטי</div>
+          <div class="s"><b>אמא לשלוש</b> שמבינה מבפנים</div>
+          <div class="s"><b>נישה ראשונה</b> מסוגה בישראל</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROOF ===== -->
+<section class="block proof">
+  <div class="wrap">
+    <span class="kicker reveal" style="display:block;text-align:center">הוכחה</span>
+    <h2 class="sec reveal" style="margin:0 auto;text-align:center">הן הגיעו רחוקות. הן חזרו קרובות.</h2>
+    <div class="stats" style="margin-top:38px">
+      <div class="stat reveal d1"><div class="n">87%</div><p>שביעות רצון</p></div>
+      <div class="stat reveal d2"><div class="n">8</div><p>משפחות בחודש - בוטיק</p></div>
+      <div class="stat reveal d3"><div class="n">1:1</div><p>ליווי אישי לכל משפחה</p></div>
+    </div>
+    <div class="testi">
+      <div class="tcard reveal d1"><div class="stars">★★★★★</div><q>זה תמיד יהיה הזיכרון היקר ביותר שלנו. כשאנחנו מאבדות את הקשר, אנחנו יושבות ומדברות - ואני מקשיבה לה בלי שיפוט. עדי נתנה לנו כלים שאנחנו משתמשות בהם עד היום.</q><cite>שרית ל., רמת גן - 6 שנים אחרי הטיול</cite></div>
+      <div class="tcard reveal d2"><div class="stars">★★★★★</div><q>חשבתי שהבת שלי תהיה בטלפון כל הטיול. היא לא נגעה בו פעם אחת. שלושה ימים שבהם היא ראתה אותי כאישה, לא כאמא שאוסרת. חזרנו אחרות לגמרי.</q><cite>מיכל ר., הרצליה - Sweet 16 לבתה</cite></div>
+      <div class="tcard reveal d3"><div class="stars">★★★★★</div><q>זה היה הדבר הכי טוב שקרה לי ולאמא שלי. ממש לא ציפיתי כמה נהנתי. למדתי מה מותר לעור שלי - ועכשיו אני יודעת לבחור לבד.</q><cite>נועה ב., 16, תל אביב - שנה אחרי</cite></div>
+    </div>
+
+    <div class="dest">
+      <div class="d reveal d1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2"/></svg> יוון · כרתים ואתונה</div>
+      <div class="d reveal d2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2"/></svg> קפריסין</div>
+      <div class="d reveal d3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z" stroke="currentColor" stroke-width="2"/></svg> דובאי</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OBJECTIONS ===== -->
+<section class="block obj">
+  <div class="wrap">
+    <span class="kicker reveal">מה שאת חושבת עכשיו</span>
+    <h2 class="sec reveal">ואני כבר יודעת מה לענות.</h2>
+    <div class="obj-list">
+      <div class="obj-card reveal d1"><div class="says">"זה יקר בשביל רק אנחנו שתיים."</div><p>אם זה יחזיר לך את הבת שלך לשנים הקרובות - <b>זה הדבר הכי זול שתעשי בחייך.</b> ואצלך לא מחפשים ולא בודקים - מקבלים. הכל מובנה, הכל סגור.</p></div>
+      <div class="obj-card reveal d2"><div class="says">"היא בטח לא תסכים לבוא."</div><p>הן אף פעם לא מסכימות בהתחלה. ואז הן לא רוצות לחזור הביתה. <b>אני יודעת לדבר גם איתה</b>, בנפרד, בשפה שלה.</p></div>
+      <div class="obj-card reveal d3"><div class="says">"זה אנוכי. אולי נכשלתי כאמא."</div><p>לקחת זמן כדי להציל קשר זה לא אנוכי - זה האומץ הכי גדול. <b>זה לא אומר שנכשלת. זה אומר שלא ויתרת.</b></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SCARCITY ===== -->
+<section class="block scarcity">
+  <div class="wrap">
+    <span class="kicker reveal">בוטיק</span>
+    <h2 class="reveal">אני לא לכולן.</h2>
+    <div class="big-num reveal d1">8</div>
+    <p class="small reveal d1">משפחות בחודש. לא יותר.</p>
+    <p class="sec-lead reveal d2">כדי לשמור על יחס אישי ובוטיקי, אני מלווה עד 8 משפחות בחודש - כל אחת בנפרד, בהתאמה מלאה. זה לא טיול מאורגן. זו את ואני, בונות יחד את החופשה שלך ושל הבת שלך. אם את מחפשת טיסה ומלון זולים בבוקינג - אני לא הכתובת.</p>
+    <div style="margin-top:32px" class="reveal d3"><span class="cta-glow"><a href="#apply" class="btn">אני רוצה את אחד המקומות <span class="arr">←</span></a></span></div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="block final" id="apply">
+  <div class="wrap">
+    <p class="reveal" style="text-align:center;font-family:var(--serif);font-size:clamp(1.3rem,2.7vw,1.95rem);color:var(--green);max-width:22em;margin:0 auto 34px;line-height:1.5">"עוד מעט היא בצבא. נשארו לך אולי שלוש שנים. אם לא עכשיו - מתי?"</p>
+    <div class="final-card reveal">
+      <img class="em" src="sky-emblem.png" alt="" aria-hidden="true" />
+      <span class="kicker">ההזמנה</span>
+      <h2>אני לא מבקשת ממך לקנות. אני מזמינה אותך לשינוי.</h2>
+      <p class="sub">השאירי פרטים, ונקבע שיחת התאמה של 20 דקות - בלי עלות ובלי התחייבות. אם נתאים, נתחיל.</p>
+      <form class="apply" id="applyForm" novalidate>
+        <div><label for="f-name">שם מלא</label><input id="f-name" name="fullname" type="text" placeholder="איך קוראים לך?" required /></div>
+        <div><label for="f-age">גיל הבת</label><input id="f-age" name="age" type="text" placeholder="לדוגמה: 14" required /></div>
+        <div><label for="f-phone">טלפון</label><input id="f-phone" name="phone" type="tel" placeholder="050-0000000" required /></div>
+        <div><label for="f-email">אימייל</label><input id="f-email" name="email" type="email" placeholder="name@example.com" required /></div>
+        <div class="full"><label for="f-pain">ספרי לי במשפט אחד מה הכי כואב לך עכשיו</label><textarea id="f-pain" name="pain" placeholder="מה שתכתבי כאן יישאר ביני לבינך."></textarea></div>
+        <label class="consent full"><input type="checkbox" id="f-consent" required /><span>קראתי ואני מסכימה ל<a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</span></label>
+        <label class="consent full"><input type="checkbox" id="f-marketing" /><span>אשמח לקבל עדכונים ודיוור מ-SKY BY ADI (אופציונלי).</span></label>
+        <span class="cta-glow full"><button type="submit" class="btn">אני רוצה לבדוק התאמה <span class="arr">←</span></button></span>
+      </form>
+      <p class="reassure">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V6l7-3z" stroke="#5F8F30" stroke-width="2" stroke-linejoin="round"/></svg>
+        הפרטים שלך מוגנים. אני חוזרת אלייך אישית, לא דרך מוקד.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <img class="mark" src="sky-emblem.png" alt="" aria-hidden="true" />
+    <div class="name">SKY BY ADI AHARONI</div>
+    <div class="tagline">DREAM IT · VISIT IT</div>
+    <div class="links">
+      <a href="#" id="wa-link">וואטסאפ</a>
+      <a href="mailto:coheadi@gmail.com">אימייל</a>
+      <a href="#apply">בדיקת התאמה</a>
+      <a href="privacy.html">מדיניות פרטיות</a>
+      <a href="cookie-policy.html">מדיניות עוגיות</a>
+      <a href="accessibility.html">הצהרת נגישות</a>
+    </div>
+    <p class="copy">© <span id="yr"></span> SKY BY ADI AHARONI · חופשות אם ובת מותאמות אישית · כל הזכויות שמורות</p>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <span class="cta-glow"><a href="#apply" class="btn">לבדיקת התאמה <span class="arr">←</span></a></span>
+</div>
+
+<script src="sky-tracking.js" defer></script>
+<script>
+  var WHATSAPP_NUMBER = "972508278089";
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  document.getElementById('wa-link').href = "https://wa.me/" + WHATSAPP_NUMBER;
+
+  (function(){
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in')});return;}
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} });
+    },{threshold:.14, rootMargin:'0px 0px -40px 0px'});
+    els.forEach(function(e){io.observe(e)});
+  })();
+
+  document.getElementById('applyForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var val=function(id){var el=document.getElementById(id);return el?(el.value||'').trim():'';};
+    var name=val('f-name'), age=val('f-age'), phone=val('f-phone'), email=val('f-email'), pain=val('f-pain');
+    var consent=document.getElementById('f-consent').checked;
+    var marketing=document.getElementById('f-marketing').checked;
+    if(!name){document.getElementById('f-name').focus();return;}
+    if(!phone){document.getElementById('f-phone').focus();return;}
+    if(!email){document.getElementById('f-email').focus();return;}
+    if(!consent){document.getElementById('f-consent').focus();alert('כדי להמשיך יש לאשר את מדיניות הפרטיות.');return;}
+    var msg = "היי עדי, אשמח לבדוק התאמה לחופשת אם ובת.%0A"
+            + "שם: " + encodeURIComponent(name) + "%0A"
+            + "גיל הבת: " + encodeURIComponent(age) + "%0A"
+            + "טלפון: " + encodeURIComponent(phone) + "%0A"
+            + "אימייל: " + encodeURIComponent(email)
+            + (pain ? "%0Aמה שהכי כואב לי: " + encodeURIComponent(pain) : "")
+            + (marketing ? "%0A(מאשרת קבלת דיוור)" : "");
+    var waURL = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + msg;
+    try{ sessionStorage.setItem('skyWa', waURL); }catch(err){}
+    if(window.skyTrack){ skyTrack('Lead', {content_name:'mother-daughter-trip'}); }
+    window.location.href = "thank-you.html";
+  });
+</script>
+
+<!-- ===== SKY EDIT MODE - מצב עריכה (גלוי רק עם ?edit בכתובת) ===== -->
+<style id="sky-ed-css">
+  #sky-ed-bar{position:fixed;top:14px;left:14px;z-index:100000;display:flex;gap:8px;align-items:center;background:#21380F;color:#fff;padding:8px 10px;border-radius:12px;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);font-family:Heebo,sans-serif;direction:rtl;max-width:92vw;flex-wrap:wrap}
+  #sky-ed-bar button{font-family:inherit;font-weight:700;font-size:.86rem;padding:8px 14px;border-radius:8px;border:1px solid rgba(220,197,148,.5);background:transparent;color:#fff;cursor:pointer}
+  #sky-ed-bar button.on{background:linear-gradient(135deg,#C2A060,#A8843E);border-color:transparent}
+  #sky-ed-bar #sky-ed-hint{font-size:.76rem;color:#DCC594;max-width:230px;line-height:1.4}
+  body.sky-editing [data-sky-edit]{outline:2px dashed rgba(122,175,66,.75);outline-offset:3px}
+  body.sky-editing [data-sky-img]{outline:2px dashed #C2A060;outline-offset:3px;cursor:pointer}
+</style>
+<script>
+(function(){
+  if(!/[?&]edit(=|&|$)/.test(location.search)) return;
+  var TXT='h1,h2,h3,h4,p,li,cite,.says,.close-line,.lead,.sub,.promise,.mech-foot,.sec-lead,.small,.kicker,.tag,.brand .name';
+  var on=false, fileTarget=null;
+  var bar=document.createElement('div'); bar.id='sky-ed-bar';
+  bar.innerHTML='<button id="se-tog" type="button">✏️ הפעלת עריכה</button><button id="se-save" type="button">💾 שמירה</button><span id="sky-ed-hint">הפעילי עריכה, שני טקסט בלחיצה, החליפי תמונה בלחיצה, ואז שמרי.</span>';
+  var fi=document.createElement('input'); fi.type='file'; fi.accept='image/*'; fi.style.display='none';
+  function txtEls(){ return document.querySelectorAll(TXT); }
+  function imgEls(){ return document.querySelectorAll('img, .photo-frame .ph'); }
+  function setOn(v){
+    on=v; document.body.classList.toggle('sky-editing',on);
+    var tg=document.getElementById('se-tog'); tg.classList.toggle('on',on);
+    tg.textContent = on ? '✏️ עריכה פעילה' : '✏️ הפעלת עריכה';
+    txtEls().forEach(function(e){ if(on){ e.setAttribute('contenteditable','true'); e.setAttribute('data-sky-edit','1'); } else { e.removeAttribute('contenteditable'); e.removeAttribute('data-sky-edit'); } });
+    imgEls().forEach(function(e){ if(e.closest('#sky-ed-bar')) return; if(on){ e.setAttribute('data-sky-img','1'); } else { e.removeAttribute('data-sky-img'); } });
+  }
+  document.addEventListener('click', function(ev){
+    if(!on) return;
+    var t=ev.target.closest('[data-sky-img]'); if(!t) return;
+    ev.preventDefault(); ev.stopPropagation(); fileTarget=t; fi.click();
+  }, true);
+  fi.addEventListener('change', function(){
+    var f=fi.files && fi.files[0]; if(!f || !fileTarget) return;
+    var r=new FileReader();
+    r.onload=function(){
+      if(fileTarget.tagName==='IMG'){ fileTarget.src=r.result; }
+      else { fileTarget.style.backgroundImage='url('+r.result+')'; fileTarget.style.backgroundSize='cover'; fileTarget.style.backgroundPosition='center'; fileTarget.innerHTML=''; }
+      fi.value='';
+    };
+    r.readAsDataURL(f);
+  });
+  function save(){
+    var wasOn=on; if(wasOn) setOn(false);
+    var ck=document.getElementById('sky-cookie'); if(ck) ck.remove();
+    bar.remove(); fi.remove();
+    var html='<!DOCTYPE html>\n'+document.documentElement.outerHTML;
+    var blob=new Blob([html],{type:'text/html;charset=utf-8'});
+    var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='sky-landing-magnetic.html'; a.click();
+    document.body.appendChild(bar); document.body.appendChild(fi); if(wasOn) setOn(true);
+    setTimeout(function(){ alert('הקובץ הערוך ירד לתיקיית ההורדות. החליפי בו את הקובץ המקורי.'); }, 300);
+  }
+  document.body.appendChild(bar); document.body.appendChild(fi);
+  document.getElementById('se-tog').onclick=function(){ setOn(!on); };
+  document.getElementById('se-save').onclick=save;
+})();
+</script>
+
+</body>
+</html>
+
