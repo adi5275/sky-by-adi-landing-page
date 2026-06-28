@@ -91,13 +91,13 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
     <div class="field" style="margin-bottom:16px;"><label>שיגיע ביום</label><input id="when" placeholder="למשל: יום הגיוס שלה / 1.9.2030" required></div>
     <div class="field"><label>המכתב שלך</label><textarea id="body" placeholder="כתבי לה ממקום שקט. מה שלא תמיד מספיקים להגיד בבית..." required></textarea></div>
     <button class="btn" type="submit">חתמי את המכתב</button>
-    <div class="note">המכתב נשמר רק אצל SKY BY ADI, נחתם, ויישלח במועד שבחרת. הוא לא מוצג לאף אחד עד אז.</div>
+    <div class="note">כשתחתמי, המכתב נשלח אל עדי - היא שומרת אותו אישית ודואגת שיגיע במועד שבחרת. הוא לא מוצג לאף אחד אחר.</div>
   </form>
 
   <div class="sealed" id="sealed">
     <div class="seal"><img src="img/emblem.png" alt=""></div>
     <h2>המכתב נחתם.</h2>
-    <p>הוא יחכה, סגור ושמור,<br>עד הרגע שבחרת.</p>
+    <p>הוא נשלח לעדי, שתשמור אותו<br>ותדאג שיגיע ברגע שבחרת.</p>
     <div class="when" id="whenOut"></div>
   </div>
 
@@ -109,12 +109,18 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
 <script>
 function seal(e){
   e.preventDefault();
+  const from=document.getElementById('from').value.trim();
+  const to=document.getElementById('to').value.trim();
   const w=document.getElementById('when').value.trim();
+  const body=document.getElementById('body').value.trim();
   document.getElementById('form').style.display='none';
-  document.getElementById('whenOut').textContent='יגיע אל '+document.getElementById('to').value.trim()+' · '+w;
+  document.getElementById('whenOut').textContent='יגיע אל '+to+' · '+w;
   document.getElementById('sealed').classList.add('on');
   window.scrollTo({top:0,behavior:'smooth'});
-  /* עדי: לחיבור משלוח אמיתי במועד - לחבר כאן את ravmesser + תזמון (cron). כרגע זו חוויית הכתיבה והחתימה. */
+  /* המכתב באמת נשלח לעדי לשמירה (mailto). בהמשך אפשר להחליף ב-endpoint/ravmesser לתזמון אוטומטי. */
+  const subj='מכתב מהעתיד · מאת '+from+' אל '+to;
+  const mailBody='מאת: '+from+'\nאל: '+to+'\nשיגיע ביום: '+w+'\n\nהמכתב:\n'+body;
+  setTimeout(()=>{window.location.href='mailto:coheadi@gmail.com?subject='+encodeURIComponent(subj)+'&body='+encodeURIComponent(mailBody);},600);
 }
 </script>
 <script>

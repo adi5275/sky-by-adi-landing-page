@@ -71,7 +71,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
 <div class="top">
   <img class="em" src="img/emblem.png" alt="SKY BY ADI">
   <h1>קלפי שיחה · רק שתיכן</h1>
-  <p>בלי לדבר "על רגשות". פשוט הקישו, קראו בקול, וראו לאן זה לוקח אתכן.</p>
+  <p>דק דיגיטלי, רק שתיכן בטלפון. בלי לדבר "על רגשות" - הקישו, קראו בקול, וראו לאן זה לוקח אתכן.</p>
 </div>
 
 <div class="stage"><div class="card" id="card" onclick="next()">
@@ -115,7 +115,7 @@ const CARDS = [
 ];
 let order=[], idx=-1;
 const cls={kalil:'c-kalil',tzo:'c-tzo',zik:'c-zik',hal:'c-hal',at:'c-at'};
-function shuffle(){order=[...Array(CARDS.length).keys()]; for(let i=order.length-1;i>0;i--){const j=(i*7+3)%(i+1);[order[i],order[j]]=[order[j],order[i]];}}
+function shuffle(){order=[...Array(CARDS.length).keys()]; for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}}
 shuffle();
 const card=document.getElementById('card'),tagE=document.getElementById('tag'),pE=document.getElementById('prompt'),cE=document.getElementById('count');
 function next(){

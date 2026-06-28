@@ -137,7 +137,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
     <div class="cta">
       <h2>זה רק ההתחלה.</h2>
       <p style="font-size:19px;color:rgba(255,255,255,.9);margin-bottom:8px;">אם זה מרגיש נכון, נמשיך מכאן.</p>
-      <div class="pill">שלחי לי "מתאים?" ←</div>
+      <a class="pill" id="cm-wa" target="_blank" rel="noopener" style="text-decoration:none;">שלחי לי "מתאים?" ←</a>
     </div>
   </section>
 
@@ -153,6 +153,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
 const q=new URLSearchParams(location.search);
 const g=(k,d)=>q.get(k)||d;
 const mom=g('mom','נדין'), dau=g('dau','עמית'), age=g('age','13');
+(function(){const el=document.getElementById('cm-wa');if(el)el.href='https://wa.me/972508278089?text='+encodeURIComponent('שלום עדי! ראיתי את תיק הפיצוח של '+mom+' ו'+dau+'. מתאים?');})();
 document.getElementById('title').textContent=mom+' ו'+dau;
 document.getElementById('momName').textContent=mom;
 document.getElementById('dauName').textContent=dau;
@@ -165,7 +166,7 @@ function fill(id,val,def){
   (val?val.split('|'):def).forEach(t=>{const li=document.createElement('li');li.textContent=t;ul.appendChild(li);});
 }
 fill('momLoves',q.get('momLoves'),['שקט אמיתי, בלי מסכים','רגעים קטנים, לא הפקות','לראות את '+dau+' פורחת']);
-fill('dauLoves',q.get('dauLoves'),['ספא, טיפוח, רגעי "סטורי"','עצמאות והרגשה של "גדולה"','משהו מגניב, לא השגרה']);
+fill('dauLoves',q.get('dauLoves'),['עצמאות והרגשה של "גדולה"','משהו מגניב, לא השגרה','ופינוק קטן בדרך - ספא ורגעי "סטורי"']);
 </script>
 <script>
 /* ===== BRAIN DECK · EDIT MODE v2 (additive, self-contained) =====

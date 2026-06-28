@@ -704,7 +704,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
     </p>
     <div class="field" style="margin-top: 16px;">
       <label for="extra-inclusions">הוספות חופשיות (מה עוד כלול)</label>
-      <input type="text" id="extra-inclusions" placeholder="לדוגמה: ארוחת ערב ראשונה, Welcome drink, Early check-in">
+      <input type="text" id="extra-inclusions" placeholder="לדוגמה: ארוחת ערב ראשונה, Welcome drink, תיאום לוגיסטי מלא">
     </div>
   </div>
 
@@ -836,7 +836,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
   }
 
   function getInclusions() {
-    const checks = ['inc-flights','inc-hotel','inc-breakfast','inc-transfers','inc-spa','inc-glow','inc-cards','inc-insurance'];
+    const checks = ['inc-flights','inc-hotel','inc-breakfast','inc-transfers','inc-spa','inc-insurance'];
     const labels = checks
       .filter(id => document.getElementById(id)?.checked)
       .map(id => document.getElementById(id)?.value || '')
@@ -847,7 +847,7 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
   }
 
   function getInclusionsForUrl() {
-    const checks = ['inc-flights','inc-hotel','inc-breakfast','inc-transfers','inc-spa','inc-glow','inc-cards','inc-insurance'];
+    const checks = ['inc-flights','inc-hotel','inc-breakfast','inc-transfers','inc-spa','inc-insurance'];
     const labels = checks
       .filter(id => document.getElementById(id)?.checked)
       .map(id => document.getElementById(id)?.value || '')
