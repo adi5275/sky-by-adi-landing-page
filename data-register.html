@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מסמך הגדרת מאגר ונוהל אבטחת מידע - SKY BY ADI AHARONI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&family=Playfair+Display:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --green:#2D5016; --green-mid:#3D7020; --gold:#C9A84C; --gold-deep:#a8862a; --gold-light:#e0c87a;
+      --cream:#FAF6EE; --cream-dark:#F0E8D8; --text:#1a1a1a; --muted:#6b6b66; --border:#DCD3C2;
+      --hl-bg:#f4f9f0; --hl-border:#b5d18a; --warn-bg:#fff8e8;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Heebo',sans-serif;color:var(--text);font-size:15px;line-height:1.9;background:var(--cream);}
+    .header{position:relative;text-align:center;padding:36px 20px 28px;overflow:hidden;color:#fff;
+      background:linear-gradient(135deg,var(--green) 0%,var(--green-mid) 60%,#34611c 100%);}
+    .header::after{content:'';position:absolute;left:0;right:0;bottom:0;height:3px;
+      background:linear-gradient(90deg,transparent,var(--gold) 25%,var(--gold-light) 50%,var(--gold) 75%,transparent);}
+    .header-brand{font-family:'Playfair Display',serif;font-size:1.35rem;letter-spacing:2px;color:var(--gold-light);margin-bottom:4px;}
+    .header-sub{font-size:.82rem;color:rgba(255,255,255,.7);letter-spacing:1px;margin-bottom:14px;}
+    .doc-badge{display:inline-block;padding:7px 22px;background:rgba(255,255,255,.13);border:1px solid rgba(201,168,76,.7);
+      border-radius:6px;font-size:1rem;font-weight:600;}
+    .container{max-width:840px;margin:30px auto 0;padding:0 16px 80px;}
+    .card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:36px 42px;box-shadow:0 6px 30px rgba(45,80,22,.07);}
+    .meta-bar{display:flex;justify-content:space-between;align-items:center;font-size:.78rem;color:var(--muted);
+      border-bottom:1px solid var(--cream-dark);padding-bottom:12px;margin-bottom:18px;flex-wrap:wrap;gap:6px;}
+    .intro-box{background:var(--hl-bg);border-right:3px solid var(--gold);border-radius:0 8px 8px 0;padding:14px 18px;
+      margin-bottom:26px;font-size:.88rem;}
+    .intro-box strong{color:var(--green);}
+    .section{margin-bottom:26px;}
+    .section-title{font-size:.98rem;font-weight:700;color:var(--green);border-bottom:1px solid var(--cream-dark);
+      padding-bottom:8px;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+    .n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--green);
+      color:#fff;border-radius:50%;font-size:.78rem;font-weight:700;flex:0 0 auto;}
+    p{font-size:.9rem;margin-bottom:8px;}
+    ul{margin:8px 26px 10px;font-size:.88rem;}
+    li{margin-bottom:6px;}
+    table{width:100%;border-collapse:collapse;font-size:.85rem;margin:8px 0;border-radius:8px;overflow:hidden;
+      box-shadow:0 1px 6px rgba(45,80,22,.06);}
+    th{background:var(--green);color:#fff;padding:9px 12px;text-align:right;}
+    td{padding:9px 12px;border-bottom:1px solid var(--cream-dark);vertical-align:top;}
+    tr:nth-child(even) td{background:var(--cream);}
+    .tag{display:inline-block;font-size:.72rem;font-weight:700;padding:2px 8px;border-radius:4px;}
+    .tag.sens{background:#fde8e8;color:#9b2c2c;border:1px solid #e3b3b3;}
+    .tag.norm{background:#eef5e6;color:var(--green);border:1px solid var(--hl-border);}
+    .checkbox-row{display:flex;align-items:flex-start;gap:10px;padding:9px 12px;border:1px solid var(--border);
+      border-radius:8px;margin-bottom:8px;background:#fff;}
+    .checkbox-row input{width:18px;height:18px;margin-top:3px;accent-color:var(--green);flex:0 0 auto;}
+    .checkbox-row .t{font-size:.88rem;}
+    .checkbox-row .t b{color:var(--green);}
+    .warn{background:var(--warn-bg);border:1px solid var(--gold);border-radius:8px;padding:12px 16px;font-size:.84rem;color:var(--muted);margin-top:8px;}
+    .fill{border-bottom:1.5px dotted var(--gold);min-width:120px;display:inline-block;}
+    .footer-note{text-align:center;font-size:.74rem;color:var(--muted);margin-top:26px;line-height:1.8;}
+    .footer-note .biz{color:var(--green);font-weight:700;letter-spacing:1px;}
+    .print-btn{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;border:none;
+      padding:11px 26px;border-radius:8px;font-family:'Heebo',sans-serif;font-size:.92rem;font-weight:600;cursor:pointer;margin-top:16px;}
+    @media print{.print-btn{display:none;}body{background:#fff;}.card{box-shadow:none;border:none;}}
+    @media (max-width:600px){.card{padding:24px 18px;}.meta-bar{flex-direction:column;text-align:center;}}
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-brand">SKY BY ADI AHARONI</div>
+  <div class="header-sub">DREAM IT. VISIT IT</div>
+  <div class="doc-badge">מסמך הגדרת מאגר ונוהל אבטחת מידע</div>
+</div>
+
+<div class="container">
+<div class="card">
+
+  <div class="meta-bar">
+    <span>מסמך פנימי - אינו לפרסום</span>
+    <span>בהתאם לחוק הגנת הפרטיות, תיקון 13, ותקנות אבטחת מידע התשע"ז-2017</span>
+  </div>
+
+  <div class="intro-box">
+    מסמך זה מגדיר את מאגר המידע של העסק ואת נוהל אבטחת המידע, כנדרש מעוסק המחזיק מידע אישי (ובכלל זה מידע רגיש). <strong>זהו מסמך פנימי לשמירה אצל בעלת העסק - אין לפרסמו באתר.</strong> יש לעדכנו אחת לשנה ובכל שינוי מהותי.
+  </div>
+
+  <!-- 1 -->
+  <div class="section">
+    <div class="section-title"><span class="n">1</span> פרטי המאגר ובעליו</div>
+    <table>
+      <tr><th>פריט</th><th>פירוט</th></tr>
+      <tr><td>שם המאגר</td><td>מאגר לקוחות ופניות - SKY BY ADI AHARONI</td></tr>
+      <tr><td>בעלת המאגר ומחזיקתו</td><td>עדי אהרוני</td></tr>
+      <tr><td>מנהלת המאגר / אחראית אבטחה</td><td>עדי אהרוני (עסק יחיד)</td></tr>
+      <tr><td>פרטי קשר</td><td>050-8278089 · coheadi@gmail.com</td></tr>
+      <tr><td>רמת אבטחה לפי התקנות</td><td>בסיסית (עסק יחיד, מספר נשואי מידע מצומצם) - עם החמרה בשל החזקת <b>מידע רגיש</b> (בריאות, קטינות)</td></tr>
+    </table>
+    <div class="warn">לפי תיקון 13, רוב המאגרים הקטנים <b>פטורים מרישום</b> אצל הרשם - אך חובות האבטחה, התיעוד וזכויות נושא המידע <b>חלות במלואן</b>. מסמך זה הוא חלק מקיום החובות הללו.</div>
+  </div>
+
+  <!-- 2 -->
+  <div class="section">
+    <div class="section-title"><span class="n">2</span> מטרות המאגר</div>
+    <ul>
+      <li>ניהול פניות והזמנות של לקוחות</li>
+      <li>התאמה אישית של השירות (יעד, אירוח, פעילויות, ספא מותאם-גיל)</li>
+      <li>קשר שוטף, חיובים והפקת מסמכים</li>
+      <li>עמידה בחובות שבדין (חשבונאות, מס)</li>
+      <li>דיוור שיווקי - בהסכמה מפורשת בלבד</li>
+    </ul>
+  </div>
+
+  <!-- 3 -->
+  <div class="section">
+    <div class="section-title"><span class="n">3</span> סוגי המידע הנאסף ורגישותו</div>
+    <table>
+      <tr><th>סוג מידע</th><th>רגישות</th></tr>
+      <tr><td>שם, טלפון, דוא"ל, כתובת</td><td><span class="tag norm">רגיל</span></td></tr>
+      <tr><td>פרטי מסמכי נסיעה (דרכון/ת.ז.)</td><td><span class="tag sens">רגיש</span></td></tr>
+      <tr><td>גיל הבת/ות וקטינים בהזמנה</td><td><span class="tag sens">רגיש (קטינים)</span></td></tr>
+      <tr><td>מידע רפואי, אלרגיות, מגבלות (מרצון)</td><td><span class="tag sens">רגיש (בריאות)</span></td></tr>
+      <tr><td>העדפות אירוע ותזונה</td><td><span class="tag norm">רגיל</span></td></tr>
+      <tr><td>מידע טכני/עוגיות (IP, אנליטיקס) - בהסכמה</td><td><span class="tag norm">רגיל</span></td></tr>
+    </table>
+  </div>
+
+  <!-- 4 -->
+  <div class="section">
+    <div class="section-title"><span class="n">4</span> מקור המידע</div>
+    <ul>
+      <li>ישירות מהלקוח/ה - דרך טפסים, ווטסאפ, דוא"ל ושיחות</li>
+      <li>אוטומטית - עוגיות וכלי ניתוח, <b>אך ורק לאחר הסכמה</b></li>
+    </ul>
+  </div>
+
+  <!-- 5 -->
+  <div class="section">
+    <div class="section-title"><span class="n">5</span> הרשאות גישה</div>
+    <p>גישה למאגר נתונה אך ורק ל<b>עדי אהרוני</b>. אין עובדים/קבלנים נוספים עם גישה. בכל שינוי (הוספת עובד/קבלן) - לעדכן מסמך זה ולחתום על נוהל סודיות.</p>
+    <p>גורמים נוספים עם גישה (למילוי בעת הצורך): <span class="fill">&nbsp;</span></p>
+  </div>
+
+  <!-- 6 -->
+  <div class="section">
+    <div class="section-title"><span class="n">6</span> היכן נשמר המידע (מערכות וספקי משנה)</div>
+    <table>
+      <tr><th>מערכת</th><th>שימוש</th></tr>
+      <tr><td>Gmail (Google)</td><td>תכתובות, פניות</td></tr>
+      <tr><td>WhatsApp</td><td>קשר שוטף עם לקוחות</td></tr>
+      <tr><td>מערכת CRM / גיליונות</td><td>ניהול לקוחות והזמנות</td></tr>
+      <tr><td>מערכת סליקה / חשבוניות</td><td>חיובים ותיעוד</td></tr>
+      <tr><td>שירות ענן / גיבוי</td><td>אחסון וגיבוי</td></tr>
+    </table>
+    <p>כל ספקי המשנה הם ספקים מוכרים ומקובלים, הכפופים לתנאי שירות ולמדיניות אבטחה ופרטיות.</p>
+  </div>
+
+  <!-- 7 -->
+  <div class="section">
+    <div class="section-title"><span class="n">7</span> העברת מידע</div>
+    <ul>
+      <li>לספקי קצה (מלונות, חברות תעופה, ספא, ביטוח) - רק במידה הנדרשת לאספקת השירות, לרבות ספקים <b>בחו"ל</b>.</li>
+      <li>לרשויות מוסמכות - ככל שנדרש לפי דין.</li>
+      <li>העברה לחו"ל מבוססת על מסגרות הגנה מוכרות (SCC) ו/או הסכמת הלקוח/ה.</li>
+    </ul>
+  </div>
+
+  <!-- 8 -->
+  <div class="section">
+    <div class="section-title"><span class="n">8</span> תקופת שמירה</div>
+    <ul>
+      <li>פניות ללא הזמנה - עד שנה (אלא אם ניתנה הסכמה לדיוור).</li>
+      <li>הזמנות שיצאו לפועל, חוזים וחשבוניות - 7 שנים (חובות מס וחשבונאות).</li>
+      <li>רשימת דיוור - עד לביטול ההסכמה.</li>
+    </ul>
+    <p>בתום התקופה - מחיקה מאובטחת או הפיכה לאנונימי.</p>
+  </div>
+
+  <!-- 9 -->
+  <div class="section">
+    <div class="section-title"><span class="n">9</span> אמצעי אבטחת מידע שננקטים</div>
+    <p>סמני ✔ ליד כל אמצעי שמיושם בפועל (זהו גם צ'קליסט הפעולות לביצוע):</p>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>אימות דו-שלבי (2FA)</b> בכל החשבונות - Gmail, WhatsApp, CRM, סליקה, ענן</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>הצפנת דיסק</b> במחשב (BitLocker) + שמירת מפתח השחזור במקום בטוח</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>סיסמאות חזקות וייחודיות</b> (רצוי מנהל סיסמאות)</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>גיבוי קבוע</b> (ענן עם 2FA ו/או כונן חיצוני) - ובדיקת שחזור מדי פעם</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>צמצום מידע</b> - לא לשמור יותר מהדרוש; מחיקה בתום תקופת השמירה</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>הפרדת מידע רגיש</b> (רפואי/קטינים) ושמירתו בהיקף מינימלי</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>נעילת מסך</b> אוטומטית + אנטי-וירוס מעודכן</div></div>
+    <div class="checkbox-row"><input type="checkbox"><div class="t"><b>זהירות מהתחזות/פישינג</b> - לא ללחוץ על קישורים חשודים</div></div>
+  </div>
+
+  <!-- 10 -->
+  <div class="section">
+    <div class="section-title"><span class="n">10</span> נוהל אירוע אבטחת מידע</div>
+    <p>במקרה של חשד לאירוע (דליפה, גישה לא מורשית, אובדן מכשיר):</p>
+    <ul>
+      <li><b>זיהוי ובלימה</b> - לנתק גישה, לשנות סיסמאות, לבודד את המקור.</li>
+      <li><b>הערכה</b> - איזה מידע נחשף ולכמה אנשים.</li>
+      <li><b>דיווח</b> - באירוע חמור: הודעה ל<b>רשות להגנת הפרטיות</b> וללקוחות שנפגעו, ככל שנדרש לפי דין.</li>
+      <li><b>תיעוד והפקת לקחים</b> - לרשום מה קרה ומה תוקן.</li>
+    </ul>
+    <p>תאריך האירוע האחרון שתועד: <span class="fill">&nbsp;</span></p>
+  </div>
+
+  <!-- 11 -->
+  <div class="section">
+    <div class="section-title"><span class="n">11</span> נוהל טיפול בבקשת נושא מידע</div>
+    <p>לקוח/ה רשאי/ת לבקש: עיון, תיקון, מחיקה, או הסרה מדיוור. הטיפול: לאמת זהות → לאתר את המידע → לבצע את הבקשה (בכפוף לחובות שמירה שבדין) → <b>להשיב בתוך 30 יום</b>. בקשות מגיעות ל-coheadi@gmail.com.</p>
+  </div>
+
+  <!-- 12 -->
+  <div class="section">
+    <div class="section-title"><span class="n">12</span> סקירה ועדכון</div>
+    <p>מסמך זה ייסקר אחת לשנה ובכל שינוי מהותי (מערכת חדשה, עובד חדש, סוג מידע חדש).</p>
+    <table>
+      <tr><th>תאריך עדכון</th><th>בוצע על ידי</th><th>הערות</th></tr>
+      <tr><td><span class="fill">&nbsp;</span></td><td>עדי אהרוני</td><td><span class="fill">&nbsp;</span></td></tr>
+      <tr><td><span class="fill">&nbsp;</span></td><td>עדי אהרוני</td><td><span class="fill">&nbsp;</span></td></tr>
+    </table>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">🖨️ הדפסה / שמירה כ-PDF</button>
+
+  <div class="footer-note">
+    <span class="biz">SKY BY ADI AHARONI - DREAM IT. VISIT IT</span><br>
+    מסמך פנימי - הגדרת מאגר ונוהל אבטחת מידע · גרסה: יוני 2026<br>
+    &copy; כל הזכויות שמורות לעדי אהרוני
+  </div>
+
+</div>
+</div>
+
+</body>
+</html>

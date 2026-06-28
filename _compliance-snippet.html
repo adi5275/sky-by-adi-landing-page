@@ -1,0 +1,60 @@
+<!-- ════════════════════════════════════════════════════════════════
+     SKY BY ADI - סניפט תאימות (תיקון 13) להדבקה בכל דף נחיתה חדש
+     3 בלוקים: (A) CSS לפני </style> · (B) HTML מיד אחרי <body>
+     (C) JS לפני </body> · (D) קישורי פוטר.
+     הצבעים משתמשים במשתני המותג עם נפילה (fallback) - עובד בכל דף.
+     ════════════════════════════════════════════════════════════════ -->
+
+
+<!-- ========== (A) CSS - להדביק לפני </style> ========== -->
+<style>
+  #cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:9000;
+    background:var(--forest-deep,#21380F);color:var(--gold-light,#DCC594);
+    padding:16px 22px;display:flex;align-items:center;justify-content:space-between;
+    gap:14px;flex-wrap:wrap;font-size:.92rem;box-shadow:0 -6px 24px rgba(0,0,0,.22)}
+  #cookie-banner p{flex:1;min-width:220px;margin:0}
+  #cookie-banner a{color:var(--gold-light,#DCC594);text-decoration:underline}
+  .cookie-btns{display:flex;gap:10px}
+  .cookie-btn{font-family:inherit;font-weight:700;padding:10px 22px;border-radius:8px;border:none;cursor:pointer;font-size:.9rem}
+  .cookie-btn.accept{background:var(--gold,#C2A060);color:#fff}
+  .cookie-btn.decline{background:transparent;color:var(--gold-light,#DCC594);border:1px solid rgba(220,197,148,.45)}
+</style>
+
+
+<!-- ========== (B) HTML - להדביק מיד אחרי <body> ========== -->
+<div id="cookie-banner" role="region" aria-label="הסכמה לעוגיות">
+  <p>אנחנו משתמשות בעוגיות לשיפור החוויה ולמדידת ביצועים, בכפוף להסכמתך. פרטים ב<a href="cookie-policy.html" target="_blank" rel="noopener">מדיניות העוגיות</a> וב<a href="privacy.html" target="_blank" rel="noopener">מדיניות הפרטיות</a>.</p>
+  <div class="cookie-btns">
+    <button class="cookie-btn accept" onclick="cookieAccept()">מסכימה</button>
+    <button class="cookie-btn decline" onclick="cookieDecline()">דחייה</button>
+  </div>
+</div>
+
+
+<!-- ========== (C) JS - להדביק לפני </body> ========== -->
+<script>
+/* באנר הסכמה - חוסם אנליטיקס/שיווק עד אישור (תיקון 13) */
+(function(){
+  var stored=localStorage.getItem('sky_cookie_consent');
+  var banner=document.getElementById('cookie-banner');
+  if(banner && stored){ banner.style.display='none'; if(stored==='accepted') loadTrackingScripts(); }
+})();
+function cookieAccept(){ localStorage.setItem('sky_cookie_consent','accepted'); var b=document.getElementById('cookie-banner'); if(b)b.style.display='none'; loadTrackingScripts(); }
+function cookieDecline(){ localStorage.setItem('sky_cookie_consent','declined'); var b=document.getElementById('cookie-banner'); if(b)b.style.display='none'; }
+function loadTrackingScripts(){
+  /* ⚠️ כל קוד המעקב נכנס כאן בלבד - ירוץ רק אחרי הסכמה.
+     דוגמה ל-Facebook Pixel (להחליף PIXEL_ID): */
+  // if(!window.fbq){ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js'); fbq('init','PIXEL_ID'); fbq('track','PageView'); }
+  /* דוגמה ל-Google Analytics (להחליף G-XXXX):
+  var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id=G-XXXX';document.head.appendChild(s);
+  window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XXXX'); */
+}
+</script>
+
+
+<!-- ========== (D) קישורי פוטר - לכלול בפוטר הדף ========== -->
+<!--
+  <a href="privacy.html">מדיניות פרטיות</a> ·
+  <a href="cookie-policy.html">מדיניות עוגיות</a> ·
+  <a href="contract.html">הסכם התקשרות</a>
+-->

@@ -1,58 +1,56 @@
-﻿<!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>רצף מיילים | SKY BY ADI</title>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;900&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מעקב 90 יום · SKY BY ADI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--forest:#2D5016;--forest-light:#3d6b1e;--gold:#C9A84C;--cream:#FAF6EE;--dark:#1a1a1a;--mid:#4a4a4a;--border:#e8e0d0;}
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'Heebo',sans-serif;background:#f0ebe0;color:var(--dark);line-height:1.7;}
-.page-header{background:var(--forest);padding:40px;text-align:center;}
-.page-header .logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:12px;}
-.page-header h1{color:var(--cream);font-size:30px;font-weight:700;margin-bottom:8px;}
-.page-header p{color:rgba(250,246,238,0.7);font-size:14px;}
-.nav{display:flex;background:white;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:10;box-shadow:0 2px 8px rgba(0,0,0,0.08);}
-.nav-btn{flex:1;padding:16px 8px;text-align:center;cursor:pointer;font-weight:600;font-size:13px;color:var(--mid);border-bottom:3px solid transparent;transition:all .2s;border:none;background:none;font-family:'Heebo',sans-serif;}
-.nav-btn.active,.nav-btn:hover{color:var(--forest);border-bottom-color:var(--forest);}
-.tab{display:none;padding:32px 24px;max-width:800px;margin:0 auto;}
-.tab.active{display:block;}
-.timing-badge{display:inline-flex;align-items:center;gap:8px;background:var(--forest);color:var(--gold);font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:1px;}
-.purpose-box{background:white;border-right:4px solid var(--gold);border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:24px;font-size:14px;color:var(--mid);}
-.purpose-box strong{color:var(--forest);display:block;margin-bottom:4px;font-size:13px;letter-spacing:1px;text-transform:uppercase;}
-.email-mockup{background:white;border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.12);overflow:hidden;margin-bottom:24px;}
-.email-header{background:linear-gradient(135deg,var(--forest),var(--forest-light));padding:24px 28px;}
-.email-from{font-size:12px;color:rgba(250,246,238,0.6);margin-bottom:4px;}
-.email-subject{color:white;font-size:20px;font-weight:700;margin-bottom:6px;line-height:1.3;}
-.email-preview{font-size:13px;color:rgba(250,246,238,0.7);font-style:italic;}
-.email-body{padding:32px 36px;font-size:15px;line-height:2;color:var(--dark);}
-.email-body p{margin-bottom:16px;}
-.email-body .highlight{color:var(--forest);font-weight:700;}
-.email-body .quote{border-right:3px solid var(--gold);padding-right:16px;margin:20px 0;color:var(--mid);font-style:italic;}
-.email-body .cta-section{background:var(--cream);border-radius:12px;padding:20px 24px;margin:24px 0;text-align:center;}
-.email-body .cta-btn{display:inline-block;background:var(--forest);color:white;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:14px;margin:8px;}
-.email-body .cta-btn.wa{background:#25D366;}
-.email-body .sig{margin-top:28px;padding-top:20px;border-top:1px solid var(--border);font-size:13px;color:var(--mid);}
-.email-body .sig strong{color:var(--dark);display:block;font-size:15px;margin-bottom:4px;}
-.email-footer{background:#f8f5ef;padding:16px 28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;gap:12px;}
-.copy-btn{background:none;border:1px solid var(--forest);color:var(--forest);padding:8px 16px;border-radius:6px;cursor:pointer;font-family:'Heebo',sans-serif;font-weight:600;font-size:13px;transition:all .15s;}
-.copy-btn:hover{background:var(--forest);color:white;}
-.meta-info{font-size:12px;color:var(--mid);display:flex;gap:16px;}
-.meta-pill{background:var(--cream);padding:3px 10px;border-radius:12px;border:1px solid var(--border);}
-.formula-bar{display:flex;gap:4px;margin-bottom:28px;flex-wrap:wrap;}
-.formula-step{flex:1;min-width:80px;background:white;border-radius:8px;padding:10px;text-align:center;font-size:11px;font-weight:700;border-top:3px solid var(--border);}
-.formula-step.active{border-top-color:var(--gold);background:#fdf9f0;}
-.formula-step .heb{font-size:14px;display:block;margin-top:4px;}
-.tips-box{background:linear-gradient(135deg,var(--forest),var(--forest-light));border-radius:12px;padding:20px 24px;color:white;margin-top:24px;}
-.tips-title{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
-.tips-list{list-style:none;padding:0;}
-.tips-list li{font-size:13px;padding:5px 0;padding-right:16px;position:relative;line-height:1.6;}
-.tips-list li::before{content:'-';position:absolute;right:0;color:var(--gold);}
-.toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--forest);color:white;padding:10px 20px;border-radius:30px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;pointer-events:none;z-index:999;}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-#edit-toggle{position:fixed;bottom:20px;left:20px;z-index:9999;background:var(--forest);color:var(--gold);border:none;border-radius:50px;padding:10px 18px;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,0.3);}
-@media(max-width:600px){.tab{padding:20px 16px;}.email-body{padding:20px;}.email-header{padding:16px 20px;}.formula-bar{display:none;}}
+:root{--green:#2D5016;--blue:#1E5163;--blue-d:#163b48;--gold:#C9A84C;--cream:#FBF9F4;--ink:#1A1A1A;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Heebo',sans-serif;background:radial-gradient(120% 90% at 50% 0%,#22576b,#163b48 70%);min-height:100vh;color:var(--cream);padding:40px 20px 60px;}
+.wrap{max-width:640px;margin:0 auto;}
+.head{text-align:center;margin-bottom:26px;}
+.head .em{width:74px;height:auto;margin-bottom:12px;}
+.eyebrow{font-family:'Playfair Display',serif;letter-spacing:7px;font-size:15px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;}
+.head h1{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;line-height:1.2;}
+.head p{font-size:17px;line-height:1.6;color:rgba(251,249,244,.82);margin-top:16px;}
+
+.progress{background:linear-gradient(180deg,#fffdf8,#fbf6ea);color:#33302a;border-radius:18px;padding:22px 24px;margin-top:24px;
+ box-shadow:0 24px 60px rgba(0,0,0,.34);border:1px solid rgba(201,168,76,.4);text-align:center;}
+.progress .ttl{font-size:14px;font-weight:700;color:var(--green);letter-spacing:.5px;margin-bottom:12px;}
+.bar{height:14px;border-radius:40px;background:#ece4d2;overflow:hidden;}
+.bar span{display:block;height:100%;width:0;border-radius:40px;background:linear-gradient(90deg,#2D5016,#5a8a2e);transition:width .4s ease;}
+.progress .pct{margin-top:11px;font-family:'Playfair Display',serif;font-size:22px;color:var(--green);font-weight:700;}
+.progress .sub{font-size:13px;color:#8a8275;margin-top:3px;}
+
+.list{margin-top:22px;display:flex;flex-direction:column;gap:12px;}
+.item{background:linear-gradient(180deg,#fffdf8,#fbf6ea);color:#33302a;border-radius:16px;padding:16px 16px 16px 18px;
+ box-shadow:0 14px 34px rgba(0,0,0,.26);border:1px solid rgba(201,168,76,.35);
+ display:flex;gap:14px;align-items:flex-start;cursor:pointer;transition:border-color .2s,transform .12s;}
+.item:active{transform:scale(.995);}
+.item.done{border-color:var(--green);background:linear-gradient(180deg,#f3f7ec,#eaf1df);}
+.box{flex:0 0 auto;width:30px;height:30px;min-width:30px;border-radius:9px;border:2px solid #d8cfb8;background:#fffefb;
+ display:flex;align-items:center;justify-content:center;margin-top:2px;transition:background .2s,border-color .2s;}
+.item.done .box{background:var(--green);border-color:var(--green);}
+.box svg{width:16px;height:16px;opacity:0;transition:opacity .2s;}
+.item.done .box svg{opacity:1;}
+.txt{flex:1;}
+.wk{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--gold);text-transform:uppercase;}
+.it-t{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--ink);margin:2px 0 3px;line-height:1.3;}
+.item.done .it-t{color:var(--green);}
+.it-a{font-size:15px;line-height:1.55;color:#6f675b;}
+
+.reset{display:block;margin:26px auto 0;border:1px solid rgba(201,168,76,.55);background:transparent;color:var(--gold);
+ font-family:'Heebo';font-size:14px;font-weight:600;padding:11px 26px;border-radius:40px;cursor:pointer;transition:background .15s;}
+.reset:active{background:rgba(201,168,76,.14);}
+
+.foot{text-align:center;margin-top:36px;}
+.foot .wmt{font-family:'Playfair Display',serif;letter-spacing:4px;font-size:15px;color:var(--cream);font-weight:600;}
+.foot .wms{font-family:'Playfair Display',serif;letter-spacing:3px;font-size:10px;color:var(--gold);}
+
+@media (max-width:480px){
+ .head h1{font-size:34px;}
+ .it-t{font-size:19px;}
+}
 
 /* ===== BRAIN DECK · EDIT MODE UI v2 (additive) ===== */
 #ed-fab{position:fixed;bottom:24px;right:24px;z-index:9998;background:linear-gradient(135deg,#5f3698,#8f4fd7);border:1px solid rgba(255,255,255,.18);color:#fff;border-radius:50px;padding:13px 24px;font-size:16px;font-weight:900;cursor:pointer;box-shadow:0 14px 40px rgba(143,79,215,.45);font-family:'Futurism',sans-serif;transition:transform .15s;}
@@ -91,286 +89,113 @@ body.ed-on .ed-img,body.ed-on .ed-blur,body.ed-on .ed-shape,body.ed-on .ed-textb
 .ed-handle.br{cursor:nwse-resize;right:-10px;bottom:-10px;}
 .ed-del{position:absolute;z-index:61;top:-15px;right:-15px;width:28px;height:28px;border-radius:50%;background:#ef4444;color:#fff;border:2px solid #fff;font-size:17px;font-weight:900;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;}
 
-</style>
-</head>
-<body>
-<div class="page-header">
-  <div class="logo">SKY BY ADI AHARONI</div>
-  <h1>רצף מיילים - 4 הודעות</h1>
-  <p>עצירה - הזדהות - תחושה - הוכחה - פעולה</p>
-</div>
-<div class="nav">
-  <button class="nav-btn active" onclick="switchTab(0,this)">מייל 1 - ברוכה הבאה</button>
-  <button class="nav-btn" onclick="switchTab(1,this)">מייל 2 - כאב (יום 2)</button>
-  <button class="nav-btn" onclick="switchTab(2,this)">מייל 3 - מנגנון (יום 4)</button>
-  <button class="nav-btn" onclick="switchTab(3,this)">מייל 4 - סגירה (יום 7)</button>
-</div>
+</style></head><body>
+<div class="wrap">
+  <div class="head">
+    <img class="em" src="img/emblem.png" alt="SKY BY ADI">
+    <div class="eyebrow">אחרי שחזרתן הביתה</div>
+    <h1>90 הימים הבאים</h1>
+    <p>חזרתן עם משהו טוב. עכשיו רק שומרות עליו. רגע קטן ומשותף בכל שבוע, בערך 12 שבועות. בלי מאמץ, בלי לוח זמנים נוקשה - את מסמנת מה שעשיתן, וזה נשמר אצלך.</p>
+  </div>
 
-<!-- EMAIL 1 -->
-<div id="tab0" class="tab active">
-  <div class="timing-badge">יום 0 - שליחה מיידית</div>
-  <div class="purpose-box"><strong>מטרה</strong>לגרום לה להרגיש שהגיעה למקום שמכיר אותה. לא קטלוג - חיבור.</div>
-  <div class="formula-bar">
-    <div class="formula-step active"><span class="heb">עצירה</span>Stop</div>
-    <div class="formula-step active"><span class="heb">הזדהות</span>Identify</div>
-    <div class="formula-step"><span class="heb">תחושה</span>Feel</div>
-    <div class="formula-step"><span class="heb">הוכחה</span>Proof</div>
-    <div class="formula-step active"><span class="heb">פעולה</span>Action</div>
+  <div class="progress">
+    <div class="ttl">איפה אתן עכשיו</div>
+    <div class="bar"><span id="barFill"></span></div>
+    <div class="pct" id="pctOut">0 מתוך 12</div>
+    <div class="sub" id="subOut">סמני את הרגע הראשון כשבא לכן</div>
   </div>
-  <div class="email-mockup">
-    <div class="email-header">
-      <div class="email-from">מ: עדי אהרוני &lt;adi@skybyadi.com&gt;</div>
-      <div class="email-subject">קיבלתי את הפרטים שלך - וקראתי בעיון</div>
-      <div class="email-preview">כי כל שיחה שלנו מתחילה בהקשבה...</div>
-    </div>
-    <div class="email-body" id="email1-body">
-      <p><span class="highlight">שמי עדי.</span></p>
-      <p>20 שנה הייתי עורכת דין. ידעתי לקרוא אנשים - לשמוע מה לא נאמר, לזהות את הפרט שמשנה הכל.</p>
-      <p>כשקיבלתי את הפרטים שלך, קראתי אותם פעמיים. לא כי כך עובדת המערכת - <span class="highlight">כי כך אני עובדת.</span></p>
-      <p>בשבוע הקרוב אשלח לך שלושה מיילים נוספים.<br>לא קטלוג. לא מחירון. לא "הצעה מוגבלת בזמן".</p>
-      <p>סיפורים. של אמהות שהיו בדיוק איפה שאת - ומה השתנה אצלן.</p>
-      <p>אם במהלך הקריאה תגידי לעצמך: <em>"היא מדברת עליי"</em> - זה הסימן.</p>
-      <div class="cta-section">
-        <p style="margin-bottom:12px; font-weight:600;">בינתיים - אם יש שאלה אחת שרוצה לשאול:</p>
-        <a href="https://wa.me/972508278089" class="cta-btn wa">WhatsApp ישיר</a>
-      </div>
-      <div class="sig">
-        <strong>עדי אהרוני</strong>
-        SKY BY ADI AHARONI - DREAM IT. VISIT IT.<br>
-        <span style="color:var(--forest);font-weight:600;">8 משפחות בחודש. לא יותר.</span>
-      </div>
-    </div>
-    <div class="email-footer">
-      <div class="meta-info">
-        <span class="meta-pill">~120 מילים</span>
-        <span class="meta-pill">זמן קריאה: 45 שניות</span>
-        <span class="meta-pill">שליחה: מיידי</span>
-      </div>
-      <button class="copy-btn" onclick="copyEmail('email1-body')">העתק מייל</button>
-    </div>
-  </div>
-  <div class="tips-box">
-    <div class="tips-title">הנחיות שליחה</div>
-    <ul class="tips-list">
-      <li>לשלוח תוך שעה מהרשמה - עוד חמה ב-intent</li>
-      <li>שורת הנושא חייבת לכלול את שמה אם האוטומציה מאפשרת: "קיבלתי את הפרטים שלך [שם]"</li>
-      <li>Preview text מופיע ב-inbox - חשוב שיהיה קצר ומסקרן</li>
-      <li>לא לכלול קישורים לדפים כבדים - רק WhatsApp</li>
-    </ul>
+
+  <div class="list" id="list"></div>
+
+  <button class="reset" onclick="resetAll()">איפוס הסימונים</button>
+
+  <div class="foot">
+    <div class="wmt">SKY BY ADI AHARONI</div>
+    <div class="wms">DREAM IT. VISIT IT</div>
   </div>
 </div>
-
-<!-- EMAIL 2 -->
-<div id="tab1" class="tab">
-  <div class="timing-badge">יום 2 - כאב עמוק</div>
-  <div class="purpose-box"><strong>מטרה</strong>להכניס אותה לתוך הכאב לפני שמציעים שום דבר. גישת ארזית נחום: 80% תחושה, 20% תוכן.</div>
-  <div class="formula-bar">
-    <div class="formula-step active"><span class="heb">עצירה</span>Stop</div>
-    <div class="formula-step active"><span class="heb">הזדהות</span>Identify</div>
-    <div class="formula-step active"><span class="heb">תחושה</span>Feel</div>
-    <div class="formula-step"><span class="heb">הוכחה</span>Proof</div>
-    <div class="formula-step active"><span class="heb">פעולה</span>Action</div>
-  </div>
-  <div class="email-mockup">
-    <div class="email-header">
-      <div class="email-from">מ: עדי אהרוני &lt;adi@skybyadi.com&gt;</div>
-      <div class="email-subject">&#34;אני לא זוכרת מתי ישבנו ביחד בלי שמישהי ניהלה&#34;</div>
-      <div class="email-preview">כשהבית הפך למקום של תפקידים בלבד.</div>
-    </div>
-    <div class="email-body" id="email2-body">
-      <p>יש רגע מסוים שבו זה קורה.</p>
-      <p>לא ריב גדול. לא אירוע דרמטי.<br>
-      פשוט יום אחד שמת לב - <span class="highlight">היא לא מספרת לך יותר.</span></p>
-      <p>אחת האמהות שפגשתי אמרה לי:<br>
-      <span class="quote">"אנחנו יושבות יחד בארוחת ערב ואני לא יודעת מה קרה לה היום. מתי זה קרה?"</span></p>
-      <p>זה לא כי אתם לא אוהבות אחת את השנייה.</p>
-      <p>זה כי <span class="highlight">הבית הפך למקום שבו יש רק תפקידים.</span><br>
-      אמא. בת. לא שתי נשים שמכירות זו את זו.</p>
-      <p>כשאני מדברת עם אמהות הן אומרות:<br>
-      "אני לא זוכרת מתי ישבתי איתה בלי שמישהי מבקשת משהו."<br>
-      "היא גדלה כל כך מהר - אני מפספסת את זה."<br>
-      "בבית אנחנו רק רבות. אין רגע שקט."</p>
-      <p>מה שבניתי הוא לא "טיול". זה <span class="highlight">72 שעות שבהן שתיכן מתחילות מאפס.</span><br>
-      אף אחת לא מכירה את המקום. אף אחת לא ה"מומחית".<br>
-      מבנה הכוח נעלם.</p>
-      <p><strong>57 משפחות כבר חזרו מהטיול הזה. 87% שביעות רצון.</strong></p>
-      <p>מחר - אספר לך בדיוק מה קורה באותן 72 שעות.</p>
-      <div class="cta-section">
-        <p style="margin-bottom:12px; font-size:14px; color:var(--mid);">לא יכולה לחכות למחר?</p>
-        <a href="https://wa.me/972508278089" class="cta-btn wa">דברי איתי עכשיו</a>
-      </div>
-      <div class="sig">
-        <strong>עדי אהרוני</strong>
-        SKY BY ADI AHARONI
-      </div>
-    </div>
-    <div class="email-footer">
-      <div class="meta-info">
-        <span class="meta-pill">~160 מילים</span>
-        <span class="meta-pill">זמן קריאה: 60 שניות</span>
-        <span class="meta-pill">שליחה: יום 2</span>
-      </div>
-      <button class="copy-btn" onclick="copyEmail('email2-body')">העתק מייל</button>
-    </div>
-  </div>
-  <div class="tips-box">
-    <div class="tips-title">הנחיות שליחה</div>
-    <ul class="tips-list">
-      <li>שורת נושא = ציטוט אמיתי של אמא. לא שאלה רטורית - משפט שהיא חיה בו</li>
-      <li>לא להציע שום דבר בגלוי - רק "מחר אספר". יוצר ציפייה</li>
-      <li>הציטוט של האמא - להשאיר בגוף ה-HTML כ-blockquote לפורמט נכון</li>
-      <li>לשלוח בבוקר: 8:00-9:30 - שעות פתיחת מיילים גבוהות לנשים עסקיות</li>
-    </ul>
-  </div>
-</div>
-
-<!-- EMAIL 3 -->
-<div id="tab2" class="tab">
-  <div class="timing-badge">יום 4 - המנגנון + הוכחה</div>
-  <div class="purpose-box"><strong>מטרה</strong>לתאר את החוויה בפועל ולהציג את המנגנון ("פרוטוקול האיפוס") + social proof אמיתי.</div>
-  <div class="formula-bar">
-    <div class="formula-step"><span class="heb">עצירה</span>Stop</div>
-    <div class="formula-step active"><span class="heb">הזדהות</span>Identify</div>
-    <div class="formula-step active"><span class="heb">תחושה</span>Feel</div>
-    <div class="formula-step active"><span class="heb">הוכחה</span>Proof</div>
-    <div class="formula-step active"><span class="heb">פעולה</span>Action</div>
-  </div>
-  <div class="email-mockup">
-    <div class="email-header">
-      <div class="email-from">מ: עדי אהרוני &lt;adi@skybyadi.com&gt;</div>
-      <div class="email-subject">מה קורה כש-2 נשים נחתות במקום שאף אחת לא מכירה</div>
-      <div class="email-preview">פרוטוקול האיפוס - איך זה עובד בפועל</div>
-    </div>
-    <div class="email-body" id="email3-body">
-      <p>תדמייני את זה:</p>
-      <p>שתיכן מגיעות לחדר מלון. על המיטה מחכה תיק עם שמות שתיכן.<br>
-      פנימה: מוצרי יוקרה. headbands. דוגמיות.<br>
-      ופתק קטן שכתוב עליו: <span class="highlight">"הנסיעה שלכן מתחילה עכשיו."</span></p>
-      <p>זה ה-wow moment הראשון. הבת צולמת. מעלה סטורי. מסתכלת עלייך ואומרת: "אמא, זה פצצה."</p>
-      <p>ביום השני - יום הספא. מותאם לגיל הבת. מה מותר לעור שלה, מה לא. מי שמחזיק ברטינול בגיל 13 יוצא עם ידע.</p>
-      <p>בערב - <span class="highlight">ערכת "No-Filter Connection"</span>. קלפי שיחה שמחכים על השולחן. שאלות שאמהות ובנות לא שואלות בבית. כי בבית יש תפקידים. כאן - רק שתי נשים סקרניות.</p>
-      <div class="quote">"זה תמיד יהיה הזיכרון היקר ביותר שלנו. כשאנחנו מאבדות את הקשר, אנחנו יושבות ומדברות - ואני מקשיבה לה בלי שיפוט. עדי נתנה לנו כלים שאנחנו משתמשות בהם עד היום." - שרית לוי, 41, רמת גן - שש שנים אחרי</div>
-      <div class="quote">"זה היה הדבר הכי טוב שקרה לי ולאמא שלי. ממש לא ציפיתי כמה נהנתי." - נועה בן-דוד, הבת, 16, תל אביב - שנה אחרי</div>
-      <p><strong>למה זה עובד?</strong></p>
-      <p>בבית - כל שיחה מתרחשת בתוך מבנה כוח. אמא = סמכות. בת = כפופה.<br>
-      72 שעות בחו"ל - אף אחת לא מכירה את המקום. <span class="highlight">מבנה הכוח נעלם.</span></p>
-      <p>אני לא מוכרת נסיעות. אני יוצרת קטגוריה שלא קיימת בישראל.</p>
-      <div class="cta-section">
-        <p style="margin-bottom:12px; font-weight:600;">מוכנה לשמוע אם זה מתאים לכן?</p>
-        <p style="margin-bottom:16px; font-size:14px; color:var(--mid);">שאלון התאמה - 5 דקות. ללא עלות. ללא התחייבות.</p>
-        <a href="https://wa.me/972508278089" class="cta-btn">מלאי שאלון התאמה</a>
-      </div>
-      <div class="sig">
-        <strong>עדי אהרוני</strong>
-        SKY BY ADI AHARONI
-      </div>
-    </div>
-    <div class="email-footer">
-      <div class="meta-info">
-        <span class="meta-pill">~200 מילים</span>
-        <span class="meta-pill">זמן קריאה: 75 שניות</span>
-        <span class="meta-pill">שליחה: יום 4</span>
-      </div>
-      <button class="copy-btn" onclick="copyEmail('email3-body')">העתק מייל</button>
-    </div>
-  </div>
-  <div class="tips-box">
-    <div class="tips-title">הנחיות שליחה</div>
-    <ul class="tips-list">
-      <li>זה המייל הכי חשוב - מספר את הסיפור. לא לקצר</li>
-      <li>הציטוטים של שרית ונועה - שמות ישראלים אמיתיים מהדף הנחיתה. לא לשנות</li>
-      <li>הCTA כאן הוא שאלון התאמה - לא WhatsApp ישיר. שלב מתון יותר</li>
-      <li>אפשר להוסיף תמונה של ערכת Glow אם יש</li>
-    </ul>
-  </div>
-</div>
-
-<!-- EMAIL 4 -->
-<div id="tab3" class="tab">
-  <div class="timing-badge">יום 7 - סגירה אלגנטית</div>
-  <div class="purpose-box"><strong>מטרה</strong>גישת ארזית נחום: לסגור ממקום של כוח ואמונה, לא לחץ. סקרסיטי אמיתי, לא מלאכותי.</div>
-  <div class="formula-bar">
-    <div class="formula-step active"><span class="heb">עצירה</span>Stop</div>
-    <div class="formula-step"><span class="heb">הזדהות</span>Identify</div>
-    <div class="formula-step active"><span class="heb">תחושה</span>Feel</div>
-    <div class="formula-step active"><span class="heb">הוכחה</span>Proof</div>
-    <div class="formula-step active"><span class="heb">פעולה</span>Action</div>
-  </div>
-  <div class="email-mockup">
-    <div class="email-header">
-      <div class="email-from">מ: עדי אהרוני &lt;adi@skybyadi.com&gt;</div>
-      <div class="email-subject">8 מקומות בחודש. לא יותר.</div>
-      <div class="email-preview">ולמה זה לא ישתנה.</div>
-    </div>
-    <div class="email-body" id="email4-body">
-      <p>אני יכולה לקחת יותר משפחות. <span class="highlight">בחרתי לא לעשות את זה.</span></p>
-      <p>כי מה שאני עושה דורש זמן. קשב. דיוק.<br>
-      שאלון אבחון אישי. פגישת תיאום. תכנית מותאמת. חוזה. ליווי לפני ובמהלך.<br>
-      8 משפחות בחודש - זה הגבול שאני שומרת.</p>
-      <p>לחודש הקרוב: <span class="highlight">נשארו [X] מקומות.</span></p>
-      <p>שמתי לב שיש שני סוגי אמהות שפונות אלי:</p>
-      <p>הראשונה שואלת: <em>"האם זה יעבוד אצלנו?"</em><br>
-      השנייה שואלת: <em>"מה הצעד הבא?"</em></p>
-      <p>לא אחת טובה יותר מהשנייה.<br>
-      <span class="highlight">אבל רק אחת מגיעה לטיול.</span></p>
-      <p>מה את עושה עם מה שאת מרגישה עכשיו?</p>
-      <div class="cta-section">
-        <p style="font-weight:700; font-size:16px; margin-bottom:8px;">שיחת סינון - 20 דקות</p>
-        <p style="font-size:14px; color:var(--mid); margin-bottom:16px;">ללא עלות. ללא התחייבות. רק שיחה.</p>
-        <a href="https://wa.me/972508278089" class="cta-btn wa">קבעי שיחה עכשיו</a>
-        <a href="mailto:coheadi@gmail.com" class="cta-btn" style="background:var(--forest);">שלחי מייל</a>
-        <p style="margin-top:12px; font-size:12px; color:var(--mid);">ענה תוך 24 שעות.</p>
-      </div>
-      <p style="font-size:14px; color:var(--mid);">אם זה לא הזמן הנכון - לא בסדר גמור. שמרי את המייל. כשיגיע הזמן - אני כאן.</p>
-      <div class="sig">
-        <strong>עדי אהרוני</strong>
-        SKY BY ADI AHARONI - DREAM IT. VISIT IT.
-      </div>
-    </div>
-    <div class="email-footer">
-      <div class="meta-info">
-        <span class="meta-pill">~150 מילים</span>
-        <span class="meta-pill">זמן קריאה: 50 שניות</span>
-        <span class="meta-pill">שליחה: יום 7</span>
-      </div>
-      <button class="copy-btn" onclick="copyEmail('email4-body')">העתק מייל</button>
-    </div>
-  </div>
-  <div class="tips-box">
-    <div class="tips-title">הנחיות שליחה</div>
-    <ul class="tips-list">
-      <li>לעדכן את "[X] מקומות" ידנית לפני שליחה - לא להשאיר placeholder</li>
-      <li>לשלוח בשעות ערב: 19:00-21:00 - שעות קריאה גבוהות אצל אמהות</li>
-      <li>הסיום "אם זה לא הזמן הנכון" - חשוב! מונע unsub ומייצר goodwill</li>
-      <li>אחרי 7 ימים בלי תגובה - follow up אחד נוסף בשבוע הבא: "ראיתי ש..." + שאלה אחת</li>
-    </ul>
-  </div>
-</div>
-
-<div class="toast" id="toast">הועתק</div>
-<button id="edit-toggle" onclick="toggleEdit()">✏️ עריכה</button>
 
 <script>
-function switchTab(i,el){
-  document.querySelectorAll('.tab').forEach(function(t,idx){t.classList.toggle('active',idx===i);});
-  document.querySelectorAll('.nav-btn').forEach(function(b){b.classList.remove('active');});
-  el.classList.add('active');
+/* עדי: אפשר לערוך, למחוק או להוסיף שבועות כאן. כל פריט: כותרת קצרה + שורת פעולה אחת. */
+var WEEKS = [
+  {t:'שיר הבית', a:'כל אחת מוסיפה שיר אחד לפלייליסט משותף. בלי הסברים.'},
+  {t:'ארוחת השתיים', a:'ארוחה אחת השבוע רק שתיכן, בלי טלפונים על השולחן.'},
+  {t:'תמונה אחת', a:'כל אחת שולחת לשנייה תמונה אחת מהשבוע שלה.'},
+  {t:'הליכה קצרה', a:'עשרים דקות הליכה ביחד, בלי יעד. פשוט ללכת ולדבר.'},
+  {t:'הטיפוח של חמישי', a:'ערב טיפוח קצר ביחד, בדיוק כמו ששם. מה שמתאים לגיל שלה.'},
+  {t:'הקלף של השבוע', a:'שולפות קלף שיחה אחד מהערכה וקוראות בקול.'},
+  {t:'מתכון מהיעד', a:'מכינות ביחד מנה אחת שאהבתן בחופשה.'},
+  {t:'חצי שעה משלך', a:'את לוקחת חצי שעה רק לעצמך. היא רואה אותך עושה את זה.'},
+  {t:'הזיכרון של השבוע', a:'כל אחת מספרת רגע אחד מהחופשה שחזר לה לראש.'},
+  {t:'ערב סרט שלה', a:'היא בוחרת, את לא מתערבת. רק צופות ביחד.'},
+  {t:'החלום הבא', a:'מדברות חמש דקות על לאן בא לכן לנסוע בפעם הבאה.'},
+  {t:'מכתב קצר', a:'כל אחת כותבת שורה אחת לשנייה ומשאירה אותה היכן שתמצא.'}
+];
+
+var KEY='sky_followup_v1';
+var listEl=document.getElementById('list');
+var barEl=document.getElementById('barFill');
+var pctEl=document.getElementById('pctOut');
+var subEl=document.getElementById('subOut');
+
+function load(){
+  try{ var raw=localStorage.getItem(KEY); return raw?JSON.parse(raw):[]; }
+  catch(e){ return []; }
 }
-function copyEmail(id){
-  var el=document.getElementById(id);
-  var text=el.innerText;
-  navigator.clipboard.writeText(text).then(function(){
-    var t=document.getElementById('toast');
-    t.classList.add('show');
-    setTimeout(function(){t.classList.remove('show');},2000);
+function save(state){
+  try{ localStorage.setItem(KEY,JSON.stringify(state)); }catch(e){}
+}
+
+var state=load();
+if(!Array.isArray(state)||state.length!==WEEKS.length){
+  state=new Array(WEEKS.length).fill(false);
+}
+
+function render(){
+  listEl.innerHTML='';
+  WEEKS.forEach(function(w,i){
+    var item=document.createElement('div');
+    item.className='item'+(state[i]?' done':'');
+    item.setAttribute('role','button');
+    item.setAttribute('tabindex','0');
+    item.innerHTML=
+      '<span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>'+
+      '<span class="txt"><span class="wk">שבוע '+(i+1)+'</span>'+
+      '<span class="it-t">'+w.t+'</span>'+
+      '<span class="it-a">'+w.a+'</span></span>';
+    item.addEventListener('click',function(){ toggle(i); });
+    item.addEventListener('keydown',function(ev){
+      if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); toggle(i); }
+    });
+    listEl.appendChild(item);
   });
+  updateProgress();
 }
-function toggleEdit(){
-  var b=document.body,on=!b.classList.contains('edit-mode');
-  b.classList.toggle('edit-mode',on);
-  document.getElementById('edit-toggle').textContent=on?'✅ סיום עריכה':'✏️ עריכה';
-  document.querySelectorAll('p,h1,h2,h3,li,blockquote,.email-subject,.email-preview').forEach(function(el){el.contentEditable=on;});
+
+function toggle(i){
+  state[i]=!state[i];
+  save(state);
+  render();
 }
+
+function updateProgress(){
+  var done=state.filter(Boolean).length;
+  var total=WEEKS.length;
+  var pct=Math.round(done/total*100);
+  barEl.style.width=pct+'%';
+  pctEl.textContent=done+' מתוך '+total;
+  if(done===0) subEl.textContent='סמני את הרגע הראשון כשבא לכן';
+  else if(done===total) subEl.textContent='עברתן את כל ה-12. מכאן זה כבר פשוט אתן.';
+  else subEl.textContent='ממשיכות יפה. אין מרוץ - רק רגעים.';
+}
+
+function resetAll(){
+  state=new Array(WEEKS.length).fill(false);
+  save(state);
+  render();
+}
+
+render();
 </script>
 <script>
 /* ===== BRAIN DECK · EDIT MODE v2 (additive, self-contained) =====
@@ -1063,5 +888,4 @@ function toggleEdit(){
 })();
 
 </script>
-</body>
-</html>
+</body></html>

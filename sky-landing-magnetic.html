@@ -654,7 +654,7 @@
 </script>
 
 <script>
-/* ===== Cookie consent — gates analytics/marketing until accepted ===== */
+/* ===== Cookie consent - gates analytics/marketing until accepted ===== */
 (function(){
   var stored = localStorage.getItem('sky_cookie_consent');
   var banner = document.getElementById('cookie-banner');
@@ -664,7 +664,7 @@ function cookieAccept(){ localStorage.setItem('sky_cookie_consent','accepted'); 
 function cookieDecline(){ localStorage.setItem('sky_cookie_consent','declined'); var b=document.getElementById('cookie-banner'); if(b) b.style.display='none'; }
 function loadTrackingScripts(){
   /* כלי מעקב (Facebook Pixel / Google Analytics) ייטענו כאן רק לאחר הסכמה.
-     כשיתווסף מזהה Pixel/GA — להדביק את קוד הטעינה בתוך פונקציה זו בלבד,
+     כשיתווסף מזהה Pixel/GA - להדביק את קוד הטעינה בתוך פונקציה זו בלבד,
      כדי שלא ירוץ ללא הסכמת המשתמשת (תיקון 13). */
 }
 </script>

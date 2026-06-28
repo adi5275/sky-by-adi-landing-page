@@ -2266,8 +2266,7 @@ Dr. Smita Awasthi מ-UC Davis: "אם נערה בת 12 צריכה טיפול רפ
    blur intensity/opaque controls, proportional image resize, Cmd+S save. */
 (function(){
   if(window.__brainEdInit) return; window.__brainEdInit=true;
-  var deck=document.getElementById('deck');
-  if(!deck) return;
+  var deck=document.getElementById('deck')||document.body;
   var edOn=false, selected=null, undoStack=[], redoStack=[], editState=null;
   var clipInternal=null, pasteCount=0, zTop=60, lastNudge={el:null,t:0};
   var touched={}, persistTimer=null, persistWarned=false;
@@ -2280,8 +2279,8 @@ Dr. Smita Awasthi מ-UC Davis: "אם נערה בת 12 צריכה טיפול רפ
   /* TEXTY = elements that may be inline-edited on double-click */
   var TEXTY='h1,h2,h3,h4,h5,h6,p,li,span,.div-word,.s-title,.eyebrow,.bp-text,.bs-context,.hero-title,.hero-sub,.div-sub,.div-eyebrow,.ed-textbox,.vl-name,.vl-val,.lay-tx,.pl-tx,.card,.chip,.engine,.step-name,.price-num,.vt-num,.hbar-lbl,.hbar-val,.vs-name,.vs-item,.bs-number,.bs-label';
 
-  function scale(){ var r=deck.getBoundingClientRect(); return (r.width/1920)||1; }
-  function activeSlide(){ return document.querySelector('.slide.active')||document.querySelector('.slide'); }
+  function scale(){ if(deck===document.body) return 1; var r=deck.getBoundingClientRect(); return (r.width/1920)||1; }
+  function activeSlide(){ return document.querySelector('.slide.active')||document.querySelector('.slide')||document.body; }
   function slideIndex(s){ return [].slice.call(document.querySelectorAll('.slide')).indexOf(s); }
   function matches(el,sel){ return el && el.matches && el.matches(sel); }
   function deckXY(cx,cy){ var d=deck.getBoundingClientRect(), s=scale(); return {x:(cx-d.left)/s, y:(cy-d.top)/s}; }
