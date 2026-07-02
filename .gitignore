@@ -5,3 +5,23 @@ node_modules/
 .env
 .env.local
 *.log
+
+.vercel
+
+# internal docs - never publish
+sky-inventory-2026.html
+website-proposal.html
+growth-ideas-2026.html
+pr-kit-regulation-2026.html
+testimonial-kit.html
+sky-dashboard.html
+*-standalone.html
+tools-*.py
+compliance-audit.py
+shoot.py
+contract_b64_value.py
+contract_payload.json
+_sg_test.txt
+*.png
+*.jpeg
+sky-by-adi-landing-v4.backup.html
